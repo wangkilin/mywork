@@ -22,8 +22,17 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
-	public function test()
+	public function test($id, $uid)
 	{
+	    var_dump(func_get_args());
+	    var_dump($this->load->get_vars());
+	    echo 'id:' . $id . '<br/>';
+	    echo 'uid:'.$uid . '<br/>';
 		echo 'hello World!';
+	}
+
+	public function _remap ($method, $params)
+	{
+	    var_dump(func_get_args());
 	}
 }

@@ -74,13 +74,13 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
+	'dsn'	=> 'mysql:host=localhost;port=3306;dbname=wordpress',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => '4728999',
-	'database' => '',
+	'password' => '',
+	'database' => 'wordpress',
 	'dbdriver' => 'pdo',
-	'dbprefix' => '',
+	'dbprefix' => 'wp_',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
