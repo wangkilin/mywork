@@ -11,4 +11,10 @@ class Test extends CI_Controller
         //var_dump($result);
         $this->load->view('test/index', $result);
     }
+
+    public function processNum ()
+    {
+        var_dump(func_get_args());
+        var_dump($GLOBALS['params']);
+    }
 }

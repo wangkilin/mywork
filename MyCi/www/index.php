@@ -53,8 +53,12 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 $workingMode = false == getenv('WORKING_MODE') ? ENVIRONMENT : getenv('WORKING_MODE');
+
+define('DS', DIRECTORY_SEPARATOR);
+define('WEB_ROOT_PATH', dirname(__FILE__) . DS);
+
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -63,8 +67,7 @@ $workingMode = false == getenv('WORKING_MODE') ? ENVIRONMENT : getenv('WORKING_M
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
  */
-switch ($workingMode)
-{
+switch ($workingMode) {
 	case 'development':
 		error_reporting(-1);
 		ini_set('display_errors', 1);
@@ -89,10 +92,6 @@ switch ($workingMode)
 		echo 'The application environment is not set correctly.';
 		exit(1); // EXIT_ERROR
 }
-
-define('DS', DIRECTORY_SEPARATOR);
-
-define('WEB_ROOT_PATH', dirname(__FILE__) . DS);
 /*
  *---------------------------------------------------------------
  * SYSTEM FOLDER NAME
@@ -285,6 +284,11 @@ define('WEB_ROOT_PATH', dirname(__FILE__) . DS);
 	}
 
 	define('VIEWPATH', $view_folder);
+
+
+
+define('SMARTY_DIR', $system_path . DS . 'Smarty' . DS);
+require_once SMARTY_DIR . 'Smarty.class.php';
 
 /*
  * --------------------------------------------------------------------
