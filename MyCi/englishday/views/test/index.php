@@ -1,4 +1,4 @@
 <?php
-echo '<hr>';
+//echo '<hr>';
 var_dump($all);
 var_dump($one);
