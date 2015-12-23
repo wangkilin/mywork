@@ -9,11 +9,14 @@ class Test extends CI_Controller
         $this->load->model('wordpress');
         $result = $this->wordpress->getPost();
         //var_dump($result);
-        $this->load->view('front/test/index', $result);
+        $this->load->view('test/index', $result);
     }
 
     public function processNum ()
     {
+    	var_dump($_GET);
+    	$uri = &load_class('URI', 'core');
+    	var_dump($uri);
         var_dump(func_get_args());
         var_dump($GLOBALS['params']);
     }

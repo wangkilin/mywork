@@ -50,16 +50,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['admin/(:any)/(:any)'] = 'admin/$1/$2';
-$route['product/(:any)'] = 'front/test/processNum/$1';
-$route['product/(:num)'] = 'front/test/processNum/$1';
+$route['product/(:any)'] = 'test/processNum/$1';
+$route['product/(:num)'] = 'test/processNum/$1';
 //$route['product/(:num)']['get'] = 'test/processNum/$1'; // get 方法
 $route['product/([a-zA-Z0-9]+)/edit/(\d+)'] = function ($productType, $id)
 {
-    return 'front/test/processNum/' . strtolower($productType) . '/' . $id;
+    return 'test/processNum/' . strtolower($productType) . '/' . $id;
 };
-$route['product/(:num)/([0-9a-z]+)/(:num)'] = 'front/test/processNum/$1';
-$route['product/(.*)'] = 'front/test/processNum/$1';
-$route['default_controller'] = 'front/test';
-$route['welcome'] = 'front/welcome';
+$route['product/(:num)/([0-9a-z]+)/(:num)'] = 'test/processNum/$1';
+$route['product/(.*)'] = 'test/processNum/$1';
+$route['default_controller'] = 'Test';
+$route['welcome'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
