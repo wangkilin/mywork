@@ -9,6 +9,6 @@ class index extends CI_Controller
     public function index()
     {
         echo __FUNCTION__;
-        $this->load->view('admin/admin/index');
+        $this->load->view('admin/index');
     }
 }
