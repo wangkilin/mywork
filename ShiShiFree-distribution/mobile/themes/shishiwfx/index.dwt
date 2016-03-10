@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>{if $name}{$name}的{/if}{$shop_name}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<link href="{$ectouch_themes}/images/touch-icon.png" rel="apple-touch-icon-precomposed" />
+<link href="{$ectouch_themes}/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link href="{$ectouch_themes}/ectouch.css?v=2014" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{$ectouch_themes}/js/TouchSlide.js"></script>
+</head>
+<body>
+<!--头部s-->
+<div id="page">
+  <header id="header" >
+    <div class="header_l"> <a class="ico_02" href="#menu"> 菜单栏 </a> </div>
+    <h1> {if $name}{$name}的{/if}{$shop_name} </h1>
+    <div class="header_r"> <a class="ico_01" href="flow.php"> 购物车 </a> </div>
+  </header>
+</div>
+<!--头部e--> 
+<!--播放器广告s-->
+<div id="focus" class="focus region">
+  <div class="hd">
+    <ul>
+    </ul>
+  </div>
+  <div class="bd">
+    <!-- TemplateBeginEditable name="touch首页广告区域" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+
+{insert name='ads' id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable -->
+  </div>
+</div>
+<script type="text/javascript">
+TouchSlide({ 
+	slideCell:"#focus",
+	titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+	mainCell:".bd ul", 
+	effect:"leftLoop", 
+	autoPlay:true,//自动播放
+	autoPage:true //自动分页
+});
+</script>
+<!--播放器广告e-->
+<div class="blank2"> </div>
+
+<!--content s-->
+<div id=content class="wrap">
+
+<!--ShiShiWFX新增提示分享人--->  
+<ul>
+    <li>
+        <div  style="overflow: hidden;background: #669933;position: relative; height: 2.5rem; overflow: hidden;">
+        <div style="float:left">	
+        <table align=left cellspacing=0 cellpadding=0 width=200 border=0>
+        <tr>
+        <td  style="width:2.5rem;height: 2.5rem;">{if $share_info.headimgurl neq ''}<img src="{$share_info.headimgurl}"  style="width:2.5rem;height: 2.5rem;border-radius: 2.5rem;"> {/if}</td> <td>     <p style="color:rgb(253, 250, 250)">{if $share_info.headimgurl neq ''}来自&nbsp; {$share_info.nickname}&nbsp;的分享{/if}</p>
+            <!--/br-->
+            <p style="color:rgb(253, 250, 250)"><span>{if  $url}分享商品页面可以获取提成哦{else}购买商品并且登陆后可以分享页面获取提成哦{/if}</span></p></td>
+        
+            </tr></table>
+        </div>
+        <div style="float:right;overflow: hidden;background: #950000;aligin:center; height: 2.5rem; line-height:2.5rem; text-align:center;">
+        <!--{if $userid  }-->
+            <a href="user.php"><button type="button" onclick="" class="guanzhu">个人中心</button></a>
+            <!-- {else} -->
+             <a href="{$shishi_url}"><button type="button" class="guanzhu" >马上关注</button></a>
+            <!-- {/if} -->
+         </div>
+         <div style="clear:both"></div>
+         </div>
+    </li>
+</ul>
+<!--ShiShiWFX add start首页顶部主推品广告推荐-->	
+<div class="top_ad">
+	<div class="ad_left">
+    	<a href="category.php?id=146"><img src="/mobile/images/adimg/adimg_01.jpg" width="100%"></a>
+    </div>
+    <div class="ad_right">
+    <a href="category.php?id=1"><img class="ad_top" src="/mobile/images/adimg/adimg_02.jpg" width="100%"></a>
+    <a href="category.php?id=12"><img class="ad_down" src="/mobile/images/adimg/adimg_03.jpg" width="100%"></a>
+    </div>
+</div>
+<!--ShiShiWFX add end首页顶部主推品广告推荐-->	
+<!-- TemplateBeginEditable name="中部主区域" -->
+<!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
+
+<!-- {if $best_goods} -->
+<div class="blank2"></div>
+<div class="item_show_box2 box1 region" style="overflow:hidden">
+    <div class="position_a_lt hunsha"><p>{$goods_cat.name|escape:html}</p><span class="index_more"><a href="{$goods_cat.url}"> 查看更多></a> </span> 
+    </div>
+    <div id="picScroll3" class="picScroll3">
+        <div class="hd">
+            <ul></ul>
+        </div>
+        <div class="bd1">
+            <ul>
+			<!-- {foreach name=goods from=$cat_goods item=goods}-->
+                <li><a href="{$goods.url}"><img src="{$site_url}{$goods.thumb}" alt="{$goods.name|escape:html}"/></a>
+                <br/>
+                <!-- {if $goods.promote_price neq ""} -->  
+                <span class="price_s"> {$goods.promote_price} </span> 
+                <!-- {else}--> 
+                <span class="price_s"> {$goods.shop_price} </span> 
+                <!--{/if}-->
+                <span class="proSales">月销：<em>{$goods.sales_count}</em></span>
+                </br><span class="proname">{$goods.name|escape:html|truncate:10}</span>
+                </li>
+		        <!--{if $smarty.foreach.goods.iteration%2 eq 0 && $smarty.foreach.goods.iteration neq $smarty.foreach.goods.total}--></ul><ul><!--{/if}-->
+        <!--{/foreach}-->
+        </div>
+    </div>
+  </div>
+<script type="text/javascript">
+TouchSlide({
+    slideCell:"#picScroll3",
+    titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+    autoPage:true, //自动分页
+    pnLoop:"false", // 前后按钮不循环
+    //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+});
+</script>
+<!-- {/if} -->
+ <!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/recommend_best.lbi" -->
+
+<!-- {if $best_goods} -->
+<div class="blank2"></div>
+<div class="item_show_box2 box1 region" style="overflow:hidden">
+    <div class="position_a_lt hunsha"><p>穿戴·精品推荐</p><span class="index_more"><a href="category.php?id=12"> 查看更多></a> </span> 
+    </div>
+    <div id="picScroll3" class="picScroll3">
+        <div class="hd">
+            <ul></ul>
+        </div>
+        <div class="bd1">
+            <ul>
+                <!--{foreach from=$best_goods item=goods name=best_goods}-->
+                <li><a href="{$goods.url}"><img src="{$site_url}{$goods.thumb}" /></a>
+                <br/>
+                <!-- {if $goods.promote_price neq ""} --> 
+                <span class="price_s"> {$goods.promote_price} </span> 
+                <!-- {else}--> 
+                <span class="price_s"> {$goods.shop_price} </span> 
+                <!--{/if}-->
+                <span class="proSales">月销：<em>{$goods.sales_count}</em></span>
+                </br><span class="proname">{$goods.name|escape:html|truncate:10}</span>
+                </li>
+                <!--{if $smarty.foreach.best_goods.iteration%2 eq 0 && $smarty.foreach.best_goods.iteration neq $smarty.foreach.best_goods.total}--></ul><ul><!--{/if}-->
+                <!--{/foreach}-->
+        </div>
+    </div>
+  </div>
+
+<script type="text/javascript">
+TouchSlide({
+    slideCell:"#picScroll3",
+    titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+    autoPage:true, //自动分页
+    pnLoop:"false", // 前后按钮不循环
+    //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+});
+</script>
+<!-- {/if} -->
+ <!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/recommend_new.lbi" -->
+
+<!-- {if $new_goods} -->
+<div class="blank2"></div>
+<div class="item_show_box2 box1 region" style="overflow:hidden">
+	<div class="position_a_lt wanlifu"><p>精美·摆件推荐</p><span class="index_more"><a href="category.php?id=1"> 查看更多></a> </span></div>
+    
+    <div id="picScroll" class="picScroll">
+        <div class="hd">
+            <ul></ul>
+        </div>
+        <div class="bd1">
+            <ul>
+                <!--{foreach from=$new_goods item=goods name=new_goods}-->
+                <li><a href="{$goods.url}"><img src="{$site_url}{$goods.thumb}" /></a>
+                <br/>
+                <!-- {if $goods.promote_price neq ""} --> 
+                <span class="price_s"> {$goods.promote_price} </span> 
+                <!-- {else}--> 
+                <span class="price_s"> {$goods.shop_price} </span> 
+                <!--{/if}-->
+                <span class="proSales">月销：<em>{$goods.sales_count}</em></span>
+                </br><span class="proname">{$goods.name|escape:html|truncate:10}</span>
+                </li>
+                <!--{if $smarty.foreach.new_goods.iteration%2 eq 0 && $smarty.foreach.new_goods.iteration neq $smarty.foreach.new_goods.total}--></ul><ul><!--{/if}-->
+                <!--{/foreach}-->
+        </div>
+    </div>
+  </div>
+
+<script type="text/javascript">
+TouchSlide({
+    slideCell:"#picScroll",
+    titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+    autoPage:true, //自动分页
+    pnLoop:"false", // 前后按钮不循环
+    //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+});
+</script>
+<!-- {/if} -->
+ <!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/recommend_hot.lbi" -->
+
+<!-- {if $hot_goods} -->
+<div class="blank2"></div>
+<div class="item_show_box2 box1 region" style="overflow:hidden">
+	<div class="position_a_lt nanzhuang"><p>挂件·精品推荐</p><span class="index_more"><a href="category.php?id=145"> 查看更多></a> </span> </div>
+	
+	   <div id="picScroll2" class="picScroll2">
+        <div class="hd">
+            <ul></ul>
+        </div>
+        <div class="bd1">
+            <ul>
+                <!--{foreach from=$hot_goods item=goods name=hot_goods}-->
+                <li><a href="{$goods.url}"><img src="{$site_url}{$goods.thumb}" /></a>
+                <br/>
+                <!-- {if $goods.promote_price neq ""} --> 
+                <span class="price_s"> {$goods.promote_price} </span> 
+                <!-- {else}--> 
+                <span class="price_s"> {$goods.shop_price} </span> 
+                <!--{/if}-->
+                <span class="proSales">月销：<em>{$goods.sales_count}</em></span>
+                </br><span class="proname">{$goods.name|escape:html|truncate:10}</span>
+                </li>
+                <!--{if $smarty.foreach.hot_goods.iteration%2 eq 0 && $smarty.foreach.hot_goods.iteration neq $smarty.foreach.hot_goods.total}--></ul><ul><!--{/if}-->
+                <!--{/foreach}-->
+        </div>
+    </div>
+
+  </div>
+
+<script type="text/javascript">
+TouchSlide({
+    slideCell:"#picScroll2",
+    titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+    autoPage:true, //自动分页
+    pnLoop:"false", // 前后按钮不循环
+    //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+});
+</script>
+<!-- {/if} -->
+ <!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
+
+<!-- {if $best_goods} -->
+<div class="blank2"></div>
+<div class="item_show_box2 box1 region" style="overflow:hidden">
+    <div class="position_a_lt hunsha"><p>{$goods_cat.name|escape:html}</p><span class="index_more"><a href="{$goods_cat.url}"> 查看更多></a> </span> 
+    </div>
+    <div id="picScroll3" class="picScroll3">
+        <div class="hd">
+            <ul></ul>
+        </div>
+        <div class="bd1">
+            <ul>
+			<!-- {foreach name=goods from=$cat_goods item=goods}-->
+                <li><a href="{$goods.url}"><img src="{$site_url}{$goods.thumb}" alt="{$goods.name|escape:html}"/></a>
+                <br/>
+                <!-- {if $goods.promote_price neq ""} -->  
+                <span class="price_s"> {$goods.promote_price} </span> 
+                <!-- {else}--> 
+                <span class="price_s"> {$goods.shop_price} </span> 
+                <!--{/if}-->
+                <span class="proSales">月销：<em>{$goods.sales_count}</em></span>
+                </br><span class="proname">{$goods.name|escape:html|truncate:10}</span>
+                </li>
+		        <!--{if $smarty.foreach.goods.iteration%2 eq 0 && $smarty.foreach.goods.iteration neq $smarty.foreach.goods.total}--></ul><ul><!--{/if}-->
+        <!--{/foreach}-->
+        </div>
+    </div>
+  </div>
+<script type="text/javascript">
+TouchSlide({
+    slideCell:"#picScroll3",
+    titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+    autoPage:true, //自动分页
+    pnLoop:"false", // 前后按钮不循环
+    //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+});
+</script>
+<!-- {/if} -->
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable -->
+</div>
+<!--content e--> 
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+<nav id="menu" style="display:None">
+  <ul>
+    <!--{foreach from=$categories item=cat}-->
+    <li> <a href="{$cat.url}"> {$cat.name|escape:html} </a>
+      <ul>
+        <!--{foreach from=$cat.cat_id item=child}-->
+        <li> <a href="{$child.url}"> {$child.name|escape:html} </a>
+          <ul>
+            <!--{foreach from=$child.cat_id item=childer}-->
+            <li> <a href="{$childer.url}"> {$childer.name|escape:html} </a> </li>
+            <!--{/foreach}-->
+          </ul>
+        </li>
+        <!--{/foreach}-->
+      </ul>
+    </li>
+    <!--{/foreach}-->
+  </ul>
+</nav>
+<!--搜索弹出框-->
+<div id="main-search" class="main-search">
+<div class="hd"> <span class="ico_08 close"> 关闭 </span> </div>
+<div class="bd">
+  <div class="search_box">
+    <form action="search.php" method="post" id="searchForm" name="searchForm">
+      <div class="content">
+        <input class="text" type="search" name="keywords" id="keywordBox" autofocus />
+        <button class="ico_07" type="submit" value="搜 索" onclick="return check('keywordBox')"></button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+
+<ul style="display: ;" class="contact-public">
+
+ <!-- QQ 号码 {foreach from=$qq item=im} -->
+            <!-- {if $im} -->
+     <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$im}&site=qq&menu=yes">联<br>系<br>客<br>服</a></li>
+      <!-- {/if} -->
+            <!-- {/foreach} 结束QQ号码 -->
+     <li><a target="_blank" href="{$shishi_url}">关<br>注<br>公<br>众<br>号</a></li>
+ </ul>
+<script type="text/javascript" src="{$ectouch_themes}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{$ectouch_themes}/js/jquery.mmenu.js"></script>
+<script type="text/javascript" src="{$ectouch_themes}/js/ectouch.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+  $('#menu').css('display','');
+}
+$(function() {
+	$('nav#menu').mmenu();
+	$('#get_search_box').click(function(){
+		$(".mm-page").children('div').hide();
+		$("#main-search").css('position','fixed').css('top','0px').css('width','100%').css('z-index','999').show();
+		//$('#keywordBox').focus();
+	})
+	$("#main-search .close").click(function(){
+		$(".mm-page").children('div').show();
+		$("#main-search").hide();
+	})
+});
+</script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+<!-- {/literal} -->
+  wx.config({
+    debug: false,
+    appId: '{$signPackage.appId}',
+    timestamp: '{$signPackage.timestamp}',
+    nonceStr: '{$signPackage.nonceStr}',
+    signature: '{$signPackage.signature}',
+    jsApiList: [
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage' 
+    ]
+  });
+ wx.ready(function () {
+	//ShiShiWFX监听“分享给朋友”
+    wx.onMenuShareAppMessage({
+      title: '{$page_title}',
+      desc: '{$description}',
+      link: '{$url}',
+      imgUrl: 'http://ssgo.hanyu168.com/mobile/themes/shishiwfx/images/logo.gif',
+      trigger: function (res) {	
+		{if $url}
+        alert('恭喜！分享可以获取提成哦！');
+		{else}
+		alert('糟糕，需要分销商登录才能获得提成哦！');
+		{/if}
+      },
+      success: function (res) {
+		{if $dourl }
+        window.location.href="{$dourl}&type=1"; 
+		{/if}
+      },
+      cancel: function (res) {
+        alert('很遗憾，您已取消分享');
+      },
+      fail: function (res) {
+        alert(JSON.stringify(res));
+      }
+    });
+
+	//分享到朋友圈ShiShiWFX
+    wx.onMenuShareTimeline({
+      title: '{$page_title}',
+      link: '{$url}',
+      imgUrl: 'http://ssgo.hanyu168.com/mobile/themes/shishiwfx/images/logo.gif',
+      trigger: function (res) {
+			
+        {if $url}
+			alert('恭喜！分享可以获取提成哦！');
+		{else}
+			alert('糟糕，需要分销商登录才能获得提成哦！');
+		{/if}
+      },
+      success: function (res) {
+       	{if $dourl }
+        window.location.href="{$dourl}&type=2"; 
+		{/if}
+      },
+      cancel: function (res) {
+         alert('很遗憾，您已取消分享');
+      },
+      fail: function (res) {
+        alert(JSON.stringify(res));
+      }
+    });
+
+});
+<!-- {literal} -->
+</script>
+
+</body>
+</html>

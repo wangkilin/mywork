@@ -1,0 +1,49 @@
+<table width="730" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<th scope="col"><form  id="myform" action="/index.php?g=Admin&amp;m=User&amp;a=edit" method="post">
+			<p>
+				<input type="hidden" name="id" value="{$info.id}">
+			</p>
+			<p>姓名：
+				<input type="text" name="username" value="{$info.username}">
+			</p>
+
+			<p>
+				手机：
+				<input type="text" name="phone" value="{$info.phone}">
+			</p>
+			<p>
+				地址：
+				<input type="text" name="address" value="{$info.address}">
+			</p>
+			<p>性别：
+				<label>
+				<select name="sex">
+						<option value="0" <if condition="($info.sex eq 0)">selected</if>>男</option>
+						<option value="1" <if condition="($info.sex eq 1)">selected</if>>女</option>
+					</select>
+				</label>
+			</p>
+			<p>会员：
+				<label>
+					<select name="member">
+						<option value="0" <if condition="($info.member eq 0)">selected</if>>否</option>
+						<option value="1" <if condition="($info.member eq 1)">selected</if>>是</option>
+					</select>
+				</label>
+			</p>
+			<p>管理员：
+				<label>
+					<select name="guanliyuan">
+						<option value="0" <if condition="($info.guanliyuan eq 0)">selected</if>>否</option>
+						<option value="1" <if condition="($info.guanliyuan eq 1)">selected</if>>是</option>
+					</select>
+				</label>
+			</p>
+			<div class="form-actions">
+				<button class="btn btn-primary btn_submit J_ajax_submit_btn" type="submit">提交</button>
+				<a class="btn" href=""></a></div>
+			</form>
+		</th>
+	</tr>
+</table>

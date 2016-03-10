@@ -1,0 +1,24 @@
+<?php if($goodarr['id']>0){?>
+<li style="margin: 6px; background: #fff; border-radius: 8px;">
+	<a href="/index.php?g=App&m=Qinghuo&a=detail&id=<?=$goodarr['id']?>" class="item-link item-content external " >
+		<div class="item-media"><img src="/public/Uploads/<?=$goodarr['goodimg']?>?{$goodarr.goodimg}" width="80"></div>
+		<div class="item-inner">
+			<div class="item-title-row">
+				<div class="item-title" style="color:#F5824A">{$goodarr.title}</div>
+
+			</div>
+
+			<div class="item-text">{$goodarr.miaoshu}</div>
+			<div class="item-text" style="font-family: 微软雅黑;margin-top:10px;color: #333; font-weight: bolder;">分类:<php>
+				$m = M('qinghuo_cat');
+				$arr = $m ->where('id='.$goodarr['catid'])->find();
+				echo $arr['title'];
+			</php></div>
+		</div>
+
+	</a>
+	<span style="position: relative; left: 85%; padding: 3px; background-color: #F5824A; color: #fff; border-radius: 7px; padding-left: 7px; padding-right: 7px; top: -14px;    font-family: 微软雅黑;">￥{$goodarr.xianjia}</span>
+	<span style="position: relative; left: 15%; padding: 3px; border-radius: 7px; padding-left: 7px; padding-right: 7px; top: -10px;    font-family: 微软雅黑;">节省<i style="color:#F5824A">￥<php>echo $goodarr['yuanjia']-$goodarr['xianjia'];</php></i></span>
+	<span  style=" background-color: #F6383A; color: #fff; margin-left: -153px; border-radius: 5px; font-size:13px;">至尊VIP:<span class='gd_time'><?php echo $stime-time();?></span>秒</span>
+</li>
+<?php }?>

@@ -1,0 +1,159 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>VIP会员购买</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" type="text/css"href="../Public/Static/js/style.css?0705">
+<link rel="stylesheet" type="text/css"href="../Public/Static/js/foods.css?07161">
+<script type="text/javascript" src="../Public/Static/js/jquery.min.js"></script>
+<style type="text/css">
+.refresh{padding: 0px 10px; height: 30px;line-height: 30px;border-radius: 5px;background: #FFFFFF;left: 10px;top:6px;position: absolute ;z-index: 2;font-size: 14px;color: #ea222e;text-decoration: none;box-shadow: 0px 0px 3px #fff;}
+</style>
+<script type="text/javascript">
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    WeixinJSBridge.call('hideOptionMenu');
+});
+var dan_jia = {$goods[0].price};
+function submitOrder () {
+	//获取订单信息
+	var json = '';
+	$('#ullist li').each(function () {
+		var name = $(this).find('span[name=title]').html();
+		var num = $(this).find('span[class=count]').html();
+		var price = $(this).find('span[class=price]').html();
+		json += '{"name":"'+name+'","num":"'+num+'","price":"'+price+'"},';
+	
+	});
+	json = json.substring(0 , json.length-1);
+	json = '['+json+']';
+	
+	if($('#totalPrice').html()<=0)
+	{
+		alert('请选择商品');
+		return false;
+	}
+	
+	var name = $('#name').val();
+	var phone = $('#phone').val();
+	var weixin = $('#weixin').val();
+	
+	//s_province s_city s_county
+	
+	if(name.length<=0)
+	{
+		alert('请输入联系人姓名！');
+		return false;
+	}
+	
+	if(phone.length<=0 || phone.length > 11)
+	{
+		alert('请正确输入手机号码！');
+		return false;
+	}
+
+	if(!$("#agreement").attr("checked")){
+		alert('需要同意相关协议，才能购买！');
+		return false;
+	}
+
+	infoForm.submit();
+
+
+}
+
+function addProductN (wemallId){
+	var price = parseFloat( wemallId.split('_')[2] );
+	var productN = parseFloat( $('#num_count').html() );
+	$('#num_count').html( productN + 1);
+
+	var cartMenuN = parseFloat($('#num').val())+1;
+	$('#totalNum').html( cartMenuN );
+	$('#num').val( cartMenuN );
+	
+	var totalPrice = parseFloat($('#totalPrice').html())+ parseFloat(price);
+	$('#totalPrice').html( totalPrice.toFixed(2) );
+}
+function reduceProductN ( wemallId ){
+	var price = parseFloat( wemallId.split('_')[2] );
+	var reduceProductN = parseFloat( $('#num_count').html() );
+	if ( reduceProductN == 1) {
+		return false;
+	}
+	
+	$('#num_count').html( reduceProductN - 1);
+	
+	var cartMenuN = parseFloat($('#num').val())-1;
+	$('#totalNum').html( cartMenuN );
+	$('#num').val( cartMenuN );
+
+	var totalPrice = parseFloat($('#totalPrice').html())- parseFloat(price);
+	$('#totalPrice').html( totalPrice.toFixed(2) );
+}
+
+function select_vip(num, wz){
+	$('#num_count').html(num);
+	$('#totalNum').html(num);
+	$('#totalPrice').html(parseFloat(num * dan_jia).toFixed(2));
+	$('#num').val(num);
+	if(wz)$("input[name=buy_num]").eq(wz - 1).prop("checked","true");
+}
+</script>
+</head>
+<body class="sanckbg mode_webapp">
+<div id="cart-container">
+<div class="orderlist" data-unuse="1">
+<ul id="ullist">
+<li class="ccbg2" id="wemall_1"><div class="orderdish"><span name="title"><b>购买内容：{$goods[0].name}</b></span><span class="price" id="v_0" style="display:none;">{$goods[0].price}</span><span style="display:none; class=" price"="">元</span></div></li>
+				</ul>
+				<ul id="cartinfo">
+					<li><input type="radio" value="0" name="buy_num" class="radioBox1" onclick="select_vip(1)" checked="checked"><a href="javascript:select_vip(1,1);"> 购买时长：1个月 = {$goods[0].price}元</a></li>
+					<li><input type="radio" value="1" name="buy_num" class="radioBox3" onclick="select_vip(3)" style="outline:block;-webkit-appearance:block"><a href="javascript:select_vip(3,2);"> 购买时长：3个月 = {$goods[0].price*3}元 <span style='color:#ea222e;'>(送1个月)</span></a></li>
+					<li><input type="radio" value="2" name="buy_num" class="radioBox6" onclick="select_vip(6)" style="outline:block;-webkit-appearance:block"><a href="javascript:select_vip(6,3);"> 购买时长：6个月 = {$goods[0].price*6}元 <span style='color:#ea222e;'>(送2个月)</span></a></li>
+					<li class="ccbg2" id="emptyLii"><b>购买: <span id="totalNum">1</span>月　共计: ￥<span id="totalPrice">{$goods[0].price}</span>元 </b><div class="orderchange"><a href='javascript:addProductN("wemall_1_{$goods[0].price}")' class="increase"><b class="ico_increase">加一个月</b></a><span class="count" id="num_count">1</span><a href='javascript:reduceProductN("wemall_1_{$goods[0].price}")' class="reduce"><b class="ico_reduce">减一个月</b></a></div></li>
+				</ul>
+			</div>
+
+
+		<form name="infoForm" id="infoForm" method="post" action="{:U('addorder')}">
+				<div class="contact-info">
+					<ul>
+						<li class="title"><b>联系信息</b></li>
+						<li>
+							<table style="padding: 0; margin: 0; width: 100%;">
+								<tbody>
+									<tr>
+										
+										<td>
+											<div class="ui-input-text" style="background-color:#ecebeb; border-radius:10px; margin:3px 0px 5px;">
+												<input  style="background-color:#ecebeb;"id="name" name="name" placeholder="请输入您的姓名" value="" type="text" class="ui-input-text">
+											</div></td>
+									</tr>
+
+									<tr>
+										<td>
+											<div class="ui-input-text" style="background-color:#ecebeb; border-radius:10px;margin:3px 0px 5px">
+												<input  style="background-color:#ecebeb;" id="phone" name="phone" placeholder="请输入手机号码" value="" type="tel" class="ui-input-text">
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label style="font-size: 12px;line-height: 45px;"><input type="checkbox" checked="checked" id="agreement" name="agreement"> 已阅读并同意<a href="/about/contract.html" style="color:#ea222e;">《VIP会员服务协议》</a>和<a href="/about/user_contract.html" style="color:#ea222e;">《平台许可及服务协议》</a></label>
+										</td>
+									</tr>
+									
+								</tbody>
+							</table>
+							<input type="hidden" name="num" value="1" id="num" />
+							<input type="hidden" name="goods_id" value="{$goods[0].id}"/>
+							<div class="footReturn">
+								<a id="showcard" class="submit" href="javascript:submitOrder();">立即购买</a>
+							</div>
+							<div style='margin-top:20px;'><br><br></div>
+						</li>
+					</ul>
+				</div>
+			</form>	
+	</div>
+</body>
+</html>

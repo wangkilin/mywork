@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>商品上传</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<meta name="full-screen" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/0.5.0/css/sm.min.css">
+	<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/0.5.0/css/sm-extend.min.css">
+	<link rel="stylesheet" href="/Public/Plugin/style/css/your-css-file.css?ddd00">
+
+	<script src="http://www.w3school.com.cn/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/api/up/jquery.form.js"></script>
+	<script type="text/javascript" src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+	<link rel="stylesheet" type="text/css"href="/api/up/style.css?0705">
+	<script type="text/javascript" src="/api/up/qcadd2.js?<?=time()?>"></script>
+
+</head>
+<body>
+	<div class="page" id="page-infinite-scroll" >
+		
+		<ul class="upinfo" style="display: table;">
+			<!-- <li class="">
+				<b>我的头像：</b>
+				<div class="btn1" style="width: 87px;" >
+					<span>图片上传</span>
+					<input id="fileupload1" type="file" name="himg">
+				</div>
+				<div class="progress1" style="display:none">
+					<span class="bar1"></span><span class="percent1">0%</span>
+				</div>
+				<div class="files1" style="display:none"></div>
+				<div id="showimg1">
+
+				</div>
+			</li> -->
+			<li class="">
+				<b>微信二维码：</b>
+				<div class="btn" style="width: 87px;">
+					<span>图片上传</span>
+					<input id="fileupload" type="file" name="qcimg">
+				</div>
+				<div class="progress">
+					<span class="bar"></span><span class="percent">0%</span>
+				</div>
+				<div class="files" style="display:none"></div>
+				<div id="showimg">
+				<?php if ($goods['codeimg']){ ?>
+					
+                 <span>
+						<img src='/public/Uploads/{$goods.codeimg}' width='100' class='qcimg'>
+						<span class='delimg' rel='/public/Uploads/{$goods.codeimg}'>更改</span>
+					</span>
+				<?php }?>
+				</div>
+				<div style="margin-top:18px;"></div>
+
+			</li>
+			<li class="">
+				<b>商品图片：</b>
+				<div class="btn2" style="width: 87px;" >
+					<span>图片上传</span>
+					<input id="fileupload2" type="file" name="simg">
+				</div>
+				<div class="progress2" style="display:none">
+					<span class="bar2"></span><span class="percent2">0%</span>
+				</div>
+				<div class="files2" style="display:none"></div>
+				<div id="showimg2">
+				<?php if ($goods['goodimg']){ ?>
+                 <span>
+						<img src='/public/Uploads/{$goods.goodimg}' width='100' class='qcimg'>
+						<span class='delimg2' rel='/public/Uploads/{$goods.goodimg}'>更改</span>
+					</span>
+					<?php }?>
+				</div>
+			</li>
+
+		</ul>
+		<form class="form-horizontal J_ajaxForm" id="myform" action="{:U('App/Qinghuo/addshops')}" method="post" onsubmit="return tj()" >
+
+			<div class="tabbable">
+				<div class="tab-content">
+					<div class="tab-pane active">
+						<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td>分类:</td>
+									<td><select class="select_2" name="catid">
+										<volist name="addmenu" id="addmenu">
+											<option value="{$addmenu.id}" <?php if($goods['catid']==$addmenu['id']){ echo 'selected="selected"';} ?>>{$addmenu.title}</option>
+										</volist>
+									</select></td>
+								</tr>
+
+								<tr>
+									<td>名称:</td>
+									<td><input type="text" class="input col-sm-6" name="title" value="{$goods.title}"></td>
+								</tr>
+
+								<tr>
+									 
+									<td><input  type="hidden" name="goodimg" value="{$goods.goodimg}">
+									    <input type="hidden" name="id" value="{$goods.id}" />
+										<input type="hidden" name="uid" value="{$uid}" />
+										<input type="hidden" name="codeimg" value="{$goods.codeimg}" />
+										</td>
+									</tr>
+									<tr>
+										<td>价格:</td>
+										<td><input type="text" class="input col-sm-2" name="xianjia" value="{$goods.xianjia}"></td>
+									</tr>
+									<tr>
+										<td>原价:</td>
+										<td><input type="text" class="input col-sm-2" name="yuanjia" value="{$goods.yuanjia}"></td>
+									</tr>
+
+
+									<tr>
+										<td>详情:</td>
+										<td><!--style给定宽度可以影响编辑器的最终宽度-->
+											<textarea name="miaoshu" rows="8" cols="32">{$goods.miaoshu}</textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="form-actions">
+					<button class="btn btn-primary btn_submit J_ajax_submit_btn"
+					type="submit" >提交</button>
+					<a class="btn external" href="/index.php?g=App&m=Qinghuo&a=index">返回</a>
+				</div>
+			</form>
+	
+	
+	</div>
+	<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+	<script>
+  //打开自动初始化页面的功能
+  //建议不要打开自动初始化，而是自己调用 $.init 方法完成初始化
+  $.config = {
+  	swipePanelOnlyClose: true,
+  	pushjs: false
+  }
+</script>
+<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/0.5.0/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/0.5.0/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="/Public/Plugin/style/js/your-css-file.js?new21054ddd54c56ddd"></script>
+</body>
+</html>

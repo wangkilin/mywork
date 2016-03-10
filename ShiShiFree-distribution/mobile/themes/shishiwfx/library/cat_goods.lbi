@@ -1,0 +1,38 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $best_goods} -->
+<div class="blank2"></div>
+<div class="item_show_box2 box1 region" style="overflow:hidden">
+    <div class="position_a_lt hunsha"><p>{$goods_cat.name|escape:html}</p><span class="index_more"><a href="{$goods_cat.url}"> 查看更多></a> </span> 
+    </div>
+    <div id="picScroll3" class="picScroll3">
+        <div class="hd">
+            <ul></ul>
+        </div>
+        <div class="bd1">
+            <ul>
+			<!-- {foreach name=goods from=$cat_goods item=goods}-->
+                <li><a href="{$goods.url}"><img src="{$site_url}{$goods.thumb}" alt="{$goods.name|escape:html}"/></a>
+                <br/>
+                <!-- {if $goods.promote_price neq ""} -->  
+                <span class="price_s"> {$goods.promote_price} </span> 
+                <!-- {else}--> 
+                <span class="price_s"> {$goods.shop_price} </span> 
+                <!--{/if}-->
+                <span class="proSales">月销：<em>{$goods.sales_count}</em></span>
+                </br><span class="proname">{$goods.name|escape:html|truncate:10}</span>
+                </li>
+		        <!--{if $smarty.foreach.goods.iteration%2 eq 0 && $smarty.foreach.goods.iteration neq $smarty.foreach.goods.total}--></ul><ul><!--{/if}-->
+        <!--{/foreach}-->
+        </div>
+    </div>
+  </div>
+<script type="text/javascript">
+TouchSlide({
+    slideCell:"#picScroll3",
+    titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+    autoPage:true, //自动分页
+    pnLoop:"false", // 前后按钮不循环
+    //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+});
+</script>
+<!-- {/if} -->

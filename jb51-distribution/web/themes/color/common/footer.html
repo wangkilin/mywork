@@ -1,0 +1,33 @@
+			</div>
+		</div>
+	</div>
+	<script>
+		function subscribe(){
+			$.post("{url 'utility/subscribe'}", function(){
+				setTimeout(subscribe, 5000);
+			});
+		}
+		function sync() {
+			$.post("{url 'utility/sync'}", function(){
+				setTimeout(sync, 60000);
+			});
+		}
+		$(function(){
+			subscribe();
+			sync();
+		});
+		{if $_W['uid']}
+			function checknotice() {
+				$.post("{php echo url('utility/notice')}", {}, function(data){
+					var data = $.parseJSON(data);
+					$('#notice-container').html(data.notices);
+					$('#notice-total').html(data.total);
+					
+					setTimeout(checknotice, 60000);
+				});
+			}
+			checknotice();
+		{/if}
+	</script>
+
+{template 'common/footer-base'}

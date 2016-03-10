@@ -1,0 +1,825 @@
+[ 2016-03-08T14:12:05+08:00 ] 127.0.0.1 /git/mywork/TpShop/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.015525s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.016439s ]
+NOTIC: [8] Undefined index: debug G:\Git\mywork\TpShop\Application\Lib\Action\App\IndexAction.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `wemall_wxconfig` [ RunTime:0.048314s ]
+SQL: SELECT * FROM `wemall_wxconfig` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000803s ]
+NOTIC: [8] Undefined index: access_token G:\Git\mywork\TpShop\Application\Lib\Action\App\IndexAction.class.php 第 28 行.
+NOTIC: [8] Undefined index: ticket G:\Git\mywork\TpShop\Application\Lib\Action\App\IndexAction.class.php 第 33 行.
+NOTIC: [8] A session had already been started - ignoring session_start() G:\Git\mywork\TpShop\Application\Lib\Action\App\IndexAction.class.php 第 42 行.
+NOTIC: [8] Undefined index: uid G:\Git\mywork\TpShop\Application\Lib\Action\App\IndexAction.class.php 第 94 行.
+
+[ 2016-03-08T14:12:05+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=App&m=Member&a=login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003491s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004296s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.111968s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.112708s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.007347s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.017857s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.006508s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.008785s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.042563s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.007633s ]
+INFO: [ view_end ] --END-- [ RunTime:0.008703s ]
+
+[ 2016-03-08T15:02:36+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003295s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004032s ]
+NOTIC: [8] Undefined index: wadmin G:\Git\mywork\TpShop\Application\Lib\Action\Admin\PublicAction.class.php 第 7 行.
+
+[ 2016-03-08T15:02:36+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002589s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003449s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.220563s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.221788s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.003751s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002754s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002176s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002953s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.013607s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002924s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003631s ]
+
+[ 2016-03-08T15:03:26+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002750s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003529s ]
+SQL: SHOW COLUMNS FROM `wemall_admin` [ RunTime:0.008132s ]
+SQL: SELECT * FROM `wemall_admin` WHERE ( `username` = 'admin' ) AND ( `password` = '21232f297a57a5a743894a0e4a801fc3' ) LIMIT 1   [ RunTime:0.000547s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.050610s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.051363s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001897s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003181s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001683s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002509s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011200s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002034s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002691s ]
+
+[ 2016-03-08T15:03:30+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Index&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002285s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003060s ]
+NOTIC: [8] Undefined index: wadmin G:\Git\mywork\TpShop\Application\Lib\Action\Admin\PublicAction.class.php 第 7 行.
+
+[ 2016-03-08T15:03:30+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002250s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003064s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.149924s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.150910s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002785s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003480s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002544s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002791s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.014211s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002551s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003502s ]
+
+[ 2016-03-08T15:03:37+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002501s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003494s ]
+SQL: SHOW COLUMNS FROM `wemall_admin` [ RunTime:0.010208s ]
+SQL: SELECT * FROM `wemall_admin` WHERE ( `username` = 'admin' ) AND ( `password` = '25d55ad283aa400af464c76d713c07ad' ) LIMIT 1   [ RunTime:0.000771s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.031522s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032266s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002908s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003975s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002545s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.004417s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.017128s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003616s ]
+INFO: [ view_end ] --END-- [ RunTime:0.004355s ]
+
+[ 2016-03-08T15:03:41+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Index&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002314s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003094s ]
+NOTIC: [8] Undefined index: wadmin G:\Git\mywork\TpShop\Application\Lib\Action\Admin\PublicAction.class.php 第 7 行.
+
+[ 2016-03-08T15:03:41+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002159s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002923s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.048703s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.049408s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002040s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002080s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001395s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.004236s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011638s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002124s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002805s ]
+
+[ 2016-03-08T15:05:18+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002523s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005370s ]
+SQL: SHOW COLUMNS FROM `wemall_admin` [ RunTime:0.019704s ]
+SQL: SELECT * FROM `wemall_admin` WHERE ( `username` = 'admin' ) AND ( `password` = 'e10adc3949ba59abbe56e057f20f883e' ) LIMIT 1   [ RunTime:0.000614s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.029652s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030413s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001898s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001972s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001445s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003688s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011261s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002327s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003088s ]
+
+[ 2016-03-08T15:05:21+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Index&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002496s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003645s ]
+NOTIC: [8] Undefined index: wadmin G:\Git\mywork\TpShop\Application\Lib\Action\Admin\PublicAction.class.php 第 7 行.
+
+[ 2016-03-08T15:05:21+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002340s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003109s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.050135s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.050908s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002576s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002232s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001393s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002614s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010768s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002413s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003113s ]
+
+[ 2016-03-08T15:05:41+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002763s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003565s ]
+SQL: SHOW COLUMNS FROM `wemall_admin` [ RunTime:0.028545s ]
+SQL: SELECT * FROM `wemall_admin` WHERE ( `username` = 'admin' ) AND ( `password` = '76a2173be6393254e72ffa4d6df1030a' ) LIMIT 1   [ RunTime:0.000595s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.031991s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032752s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.003671s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002541s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002217s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003195s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.013730s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003290s ]
+INFO: [ view_end ] --END-- [ RunTime:0.004026s ]
+
+[ 2016-03-08T15:05:44+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Index&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.006339s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007115s ]
+NOTIC: [8] Undefined index: wadmin G:\Git\mywork\TpShop\Application\Lib\Action\Admin\PublicAction.class.php 第 7 行.
+
+[ 2016-03-08T15:05:45+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.005338s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006539s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.069534s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.070521s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.003813s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002666s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002597s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.004141s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015752s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003953s ]
+INFO: [ view_end ] --END-- [ RunTime:0.005579s ]
+
+[ 2016-03-08T15:08:46+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002704s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003475s ]
+SQL: SHOW COLUMNS FROM `wemall_admin` [ RunTime:0.074763s ]
+SQL: SELECT * FROM `wemall_admin` WHERE ( `username` = 'admin' ) AND ( `password` = '76a2173be6393254e72ffa4d6df1030a' ) LIMIT 1   [ RunTime:0.001291s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.030337s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032363s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.003861s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003091s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002669s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003473s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015604s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002662s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003392s ]
+
+[ 2016-03-08T15:08:49+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Index&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002195s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002933s ]
+NOTIC: [8] Undefined index: wadmin G:\Git\mywork\TpShop\Application\Lib\Action\Admin\PublicAction.class.php 第 7 行.
+
+[ 2016-03-08T15:08:49+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002435s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003207s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.050804s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.051540s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001947s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001980s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001460s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003264s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010709s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002348s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003058s ]
+
+[ 2016-03-08T15:11:29+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.004962s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006304s ]
+SQL: SHOW COLUMNS FROM `wemall_admin` [ RunTime:0.009977s ]
+SQL: SELECT * FROM `wemall_admin` WHERE ( `username` = 'admin' ) AND ( `password` = '76a2173be6393254e72ffa4d6df1030a' ) LIMIT 1   [ RunTime:0.000562s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.031340s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032190s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002415s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002697s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001682s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002764s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012146s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002358s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003061s ]
+
+[ 2016-03-08T15:11:32+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Index&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003515s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004282s ]
+NOTIC: [8] Undefined index: wadmin G:\Git\mywork\TpShop\Application\Lib\Action\Admin\PublicAction.class.php 第 7 行.
+
+[ 2016-03-08T15:11:32+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002433s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003192s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.048299s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.049025s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002431s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002691s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001996s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003627s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.013506s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002802s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003625s ]
+
+[ 2016-03-08T15:11:40+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Login&a=login
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003114s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004109s ]
+SQL: SHOW COLUMNS FROM `wemall_admin` [ RunTime:0.018948s ]
+SQL: SELECT * FROM `wemall_admin` WHERE ( `username` = 'admin' ) AND ( `password` = 'e10adc3949ba59abbe56e057f20f883e' ) LIMIT 1   [ RunTime:0.000461s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.034079s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034863s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002338s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003179s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002737s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003656s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.014280s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002566s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003299s ]
+
+[ 2016-03-08T15:11:41+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Index&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002615s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003395s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.441088s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.442367s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002652s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002505s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001881s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002936s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012100s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002570s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003342s ]
+
+[ 2016-03-08T15:11:43+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=App&m=Index&a=lists&uid=1
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.005001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006260s ]
+NOTIC: [8] Undefined index: debug G:\Git\mywork\TpShop\Application\Lib\Action\App\IndexAction.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `wemall_wxconfig` [ RunTime:0.013429s ]
+SQL: SELECT * FROM `wemall_wxconfig` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000997s ]
+SQL: SHOW COLUMNS FROM `wemall_user` [ RunTime:0.012469s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( `uid` = '1' ) LIMIT 1   [ RunTime:0.000785s ]
+SQL: SHOW COLUMNS FROM `wemall_order_level` [ RunTime:0.012337s ]
+SQL: SELECT * FROM `wemall_order_level` WHERE ( `level_id` = null ) AND ( `status` = 2 ) AND ( `active_time` <= '2016-03-08 15:11:43' )  [ RunTime:0.000933s ]
+NOTIC: [2] Invalid argument supplied for foreach() G:\Git\mywork\TpShop\Application\Lib\Action\App\IndexAction.class.php 第 135 行.
+SQL: SHOW COLUMNS FROM `wemall_order` [ RunTime:0.011818s ]
+SQL: SELECT * FROM `wemall_order` WHERE ( `order_status` = 1 ) AND ( `pay_status` = 1 ) AND ( `time` <= '2016-03-01 15:11:43' )  [ RunTime:0.021488s ]
+SQL: SELECT * FROM `wemall_order_level` WHERE ( `order_id` = '201511301150431' ) LIMIT 1   [ RunTime:0.000995s ]
+SQL: UPDATE `wemall_order` SET `order_status`=2 WHERE ( `orderid` = '201511301150431' ) [ RunTime:0.001022s ]
+SQL: UPDATE `wemall_order_level` SET `status`=2 WHERE ( `order_id` = '201511301150431' ) [ RunTime:0.000943s ]
+SQL: SELECT * FROM `wemall_order_level` WHERE ( `status` = 2 ) AND ( `order_id` = '201511301150431' )  [ RunTime:0.000778s ]
+SQL: UPDATE `wemall_user` SET `price`=price+0.00 WHERE ( id=11519 ) [ RunTime:0.000581s ]
+SQL: SHOW COLUMNS FROM `wemall_user` [ RunTime:0.012924s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( id=11519 )  [ RunTime:0.000808s ]
+NOTIC: [2] Invalid argument supplied for foreach() G:\Git\mywork\TpShop\Application\Lib\Action\Api\ApiAction.class.php 第 981 行.
+SQL: UPDATE `wemall_order_level` SET `status`=3,`active_time`='2016-03-15 15:11:43' WHERE ( `order_id` = '201511301150431' ) [ RunTime:0.001035s ]
+SQL: UPDATE `wemall_order` SET `order_status`=3 WHERE ( `orderid` = '201511301150431' ) [ RunTime:0.000830s ]
+SQL: SELECT * FROM `wemall_order_level` WHERE ( `order_id` = '201511301521552' ) LIMIT 1   [ RunTime:0.000932s ]
+SQL: UPDATE `wemall_order` SET `order_status`=2 WHERE ( `orderid` = '201511301521552' ) [ RunTime:0.001770s ]
+SQL: UPDATE `wemall_order_level` SET `status`=2 WHERE ( `order_id` = '201511301521552' ) [ RunTime:0.001230s ]
+SQL: SELECT * FROM `wemall_order_level` WHERE ( `status` = 2 ) AND ( `order_id` = '201511301521552' )  [ RunTime:0.001088s ]
+NOTIC: [2] Invalid argument supplied for foreach() G:\Git\mywork\TpShop\Application\Lib\Action\App\IndexAction.class.php 第 786 行.
+SQL: UPDATE `wemall_order_level` SET `status`=3,`active_time`='2016-03-15 15:11:43' WHERE ( `order_id` = '201511301521552' ) [ RunTime:0.001419s ]
+SQL: UPDATE `wemall_order` SET `order_status`=3 WHERE ( `orderid` = '201511301521552' ) [ RunTime:0.000654s ]
+SQL: SHOW COLUMNS FROM `wemall_info` [ RunTime:0.012235s ]
+SQL: SELECT * FROM `wemall_info` LIMIT 1   [ RunTime:0.000873s ]
+SQL: SHOW COLUMNS FROM `wemall_menu` [ RunTime:0.045224s ]
+SQL: SELECT * FROM `wemall_menu`  [ RunTime:0.000594s ]
+SQL: SHOW COLUMNS FROM `wemall_good` [ RunTime:0.012674s ]
+NOTIC: [8] Undefined variable: where G:\Git\mywork\TpShop\Application\Lib\Action\Api\ApiAction.class.php 第 415 行.
+SQL: SELECT * FROM `wemall_good` ORDER BY sort desc,id desc LIMIT 0,6   [ RunTime:0.012238s ]
+SQL: SHOW COLUMNS FROM `wemall_hdp` [ RunTime:0.010301s ]
+SQL: SELECT * FROM `wemall_hdp`  [ RunTime:0.000705s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: cid G:\Git\mywork\TpShop\Application\Runtime\Cache\App\97c9834fb62e9663be846155e468012f.php 第 42 行.
+NOTIC: [8] Undefined index: cid G:\Git\mywork\TpShop\Application\Runtime\Cache\App\97c9834fb62e9663be846155e468012f.php 第 42 行.
+NOTIC: [8] Undefined index: cid G:\Git\mywork\TpShop\Application\Runtime\Cache\App\97c9834fb62e9663be846155e468012f.php 第 42 行.
+NOTIC: [8] Undefined index: cid G:\Git\mywork\TpShop\Application\Runtime\Cache\App\97c9834fb62e9663be846155e468012f.php 第 42 行.
+NOTIC: [8] Undefined index: cid G:\Git\mywork\TpShop\Application\Runtime\Cache\App\97c9834fb62e9663be846155e468012f.php 第 42 行.
+NOTIC: [8] Undefined index: cid G:\Git\mywork\TpShop\Application\Runtime\Cache\App\97c9834fb62e9663be846155e468012f.php 第 42 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.199482s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.200649s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002659s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002351s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003305s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.014246s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002765s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003473s ]
+
+[ 2016-03-08T15:11:44+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Index&a=set
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.006087s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007345s ]
+SQL: SHOW COLUMNS FROM `wemall_info` [ RunTime:0.012363s ]
+SQL: SELECT * FROM `wemall_info` LIMIT 1   [ RunTime:0.000910s ]
+NOTIC: [2] simplexml_load_file(): I/O warning : failed to load external entity &quot;./Application/Tpl/Appdefault/config.xml&quot; G:\Git\mywork\TpShop\Application\Lib\Action\Admin\IndexAction.class.php 第 76 行.
+NOTIC: [2] Creating default object from empty value G:\Git\mywork\TpShop\Application\Lib\Action\Admin\IndexAction.class.php 第 80 行.
+SQL: SHOW COLUMNS FROM `wemall_alipay` [ RunTime:0.011864s ]
+SQL: SELECT * FROM `wemall_alipay` LIMIT 1   [ RunTime:0.000757s ]
+SQL: SHOW COLUMNS FROM `wemall_admin` [ RunTime:0.012158s ]
+SQL: SELECT * FROM `wemall_admin`  [ RunTime:0.000804s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: page G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\4b69d04f06c197b56aaebbe12a3c151f.php 第 371 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.146587s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.147450s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.004144s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003633s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002780s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.005454s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.019099s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.004972s ]
+INFO: [ view_end ] --END-- [ RunTime:0.006079s ]
+
+[ 2016-03-08T15:11:58+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=User&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003052s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003840s ]
+SQL: SHOW COLUMNS FROM `wemall_user` [ RunTime:0.043936s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `wemall_user` LIMIT 1   [ RunTime:0.000566s ]
+SQL: SELECT * FROM `wemall_user` ORDER BY guanliyuan desc,id desc LIMIT 0,12   [ RunTime:0.022522s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.211225s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.212216s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.003575s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003031s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002635s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.004248s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.016087s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002828s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003551s ]
+
+[ 2016-03-08T15:12:06+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Order&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.004303s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005501s ]
+SQL: SHOW COLUMNS FROM `wemall_order` [ RunTime:0.032225s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `wemall_order` LIMIT 1   [ RunTime:0.000913s ]
+SQL: SELECT * FROM `wemall_order` ORDER BY id desc LIMIT 0,10   [ RunTime:0.018342s ]
+SQL: SHOW COLUMNS FROM `wemall_user` [ RunTime:0.013918s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11784' ) LIMIT 1   [ RunTime:0.000867s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11843' ) LIMIT 1   [ RunTime:0.000909s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11543' ) LIMIT 1   [ RunTime:0.001130s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11543' ) LIMIT 1   [ RunTime:0.000844s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11543' ) LIMIT 1   [ RunTime:0.000966s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11543' ) LIMIT 1   [ RunTime:0.000845s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11543' ) LIMIT 1   [ RunTime:0.000895s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11784' ) LIMIT 1   [ RunTime:0.000889s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11616' ) LIMIT 1   [ RunTime:0.000917s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11773' ) LIMIT 1   [ RunTime:0.000983s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant cartdata - assumed 'cartdata' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant price - assumed 'price' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant cartdata - assumed 'cartdata' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant price - assumed 'price' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant cartdata - assumed 'cartdata' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant price - assumed 'price' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant cartdata - assumed 'cartdata' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant price - assumed 'price' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant cartdata - assumed 'cartdata' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant price - assumed 'price' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant cartdata - assumed 'cartdata' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant price - assumed 'price' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant cartdata - assumed 'cartdata' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant price - assumed 'price' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant cartdata - assumed 'cartdata' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant price - assumed 'price' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant cartdata - assumed 'cartdata' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant price - assumed 'price' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant cartdata - assumed 'cartdata' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant price - assumed 'price' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 198 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant num - assumed 'num' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 206 行.
+NOTIC: [8] Use of undefined constant order_info - assumed 'order_info' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Use of undefined constant name - assumed 'name' G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 207 行.
+NOTIC: [8] Undefined variable: menulist G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\498bf2ee88b3780cb5641d33572dc113.php 第 261 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.322769s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.324675s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002584s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002523s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001837s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002917s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011850s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002766s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003491s ]
+
+[ 2016-03-08T15:12:14+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=User&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002804s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003589s ]
+SQL: SHOW COLUMNS FROM `wemall_user` [ RunTime:0.027063s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `wemall_user` LIMIT 1   [ RunTime:0.000486s ]
+SQL: SELECT * FROM `wemall_user` ORDER BY guanliyuan desc,id desc LIMIT 0,12   [ RunTime:0.001629s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.122139s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.123103s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002617s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002768s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001926s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003006s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012661s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002688s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003424s ]
+
+[ 2016-03-08T15:12:36+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Tx&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002485s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003195s ]
+SQL: SHOW COLUMNS FROM `wemall_tx_record` [ RunTime:0.009345s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `wemall_tx_record` LIMIT 1   [ RunTime:0.000371s ]
+SQL: SELECT * FROM `wemall_tx_record` ORDER BY id desc LIMIT 0,10   [ RunTime:0.000736s ]
+SQL: SHOW COLUMNS FROM `wemall_user` [ RunTime:0.010182s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11843' ) LIMIT 1   [ RunTime:0.000613s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11789' ) LIMIT 1   [ RunTime:0.000603s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11565' ) LIMIT 1   [ RunTime:0.000615s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11585' ) LIMIT 1   [ RunTime:0.000444s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11543' ) LIMIT 1   [ RunTime:0.000420s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11543' ) LIMIT 1   [ RunTime:0.000508s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11628' ) LIMIT 1   [ RunTime:0.000475s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11613' ) LIMIT 1   [ RunTime:0.000412s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11543' ) LIMIT 1   [ RunTime:0.000705s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( 1=1 AND id='11543' ) LIMIT 1   [ RunTime:0.000802s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.104869s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.105643s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.003704s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002605s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001660s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002672s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012605s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002382s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003072s ]
+
+[ 2016-03-08T15:12:46+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Menu&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002877s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004033s ]
+SQL: SHOW COLUMNS FROM `wemall_menu` [ RunTime:0.049421s ]
+SQL: SELECT * FROM `wemall_menu`  [ RunTime:0.001337s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.112773s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.114577s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002892s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002398s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001625s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003499s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012464s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002620s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003319s ]
+
+[ 2016-03-08T15:12:52+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Index&a=set
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003980s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004813s ]
+SQL: SHOW COLUMNS FROM `wemall_info` [ RunTime:0.063934s ]
+SQL: SELECT * FROM `wemall_info` LIMIT 1   [ RunTime:0.000957s ]
+NOTIC: [2] simplexml_load_file(): I/O warning : failed to load external entity &quot;./Application/Tpl/Appdefault/config.xml&quot; G:\Git\mywork\TpShop\Application\Lib\Action\Admin\IndexAction.class.php 第 76 行.
+NOTIC: [2] Creating default object from empty value G:\Git\mywork\TpShop\Application\Lib\Action\Admin\IndexAction.class.php 第 80 行.
+SQL: SHOW COLUMNS FROM `wemall_alipay` [ RunTime:0.009289s ]
+SQL: SELECT * FROM `wemall_alipay` LIMIT 1   [ RunTime:0.000445s ]
+SQL: SHOW COLUMNS FROM `wemall_admin` [ RunTime:0.010140s ]
+SQL: SELECT * FROM `wemall_admin`  [ RunTime:0.000626s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: page G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\4b69d04f06c197b56aaebbe12a3c151f.php 第 371 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.076973s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.077778s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002437s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003214s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001967s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003438s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.013014s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002572s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003288s ]
+
+[ 2016-03-08T15:12:52+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Index&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002784s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003532s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.087497s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.088313s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002375s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002463s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001897s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003516s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012406s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002289s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002939s ]
+
+[ 2016-03-08T15:12:53+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=App&m=Index&a=lists&uid=1
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.004540s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005677s ]
+NOTIC: [8] Undefined index: debug G:\Git\mywork\TpShop\Application\Lib\Action\App\IndexAction.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `wemall_wxconfig` [ RunTime:0.061729s ]
+SQL: SELECT * FROM `wemall_wxconfig` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.023315s ]
+SQL: SHOW COLUMNS FROM `wemall_user` [ RunTime:0.009863s ]
+SQL: SELECT * FROM `wemall_user` WHERE ( `uid` = '1' ) LIMIT 1   [ RunTime:0.000704s ]
+SQL: SHOW COLUMNS FROM `wemall_order_level` [ RunTime:0.011604s ]
+SQL: SELECT * FROM `wemall_order_level` WHERE ( `level_id` = null ) AND ( `status` = 2 ) AND ( `active_time` <= '2016-03-08 15:12:53' )  [ RunTime:0.000662s ]
+NOTIC: [2] Invalid argument supplied for foreach() G:\Git\mywork\TpShop\Application\Lib\Action\App\IndexAction.class.php 第 135 行.
+SQL: SHOW COLUMNS FROM `wemall_order` [ RunTime:0.010149s ]
+SQL: SELECT * FROM `wemall_order` WHERE ( `order_status` = 1 ) AND ( `pay_status` = 1 ) AND ( `time` <= '2016-03-01 15:12:53' )  [ RunTime:0.001133s ]
+NOTIC: [2] Invalid argument supplied for foreach() G:\Git\mywork\TpShop\Application\Lib\Action\App\IndexAction.class.php 第 168 行.
+SQL: SHOW COLUMNS FROM `wemall_info` [ RunTime:0.009754s ]
+SQL: SELECT * FROM `wemall_info` LIMIT 1   [ RunTime:0.000611s ]
+SQL: SHOW COLUMNS FROM `wemall_menu` [ RunTime:0.008252s ]
+SQL: SELECT * FROM `wemall_menu`  [ RunTime:0.000582s ]
+SQL: SHOW COLUMNS FROM `wemall_good` [ RunTime:0.014072s ]
+NOTIC: [8] Undefined variable: where G:\Git\mywork\TpShop\Application\Lib\Action\Api\ApiAction.class.php 第 415 行.
+SQL: SELECT * FROM `wemall_good` ORDER BY sort desc,id desc LIMIT 0,6   [ RunTime:0.000846s ]
+SQL: SHOW COLUMNS FROM `wemall_hdp` [ RunTime:0.014486s ]
+SQL: SELECT * FROM `wemall_hdp`  [ RunTime:0.000534s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: cid G:\Git\mywork\TpShop\Application\Runtime\Cache\App\97c9834fb62e9663be846155e468012f.php 第 42 行.
+NOTIC: [8] Undefined index: cid G:\Git\mywork\TpShop\Application\Runtime\Cache\App\97c9834fb62e9663be846155e468012f.php 第 42 行.
+NOTIC: [8] Undefined index: cid G:\Git\mywork\TpShop\Application\Runtime\Cache\App\97c9834fb62e9663be846155e468012f.php 第 42 行.
+NOTIC: [8] Undefined index: cid G:\Git\mywork\TpShop\Application\Runtime\Cache\App\97c9834fb62e9663be846155e468012f.php 第 42 行.
+NOTIC: [8] Undefined index: cid G:\Git\mywork\TpShop\Application\Runtime\Cache\App\97c9834fb62e9663be846155e468012f.php 第 42 行.
+NOTIC: [8] Undefined index: cid G:\Git\mywork\TpShop\Application\Runtime\Cache\App\97c9834fb62e9663be846155e468012f.php 第 42 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.072877s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.073638s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002949s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003738s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002106s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002895s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.014325s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002608s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003465s ]
+
+[ 2016-03-08T15:12:53+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Index&a=set
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.004563s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005610s ]
+SQL: SHOW COLUMNS FROM `wemall_info` [ RunTime:0.010312s ]
+SQL: SELECT * FROM `wemall_info` LIMIT 1   [ RunTime:0.000640s ]
+NOTIC: [2] simplexml_load_file(): I/O warning : failed to load external entity &quot;./Application/Tpl/Appdefault/config.xml&quot; G:\Git\mywork\TpShop\Application\Lib\Action\Admin\IndexAction.class.php 第 76 行.
+NOTIC: [2] Creating default object from empty value G:\Git\mywork\TpShop\Application\Lib\Action\Admin\IndexAction.class.php 第 80 行.
+SQL: SHOW COLUMNS FROM `wemall_alipay` [ RunTime:0.011409s ]
+SQL: SELECT * FROM `wemall_alipay` LIMIT 1   [ RunTime:0.000630s ]
+SQL: SHOW COLUMNS FROM `wemall_admin` [ RunTime:0.010014s ]
+SQL: SELECT * FROM `wemall_admin`  [ RunTime:0.000655s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: page G:\Git\mywork\TpShop\Application\Runtime\Cache\Admin\4b69d04f06c197b56aaebbe12a3c151f.php 第 371 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.096344s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.097281s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002822s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.003128s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002653s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.004755s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015874s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002927s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003731s ]
+
+[ 2016-03-08T15:13:54+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Content&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002911s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003715s ]
+NOTIC: [2048] Declaration of ContentAction::get() should be compatible with Action::get($name = '') G:\Git\mywork\TpShop\Application\Lib\Action\Admin\ContentAction.class.php 第 3 行.
+SQL: SHOW COLUMNS FROM `wemall_content` [ RunTime:0.037905s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `wemall_content` LIMIT 1   [ RunTime:0.000486s ]
+SQL: SELECT * FROM `wemall_content` LIMIT 0,12   [ RunTime:0.014200s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.158170s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.158966s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002842s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002412s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002455s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003161s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.013454s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002637s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003354s ]
+
+[ 2016-03-08T15:13:59+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Menu&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003760s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004763s ]
+SQL: SHOW COLUMNS FROM `wemall_menu` [ RunTime:0.116278s ]
+SQL: SELECT * FROM `wemall_menu`  [ RunTime:0.000704s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.085858s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.086586s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002452s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002765s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001894s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003033s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012414s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002684s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003388s ]
+
+[ 2016-03-08T15:14:02+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Hdp&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002960s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003748s ]
+SQL: SHOW COLUMNS FROM `wemall_hdp` [ RunTime:0.032755s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `wemall_hdp` LIMIT 1   [ RunTime:0.000627s ]
+SQL: SELECT * FROM `wemall_hdp` LIMIT 0,12   [ RunTime:0.000734s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.117043s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.117868s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002393s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002654s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002780s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003461s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.013521s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003415s ]
+INFO: [ view_end ] --END-- [ RunTime:0.004156s ]
+
+[ 2016-03-08T15:14:13+08:00 ] 127.0.0.1 /git/mywork/TpShop/index.php?g=Admin&m=Weixin&a=index
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002958s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003748s ]
+SQL: SHOW COLUMNS FROM `wemall_wxconfig` [ RunTime:0.019590s ]
+SQL: SELECT * FROM `wemall_wxconfig` LIMIT 1   [ RunTime:0.000562s ]
+SQL: SHOW COLUMNS FROM `wemall_wxmenu` [ RunTime:0.011319s ]
+SQL: SELECT * FROM `wemall_wxmenu` WHERE ( pid=0 ) ORDER BY listorder asc  [ RunTime:0.000924s ]
+SQL: SHOW COLUMNS FROM `wemall_wxmessage` [ RunTime:0.011422s ]
+SQL: SELECT * FROM `wemall_wxmessage`  [ RunTime:0.000702s ]
+INFO: [ view_parse ] --START--
+SQL: SELECT * FROM `wemall_wxmenu` WHERE ( pid=4 ) ORDER BY listorder asc  [ RunTime:0.000718s ]
+SQL: SELECT * FROM `wemall_wxmenu` WHERE ( pid=5 ) ORDER BY listorder asc  [ RunTime:0.000527s ]
+SQL: SELECT * FROM `wemall_wxmenu` WHERE ( pid=6 ) ORDER BY listorder asc  [ RunTime:0.000799s ]
+INFO: ParseTemplate Behavior ::run [ RunTime:0.184626s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.185360s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.003057s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002565s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001685s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002881s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012233s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002706s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003384s ]
+

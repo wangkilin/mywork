@@ -1,0 +1,56 @@
+			</div>
+        </div></div>
+        </div>
+
+		<script type="text/javascript">
+			require(['bootstrap']);
+			{if $_W['isfounder'] && !defined('IN_MESSAGE')}
+			function checkupgrade() {
+				require(['util'], function(util) {
+					if (util.cookie.get('checkupgrade_sys')) {
+						return;
+					}
+						}
+					});
+				});
+			}
+
+			function checkupgrade_hide() {
+				require(['util'], function(util) {
+					util.cookie.set('checkupgrade_sys', 1, 3600);
+					$('#upgrade-tips').hide();
+				});
+			}
+			$(function(){
+				checkupgrade();
+			});
+			{/if}
+
+            {if $_W['uid']}
+                function checknotice() {
+                    $.post("{php echo url('utility/notice')}", {}, function(data){
+                        var data = $.parseJSON(data);
+                        $('#notice-container').html(data.notices);
+                        $('#notice-total').html(data.total);
+                        
+                        setTimeout(checknotice, 60000);
+                    });
+                }
+                checknotice();
+            {/if}
+		</script>
+</main>
+
+            <footer id="page-footer" class="content-mini content-mini-full font-s12 bg-gray-lighter clearfix">
+                <div class="pull-right xright">
+                    {if empty($_W['setting']['copyright']['footerleft'])}Powered by v{IMS_VERSION} &copy; 2014-2015 {else}{$_W['setting']['copyright']['footerleft']}{/if}
+                </div>
+                <div class="pull-left xleft">
+                    {if empty($_W['setting']['copyright']['footerright'])}{else}{$_W['setting']['copyright']['footerright']}{/if}{if !empty($_W['setting']['copyright']['statcode'])}&nbsp; &nbsp; {$_W['setting']['copyright']['statcode']}{/if}
+                </div>
+            </footer>
+
+        </div>
+<script src="./resource/color/js/commonp.js"></script>
+ </body>
+</html>

@@ -1,0 +1,60 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/index.php?g=Admin&m=Yunpay&a=edit">
+<table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <th width="151" height="61" scope="col">&nbsp;</th>
+    <th width="349" scope="col"><div align="left">云支付配置http://www.yunpay.net.cn/yunpay.php <br/>常见错误代码http://i2e.cn/news68.html</div></th>
+  </tr>
+  <tr>
+    <th height="62" scope="row">开启后不使用官方微信支付<br/>【0关 1开】</th>
+    <td>
+      <label>
+        <input type="text" name="zt" value="{$arr.zt}" />
+        </label>
+    
+    </td>
+  </tr>
+  <tr>
+    <th height="44" scope="row">pid</th>
+    <td>
+      <label>
+        <input type="text" name="partner" value="{$arr.partner}" />
+        </label>
+  
+    </td>
+  </tr>
+  <tr>
+    <th height="62" scope="row">key</th>
+    <td>
+      <label>
+        <input type="text" name="key" value="{$arr.key}" />
+        </label>
+    
+    </td>
+  </tr>
+  <tr>
+    <th height="62" scope="row">yunpayname【云支付用户名】</th>
+    <td>
+      <label>
+        <input type="text" name="yunpayname" value="{$arr.yunpayname}" />
+        </label>
+    
+    </td>
+  </tr>
+  <tr>
+    <th height="81" scope="row">&nbsp;</th>
+    <td><input type="submit" name="Submit" value="提交" /></td>
+  </tr>
+  </form>
+</table>
+</body>
+</html>

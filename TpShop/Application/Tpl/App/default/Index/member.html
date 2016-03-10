@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>用户中心</title>
+    <link rel="stylesheet" href="../Public/Static/css/style.css">
+    <script src="http://libs.baidu.com/zepto/0.8/zepto.min.js"></script>
+    <script type="text/javascript" src="../Public/Static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../Public/Static/js/wemall.js?14115"></script>
+    <script type="text/javascript" src="../Public/Static/js/alert.js"></script>
+    <script type="text/javascript" src="../Public/Static/js/cjrm.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$("#duihuan2").click(function(){
+    			$("#duihuan").show();
+    		});
+    	});
+
+        var appurl = '__APP__';
+        var rooturl = '__ROOT__';
+  
+   		window.onhashchange=function (){
+	    	var hash = window.location.hash.replace(/^#/,'');
+	    	if (hash) {
+		    	$('.model').hide();
+		    	$('#'+hash).show();
+		    	var model_height=$('#'+hash).height();
+		    	$('#'+hash).css('margin-top', '-'+model_height/2+'px');
+		    }
+		}
+	    $(function (){
+	    	var img_height=$('.menus img').height()-4*4;
+	    	$('.menus li a').height(img_height/4);
+
+	    	$('.model .exit').click(function(event) {
+				console.log('test');
+				window.location.hash='';
+				$('.model').hide();
+			});
+	    })
+	    
+ 
+    </script>
+</head>
+
+<body>
+    <div class="user">
+        <php>
+            $wx_info = json_decode($users['wx_info'],true);
+            $img = !empty($wx_info['headimgurl'])?$wx_info['headimgurl']:'../Public/Static/images/defult.jpg';
+
+        </php>
+		
+		
+		
+		<div class="avatar fl" style="margin-left:10px;">
+            <div class="avatar_wrap fr">
+                <img src="<?php echo $img ?>" height="100%" width="100%" alt="">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="user_info fr">
+            <ul>
+                <li class="hi_name"><span style="overflow:hidden; display:inline-block; white-space:nowrap; text-overflow:ellipsis; width:200px">昵称：<php> echo $wx_info['nickname'];</php></span></li>
+                <li>会员：<if condition="$users.member eq 1">是<else/>否(<a style='color:red' href='./index.php?g=App&m=Index&a=index'>升级VIP会员</a>)</if></li>
+                <li>会员到期：<php>
+                    if(empty($users['limit_time']))
+                    echo date('Y-m-d',strtotime($users['time']));
+                    else
+                    echo date('Y-m-d',$users['limit_time']);
+                </php></li>
+                <li>爆粉ID：7{$users.id}</li>
+            </ul>
+        </div>
+		
+		
+		
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="tips">您的推荐人是【{$l_name}】</div>
+    <div class="level">
+        <div class="level_line fl" style="width:100%">
+            <img src="../Public/Static/images/line<if condition="$users.member eq 1">2<else/>1</if>.png" style="float:left;padding:5px;width:75%;" alt="">
+            <a href="./index.php?g=App&m=Index&a=index" class="fl" style="margin-left:10px;margin-top:20px"><img src="../Public/Static/images/shengjian.png" height="23" width="60" alt=""></a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+	<div class="user_sock">
+		<span><img src="../Public/Static/images/jf.png" height="25" width="30" alt="">积分:{$users.price}</span>
+		<span><img src="../Public/Static/images/rm.png" height="25" width="30" alt="">人脉:{$all_cnt}</span>
+		<div class="clearfix"></div>
+	</div>
+	<div class="notice">
+		<span>
+			<marquee width="90%" scrollAmount="2">{$info.notification}</marquee>
+		</span>
+	</div>
+	<div class="menus">
+	
+		<ul>
+			<li><a href="/index.php?g=App&m=Index&a=contentshow&id=4"> <img src="../Public/Static/images/1.jpg" alt=""><p>礼品领取</p> </a><div class="clearfix"></div></li>
+			<li><a href="#zmdsdialog"><img src="../Public/Static/images/2.jpg" alt=""><p>赚米导师</p> </a></li>
+			<li><a href="#tdcydialog"><img src="../Public/Static/images/3.jpg" alt=""><p style="color:#2546f3">团队成员(<span style="color:red">New!</span>)</p> </a></li>
+			<li><a href="#tgewmdialog"><img src="../Public/Static/images/4.jpg" alt=""><p>推广二维码</p> </a></li>
+			<li><a href="#fukuan"><img src="../Public/Static/images/5.jpg" alt=""><p>推广统计</p> </a></li>
+			<li><a href="#jifen"><img src="../Public/Static/images/6.jpg" alt=""><p>我的积分</p> </a></li>
+			<li><a href="http://n.k99p.com/index.php/WXGroup/QRListShow/uid/16912217"><img src="../Public/Static/images/7.jpg" alt=""><p>疯狂微信群</p> </a></li>
+			<li id="duihuan2"><a href="#duihuan"><img src="../Public/Static/images/8.jpg" alt=""><p>积分兑换</p> </a></li>
+			<li><a href="/index.php?g=App&m=Index&a=myorder&uid={$_GET['uid']}"><img src="../Public/Static/images/9.jpg" alt=""><p>我的订单</p> </a></li>
+			<li><a href="/index.php?g=App&m=Index&a=contentshow&id=1"><img src="../Public/Static/images/10.jpg" alt=""><p>微信多开</p> </a></li>
+			<li><a href="/index.php?g=App&m=Index&a=contentshow&id=2"><img src="../Public/Static/images/11.jpg" alt=""><p>自动红包</p> </a></li>
+			<li><a href="/index.php?g=App&m=Index&a=contentshow&id=3"><img src="../Public/Static/images/12.jpg" alt=""><p>新手上路</p> </a></li>
+		</ul>
+	</div>
+    <div id="zmdsdialog" class="model">
+        <ul>
+             <img src='{$ticket}' style="width:90%">
+            <div class="clearfix"></div>
+        </ul>
+
+        <button class="exit">取消返回</button>
+    </div>
+    <div id="tgewmdialog" class="model" >
+        <ul>
+            <img src='{$ticket}' style="width:90%">
+            <div class="clearfix"></div>
+        </ul>
+
+        <button class="exit">取消返回</button>
+    </div>
+    <div id="tdcydialog" class="model">
+        <ul>
+            <li>一级会员<a href="{$type_a_url}"><input type="text" value="{$users.a_cnt}" readonly></a></li>
+            <li>二级会员<a href="{$type_b_url}"><input type="text" value="{$users.b_cnt}" readonly></a></li>
+            <li>三级会员<a href="{$type_c_url}"><input type="text" value="{$users.c_cnt}" readonly></a></li>
+
+            <div class="clearfix"></div>
+        </ul>
+
+        <button class="exit">取消返回</button>
+    </div>
+	<div id="duihuan" class="model">
+        <form name="txinfoForm" id="txinfoForm" method="post" action="">
+		<ul>
+			<li>您可兑换积分为: <input type="text" value="{$users.price}" readonly></li>
+			<li>请输入兑换金额:  <input type="text"  name="price" size="10" value="{$users.price}" /></li>
+			<div class="clearfix"></div>
+		</ul>
+		<button onClick="javascript:submitTxOrder();" type="button">我要兑换</button>
+		<button class="exit">取消返回</button></form>
+	</div>
+	
+	<div id="fukuan" class="model">
+		<ul>
+			<li>已付款订单: <input type="text" value="{$all_buy}" readonly></li>
+			<li>未付款订单: <input type="text" value="{$all_over_buy}" readonly></li>
+		</ul>
+		<button class="exit">我知道了</button>
+	</div>
+	
+	<div id="jifen" class="model">
+		<ul>
+
+			<li>已兑换积分: <input type="text" value="{$get_end_price}" readonly></li>
+			<li>未兑换积分: <input type="text" value="{$users.price}" readonly></li>
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" class="cpbiaoge">
+					<tr>
+						<th>编号</th>
+						<th class="cc">金额</th>
+						<th class="cc">用户id</th>
+						<th class="cc">状态</th>
+					</tr>
+					<tbody>
+					<volist name="tx_record" id="tx_record">
+						<tr>
+						<td>{$tx_record.id}</td>
+						<td class="cc">{$tx_record.price}</td>
+						<td class="cc">{$tx_record.uid}</td>
+						<td class="cc"><if condition="$tx_record['status'] eq 1"><em class="ok">已完成</em><else/><em class="no">待审核</em></if></td>
+						</tr>
+					</volist>
+					</tbody>
+				</table>
+		</ul>
+		<button class="exit">我知道了</button>
+	</div>
+
+</body>
+
+</html>

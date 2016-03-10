@@ -1,0 +1,78 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>我的订单</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<meta name="full-screen" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/0.5.0/css/sm.min.css">
+	<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/0.5.0/css/sm-extend.min.css">
+	<link rel="stylesheet" href="/Public/Plugin/style/css/your-css-file.css?ddd00">
+
+</head>
+<body>
+	<div class="page" id="page-infinite-scroll" >
+		<header class="bar bar-nav">
+			<a class="button button-link button-nav pull-left back external" href="/index.php?g=App&m=Index&a=member">
+				<span class="icon icon-left"></span>
+				返回
+			</a>
+			<h1 class="title">我的订单</h1>
+		</header>
+		<div class="content-padded" style="    margin-top: 59px;" >
+
+
+			<div class="list-block cards-list">
+				<ul>
+					<volist name='item' id='item'>
+						<li class="card">
+							<div class="card-header">
+								<?php 
+								$orderid = $item['orderid'];
+								$totalprice = $item['totalprice'];
+								$arr = json_decode($item['cartdata']); 
+								$order_info = json_decode($item['order_info']);
+								$order_info_num= !empty($order_info->num) ? $order_info->num : '';
+								$order_info_name = !empty($order_info->name) ? $order_info->name : '';
+								echo($arr[0]->name) ;
+								$pay_url = 'http://' . $_SERVER ['SERVER_NAME']. U('App/Index/pay',array('totalprice'=>$totalprice,'cart_name'=>$arr[0]->name,'uid'=>$uid,'orderid'=>$orderid));
+
+								?>
+							</div>
+							<div class="card-content">
+								<div class="card-content-inner"><p>订单编号:{$item.orderid}</p><p>订单金额:{$item.totalprice}</p><p>快递单号:
+								<?=$order_info_num?></p></div>
+							</div>
+							<div class="card-footer"><if condition="$item.pay_status eq 0">未付款--<a class='external' href="<?=$pay_url?>">去支付</a></if><if condition="$item.pay_status eq 1">已付款</if><if condition="$item.order_status eq 0">未发货</if><if condition="$item.order_status eq 1">已发货--<a class='external' href="/index.php?g=App&m=Index&a=confirm_order&id={$item.orderid}&uid={$uid}" >确认收货</a></if><if condition="($item.order_status eq 3) or ($item.order_status eq 2)">--已收货</if></div>
+						</li>
+					</volist>
+				</ul>
+			</div>
+			
+		</div>
+	</div>
+	
+	
+	<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+	<script>
+  //打开自动初始化页面的功能
+  //建议不要打开自动初始化，而是自己调用 $.init 方法完成初始化
+  $.config = {
+  	swipePanelOnlyClose: true,
+  	pushjs: false
+  }
+</script>
+<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/0.5.0/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/0.5.0/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="/Public/Plugin/style/js/your-css-file.js?new21054ddd54c56ddd"></script>
+</body>
+</html>

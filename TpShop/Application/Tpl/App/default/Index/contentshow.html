@@ -1,0 +1,60 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{$item.title}</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<meta name="full-screen" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/0.5.0/css/sm.min.css">
+	<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/0.5.0/css/sm-extend.min.css">
+	<link rel="stylesheet" href="/Public/Plugin/style/css/your-css-file.css?ddd00">
+
+</head>
+<body>
+	<div class="page" id="page-infinite-scroll" >
+		<header class="bar bar-nav">
+			<a class="button button-link button-nav pull-left back external" href="/tool">
+				<span class="icon icon-left"></span>
+				返回
+			</a>
+			<h1 class="title">{$item.title}</h1>
+		</header>
+		<div class="content-padded" style="    margin-top: 59px;" >
+		
+		{$item.content}
+			
+			
+		</div>
+	</div>
+	
+	
+	<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+	<script type="text/javascript">
+     $(document).ready(function(){
+        $("a").addClass("external"); // 追加样式 
+      });
+    </script>
+	<script>
+  //打开自动初始化页面的功能
+  //建议不要打开自动初始化，而是自己调用 $.init 方法完成初始化
+       
+  $.config = {
+  	swipePanelOnlyClose: true,
+    router: false,
+  	pushjs: false
+  }
+</script>
+<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/0.5.0/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/0.5.0/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="/Public/Plugin/style/js/your-css-file.js?new21054ddd54c56ddd"></script>
+</body>
+</html>

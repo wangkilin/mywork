@@ -1,0 +1,1 @@
+<?php $tixianinfo = '{"shouhuo":7,"tixian":7,"jine":1,"dingdan":20000,"appid":"wx2f41395e7f0dd4a7","mchid":"1281018601","key":"9eb60000dcccdf276c3ed313cb70fd3d","send_name":"\u8d85\u7ea7\u5927\u5fae\u5546","act_name":"\u548c\u4f60\u4e00\u8d77\u725b\u903c\u4e00\u8d77\u98de"}';?>

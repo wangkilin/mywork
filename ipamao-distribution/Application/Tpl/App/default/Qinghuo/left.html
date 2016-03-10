@@ -1,0 +1,40 @@
+<div class="panel panel-left panel-reveal theme-dark" id='panel-left-demo'>
+  <div class="content-block">
+    <p><a href="#" class="close-panel">关闭</a></p>
+    <p><a href="/index.php?g=App&m=Index&a=member" class="external close-panel"  id="menulist">个人中心</a></p>
+    <p><a href="/index.php?g=App&m=Qinghuo&a=index" class="close-panel"  id="menulist">全部分类</a></p>
+    <volist name="menu" id="menu">
+    
+    <p><a href="/index.php?g=App&m=Qinghuo&a=index&catid={$menu.id}"  class="close-panel"  id="menulist">{$menu.title}</a></p>
+   
+    </volist>
+    
+  </div>
+  <div class="list-block">
+    <!-- .... -->
+  </div>
+</div>
+<!-- About Popup -->
+<div class="popup popup-sousuo">
+ <header class="bar bar-nav">
+   <a class="button button-link button-nav pull-left back close-popup" href="#">
+    <span class="icon icon-left"></span>
+    返回
+  </a>
+  <h1 class='title'>搜索栏</h1>
+</header>
+<div class="bar bar-header-secondary">
+  <div class="searchbar">
+    <a class="searchbar-cancel close-popup">取消</a>
+    <div class="search-input">
+      <label class="icon icon-search" for="search"></label>
+      <form name="infoForm22" method="get" action="/index.php">
+      <input type="hidden" name="g" value="App">
+      <input type="hidden" name="m" value="Qinghuo">
+      <input type="hidden" name="a" value="index">
+      <input type="search" id='search' style="text-indent: 24px;" name="key" placeholder='输入关键字...'/>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

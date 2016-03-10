@@ -1,0 +1,51 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/index.php?g=Admin&m=Xiaoi&a=edit">
+<table width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <th width="151" height="61" scope="col">&nbsp;</th>
+    <th width="349" scope="col"><div align="left">小i机器人api填写【<a href="http://cloud.xiaoi.com/">小i登录，获取key</a>登录后点击快速接入>>api】</div></th>
+  </tr>
+  <tr>
+    <th height="62" scope="row">机器人状态<br/>【0关 1开】</th>
+    <td>
+      <label>
+        <input type="text" name="zt" value="{$arr.zt}" />
+        </label>
+    
+    </td>
+  </tr>
+  <tr>
+    <th height="44" scope="row">key</th>
+    <td>
+      <label>
+        <input type="text" name="appid" value="{$arr.appid}" />
+        </label>
+  
+    </td>
+  </tr>
+  <tr>
+    <th height="62" scope="row">Secret</th>
+    <td>
+      <label>
+        <input type="text" name="appkey" value="{$arr.appkey}" />
+        </label>
+    
+    </td>
+  </tr>
+  <tr>
+    <th height="81" scope="row">&nbsp;</th>
+    <td><input type="submit" name="Submit" value="提交" /></td>
+  </tr>
+  </form>
+</table>
+</body>
+</html>

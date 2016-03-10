@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>清货</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<meta name="full-screen" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/0.5.0/css/sm.min.css">
+	<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/0.5.0/css/sm-extend.min.css">
+	<link rel="stylesheet" href="/Public/Plugin/style/css/your-css-file.css?dd00dhjjh00">
+     <style type="text/css">
+     .list-block .item-inner:after{display: none;}
+     </style>
+    
+</head>
+<body>
+	<div class="page" id="page-infinite-scroll" >
+		<header class="bar bar-nav">
+			<a class="button button-link button-nav pull-right open-panel" href="#" transition='slide-out'>
+				<span class="icon icon-menu"></span>
+
+			</a>
+			<a class="button button-link button-nav pull-right open-sousuo" href="#" transition='slide-out'>
+				<span class="icon icon-search"></span>
+			</a>
+			<h1 class="title">清货</h1>
+		</header>
+		<nav class="bar bar-tab">
+			<a class="tab-item active external" href="/index.php?g=App&m=Index&a=member">
+				会员中心
+			</a>
+			<a class="tab-item open-panel" href="#">
+			   商品查询
+			</a>
+			<a class="tab-item external" href="/index.php?g=App&m=Qinghuo&a=addshop">
+				我的商品
+			</a>
+		</nav>
+		<div class="content infinite-scroll  pull-to-refresh-content" data-distance="50">
+			<div class="pull-to-refresh-layer">
+				<div class="preloader"></div>
+				<div class="pull-to-refresh-arrow"></div>
+			</div>
+			<div class="list-block media-list">
+				<ul style="background:none" id="qinghuo">
+				<div id="gdzd"></div>
+				<p><a href="/index.php?g=App&m=Qinghuo&a=zhidingtime" class="button button-fill button-danger external">马上独家置顶 </a></p>
+					<volist name="goods" id="goods">
+						<li style="margin: 6px; background: #fff; border-radius: 8px;">
+							<a href="/index.php?g=App&m=Qinghuo&a=detail&id={$goods.id}" class="item-link item-content external " >
+							<div class="item-media"><img src="/public/Uploads/{$goods.goodimg}" width="80"></div>
+								<div class="item-inner">
+									<div class="item-title-row">
+										<div class="item-title" style="color:#F5824A">{$goods.title}</div>
+										
+									</div>
+									
+									<div class="item-text">{$goods.miaoshu}</div>
+									<div class="item-text" style="font-family: 微软雅黑;margin-top:10px;color: #333; font-weight: bolder;">分类:<php>
+                                                 $m = M('qinghuo_cat');
+                                                 $arr = $m ->where('id='.$goods['catid'])->find();
+                                                 echo $arr['title'];
+                                                 </php></div>
+								</div>
+                              
+							</a>
+                                  <span style="position: relative; left: 85%; padding: 3px; background-color: #F5824A; color: #fff; border-radius: 7px; padding-left: 7px; padding-right: 7px; top: -14px;    font-family: 微软雅黑;">￥{$goods.xianjia}</span>
+                                  <span style="position: relative; left: 15%; padding: 3px; border-radius: 7px; padding-left: 7px; padding-right: 7px; top: -10px;    font-family: 微软雅黑;">节省<i style="color:#F5824A">￥<php>echo $goods['yuanjia']-$goods['xianjia'];</php></i></span>
+						</li>
+					</volist>
+				</ul>
+			</div>
+			<div class="infinite-scroll-preloader">
+				<div class="preloader">
+				</div>
+			</div>
+		</div>
+	</div>
+	<include file="left"/>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script language="javascript" type="text/javascript">
+		wx.config({
+    debug: false,//这里是开启测试，如果设置为true，则打开每个步骤，都会有提示，是否成功或者失败
+    appId: 'wx2f41395e7f0dd4a7',
+    timestamp: '14999923234',//这个一定要与上面的php代码里的一样。
+    nonceStr: '14999923234',//这个一定要与上面的php代码里的一样。
+    signature: '{$signature}',
+    jsApiList: [
+      // 所有要调用的 API 都要加到这个列表中
+      'onMenuShareTimeline',
+      'onMenuShareAppMessage',
+      'onMenuShareQQ',
+      'onMenuShareWeibo'
+      ]
+  });
+		wx.ready(function () {
+			wx.onMenuShareTimeline({
+        title: "禾胤网络-专业免费为微商清尾货", // 分享标题
+        desc: "专业微商拿货网，全场一折拿货",
+        link: "http://<?php echo $_SERVER['HTTP_HOST'];?>/index.php?g=App&m=Qinghuo&a=index", // 分享链接
+        imgUrl: "http://<?php echo $_SERVER['HTTP_HOST'];?>__PUBLIC__/Uploads/562f71aae3db7.jpg", // 分享图标
+        success: function () { 
+            // 用户确认分享后执行的回调函数
+             $.toast("分享成功");
+        },
+        cancel: function () { 
+            // 用户取消分享后执行的回调函数
+             $.toast("操作失败");
+        }
+    });
+			wx.onMenuShareAppMessage({
+        title: "禾胤网络-1折拿货网", // 分享标题
+        desc: "专业微商拿货网，全场一折拿货", // 分享描述
+        link: "http://<?php echo $_SERVER['HTTP_HOST'];?>/index.php?g=App&m=Index&a=lists", // 分享链接
+        imgUrl: "http://<?php echo $_SERVER['HTTP_HOST'];?>__PUBLIC__/Uploads/562f71aae3db7.jpg", // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () { 
+            // 用户确认分享后执行的回调函数
+             $.toast("分享成功");
+        },
+        cancel: function () { 
+            // 用户取消分享后执行的回调函数
+             $.toast("操作失败");
+        }
+    });
+
+		});
+</script>
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+
+
+<script>
+  //打开自动初始化页面的功能
+  //建议不要打开自动初始化，而是自己调用 $.init 方法完成初始化
+  $.config = {
+  	swipePanelOnlyClose: true,
+  	pushjs: false
+  }
+</script>
+<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/0.5.0/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/0.5.0/js/sm-extend.min.js' charset='utf-8'></script>
+<script src="/Application/Tpl/App/default/Qinghuo/your-css-file.js?55555"></script>
+</body>
+</html>
