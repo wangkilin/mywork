@@ -101,7 +101,7 @@ switch ($workingMode) {
  * Include the path if the folder is not in the same directory
  * as this file.
  */
-	$system_path = dirname(WEB_ROOT_PATH) . DS . 'system';
+	$system_path = dirname(WEB_ROOT_PATH) . DS . 'Lib'. DS . 'system';
 
 /*
  *---------------------------------------------------------------
@@ -297,4 +297,5 @@ require_once SMARTY_DIR . 'Smarty.class.php';
  *
  * And away we go...
  */
-require_once BASEPATH.'core/CodeIgniter.php';
+require_once '../Lib/classes/Application.php';
+//require_once BASEPATH.'core/CodeIgniter.php';
