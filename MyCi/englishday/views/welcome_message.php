@@ -68,6 +68,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
+    <?php
+    get_instance()->load->helper('url');
+    echo site_url('cool');
+    ?>
 	<h1>Welcome to CodeIgniter!</h1>
 
 	<div id="body">

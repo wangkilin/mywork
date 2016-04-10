@@ -25,3 +25,7 @@ $hook['post_controller'] = array(
         'filepath' => 'hooks',
         'params'   => array('param1', 'param2', 'post_controller')
 );
+
+$hook['pre_admin/Index/index'] = function () {
+	echo "this is called Hook";
+};
