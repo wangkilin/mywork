@@ -94,3 +94,9 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+$dbTables = new stdClass();
+$dbTables->content = 'post';
+$dbTables->category = 'category';
+$dbTables->comment = 'comment';
+$dbTables->answer  = 'answer';
