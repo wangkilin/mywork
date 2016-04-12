@@ -414,11 +414,7 @@ if ( ! is_php('5.4'))
  *  Is there a "pre_controller" hook?
  * ------------------------------------------------------
  */
-	if (isset($EXT->hooks["pre_{$RTR->directory}$class/$method"])) {
-	    $EXT->call_hook("pre_{$RTR->directory}$class/$method"); // 激活指定 控制器.方法 钩子
-	} else {
-	    $EXT->call_hook('pre_controller');
-	}
+	$EXT->call_hook('pre_controller');
 
 /*
  * ------------------------------------------------------
@@ -452,11 +448,7 @@ if ( ! is_php('5.4'))
  *  Is there a "post_controller" hook?
  * ------------------------------------------------------
  */
-	if (isset($EXT->hooks["post_{$RTR->directory}$class/$method"])) {
-	    $EXT->call_hook("post_{$RTR->directory}$class/$method"); // 激活指定 控制器.方法 钩子
-	} else {
-	    $EXT->call_hook('post_controller');
-	}
+	$EXT->call_hook('post_controller');
 
 /*
  * ------------------------------------------------------
