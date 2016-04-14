@@ -11,113 +11,47 @@
  */
 
 /**
+ * URL组装 支持不同URL模式
+ * @param string $url URL表达式，格式：'[分组/模块/操作#锚点@域名]?参数1=值1&参数2=值2...'
+ * @param string|array $vars 传入的参数，支持数组和字符串
+ * @param string $suffix 伪静态后缀，默认为true表示获取配置值
+ * @param boolean $domain 是否显示域名
+ *
+ * @return string
+ */
 
-* URL组装 支持不同URL模式
-
-* @param string $url URL表达式，格式：'[分组/模块/操作#锚点@域名]?参数1=值1&参数2=值2...'
-
-* @param string|array $vars 传入的参数，支持数组和字符串
-
-* @param string $suffix 伪静态后缀，默认为true表示获取配置值
-
-* @param boolean $redirect 是否跳转，如果设置为true则表示跳转到该URL地址
-
-* @param boolean $domain 是否显示域名
-
-* @return string
-
-*/
-
-function U($url='',$vars='',$suffix=true,$redirect=false,$domain=false) {
-
+function U($url='', $vars='', $suffix=true, $domain=false)
+{
 	// 解析URL
-
 	$info   =  parse_url($url);
-
-	$url    =  !empty($info['path'])?$info['path']:ACTION_NAME;
+	$url    =  isset($info['path']) ? $info['path'] : D . C . '/' . A;
 
 	if(isset($info['fragment'])) { // 解析锚点
-
 		$anchor =   $info['fragment'];
 
-		if(false !== strpos($anchor,'?')) { // 解析参数
+		if(false !== strpos($anchor, '?')) { // 从锚点中解析参数
 
-			list($anchor,$info['query']) = explode('?',$anchor,2);
-
-		}
-
-		if(false !== strpos($anchor,'@')) { // 解析域名
-
-			list($anchor,$host)    =   explode('@',$anchor, 2);
-
-		}
-
-	}elseif(false !== strpos($url,'@')) { // 解析域名
-
-		list($url,$host)    =   explode('@',$info['path'], 2);
-
-	}
-
-	// 解析子域名
-
-	if(isset($host)) {
-
-		$domain = $host.(strpos($host,'.')?'':strstr($_SERVER['HTTP_HOST'],'.'));
-
-	}elseif($domain===true){
-
-		$domain = $_SERVER['HTTP_HOST'];
-
-		if(C('APP_SUB_DOMAIN_DEPLOY') ) { // 开启子域名部署
-
-			$domain = $domain=='localhost'?'localhost':'www'.strstr($_SERVER['HTTP_HOST'],'.');
-
-			// '子域名'=>array('项目[/分组]');
-
-			foreach (C('APP_SUB_DOMAIN_RULES') as $key => $rule) {
-
-				if(false === strpos($key,'*') && 0=== strpos($url,$rule[0])) {
-
-					$domain = $key.strstr($domain,'.'); // 生成对应子域名
-
-					$url    =  substr_replace($url,'',0,strlen($rule[0]));
-
-					break;
-
-				}
-
-			}
+			list($anchor,$info['query']) = explode('?', $anchor, 2);
 
 		}
 
 	}
-
-
 
 	// 解析参数
-
-	if(is_string($vars)) { // aaa=1&bbb=2 转换成数组
-
-		parse_str($vars,$vars);
-
-	}elseif(!is_array($vars)){
-
-		$vars = array();
-
+	if(is_string($vars)) { // a1=a&a2=b 转换成数组
+		parse_str($vars, $vars);
+	} else if(is_object($vars)) {
+	    $vars = get_object_vars($vars);
 	}
+	$vars = is_array($vars) ? $vars : array(); // 数组参数为合法参数
 
 	if(isset($info['query'])) { // 解析地址里面参数 合并到vars
 
-		parse_str($info['query'],$params);
-
+		parse_str($info['query'], $params);
 		$vars = array_merge($params,$vars);
-
 	}
 
-
-
 	// URL组装
-
 	$depr = C('URL_PATHINFO_DEPR');
 
 	if($url) {
@@ -273,24 +207,14 @@ function U($url='',$vars='',$suffix=true,$redirect=false,$domain=false) {
 	}
 
 	if(isset($anchor)){
-
 		$url  .= '#'.$anchor;
-
 	}
 
 	if($domain) {
-
-		$url   =  (is_ssl()?'https://':'http://').$domain.$url;
-
+		$url   =  '//' . $domain . $url;
 	}
 
-	if($redirect) // 直接跳转URL
-
-		redirect($url);
-
-		else
-
-			return $url;
+	return $url;
 
 }
 

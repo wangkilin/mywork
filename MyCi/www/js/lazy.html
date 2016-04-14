@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title> New Document </title>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/dataLazy.js"></script>
+    <script type="text/javascript">
+    $(function(){
+		//new DataLazyLoad({container: '#demo'});
+		new DataLazyLoad();
+    });
+    </script>
+    <style type="text/css">
+        #demo img{dispaly:inline;}
+    </style>
+</head>
+
+<body>
+	<h2>js图片延迟加载demo</h2>
+	<!-- 上下移动 -->
+	<img src="./images/grey.gif" data-img ="./images/6.jpg" width="800" height="600"><br/>
+	<img src="./images/grey.gif" data-img ="./images/2.jpg" width="800" height="600"><br/>
+	<img src="./images/grey.gif" data-img ="./images/3.jpg" width="800" height="600"><br/>
+	<img src="./images/grey.gif" data-img ="./images/4.jpg" width="800" height="600"><br/>
+	<img src="./images/grey.gif" data-img ="./images/5.jpg" width="800" height="600"><br/>
+	<img src="./images/grey.gif" data-img ="./index.php/home/index/img" width="800" height="600">
+	 	
+	<!-- 左右移动 -->
+    <!-- 
+	<div id="demo" style="height:600px;width:8000px;overflow:scroll">
+		<img src="/images/grey.gif" data-img ="/images/6.jpg" width="800" height="600">
+		<img src="/images/grey.gif" data-img ="/images/2.jpg" width="800" height="600">
+		<img src="/images/grey.gif" data-img ="/images/3.jpg" width="800" height="600">
+		<img src="/images/grey.gif" data-img ="/images/4.jpg" width="800" height="600">
+		<img src="/images/grey.gif" data-img ="/images/5.jpg" width="800" height="600">
+		<img src="/images/grey.gif" data-img ="/index.php/home/index/img" width="800" height="600">
+	</div> -->
+</body>
+</html>
