@@ -52,109 +52,38 @@ function U($url='', $vars='', $suffix=true, $domain=false)
 	}
 
 	// URL组装
-	$depr = C('URL_PATHINFO_DEPR');
+	$isRootUrl = '/'===$url[0];
 
-	if($url) {
+	if($isRootUrl) { // 定义路由
+		$url = substr ( $url, 1 );
+	} else {
 
-		if(0=== strpos($url,'/')) {// 定义路由
+		// 解析分组、模块和操作
 
-			$route      =   true;
+		$url = trim ( $url, '/' );
 
-			$url        =   substr($url,1);
+		$path = explode ( '/', $url );
 
-			if('/' != $depr) {
+		$var = array ();
 
-				$url    =   str_replace('/',$depr,$url);
-
+		$var [config_item ( 'function_trigger' )] = ! empty ( $path ) ? array_pop ( $path ) : A;
+		$var [config_item ( 'controller_trigger' )] = ! empty ( $path ) ? array_pop ( $path ) : C;
+		$var [config_item ( 'controller_trigger' )] = array_pop ( $path );
+		if (is_null ( $var [config_item ( 'controller_trigger' )] )) {
+			if (D == '') {
+				unset ( $var [config_item ( 'controller_trigger' )] );
+			} else {
+				$var [config_item ( 'controller_trigger' )] = D;
 			}
-
-		}else{
-
-			if('/' != $depr) { // 安全替换
-
-				$url    =   str_replace('/',$depr,$url);
-
-			}
-
-			// 解析分组、模块和操作
-
-			$url        =   trim($url,$depr);
-
-			$path       =   explode($depr,$url);
-
-			$var        =   array();
-
-			$var[C('VAR_ACTION')]       =   !empty($path)?array_pop($path):ACTION_NAME;
-
-			$var[C('VAR_MODULE')]       =   !empty($path)?array_pop($path):MODULE_NAME;
-
-			if($maps = C('URL_ACTION_MAP')) {
-
-				if(isset($maps[strtolower($var[C('VAR_MODULE')])])) {
-
-					$maps    =   $maps[strtolower($var[C('VAR_MODULE')])];
-
-					if($action = array_search(strtolower($var[C('VAR_ACTION')]),$maps)){
-
-						$var[C('VAR_ACTION')] = $action;
-
-					}
-
-				}
-
-			}
-
-			if($maps = C('URL_MODULE_MAP')) {
-
-				if($module = array_search(strtolower($var[C('VAR_MODULE')]),$maps)){
-
-					$var[C('VAR_MODULE')] = $module;
-
-				}
-
-			}
-
-			if(C('URL_CASE_INSENSITIVE')) {
-
-				$var[C('VAR_MODULE')]   =   parse_name($var[C('VAR_MODULE')]);
-
-			}
-
-			if(!C('APP_SUB_DOMAIN_DEPLOY') && C('APP_GROUP_LIST')) {
-
-				if(!empty($path)) {
-
-					$group                  =   array_pop($path);
-
-					$var[C('VAR_GROUP')]    =   $group;
-
-				}else{
-
-					if(GROUP_NAME != C('DEFAULT_GROUP')) {
-
-						$var[C('VAR_GROUP')]=   GROUP_NAME;
-
-					}
-
-				}
-
-				if(C('URL_CASE_INSENSITIVE') && isset($var[C('VAR_GROUP')])) {
-
-					$var[C('VAR_GROUP')]    =  strtolower($var[C('VAR_GROUP')]);
-
-				}
-
-			}
-
 		}
 
 	}
 
 
 
-	if(C('URL_MODEL') == 0) { // 普通模式URL转换
+	if('QUERY_STRING'==config_item('uri_protocol')) { // 普通模式URL转换
 
-		$url        =   __APP__.'?'.http_build_query(array_reverse($var));
+		$url        =   F::getBaseUrl().'?'.http_build_query(array_reverse($var));
 
 		if(!empty($vars)) {
 
@@ -166,13 +95,13 @@ function U($url='', $vars='', $suffix=true, $domain=false)
 
 	}else{ // PATHINFO模式或者兼容URL模式
 
-		if(isset($route)) {
+		if($isRootUrl) {
 
-			$url    =   __APP__.'/'.rtrim($url,$depr);
+			$url    =   F::getBaseUrl().'/'.rtrim($url,$depr);
 
 		}else{
 
-			$url    =   __APP__.'/'.implode($depr,array_reverse($var));
+			$url    =   F::getBaseUrl().'/'.implode('/', array_reverse($var));
 
 		}
 
@@ -188,7 +117,7 @@ function U($url='', $vars='', $suffix=true, $domain=false)
 
 		if($suffix) {
 
-			$suffix   =  $suffix===true?C('URL_HTML_SUFFIX'):$suffix;
+			$suffix   =  $suffix===true?config_item('url_suffix'):$suffix;
 
 			if($pos = strpos($suffix, '|')){
 
@@ -300,5 +229,26 @@ class F
 
 
 		return $isMobile;
+	}
+
+	/**
+	 * 获取站点根目录 URL
+	 * @param bool $addScheme 是否添加协议前缀
+	 *
+	 * @return string
+	 */
+	static public function getBaseUrl($addDomain=true, $addScheme=false)
+	{
+		$cleanUrl = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : NULL;
+		$cleanUrl = dirname(rtrim($_SERVER['PHP_SELF'], $cleanUrl));
+		$cleanUrl = rtrim($_SERVER['HTTP_HOST'] . $cleanUrl, '/\\');
+
+		if ($addScheme) {
+			$scheme = is_https() ? 'https:' : 'http:';
+		} else {
+			$scheme = ':';
+		}
+
+		return $scheme . '//' . $cleanUrl;
 	}
 }

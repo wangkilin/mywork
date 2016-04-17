@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 require_once(APPPATH.'config/constants.php');
 require_once(BASEPATH.'core/Common.php');
 
@@ -325,7 +326,7 @@ if ( ! is_php('5.4'))
 	$e404 = FALSE;
 	$class = ucfirst($RTR->class);
 	$method = $RTR->method;
-	define('D', $RTR->dirctory);
+	define('D', $RTR->directory);
 	define('C', $RTR->class);
 	define('A', $RTR->method);
 
