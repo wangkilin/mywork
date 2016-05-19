@@ -14,8 +14,34 @@ define('__TYPECHO_FILTER_SUPPORTED__', function_exists('filter_var'));
  *
  * @package Request
  */
-class Typecho_Request
+class Request
 {
+	/**
+	 * 判断是否为手机访问
+	 * @return bool
+	 */
+	static public function isMobile ()
+	{
+		$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+		// 没有强制web浏览， 并且是手机浏览器
+		$isMobile = I('__ignoreMobile')!=='1'
+		   && preg_match('/iemobile|mobile\ssafari|iphone\sos|android|symbian|series40/i', $ua);
+
+
+		return $isMobile;
+	}
+
+	/**
+	 * 判断是否SSL协议
+	 * @return bool
+	 */
+	static public function isHttps() {
+
+		$isHttps = isset($_SERVER['HTTPS'])
+	           && ('on' == $_SERVER['HTTPS'] || '1' == strtolower($_SERVER['HTTPS']));
+
+		return $isHttps;
+	}
     /**
      * 内部参数
      *
@@ -41,16 +67,16 @@ class Typecho_Request
     private $_server = array();
 
     /**
-     * _requestUri  
-     * 
+     * _requestUri
+     *
      * @var string
      * @access private
      */
     private $_requestUri = NULL;
 
     /**
-     * _requestRoot  
-     * 
+     * _requestRoot
+     *
      * @var mixed
      * @access private
      */
@@ -58,7 +84,7 @@ class Typecho_Request
 
     /**
      * 获取baseurl
-     * 
+     *
      * @var string
      * @access private
      */
@@ -103,7 +129,7 @@ class Typecho_Request
      */
     private static $_httpParams = false;
 
-    
+
     /**
      * 域名前缀
      *
@@ -196,7 +222,7 @@ class Typecho_Request
     private function _checkAgent($agent)
     {
         return preg_match("/^[_a-z0-9- ,:;=#@\.\(\)\/\+\*\?]+$/i", $agent);
-    } 
+    }
 
     /**
      * 初始化变量
@@ -210,15 +236,15 @@ class Typecho_Request
     }
 
     /**
-     * 获取url前缀 
-     * 
+     * 获取url前缀
+     *
      * @access public
      * @return string
      */
     public static function getUrlPrefix()
     {
         if (empty(self::$_urlPrefix)) {
-            self::$_urlPrefix = (self::isSecure() ? 'https' : 'http') 
+            self::$_urlPrefix = (self::isSecure() ? 'https' : 'http')
                 . '://' . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME'])
                 . (in_array($_SERVER['SERVER_PORT'], array(80, 443)) ? '' : ':' . $_SERVER['SERVER_PORT']);
         }
@@ -234,7 +260,7 @@ class Typecho_Request
      */
     public static function isSecure()
     {
-        return (!empty($_SERVER['HTTPS']) && 'off' != strtolower($_SERVER['HTTPS'])) 
+        return (!empty($_SERVER['HTTPS']) && 'off' != strtolower($_SERVER['HTTPS']))
             || (!empty($_SERVER['SERVER_PORT']) && 443 == $_SERVER['SERVER_PORT'])
             || (defined('__TYPECHO_SECURE__') && __TYPECHO_SECURE__);
     }
@@ -378,8 +404,8 @@ class Typecho_Request
     }
 
     /**
-     * getRequestRoot 
-     * 
+     * getRequestRoot
+     *
      * @access public
      * @return string
      */
@@ -387,7 +413,7 @@ class Typecho_Request
     {
         if (NULL === $this->_requestRoot) {
             $root = rtrim(self::getUrlPrefix() . $this->getBaseUrl(), '/') . '/';
-            
+
             $pos = strrpos($root, '.php/');
             if ($pos) {
                 $root = dirname(substr($root, 0, $pos));
@@ -401,7 +427,7 @@ class Typecho_Request
 
     /**
      * 获取当前请求url
-     * 
+     *
      * @access public
      * @return string
      */
@@ -412,7 +438,7 @@ class Typecho_Request
 
     /**
      * 获取请求地址
-     * 
+     *
      * @access public
      * @return string
      */
@@ -456,8 +482,8 @@ class Typecho_Request
     }
 
     /**
-     * getBaseUrl  
-     * 
+     * getBaseUrl
+     *
      * @access public
      * @return string
      */
@@ -776,7 +802,7 @@ class Typecho_Request
     public function isPut()
     {
         return 'PUT' == $this->getServer('REQUEST_METHOD');
-    } 
+    }
 
     /**
      * 判断是否为ajax
@@ -801,8 +827,8 @@ class Typecho_Request
     }
 
     /**
-     * isMobile  
-     * 
+     * isMobile
+     *
      * @static
      * @access public
      * @return boolean
