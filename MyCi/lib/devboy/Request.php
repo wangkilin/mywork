@@ -16,39 +16,6 @@ define('__TYPECHO_FILTER_SUPPORTED__', function_exists('filter_var'));
  */
 class Request
 {
-	/**
-	 * 判断是否为手机访问
-	 * @return bool
-	 */
-	static public function isMobile ()
-	{
-		$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
-		// 没有强制web浏览， 并且是手机浏览器
-		$isMobile = I('__ignoreMobile')!=='1'
-		   && preg_match('/iemobile|mobile\ssafari|iphone\sos|android|symbian|series40/i', $ua);
-
-
-		return $isMobile;
-	}
-
-	/**
-	 * 判断是否SSL协议
-	 * @return bool
-	 */
-	static public function isHttps() {
-
-		$isHttps = isset($_SERVER['HTTPS'])
-	           && ('on' == $_SERVER['HTTPS'] || '1' == strtolower($_SERVER['HTTPS']));
-
-		return $isHttps;
-	}
-    /**
-     * 内部参数
-     *
-     * @access private
-     * @var array
-     */
-    private $_params = array();
 
     /**
      * 路径信息
@@ -57,6 +24,9 @@ class Request
      * @var string
      */
     private $_pathInfo = NULL;
+
+    private $_get = array();
+    private $_post = array();
 
     /**
      * 服务端参数
@@ -113,6 +83,243 @@ class Request
      * @var string
      */
     private $_referer = NULL;
+
+	/**
+	 * 判断是否为手机访问
+	 * @return bool
+	 */
+	static public function isMobile ()
+	{
+		$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+		// 没有强制web浏览， 并且是手机浏览器
+		$isMobile = I('__ignoreMobile')!=='1'
+		   && preg_match('/iemobile|mobile\ssafari|iphone\sos|android|symbian|series40/i', $ua);
+
+
+		return $isMobile;
+	}
+
+	/**
+	 * 判断是否SSL协议
+	 * @return bool
+	 */
+	static public function isHttps() {
+
+		$isHttps = isset($_SERVER['HTTPS'])
+	           && ('on' == $_SERVER['HTTPS'] || '1' == strtolower($_SERVER['HTTPS']));
+
+		return $isHttps;
+	}
+
+	public function get ()
+	{
+
+	}
+
+	public function post ()
+	{
+
+	}
+
+    /**
+     * 设置服务端参数
+     *
+     * @access public
+     * @param string $name 参数名称
+     * @param mixed $value 参数值
+     * @return void
+     */
+    public function setServer($name, $value = NULL)
+    {
+        if (NULL == $value) {
+            if (isset($_SERVER[$name])) {
+                $value = $_SERVER[$name];
+            } else if (isset($_ENV[$name])) {
+                $value = $_ENV[$name];
+            }
+        }
+
+        $this->_server[$name] = $value;
+    }
+
+    /**
+     * 获取环境变量
+     *
+     * @access public
+     * @param string $name 获取环境变量名
+     * @return string
+     */
+    public function getServer($name)
+    {
+        if (!isset($this->_server[$name])) {
+            $this->setServer($name);
+        }
+
+        return $this->_server[$name];
+    }
+
+    /**
+     * 设置ip地址
+     *
+     * @access public
+     * @param string $ip
+     */
+    public function setIp($ip = NULL)
+    {
+        if (!empty($ip)) {
+            $this->_ip = $ip;
+        } else {
+            switch (true) {
+                case defined('__TYPECHO_IP_SOURCE__') && NULL !== $this->getServer(__TYPECHO_IP_SOURCE__):
+                    list($this->_ip) = array_map('trim', explode(',', $this->getServer(__TYPECHO_IP_SOURCE__)));
+                    break;
+                case NULL !== $this->getServer('REMOTE_ADDR'):
+                    $this->_ip = $this->getServer('REMOTE_ADDR');
+                    break;
+                case NULL !== $this->getServer('HTTP_CLIENT_IP'):
+                    $this->_ip = $this->getServer('HTTP_CLIENT_IP');
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        if (empty($this->_ip) || !self::_checkIp($this->_ip)) {
+            $this->_ip = 'unknown';
+        }
+    }
+
+    /**
+     * 获取ip地址
+     *
+     * @access public
+     * @return string
+     */
+    public function getIp()
+    {
+        if (NULL === $this->_ip) {
+            $this->setIp();
+        }
+
+        return $this->_ip;
+    }
+
+    /**
+     * 设置客户端
+     *
+     * @access public
+     * @param string $agent 客户端字符串
+     * @return void
+     */
+    public function setAgent($agent = NULL)
+    {
+        $agent = (NULL === $agent) ? $this->getServer('HTTP_USER_AGENT') : $agent;
+        $this->_agent = self::_checkAgent($agent) ? $agent : '';
+    }
+
+    /**
+     * 获取客户端
+     *
+     * @access public
+     * @return string
+     */
+    public function getAgent()
+    {
+        if (NULL === $this->_agent) {
+            $this->setAgent();
+        }
+
+        return $this->_agent;
+    }
+
+    /**
+     * 设置来源页
+     *
+     * @access public
+     * @param string $referer 客户端字符串
+     * @return void
+     */
+    public function setReferer($referer = NULL)
+    {
+        $this->_referer = (NULL === $referer) ? $this->getServer('HTTP_REFERER') : $referer;
+    }
+
+    /**
+     * 获取客户端
+     *
+     * @access public
+     * @return string
+     */
+    public function getReferer()
+    {
+        if (NULL === $this->_referer) {
+            $this->setReferer();
+        }
+
+        return $this->_referer;
+    }
+
+    /**
+     * 判断是否为get方法
+     *
+     * @access public
+     * @return boolean
+     */
+    public function isGet()
+    {
+        return 'GET' == $this->getServer('REQUEST_METHOD');
+    }
+
+    /**
+     * 判断是否为post方法
+     *
+     * @access public
+     * @return boolean
+     */
+    public function isPost()
+    {
+        return 'POST' == $this->getServer('REQUEST_METHOD');
+    }
+
+    /**
+     * 判断是否为put方法
+     *
+     * @access public
+     * @return boolean
+     */
+    public function isPut()
+    {
+        return 'PUT' == $this->getServer('REQUEST_METHOD');
+    }
+
+    /**
+     * 判断是否为ajax
+     *
+     * @access public
+     * @return boolean
+     */
+    public function isAjax()
+    {
+        return 'XMLHttpRequest' == $this->getServer('HTTP_X_REQUESTED_WITH');
+    }
+
+    /**
+     * 判断是否为flash
+     *
+     * @access public
+     * @return boolean
+     */
+    public function isFlash()
+    {
+        return 'Shockwave Flash' == $this->getServer('USER_AGENT');
+    }
+    /**
+     * 内部参数
+     *
+     * @access private
+     * @var array
+     */
+    private $_params = array();
 
     /**
      * 单例句柄
@@ -631,199 +838,6 @@ class Request
 
         // fix issue 456
         return ($this->_pathInfo = '/' . ltrim(urldecode($pathInfo), '/'));
-    }
-
-    /**
-     * 设置服务端参数
-     *
-     * @access public
-     * @param string $name 参数名称
-     * @param mixed $value 参数值
-     * @return void
-     */
-    public function setServer($name, $value = NULL)
-    {
-        if (NULL == $value) {
-            if (isset($_SERVER[$name])) {
-                $value = $_SERVER[$name];
-            } else if (isset($_ENV[$name])) {
-                $value = $_ENV[$name];
-            }
-        }
-
-        $this->_server[$name] = $value;
-    }
-
-    /**
-     * 获取环境变量
-     *
-     * @access public
-     * @param string $name 获取环境变量名
-     * @return string
-     */
-    public function getServer($name)
-    {
-        if (!isset($this->_server[$name])) {
-            $this->setServer($name);
-        }
-
-        return $this->_server[$name];
-    }
-
-    /**
-     * 设置ip地址
-     *
-     * @access public
-     * @param string $ip
-     */
-    public function setIp($ip = NULL)
-    {
-        if (!empty($ip)) {
-            $this->_ip = $ip;
-        } else {
-            switch (true) {
-                case defined('__TYPECHO_IP_SOURCE__') && NULL !== $this->getServer(__TYPECHO_IP_SOURCE__):
-                    list($this->_ip) = array_map('trim', explode(',', $this->getServer(__TYPECHO_IP_SOURCE__)));
-                    break;
-                case NULL !== $this->getServer('REMOTE_ADDR'):
-                    $this->_ip = $this->getServer('REMOTE_ADDR');
-                    break;
-                case NULL !== $this->getServer('HTTP_CLIENT_IP'):
-                    $this->_ip = $this->getServer('HTTP_CLIENT_IP');
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        if (empty($this->_ip) || !self::_checkIp($this->_ip)) {
-            $this->_ip = 'unknown';
-        }
-    }
-
-    /**
-     * 获取ip地址
-     *
-     * @access public
-     * @return string
-     */
-    public function getIp()
-    {
-        if (NULL === $this->_ip) {
-            $this->setIp();
-        }
-
-        return $this->_ip;
-    }
-
-    /**
-     * 设置客户端
-     *
-     * @access public
-     * @param string $agent 客户端字符串
-     * @return void
-     */
-    public function setAgent($agent = NULL)
-    {
-        $agent = (NULL === $agent) ? $this->getServer('HTTP_USER_AGENT') : $agent;
-        $this->_agent = self::_checkAgent($agent) ? $agent : '';
-    }
-
-    /**
-     * 获取客户端
-     *
-     * @access public
-     * @return string
-     */
-    public function getAgent()
-    {
-        if (NULL === $this->_agent) {
-            $this->setAgent();
-        }
-
-        return $this->_agent;
-    }
-
-    /**
-     * 设置来源页
-     *
-     * @access public
-     * @param string $referer 客户端字符串
-     * @return void
-     */
-    public function setReferer($referer = NULL)
-    {
-        $this->_referer = (NULL === $referer) ? $this->getServer('HTTP_REFERER') : $referer;
-    }
-
-    /**
-     * 获取客户端
-     *
-     * @access public
-     * @return string
-     */
-    public function getReferer()
-    {
-        if (NULL === $this->_referer) {
-            $this->setReferer();
-        }
-
-        return $this->_referer;
-    }
-
-    /**
-     * 判断是否为get方法
-     *
-     * @access public
-     * @return boolean
-     */
-    public function isGet()
-    {
-        return 'GET' == $this->getServer('REQUEST_METHOD');
-    }
-
-    /**
-     * 判断是否为post方法
-     *
-     * @access public
-     * @return boolean
-     */
-    public function isPost()
-    {
-        return 'POST' == $this->getServer('REQUEST_METHOD');
-    }
-
-    /**
-     * 判断是否为put方法
-     *
-     * @access public
-     * @return boolean
-     */
-    public function isPut()
-    {
-        return 'PUT' == $this->getServer('REQUEST_METHOD');
-    }
-
-    /**
-     * 判断是否为ajax
-     *
-     * @access public
-     * @return boolean
-     */
-    public function isAjax()
-    {
-        return 'XMLHttpRequest' == $this->getServer('HTTP_X_REQUESTED_WITH');
-    }
-
-    /**
-     * 判断是否为flash
-     *
-     * @access public
-     * @return boolean
-     */
-    public function isFlash()
-    {
-        return 'Shockwave Flash' == $this->getServer('USER_AGENT');
     }
 
     /**
