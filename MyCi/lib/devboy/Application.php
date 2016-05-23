@@ -1,9 +1,97 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('DS') OR define('DS', DIRECTORY_SEPARATOR);
+defined('BASE_PATH') OR define('BASE_PATH', dirname(__FILE__).DS);
 
-require_once(APPPATH.'config/constants.php');
-require_once(BASEPATH.'core/Common.php');
+define('MODE_READ_FILE', 0644);
+define('MODE_WRITE_FILE', 0666);
+define('MODE_READ_DIR', 0755);
+define('MODE_WRITE_DIR', 0755);
 
+require_once BASE_PATH . 'Functions.php';
+
+class Application
+{
+
+    public function __construct()
+    {
+        $this->init();
+    }
+    public function init ()
+    {
+        set_error_handler(array($this, 'errorHandler'));
+        set_exception_handler(array($this, 'exceptionHandler'));
+        register_shutdown_function(array($this, 'shutdownHandler'));
+
+		self::$config = load_class('core_config');
+		self::$db = load_class('core_db');
+
+		self::$plugins = load_class('core_plugins');
+
+		self::$settings = self::model('setting')->get_settings();
+
+		if ((!defined('G_SESSION_SAVE') OR G_SESSION_SAVE == 'db') AND get_setting('db_version') > 20121123)
+		{
+			Zend_Session::setSaveHandler(new Zend_Session_SaveHandler_DbTable(array(
+			    'name' 					=> get_table('sessions'),
+			    'primary'				=> 'id',
+			    'modifiedColumn'		=> 'modified',
+			    'dataColumn'			=> 'data',
+			    'lifetimeColumn'		=> 'lifetime',
+				//'authIdentityColumn'	=> 'uid'
+			)));
+
+			self::$session_type = 'db';
+		}
+
+		Zend_Session::setOptions(array(
+			'name' => G_COOKIE_PREFIX . '_Session',
+			'cookie_domain' => G_COOKIE_DOMAIN
+		));
+
+		if (G_SESSION_SAVE == 'file' AND G_SESSION_SAVE_PATH)
+		{
+			Zend_Session::setOptions(array(
+				'save_path' => G_SESSION_SAVE_PATH
+			));
+		}
+
+		Zend_Session::start();
+
+		self::$session = new Zend_Session_Namespace(G_COOKIE_PREFIX . '_Anwsion');
+
+		if ($default_timezone = get_setting('default_timezone'))
+		{
+			date_default_timezone_set($default_timezone);
+		}
+
+		if ($img_url = get_setting('img_url'))
+        {
+            define('G_STATIC_URL', $img_url);
+        }
+        else
+        {
+            define('G_STATIC_URL', base_url() . '/static');
+        }
+
+		if (self::config()->get('system')->debug)
+		{
+			if ($cornd_timer = self::cache()->getGroup('crond'))
+			{
+				foreach ($cornd_timer AS $cornd_tag)
+				{
+					if ($cornd_runtime = self::cache()->get($cornd_tag))
+					{
+						AWS_APP::debug_log('crond', 0, 'Tag: ' . str_replace('crond_timer_', '', $cornd_tag) . ', Last run time: ' . date('Y-m-d H:i:s', $cornd_runtime));
+					}
+				}
+			}
+		}
+    }
+    public function run ()
+    {
+
+    }
+}
 
 /*
  * ------------------------------------------------------
