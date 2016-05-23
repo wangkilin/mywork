@@ -16,7 +16,7 @@ if (! function_exists('loadClass')) {
      * @param	string	an optional argument to pass to the class constructor
      * @return	object
      */
-    function & loadClass($class, $param = NULL, $inDir = '')
+    function & loadClass($class, $inDir = '', $param = NULL)
     {
         static $_classes = array();
 
@@ -24,9 +24,14 @@ if (! function_exists('loadClass')) {
         if (isset($_classes[$class])) {
             return $_classes[$class];
         }
+        if ('' != $inDir) {
+        	$inDir = trim($inDir, DS) . DS;
+        }
 
-        if (false === class_exists($name, false) && file_exists($inDir.'/'.$class.'.php')) {
-            require_once($inDir.'/'.$class.'.php');
+        $classFile = $inDir . preg_replace('/_+/', DS, $class).'.php';
+
+        if (false === class_exists($name, false) && file_exists($classFile)) {
+            require_once($classFile);
         }
 
         if (! class_exists($name, false)) {
@@ -42,4 +47,5 @@ if (! function_exists('loadClass')) {
         return $_classes[$class];
     }
 }
+
 /* EOF */

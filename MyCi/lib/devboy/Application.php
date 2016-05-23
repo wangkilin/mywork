@@ -14,15 +14,29 @@ class Application
 
     public function __construct()
     {
+    	$BM = & loadClass('Benchmark', BASE_PATH);
+    	$BM->mark('app_start');
+
         $this->init();
+    }
+    public function errorHandler ()
+    {
+
+    }
+    public function exceptionHandler ()
+    {
+
+    }
+    public function shutdownHandler ()
+    {
+
     }
     public function init ()
     {
+		self::$config = & loadClass('Config');
         set_error_handler(array($this, 'errorHandler'));
         set_exception_handler(array($this, 'exceptionHandler'));
         register_shutdown_function(array($this, 'shutdownHandler'));
-
-		self::$config = load_class('core_config');
 		self::$db = load_class('core_db');
 
 		self::$plugins = load_class('core_plugins');
