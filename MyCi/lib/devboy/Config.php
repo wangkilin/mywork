@@ -187,14 +187,13 @@ class CI_Config {
 	 * @param	string	$index	Index name
 	 * @return	string|null	The configuration item or NULL if the item doesn't exist
 	 */
-	public function item($item, $index = '')
+	public function get($key=null)
 	{
-		if ($index == '')
-		{
-			return isset($this->config[$item]) ? $this->config[$item] : NULL;
+		if (null == $key) {
+			return $this->config;
 		}
 
-		return isset($this->config[$index], $this->config[$index][$item]) ? $this->config[$index][$item] : NULL;
+		return isset($this->config[$key]) ? $this->config[$key] : NULL;
 	}
 
 	// --------------------------------------------------------------------
@@ -351,9 +350,11 @@ class CI_Config {
 	 * @param	string	$value	Config item value
 	 * @return	void
 	 */
-	public function set_item($item, $value)
+	public function set($item, $value)
 	{
 		$this->config[$item] = $value;
+		
+		return $this;
 	}
 
 }

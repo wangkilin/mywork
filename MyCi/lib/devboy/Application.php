@@ -11,29 +11,29 @@ require_once BASE_PATH . 'Functions.php';
 
 class Application
 {
-
-    public function __construct()
+    static private $_config;
+    static private $_instance = null;
+    
+    private function __construct()
     {
-    	$BM = & loadClass('Benchmark', BASE_PATH);
-    	$BM->mark('app_start');
-
         $this->init();
     }
-    public function errorHandler ()
+    
+    public function getInstance ()
     {
-
-    }
-    public function exceptionHandler ()
-    {
-
-    }
-    public function shutdownHandler ()
-    {
-
+    	if (null==self::$_instance) {
+    		self::$_instance =  new self();
+    	}
+    	
+    	return self::$_instance;
     }
     public function init ()
     {
+    	$BM = & loadClass('Benchmark', BASE_PATH);
+    	$BM->mark('app_start');
+    	
 		self::$config = & loadClass('Config');
+		
         set_error_handler(array($this, 'errorHandler'));
         set_exception_handler(array($this, 'exceptionHandler'));
         register_shutdown_function(array($this, 'shutdownHandler'));

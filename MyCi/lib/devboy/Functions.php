@@ -48,4 +48,20 @@ if (! function_exists('loadClass')) {
     }
 }
 
+if (! function_exists('errorHandler')) {
+    function errorHandler ()
+    {
+    }
+}
+if (! function_exists('exceptionHandler')) {
+    function exceptionHandler ()
+    {
+    }
+}
+if (! function_exists('shutdownHandler')) {
+    function shutdownHandler ()
+    {
+    }
+}
+
 /* EOF */
