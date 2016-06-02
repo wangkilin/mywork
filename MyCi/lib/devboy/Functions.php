@@ -19,6 +19,8 @@ if (! function_exists('loadClass')) {
     function & loadClass($class, $inDir = '', $param = NULL)
     {
         static $_classes = array();
+        
+        $class = str_replace('.', '_', $class);
 
         // 类已被实例化过
         if (isset($_classes[$class])) {
@@ -62,6 +64,13 @@ if (! function_exists('shutdownHandler')) {
     function shutdownHandler ()
     {
     }
+}
+
+if (! function_exists('addLog')) {
+	function addLog ($level, $message)
+	{
+		
+	}
 }
 
 /* EOF */
