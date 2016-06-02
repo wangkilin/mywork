@@ -2,7 +2,7 @@
 /**
  *
  */
-class Cola_Response
+class Response
 {
     static protected $statusTexts = array(
         '100' => 'Continue',
