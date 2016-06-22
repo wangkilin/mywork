@@ -67,9 +67,31 @@ if (! function_exists('shutdownHandler')) {
 }
 
 if (! function_exists('addLog')) {
-	function addLog ($level, $message)
-	{
+	/**
+	 * 
+	 * 需要判断系统设置的日志级别
+	 * 
+	 * @param unknown $level
+	 * @param unknown $message
+	 * @param string $toCacheLog
+	 */
+	function addLog ($level, $message, $toCacheLog = NULL)
+	{// @todo addlog
+		static $logs = array();
+		static $config =  NULL;
 		
+		if (is_null($config)) {
+			$config = & loadClass('Config', BASE_PATH);
+		}
+		$toCacheLog = $toCacheLog || $config->get('system.doLogAfterRunning')===true;
+		if ($toCacheLog) {
+			$logs[] = '';
+			return;
+		}
+		
+		// 通过 Log class 写入日志
+		
+		// 需要考虑shutdown时怎么写入日志
 	}
 }
 
