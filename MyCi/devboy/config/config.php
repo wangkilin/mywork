@@ -1,6 +1,26 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASE_PATH') OR exit('Access not allowed');
 
+$config = array();
+
+$config['debug'] = true; // 是否开启调试模式
+$config['charset'] = 'UTF-8'; // 默认编码
+$config['defaultTimeZone'] = ''; // 默认时区
+$config['baseUrl'] = '';   // 网站入口url
+$config['urlMode'] = 3;
+$config['urlSuffix'] = '.html'; // 生成的url后缀
+$config['viewReplace'] = array('__PUBLIC__'=>''); // @todo view里面需要替换的字符串
+
+$config['cookie'] = array(); // cookie 设置
+
+$config['session'] = array(); // session 设置
+
+$config['log'] = array(); // 日志设定
+$config['log']['levels'] = array('warning', 'notice', 'sql');
+$config['log']['doLogInRealTime'] = FALSE; // 是否实时写入日志记录。 为false时在脚本结束后写入日志
+$config['route'] = array(); // 路由设置
+
+return $config;
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -17,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = '';
+$config['baseUrl'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -95,43 +115,6 @@ $config['charset'] = 'UTF-8';
 |
 */
 $config['enable_hooks'] = FALSE;
-
-/*
-|--------------------------------------------------------------------------
-| Class Extension Prefix
-|--------------------------------------------------------------------------
-|
-| This item allows you to set the filename/classname prefix when extending
-| native libraries.  For more information please see the user guide:
-|
-| http://codeigniter.com/user_guide/general/core_classes.html
-| http://codeigniter.com/user_guide/general/creating_libraries.html
-|
-*/
-$config['subclass_prefix'] = 'MY_';
-
-/*
-|--------------------------------------------------------------------------
-| Composer auto-loading
-|--------------------------------------------------------------------------
-|
-| Enabling this setting will tell CodeIgniter to look for a Composer
-| package auto-loader script in application/vendor/autoload.php.
-|
-|	$config['composer_autoload'] = TRUE;
-|
-| Or if you have your vendor/ directory located somewhere else, you
-| can opt to set a specific path as well:
-|
-|	$config['composer_autoload'] = '/path/to/vendor/autoload.php';
-|
-| For more information about Composer, please visit http://getcomposer.org/
-|
-| Note: This will NOT disable or override the CodeIgniter-specific
-|	autoloading (application/config/autoload.php)
-*/
-$config['composer_autoload'] = FALSE;
-
 /*
 |--------------------------------------------------------------------------
 | Allowed URL Characters
@@ -218,7 +201,7 @@ $config['log_threshold'] = 0;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = '';
+$config['logDir'] = '';
 
 /*
 |--------------------------------------------------------------------------

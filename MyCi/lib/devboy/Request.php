@@ -99,6 +99,11 @@ class Request
 		return $isMobile;
 	}
 
+	public function isCli ()
+	{
+	    return (PHP_SAPI === 'cli' || defined('STDIN'));
+	}
+
 	/**
 	 * 判断是否SSL协议
 	 * @return bool
@@ -342,6 +347,10 @@ class Request
 
         return $this->_referer;
     }
+
+
+
+
     /**
      * 内部参数
      *

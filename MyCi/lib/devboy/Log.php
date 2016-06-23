@@ -4,11 +4,58 @@ defined('BASE_PATH') OR exit('Access not allowed');
 /**
  * Log Class
  */
-class Log {
-	
-	public function add ($level, $msg)
+class Log
+{
+    /**
+     * 缓存的日志
+     * @var array
+     */
+    private $_cachedLogs = array();
+
+	public function __construct()
 	{
-		
+	    // 程序结束， 需要将缓存的日志写入
+	    register_shutdown_function(array($this, 'writeCachedLogs'));
+	}
+
+    /**
+     * 实时写入日志
+     * @param unknown $level
+     * @param unknown $msg
+     */
+	public function write ($level, $msg, $toCacheLog=FALSE)
+	{
+	    if ($toCacheLog) {
+	        $this->cacheLog($level, $msg);
+	    } else {
+	        $time = microtime(true);
+	        // @todo
+	    }
+	}
+
+	/**
+	 * 写入缓存的日志
+	 */
+	public function writeCachedLogs ()
+	{
+	    if(count($this->_cachedLogs)) {
+	        foreach ($this->_cachedLogs as $_logInfo) {
+	            $this->write($level, $msg);
+	        }
+	    }
+	}
+
+	/**
+	 * 将日志信息起来
+	 * @param unknown $level
+	 * @param unknown $msg
+	 */
+	public function cacheLog($level, $msg)
+	{
+	    $this->_cachedLogs[] = array('time'     => microtime(true),
+	                                 'level'    => $level,
+	                                 'msg'      => $msg
+	                           );
 	}
 
 	/**

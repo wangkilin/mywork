@@ -1,6 +1,7 @@
 <?php
 defined('DS') OR define('DS', DIRECTORY_SEPARATOR);
 defined('BASE_PATH') OR define('BASE_PATH', dirname(__FILE__).DS);
+defined('APP_PATH') OR define('APP_PATH', realpath('./'));
 
 define('MODE_READ_FILE', 0644);
 define('MODE_WRITE_FILE', 0666);
@@ -13,42 +14,45 @@ class Application
 {
     static private $_config;
     static private $_instance = null;
-    
+
     private function __construct()
     {
         $this->init();
     }
-    
-    public function getInstance ()
+
+    static public function getInstance ()
     {
     	if (null==self::$_instance) {
     		self::$_instance =  new self();
     	}
-    	
+
     	return self::$_instance;
     }
-    
+
     protected function setSystemHandler ()
-    {	
+    {
 		// @todo 设置错误处理
         set_error_handler(array($this, 'errorHandler'));
         // @todo 设置错误处理
         set_exception_handler(array($this, 'exceptionHandler'));
         // @todo 设置程序关闭处理
-        register_shutdown_function(array($this, 'shutdownHandler'));	
+        register_shutdown_function(array($this, 'shutdownHandler'));
     }
     public function init ()
     {
     	$BM = & loadClass('Benchmark', BASE_PATH);
     	$BM->mark('app_start');
-    	
-		self::$config = & loadClass('Config');
-		
+
+    	self::$config = & loadClass('Config', BASE_PATH);
+
+    	$oHook =& loadClass('Hooks', BASE_PATH);
+    	$oHook->call('pre_system');
+
 		$this->setSystemHandler ();
-		
+
 		$this->run();
-        
-        
+
+
 		self::$db = load_class('core_db');
 
 		self::$plugins = load_class('core_plugins');
@@ -113,14 +117,14 @@ class Application
 			}
 		}
     }
-    
+
     public function run ()
     {
 		load_class('core_uri')->set_rewrite();
 
 		// 传入应用目录, 返回控制器对象
 		$handle_controller = self::create_controller(load_class('core_uri')->controller, load_class('core_uri')->app_dir);
-		
+
 		$action_method = load_class('core_uri')->action . '_action';
 
 		// 判断

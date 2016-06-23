@@ -19,7 +19,7 @@ if (! function_exists('loadClass')) {
     function & loadClass($class, $inDir = '', $param = NULL)
     {
         static $_classes = array();
-        
+
         $class = str_replace('.', '_', $class);
 
         // 类已被实例化过
@@ -68,31 +68,48 @@ if (! function_exists('shutdownHandler')) {
 
 if (! function_exists('addLog')) {
 	/**
-	 * 
+	 *
 	 * 需要判断系统设置的日志级别
-	 * 
+	 *
 	 * @param unknown $level
 	 * @param unknown $message
-	 * @param string $toCacheLog
 	 */
-	function addLog ($level, $message, $toCacheLog = NULL)
-	{// @todo addlog
-		static $logs = array();
+	function addLog ($level, $message)
+	{
 		static $config =  NULL;
-		
+		static $log = NULL;
+
 		if (is_null($config)) {
 			$config = & loadClass('Config', BASE_PATH);
 		}
-		$toCacheLog = $toCacheLog || $config->get('system.doLogAfterRunning')===true;
-		if ($toCacheLog) {
-			$logs[] = '';
-			return;
+		if (is_null($log)) {
+		    $log = & loadClass('Log', BASE_PATH);
 		}
-		
-		// 通过 Log class 写入日志
-		
-		// 需要考虑shutdown时怎么写入日志
+
+		$toCacheLog = $config->get('log.doLogAfterRunning')===true;
+		$log->write($level, $message, $toCacheLog);
 	}
+}
+
+if ( ! function_exists('isPhp'))
+{
+    /**
+     * Determines if the current version of PHP is equal to or greater than the supplied value
+     *
+     * @param	string
+     * @return	bool	TRUE if the current version is $version or higher
+     */
+    function isPhp($version)
+    {
+        static $_is_php;
+        $version = (string) $version;
+
+        if ( ! isset($_is_php[$version])) {
+            $_is_php[$version] = version_compare(PHP_VERSION, $version, '>=');
+        }
+
+        return $_is_php[$version];
+    }
 }
 
 /* EOF */
