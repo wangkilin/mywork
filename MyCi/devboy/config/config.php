@@ -8,12 +8,36 @@ $config['charset'] = 'UTF-8'; // 默认编码
 $config['defaultTimeZone'] = ''; // 默认时区
 $config['baseUrl'] = '';   // 网站入口url
 $config['urlMode'] = 3;
+$config['actionMethodSuffix'] = 'Action';
+$config['defaultAction'] ='index';
+
+$config['url'] = array();
 $config['urlSuffix'] = '.html'; // 生成的url后缀
 $config['viewReplace'] = array('__PUBLIC__'=>''); // @todo view里面需要替换的字符串
+$config['supportControllerDir'] = true; // 是否支持controller分目录
+$config['defaultControllerDir'] = 'home'; // 如果支持controller分目录， 路由到的默认目录
+$config['urlCaseSensitive'] = false; // 在URL中获取 Dir， Controller， Action是否区分大小写
+$config['urlPathQuerySeparator'] = 'q'; // 兼容模式请求
+$config['queryKeyValueSeparator'] = '/'; // GET方式请求时的参数和值之间的分隔符
+$config['dirKeyInUrl'] = 'd';
+$config['controllerKeyInUrl'] = 'c';
+$config['actionKeyInUrl'] = 'a';
 
 $config['cookie'] = array(); // cookie 设置
+$config['cookie_prefix']	= '';
+$config['cookie_domain']	= '';
+$config['cookie_path']		= '/';
+$config['cookie_secure']	= FALSE;
+$config['cookie_httponly'] 	= FALSE;
 
 $config['session'] = array(); // session 设置
+$config['sess_driver'] = 'files';
+$config['sess_cookie_name'] = 'ci_session';
+$config['sess_expiration'] = 7200;
+$config['sess_save_path'] = NULL;
+$config['sess_match_ip'] = FALSE;
+$config['sess_time_to_update'] = 300;
+$config['sess_regenerate_destroy'] = FALSE;
 
 $config['log'] = array(); // 日志设定
 $config['log']['levels'] = array('warning', 'notice', 'sql');
