@@ -39,16 +39,15 @@ class Router
 	public function __construct($request = null, $routing = NULL)
 	{
 		$this->config = & loadClass('Config', BASE_PATH);
-        $urlPathQuerySeparator =
-		$varPath        =   C('STR_PATHINFO');
-		$varAddon       =   C('VAR_ADDON');
-		$varModule      =   C('VAR_MODULE');
-		$varController  =   C('VAR_CONTROLLER');
-		$varAction      =   C('VAR_ACTION');
-		$urlCase        =   C('URL_CASE_INSENSITIVE');
+		$this->uri    = & loadClass('URI', BASE_PATH);
+        $urlQueryPathKey    = $this->config->get('urlPathQueryName');
+        $urlDirKey          = $this->config->get('dirKeyInUrl');
+        $urlControllerKey   = $this->config->get('controllerKeyInUrl');
+        $urlActionKey       = $this->config->get('actionKeyInUrl');
+        $isUrlCaseSensitice = $this->config->get('urlCaseSensitive');
 
+        $pathInfo = $this->uri->getPathInfo();
 
-		$this->uri = & load_class('URI', 'core');
 
 		$this->enable_query_strings = ( ! is_cli() && $this->config->item('enable_query_strings') === TRUE);
 

@@ -1,42 +1,5 @@
 <?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	http://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
+defined('BASE_PATH') OR exit('Access not allowed');
 /**
  * URI Class
  *
@@ -48,7 +11,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/uri.html
  */
-class CI_URI {
+class Uri
+{
+    private $config = null;
+
+    private $pathInfo = '';
+    private $queryString = '';
+
+    public function __construct()
+    {
+		$this->config = & loadClass('Config', BASE_PATH);
+		$this->request = & loadClass('Request', BASE_PATH);
+		$this->parse();
+    }
+
+    public function parse ()
+    {
+        // 在url路径里指定pathinfo. 格式 index.php/dir/controller/action/param.html
+        $this->pathInfo = $this->request->server('PATH_INFO');
+        // 在url请求参数中指定pathinfo. 格式 index.php?q=dir/controller/action/param
+        if (null==$this->pathInfo) {
+            $this->pathInfo = $this->request->get($this->config->get('urlPathQueryName'));
+        }
+        // 在url请求中指定pathinfo . 格式 index.php?dir/controller/action/param
+        $this->queryString = $this->request->server('QUERY_STRING');
+        if (null==$this->pathInfo) {
+            $this->pathInfo = $this->queryString;
+        }
+    }
 
 	/**
 	 * List of cached URI segments
@@ -98,7 +88,12 @@ class CI_URI {
 	 */
 	public function __construct()
 	{
-		$this->config =& load_class('Config', 'core');
+		$this->config = & loadClass('Config', BASE_PATH);
+		$this->parse();
+
+
+
+
 
 		// If query strings are enabled, we don't need to parse any segments.
 		// However, they don't make sense under CLI.
@@ -115,7 +110,6 @@ class CI_URI {
 			{
 				$protocol = $this->config->item('uri_protocol');
 				empty($protocol) && $protocol = 'REQUEST_URI';
-var_dump($protocol,$_SERVER);
 				switch ($protocol)
 				{
 					case 'AUTO': // For BC purposes only

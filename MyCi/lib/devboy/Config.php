@@ -14,13 +14,30 @@ defined('BASE_PATH') OR exit('Access not allowed');
  */
 class Config
 {
-
 	/**
 	 * List of all loaded config values
 	 *
 	 * @var	array
 	 */
 	public $config = array();
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Fetch a config file item
+	 *
+	 * @param	string	$item	Config item name
+	 * @param	string	$index	Index name
+	 * @return	string|null	The configuration item or NULL if the item doesn't exist
+	 */
+	public function get($key=null)
+	{
+		if (null == $key) {
+			return $this->config;
+		}
+
+		return isset($this->config[$key]) ? $this->config[$key] : NULL;
+	}
 
 	/**
 	 * List of all loaded config files
@@ -141,24 +158,6 @@ class Config
 		}
 
 		show_error('The configuration file '.$file.'.php does not exist.');
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Fetch a config file item
-	 *
-	 * @param	string	$item	Config item name
-	 * @param	string	$index	Index name
-	 * @return	string|null	The configuration item or NULL if the item doesn't exist
-	 */
-	public function get($key=null)
-	{
-		if (null == $key) {
-			return $this->config;
-		}
-
-		return isset($this->config[$key]) ? $this->config[$key] : NULL;
 	}
 
 	// --------------------------------------------------------------------
