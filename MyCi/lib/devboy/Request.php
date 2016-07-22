@@ -84,6 +84,27 @@ class Request
      */
     private $_referer = NULL;
 
+    /**
+     * URI class object
+     * @var object
+     */
+    private $_uri = NULL;
+
+    public function __construct()
+    {
+
+    }
+
+    public function getUri ()
+    {
+        if (null==$this->_uri) {
+            $this->_uri = & loadClass('Uri', BASE_PATH);
+        }
+
+        return $this->_uri;
+    }
+
+
 	/**
 	 * 判断是否为手机访问
 	 * @return bool

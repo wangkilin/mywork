@@ -23,11 +23,21 @@ class Router
 	public $config;
 
 	/**
+	 * Request class object
+	 * @var object
+	 */
+	protected $request;
+
+	/**
 	 * List of routes
 	 *
 	 * @var	array
 	 */
 	public $routes =	array();
+
+	protected $_controller = 'index';
+	protected $_dir = '';
+	protected $_action = 'index';
 
 	/**
 	 * Class constructor
@@ -39,14 +49,13 @@ class Router
 	public function __construct($request = null, $routing = NULL)
 	{
 		$this->config = & loadClass('Config', BASE_PATH);
-		$this->uri    = & loadClass('URI', BASE_PATH);
-        $urlQueryPathKey    = $this->config->get('urlPathQueryName');
-        $urlDirKey          = $this->config->get('dirKeyInUrl');
-        $urlControllerKey   = $this->config->get('controllerKeyInUrl');
-        $urlActionKey       = $this->config->get('actionKeyInUrl');
-        $isUrlCaseSensitice = $this->config->get('urlCaseSensitive');
+		if (! ($request instanceof Request)) {
+		    $request = & loadClass('Request', BASE_PATH);
+		}
+		$this->request = $request;
+		//$this->uri    = & loadClass('URI', BASE_PATH);
 
-        $pathInfo = $this->uri->getPathInfo();
+        $this->dispatch();
 
 
 		$this->enable_query_strings = ( ! is_cli() && $this->config->item('enable_query_strings') === TRUE);
@@ -76,6 +85,36 @@ class Router
 	public function matchRouteConfig ()
 	{
 
+	}
+
+	public function parse ()
+	{
+        $urlQueryPathKey    = $this->config->get('urlPathQueryName');
+        $urlDirKey          = $this->config->get('dirKeyInUrl');
+        $urlControllerKey   = $this->config->get('controllerKeyInUrl');
+        $urlActionKey       = $this->config->get('actionKeyInUrl');
+        $isUrlCaseSensitice = $this->config->get('urlCaseSensitive');
+
+        $pathInfo = $this->request->getUri()->getPathInfo();
+
+        $this->_dir = '';
+        $this->_controller = '';
+        $this->_action = '';
+	}
+
+	public function getDir ()
+	{
+	    return $this->_dir;
+	}
+
+	public function getController ()
+	{
+	    return $this->_controller;
+	}
+
+	public function getAction ()
+	{
+	    return $this->_action;
 	}
 
 	/**

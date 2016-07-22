@@ -38,6 +38,11 @@ class Application
         // @todo 设置程序关闭处理
         register_shutdown_function(array($this, 'shutdownHandler'));
     }
+
+    public function run ()
+    {
+        $oRouter = loadClass('Router', BASE_PATH);
+    }
     public function init ()
     {
     	$BM = & loadClass('Benchmark', BASE_PATH);
@@ -47,7 +52,7 @@ class Application
 
     	$oHook =& loadClass('Hooks', BASE_PATH);
     	$oHook->call('pre_system');
-
+        // 设置系统错误处理，关闭处理
 		$this->setSystemHandler ();
 
 		$this->run();
@@ -120,6 +125,14 @@ class Application
 
     public function run ()
     {
+        $oRouter = loadClass('Router', BASE_PATH);
+
+        $oRouter->parse();
+
+        $dir = $oRouter->getDir();
+        $controller = $oRouter->getController();
+        $actioin = $oRouter->getAction();
+
 		load_class('core_uri')->set_rewrite();
 
 		// 传入应用目录, 返回控制器对象

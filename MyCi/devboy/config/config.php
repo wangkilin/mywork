@@ -10,6 +10,7 @@ $config['baseUrl'] = '';   // 网站入口url
 $config['urlMode'] = 3;
 $config['actionMethodSuffix'] = 'Action';
 $config['defaultAction'] ='index';
+$config['defaultController'] = 'Index';
 
 $config['url'] = array();
 $config['urlSuffix'] = '.html'; // 生成的url后缀

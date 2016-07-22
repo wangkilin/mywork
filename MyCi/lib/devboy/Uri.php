@@ -34,10 +34,23 @@ class Uri
             $this->pathInfo = $this->request->get($this->config->get('urlPathQueryName'));
         }
         // 在url请求中指定pathinfo . 格式 index.php?dir/controller/action/param
-        $this->queryString = $this->request->server('QUERY_STRING');
         if (null==$this->pathInfo) {
-            $this->pathInfo = $this->queryString;
+            $this->pathInfo = $this->getPathInfoFromQuery ();
         }
+    }
+
+    protected function getPathInfoFromQuery ()
+    {
+        // @todo 需要从请求中解析出来。
+        $this->queryString = $this->request->server('QUERY_STRING');
+        $pathInfo = $this->queryString;
+
+        return $pathInfo;
+    }
+
+    public function getPathInfo ()
+    {
+        return $this->pathInfo;
     }
 
 	/**
