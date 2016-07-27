@@ -1,0 +1,3088 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html class="no-js ie9 fixed-layout" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="js  cors svg xhr2 localstorage audio placeholder cssanimations flexbox backgroundblendmode overthrow-enabled" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+<link rel="dns-prefetch" href="https://res.cloudinary.com/">
+<link rel="dns-prefetch" href="https://d2mdw063ttlqtq.cloudfront.net/">
+<link rel="dns-prefetch" href="https://0.s3.envato.com/">
+<link rel="dns-prefetch" href="https://thumb-cc.s3.envato.com/">
+<link rel="dns-prefetch" href="https://user-profile.s3.envato.com/">
+<link rel="dns-prefetch" href="https://image-cc.s3.envato.com/">
+
+
+<script src="website-style_files/fcf8d519de" type="text/javascript"></script><script src="website-style_files/nr-963.js"></script><script src="website-style_files/linkid.js" async="" type="text/javascript"></script><script src="website-style_files/ec.js" async="" type="text/javascript"></script><script src="website-style_files/analytics.js" async=""></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"fcf8d519de","applicationID":"13909","transactionName":"NTU0DRQNDwshOmIZBRM3dRAIBgYf","queueTime":0,"applicationTime":134,"agent":"","atts":"DXgvW1wZQRQtPChSS1QZNR0DIQIJPScjUl1UKSkVRFgXFTEtYVIDEysvHBUWPBc2JzkfEhk2eENEChcTNDt3X15UdngQFkBZRXV4e15CQXRoSF5MUlNyamFSBAU/KCYHBQYJMGp3UjwZIDMVCgNMUmp4bVgmHzQ+FhERQykQaHteQE16DTYxVFdcZDo7SkVBdGpQRiUGBC8nYkJBR2pqSFZTQyEtOigWHg51bk5IUkFLZjooBhgFMzUXRFhBV31+K0RHRXgnBA=="}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQcGQldQAQMJ"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(s){try{i("ierr",[s,(new Date).getTime(),!0])}catch(c){}}return"function"==typeof f&&f.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,e,n){u&&(d+=1)}),s.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState";t("loader").features.stn=!0,t(6);var g=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof g&&(this.bstStart=Date.now())}),o.on(w,function(t,e){var n=t[0];n instanceof g&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on(m,function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),this.bstType])}),s.on(m,function(){this.bstStart=Date.now()}),s.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,!1),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(17)(a),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=c(n,"nr@wrapped",function(){return s(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&s.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],6:[function(t,e,n){var r=t("ee").get("history"),o=t(17)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,e,n){var r=t("ee").get("raf"),o=t(17)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(17)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){v.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<v.length;t++)r([],v[t]);v.length&&(v=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t(17)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],v=[];e.exports=u;var y=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;a<d;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],11:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],12:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[(new Date).getTime()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var u=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],d="api-",l=d+"ixn-";a(u,function(t,e){f[e]=o(d+e,!0,"api")}),f.addPageAction=o(d+"addPageAction",!0),e.exports=newrelic,f.interaction=function(){return(new r).get()};var p=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[Date.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return e.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){p[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,(new Date).getTime()])}},{}],13:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],14:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],15:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],16:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],17:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],s])}f(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],s),l}finally{f(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!c){c=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}c=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,c=0;c<s;c++)a[c].apply(i,r);var u=f[w[n]];return u&&u.push([v,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){c(t,function(t,n){e=e||"feature",w[n]=e,e in f||(f[e]=[])})}var m={},w={},v={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return v}function i(){return new r}var a="nr@context",s=t("gos"),c=t(15),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!g++){var t=y.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(w,function(e,n){t[e]||(t[e]=n)});var n="https"===m.split(":")[0]||t.sslForHttp;y.proto=n?"https://":"http://",s("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=y.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){s("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var s=t("handle"),c=t(15),f=window,u=f.document,d="addEventListener",l="attachEvent",p=f.XMLHttpRequest,h=p&&p.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:p,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(12);var m=""+location,w={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-963.min.js"},v=p&&h&&h[d]&&!/CriOS/.test(navigator.userAgent),y=e.exports={offset:a(),origin:m,features:{},xhrWrappable:v};u[d]?(u[d]("DOMContentLoaded",i,!1),f[d]("load",r,!1)):(u[l]("onreadystatechange",o),f[l]("onload",r)),s("mark",["firstbyte",a()],null,"api");var g=0},{}]},{},["loader",2,10,4,3]);</script>
+
+<title>Responsive FlipBook jQuery - JavaScript | CodeCanyon</title>
+
+<meta content="It is fully HTML &amp;#38; jQuery driven, no Flash Player needed. Works on desktop and mobile devices. Comes with zoom, table of content, responsive, double page and much more. Testimonials Hi,thank yo..." name="description">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://codecanyon.net/icons/codecanyon.net/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://codecanyon.net/icons/codecanyon.net/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://codecanyon.net/icons/codecanyon.net/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="https://codecanyon.net/icons/codecanyon.net/apple-touch-icon-precomposed.png">
+
+  <link href="website-style_files/index-7e4ae57b92501b3a784dfe7e45fa9545.css" media="all" rel="stylesheet" type="text/css">
+  <link href="website-style_files/index-e1ea204301ba90cdca2102566a1d341d.css" media="all" rel="stylesheet" type="text/css">
+
+
+<meta name="theme-color" content="#333333">
+
+<link rel="canonical" href="https://codecanyon.net/item/responsive-flipbook-jquery/1724917">
+
+      <meta content="product" name="twitter:card">
+  <meta content="@envatomarket" name="twitter:site">
+  <meta content="@mpcreation" name="twitter:creator">
+  <meta content="$22 USD" name="twitter:data1">
+  <meta content="Price" name="twitter:label1">
+  <meta content="CodeCanyon" name="twitter:data2">
+  <meta content="Marketplace" name="twitter:label2">
+  <meta content="codecanyon.net" name="twitter:domain">
+  <meta content="Responsive FlipBook jQuery" property="og:title">
+  <meta content="website" property="og:type">
+  <meta content="https://codecanyon.net/item/responsive-flipbook-jquery/1724917" property="og:url">
+  <meta content="http://0.s3.envato.com/files/19876570/thumbnail.png" property="og:image">
+  <meta content="It is fully HTML &amp; jQuery driven, no Flash Player needed. Works on desktop and mobile devices. Comes with zoom, table of content, responsive, double page and much more.
+
+
+	
+
+
+	
+
+
+Testimonials
+
+Hi,t..." property="og:description">
+  <meta content="CodeCanyon" property="og:site_name">
+
+
+<link href="https://codecanyon.net/feeds/new-codecanyon-items.atom" rel="alternate" type="application/atom+xml" title="CodeCanyon new items feed"><link href="https://codecanyon.net/feeds/new-javascript-items.atom" rel="alternate" type="application/atom+xml" title="CodeCanyon new JavaScript items feed"><link href="https://codecanyon.net/feeds/new-php-scripts-items.atom" rel="alternate" type="application/atom+xml" title="CodeCanyon new PHP Scripts items feed"><link href="https://codecanyon.net/feeds/new-net-items.atom" rel="alternate" type="application/atom+xml" title="CodeCanyon new .NET items feed"><link href="https://codecanyon.net/feeds/new-wordpress-items.atom" rel="alternate" type="application/atom+xml" title="CodeCanyon new WordPress items feed"><link href="https://codecanyon.net/feeds/new-plugins-items.atom" rel="alternate" type="application/atom+xml" title="CodeCanyon new Plugins items feed"><link href="https://codecanyon.net/feeds/new-css-items.atom" rel="alternate" type="application/atom+xml" title="CodeCanyon new CSS items feed"><link href="https://codecanyon.net/feeds/new-html5-items.atom" rel="alternate" type="application/atom+xml" title="CodeCanyon new HTML5 items feed"><link href="https://codecanyon.net/feeds/new-mobile-items.atom" rel="alternate" type="application/atom+xml" title="CodeCanyon new Mobile items feed"><link href="https://codecanyon.net/feeds/new-apps-items.atom" rel="alternate" type="application/atom+xml" title="CodeCanyon new Apps items feed"><link href="https://codecanyon.net/feeds/new-skins-items.atom" rel="alternate" type="application/atom+xml" title="CodeCanyon new Skins items feed"><link href="https://codecanyon.net/feeds/new-edge-animate-templates-items.atom" rel="alternate" type="application/atom+xml" title="CodeCanyon new Edge Animate Templates items feed">
+
+<meta content="authenticity_token" name="csrf-param">
+<meta content="3R3pFVPcmkJulPQyOra9ZWKYoiwNzBVjirIiYS4ks9o=" name="csrf-token">
+
+
+    <script src="website-style_files/head-105f4d5d582092cfb63de884c617d42f.js" type="text/javascript"></script>
+  <style type="text/css">.fancybox-margin{margin-right:17px;}</style></head>
+  <body id="" class="" data-view="app" data-responsive="true" data-user-signed-in="false" itemscope="" itemtype="http://schema.org/CreativeWork">
+    
+    <!--[if lte IE 8]>
+  <div style="color:#fff;background:#f00;padding:20px;text-align:center;">
+    CodeCanyon no longer actively supports this version of Internet Explorer. We suggest that you <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" style="color:#fff;text-decoration:underline;">upgrade to a newer version</a> or <a href="http://browsehappy.com/" style="color:#fff;text-decoration:underline;">try a different browser</a>.
+  </div>
+<![endif]-->
+
+
+    <div class="page">
+          <div class="page__off-canvas--left overthrow">
+            
+<div class="off-canvas-left js-off-canvas-left">
+  <div class="off-canvas-left__top">
+    <a href="https://market.envato.com/">Envato Market</a>
+  </div>
+
+    <div class="off-canvas-left__current-site -color-codecanyon">
+      <span class="off-canvas-left__site-logo--codecanyon">
+        CodeCanyon
+      </span>
+
+      <a href="#" class="off-canvas-left__current-site-toggle" data-dropdown-target="#off-canvas-sites" data-view="dropdown">
+</a>    </div>
+
+  <div class="off-canvas-left__sites is-hidden" id="off-canvas-sites">
+      <a href="https://themeforest.net/?osr=tn" class="off-canvas-left__site">
+        <span class="off-canvas-left__site-logo--themeforest">
+          ThemeForest
+        </span>
+        <i class="e-icon -icon-right-open"></i>
+</a>      <a href="https://videohive.net/?osr=tn" class="off-canvas-left__site">
+        <span class="off-canvas-left__site-logo--videohive">
+          VideoHive
+        </span>
+        <i class="e-icon -icon-right-open"></i>
+</a>      <a href="https://audiojungle.net/?osr=tn" class="off-canvas-left__site">
+        <span class="off-canvas-left__site-logo--audiojungle">
+          AudioJungle
+        </span>
+        <i class="e-icon -icon-right-open"></i>
+</a>      <a href="https://graphicriver.net/?osr=tn" class="off-canvas-left__site">
+        <span class="off-canvas-left__site-logo--graphicriver">
+          GraphicRiver
+        </span>
+        <i class="e-icon -icon-right-open"></i>
+</a>      <a href="https://photodune.net/?osr=tn" class="off-canvas-left__site">
+        <span class="off-canvas-left__site-logo--photodune">
+          PhotoDune
+        </span>
+        <i class="e-icon -icon-right-open"></i>
+</a>      <a href="https://3docean.net/?osr=tn" class="off-canvas-left__site">
+        <span class="off-canvas-left__site-logo--3docean">
+          3DOcean
+        </span>
+        <i class="e-icon -icon-right-open"></i>
+</a>  </div>
+
+    
+<div class="off-canvas-left__search">
+  <form accept-charset="UTF-8" action="/search" id="search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+    <div class="search-field -border-none">
+      <div class="search-field__input">
+        <input class="search-field__input-field" id="term" name="term" placeholder="Search" type="search">
+      </div>
+      <button class="search-field__button" type="submit">
+        <i class="e-icon -icon-search"><span class="e-icon__alt">Search</span></i>
+      </button>
+    </div>
+</form></div>
+
+    
+<ul>
+    <li>
+      <a href="https://codecanyon.net/page/top_sellers" class="off-canvas-category-link--empty">Popular Files</a>
+    </li>
+    <li>
+      <a href="https://codecanyon.net/feature" class="off-canvas-category-link--empty">Featured Files</a>
+    </li>
+    <li>
+      <a href="https://codecanyon.net/search?date=this-month&amp;length_max=&amp;length_min=&amp;price_max=&amp;price_min=&amp;rating_min=&amp;sales=&amp;sort=sales&amp;term=&amp;utf8=%E2%9C%93&amp;view=list" class="off-canvas-category-link--empty">Top New Files</a>
+    </li>
+    <li>
+      <a href="https://codecanyon.net/follow_feed" class="off-canvas-category-link--empty">Follow Feed</a>
+    </li>
+    <li>
+      <a href="https://codecanyon.net/authors/top" class="off-canvas-category-link--empty">Top Authors</a>
+    </li>
+    <li>
+      <a href="https://codecanyon.net/page/top_new_sellers" class="off-canvas-category-link--empty">Top New Authors</a>
+    </li>
+    <li>
+        <a href="https://codecanyon.net/category/php-scripts" class="off-canvas-category-link" data-dropdown-target="#off-canvas-php-scripts" data-view="dropdown">
+    PHP Scripts
+</a>  <ul class="is-hidden" id="off-canvas-php-scripts">
+      <li>
+        <a href="https://codecanyon.net/popular_item/by_category?category=php-scripts" class="off-canvas-category-link--sub">Popular Items</a>
+      </li>
+
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/add-ons" class="off-canvas-category-link--sub">Add-ons</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/calendars" class="off-canvas-category-link--sub">Calendars</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/countdowns" class="off-canvas-category-link--sub">Countdowns</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/database-abstractions" class="off-canvas-category-link--sub">Database Abstractions</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/forms" class="off-canvas-category-link--sub">Forms</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/help-and-support-tools" class="off-canvas-category-link--sub">Help and Support Tools</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/images-and-media" class="off-canvas-category-link--sub">Images and Media</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/loaders-and-uploaders" class="off-canvas-category-link--sub">Loaders and Uploaders</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/navigation" class="off-canvas-category-link--sub">Navigation</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/news-tickers" class="off-canvas-category-link--sub">News Tickers</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/polls" class="off-canvas-category-link--sub">Polls</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/project-management-tools" class="off-canvas-category-link--sub">Project Management Tools</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/ratings-and-charts" class="off-canvas-category-link--sub">Ratings and Charts</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/search" class="off-canvas-category-link--sub">Search</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/shopping-carts" class="off-canvas-category-link--sub">Shopping Carts</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/social-networking" class="off-canvas-category-link--sub">Social Networking</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/php-scripts/miscellaneous" class="off-canvas-category-link--sub">Miscellaneous</a>
+      </li>
+
+  </ul>
+
+    </li>
+    <li>
+        <a href="https://codecanyon.net/category/wordpress" class="off-canvas-category-link" data-dropdown-target="#off-canvas-wordpress" data-view="dropdown">
+    WordPress
+</a>  <ul class="is-hidden" id="off-canvas-wordpress">
+      <li>
+        <a href="https://codecanyon.net/popular_item/by_category?category=wordpress" class="off-canvas-category-link--sub">Popular Items</a>
+      </li>
+
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/add-ons" class="off-canvas-category-link--sub">Add-ons</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/advertising" class="off-canvas-category-link--sub">Advertising</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/auctions" class="off-canvas-category-link--sub">Auctions</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/calendars" class="off-canvas-category-link--sub">Calendars</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/ecommerce" class="off-canvas-category-link--sub">eCommerce</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/forms" class="off-canvas-category-link--sub">Forms</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/forums" class="off-canvas-category-link--sub">Forums</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/galleries" class="off-canvas-category-link--sub">Galleries</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/interface-elements" class="off-canvas-category-link--sub">Interface Elements</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/attributes/compatible-with/layers%20wp" class="off-canvas-category-link--sub">Layers WP</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/media" class="off-canvas-category-link--sub">Media</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/membership" class="off-canvas-category-link--sub">Membership</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/newsletters" class="off-canvas-category-link--sub">Newsletters</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/seo" class="off-canvas-category-link--sub">SEO</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/social-networking" class="off-canvas-category-link--sub">Social Networking</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/utilities" class="off-canvas-category-link--sub">Utilities</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/widgets" class="off-canvas-category-link--sub">Widgets</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/miscellaneous" class="off-canvas-category-link--sub">Miscellaneous</a>
+      </li>
+
+      <li>
+        <a href="https://themeforest.net/category/wordpress" class="off-canvas-category-link--sub">WordPress Themes <small class="is-visually-hidden">on ThemeForest</small></a>
+      </li>
+  </ul>
+
+    </li>
+    <li>
+        <a href="https://codecanyon.net/tags/ecommerce" class="off-canvas-category-link" data-dropdown-target="#off-canvas-ecommerce" data-view="dropdown">
+    eCommerce
+</a>  <ul class="is-hidden" id="off-canvas-ecommerce">
+
+      <li>
+        <a href="https://codecanyon.net/search?compatible_with=Easy+Digital+Downloads" class="off-canvas-category-link--sub">Easy Digital Downloads</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/ecommerce/jigoshop" class="off-canvas-category-link--sub">Jigoshop</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/magento-extensions" class="off-canvas-category-link--sub">Magento Extensions</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/opencart" class="off-canvas-category-link--sub">OpenCart</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/oscommerce" class="off-canvas-category-link--sub">osCommerce</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/prestashop" class="off-canvas-category-link--sub">Prestashop</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/ubercart" class="off-canvas-category-link--sub">UberCart</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/virtuemart" class="off-canvas-category-link--sub">VirtueMart</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/ecommerce/woocommerce" class="off-canvas-category-link--sub">WooCommerce</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/ecommerce/wp-e-commerce" class="off-canvas-category-link--sub">WP e-Commerce</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/ecommerce/standalone" class="off-canvas-category-link--sub">WP Standalone</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/zen-cart" class="off-canvas-category-link--sub">Zen Cart</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/wordpress/ecommerce/miscellaneous" class="off-canvas-category-link--sub">Miscellaneous</a>
+      </li>
+
+  </ul>
+
+    </li>
+    <li>
+        <a href="https://codecanyon.net/category/javascript" class="off-canvas-category-link" data-dropdown-target="#off-canvas-javascript" data-view="dropdown">
+    JavaScript
+</a>  <ul class="is-hidden" id="off-canvas-javascript">
+      <li>
+        <a href="https://codecanyon.net/popular_item/by_category?category=javascript" class="off-canvas-category-link--sub">Popular Items</a>
+      </li>
+
+      <li>
+        <a href="https://codecanyon.net/category/javascript/animated-svgs" class="off-canvas-category-link--sub">Animated SVGs</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/calendars" class="off-canvas-category-link--sub">Calendars</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/countdowns" class="off-canvas-category-link--sub">Countdowns</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/database-abstractions" class="off-canvas-category-link--sub">Database Abstractions</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/forms" class="off-canvas-category-link--sub">Forms</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/images-and-media" class="off-canvas-category-link--sub">Images and Media</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/loaders-and-uploaders" class="off-canvas-category-link--sub">Loaders and Uploaders</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/media" class="off-canvas-category-link--sub">Media</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/navigation" class="off-canvas-category-link--sub">Navigation</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/news-tickers" class="off-canvas-category-link--sub">News Tickers</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/project-management-tools" class="off-canvas-category-link--sub">Project Management Tools</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/ratings-and-charts" class="off-canvas-category-link--sub">Ratings and Charts</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/shopping-carts" class="off-canvas-category-link--sub">Shopping Carts</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/sliders" class="off-canvas-category-link--sub">Sliders</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/social-networks" class="off-canvas-category-link--sub">Social Networks</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/javascript/miscellaneous" class="off-canvas-category-link--sub">Miscellaneous</a>
+      </li>
+
+  </ul>
+
+    </li>
+    <li>
+        <a href="https://codecanyon.net/category/css" class="off-canvas-category-link" data-dropdown-target="#off-canvas-css" data-view="dropdown">
+    CSS
+</a>  <ul class="is-hidden" id="off-canvas-css">
+      <li>
+        <a href="https://codecanyon.net/popular_item/by_category?category=css" class="off-canvas-category-link--sub">Popular Items</a>
+      </li>
+
+      <li>
+        <a href="https://codecanyon.net/category/css/animations-and-effects" class="off-canvas-category-link--sub">Animations and Effects</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/css/buttons" class="off-canvas-category-link--sub">Buttons</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/css/charts-and-graphs" class="off-canvas-category-link--sub">Charts and Graphs</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/css/forms" class="off-canvas-category-link--sub">Forms</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/css/layouts" class="off-canvas-category-link--sub">Layouts</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/css/navigation-and-menus" class="off-canvas-category-link--sub">Navigation and Menus</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/css/pricing-tables" class="off-canvas-category-link--sub">Pricing Tables</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/css/tabs-and-sliders" class="off-canvas-category-link--sub">Tabs and Sliders</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/css/miscellaneous" class="off-canvas-category-link--sub">Miscellaneous</a>
+      </li>
+
+  </ul>
+
+    </li>
+    <li>
+        <a href="https://codecanyon.net/category/mobile" class="off-canvas-category-link" data-dropdown-target="#off-canvas-mobile" data-view="dropdown">
+    Mobile
+</a>  <ul class="is-hidden" id="off-canvas-mobile">
+      <li>
+        <a href="https://codecanyon.net/popular_item/by_category?category=mobile" class="off-canvas-category-link--sub">Popular Items</a>
+      </li>
+
+      <li>
+        <a href="https://codecanyon.net/category/mobile/android" class="off-canvas-category-link--sub">Android</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/mobile/ios" class="off-canvas-category-link--sub">iOS</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/mobile/native-web" class="off-canvas-category-link--sub">Native Web</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/mobile/titanium" class="off-canvas-category-link--sub">Titanium</a>
+      </li>
+
+  </ul>
+
+    </li>
+    <li>
+        <a href="https://codecanyon.net/category/html5" class="off-canvas-category-link" data-dropdown-target="#off-canvas-html5" data-view="dropdown">
+    HTML5
+</a>  <ul class="is-hidden" id="off-canvas-html5">
+      <li>
+        <a href="https://codecanyon.net/popular_item/by_category?category=html5" class="off-canvas-category-link--sub">Popular Items</a>
+      </li>
+
+      <li>
+        <a href="https://codecanyon.net/category/html5/3d" class="off-canvas-category-link--sub">3D</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/html5/ad-templates" class="off-canvas-category-link--sub">Ad Templates</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/html5/canvas" class="off-canvas-category-link--sub">Canvas</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/html5/charts-and-graphs" class="off-canvas-category-link--sub">Charts and Graphs</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/html5/forms" class="off-canvas-category-link--sub">Forms</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/html5/games" class="off-canvas-category-link--sub">Games</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/html5/libraries" class="off-canvas-category-link--sub">Libraries</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/html5/media" class="off-canvas-category-link--sub">Media</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/html5/presentations" class="off-canvas-category-link--sub">Presentations</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/html5/sliders" class="off-canvas-category-link--sub">Sliders</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/html5/storage" class="off-canvas-category-link--sub">Storage</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/html5/templates" class="off-canvas-category-link--sub">Templates</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/html5/miscellaneous" class="off-canvas-category-link--sub">Miscellaneous</a>
+      </li>
+
+  </ul>
+
+    </li>
+    <li>
+        <a href="https://codecanyon.net/category/skins" class="off-canvas-category-link" data-dropdown-target="#off-canvas-skins" data-view="dropdown">
+    Skins
+</a>  <ul class="is-hidden" id="off-canvas-skins">
+      <li>
+        <a href="https://codecanyon.net/popular_item/by_category?category=skins" class="off-canvas-category-link--sub">Popular Items</a>
+      </li>
+
+      <li>
+        <a href="https://codecanyon.net/category/skins/bootstrap" class="off-canvas-category-link--sub">Bootstrap</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/skins/layers-wp-style-kits" class="off-canvas-category-link--sub">Layers WP Style Kits</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/skins/miscellaneous" class="off-canvas-category-link--sub">Miscellaneous</a>
+      </li>
+
+  </ul>
+
+    </li>
+    <li>
+        <a href="https://themeforest.net/category/wordpress" class="off-canvas-category-link--empty">
+    WP Themes
+</a>
+    </li>
+    <li>
+        <a href="https://codecanyon.net/category/plugins" class="off-canvas-category-link" data-dropdown-target="#off-canvas-plugins" data-view="dropdown">
+    Plugins
+</a>  <ul class="is-hidden" id="off-canvas-plugins">
+      <li>
+        <a href="https://codecanyon.net/popular_item/by_category?category=plugins" class="off-canvas-category-link--sub">Popular Items</a>
+      </li>
+
+      <li>
+        <a href="https://codecanyon.net/category/plugins/concrete5" class="off-canvas-category-link--sub">Concrete5</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/drupal" class="off-canvas-category-link--sub">Drupal</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/expressionengine" class="off-canvas-category-link--sub">ExpressionEngine</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/joomla" class="off-canvas-category-link--sub">Joomla</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/magento-extensions" class="off-canvas-category-link--sub">Magento Extensions</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/muse-widgets" class="off-canvas-category-link--sub">Muse Widgets</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/opencart" class="off-canvas-category-link--sub">OpenCart</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/oscommerce" class="off-canvas-category-link--sub">osCommerce</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/prestashop" class="off-canvas-category-link--sub">Prestashop</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/ubercart" class="off-canvas-category-link--sub">Ubercart</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/virtuemart" class="off-canvas-category-link--sub">VirtueMart</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/zen-cart" class="off-canvas-category-link--sub">Zen Cart</a>
+      </li>
+      <li>
+        <a href="https://codecanyon.net/category/plugins/miscellaneous" class="off-canvas-category-link--sub">Miscellaneous</a>
+      </li>
+
+  </ul>
+
+    </li>
+
+    <li>
+      <a href="https://codecanyon.net/category" class="off-canvas-category-link" data-dropdown-target="#off-canvas-more" data-view="dropdown">More</a>
+
+      <ul class="is-hidden" id="off-canvas-more">
+          <li>
+            <a href="https://codecanyon.net/category/net" class="off-canvas-category-link--sub">.NET</a>
+          </li>
+          <li>
+            <a href="https://codecanyon.net/category/apps" class="off-canvas-category-link--sub">Apps</a>
+          </li>
+          <li>
+            <a href="https://codecanyon.net/category/edge-animate-templates" class="off-canvas-category-link--sub">Edge Animate Templates</a>
+          </li>
+          <li>
+            <a href="https://codecanyon.net/search?term=facebook&amp;type=files" class="off-canvas-category-link--sub">Facebook</a>
+          </li>
+      </ul>
+    </li>
+
+</ul>
+
+</div>
+
+          </div>
+
+        <div class="page__off-canvas--right overthrow">
+          <div class="off-canvas-right">
+    <a href="https://codecanyon.net/cart" class="off-canvas-right__link--cart" rel="nofollow">
+  Guest Cart
+  <div class="shopping-cart-summary is-empty" data-view="cartCount">
+    <span class="js-cart-summary-count shopping-cart-summary__count">0</span>
+    <i class="e-icon -icon-cart"></i>
+  </div>
+</a>
+<a href="https://codecanyon.net/sign_up" class="off-canvas-right__link">
+  Create an Envato Account
+  <i class="e-icon -icon-envato"></i>
+</a>
+<a href="https://codecanyon.net/sign_in" class="off-canvas-right__link" rel="nofollow">
+  Sign In
+  <i class="e-icon -icon-login"></i>
+</a>
+</div>
+
+        </div>
+
+      <div class="page__canvas">
+        <div class="canvas">
+          <div class="canvas__header">
+            
+
+            <header class="site-header">
+                <div class="site-header__mini is-hidden-desktop">
+                  <div class="header-mini">
+  <div class="header-mini__button--account">
+    <a href="#account" class="btn btn--square" data-off-canvas="right" data-view="offCanvasNavToggle">
+      <i class="e-icon -icon-person"></i>
+      <span class="is-hidden">Account</span>
+</a>  </div>
+
+  <div class="header-mini__button--categories">
+    <a href="#categories" class="btn btn--square" data-off-canvas="left" data-view="offCanvasNavToggle">
+      <i class="e-icon -icon-hamburger"></i>
+      <span class="is-hidden">Sites, Search &amp; Categories</span>
+</a>  </div>
+
+  <div class="header-mini__logo">
+    <a href="https://codecanyon.net/?osr=tn" class="header-mini__logo--codecanyon">CodeCanyon</a>
+  </div>
+</div>
+
+                </div>
+
+              <div class="site-header__logo-and-account is-hidden-tablet-and-below">
+                <div class="header-logo-account">
+  <div class="grid-container">
+    <div class="header-logo-account__container">
+      <a class="header-logo-account__logo" href="https://market.envato.com/">
+        <span>Envato Market</span>
+      </a>
+      <nav class="header-logo-account__right">
+          <ul class="header-logo-account__sundry">
+              <li class="header-logo-account__sundry-item">
+                  <a href="https://studio.envato.com/?utm_source=marketplaces&amp;utm_medium=codecanyon&amp;utm_campaign=internal%20navigation&amp;utm_content=headernav" class="header-logo-account__sundry-main-link--brand-color -rounded-corners" target="_blank">Envato Studio</a>
+              </li>
+              <li class="header-logo-account__sundry-item">
+                  <a href="https://codecanyon.net/become-an-author" class="header-logo-account__sundry-main-link -rounded-corners" target="_self">Start selling</a>
+              </li>
+              <li class="header-logo-account__sundry-item">
+                  <a href="https://forums.envato.com/" class="header-logo-account__sundry-main-link" data-dropdown-target=".js-sundry-2-dropdown" data-view="touchOnlyDropdown">Forums</a>
+
+                  <div class="header-logo-account__sundry-dropdown js-sundry-2-dropdown">
+                    <ul class="hub-header-dropdown">
+                        <li>
+                          <a href="https://forums.envato.com/" class="header-logo-account__sundry-sub-link">All forums</a>
+                        </li>
+                        <li>
+                          <a href="https://forums.envato.com/c/authoring-on-envato" class="header-logo-account__sundry-sub-link">Authoring on Envato</a>
+                        </li>
+                        <li>
+                          <a href="https://forums.envato.com/c/project-making" class="header-logo-account__sundry-sub-link">Project making</a>
+                        </li>
+                    </ul>
+                  </div>
+              </li>
+              <li class="header-logo-account__sundry-item">
+                  <a href="http://community.envato.com/" class="header-logo-account__sundry-main-link" data-dropdown-target=".js-sundry-3-dropdown" data-view="touchOnlyDropdown">Community</a>
+
+                  <div class="header-logo-account__sundry-dropdown js-sundry-3-dropdown">
+                    <ul class="hub-header-dropdown">
+                        <li>
+                          <a href="http://community.envato.com/" class="header-logo-account__sundry-sub-link">Home</a>
+                        </li>
+                        <li>
+                          <a href="https://forums.envato.com/tos" class="header-logo-account__sundry-sub-link">Rules</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/page/file_updates" class="header-logo-account__sundry-sub-link">Social Media / RSS Feeds</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/community/badges" class="header-logo-account__sundry-sub-link">Community Badges</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/community/research" class="header-logo-account__sundry-sub-link">Community Research</a>
+                        </li>
+                        <li>
+                          <a href="http://community.envato.com/#/events" class="header-logo-account__sundry-sub-link">Community Meetups</a>
+                        </li>
+                        <li>
+                          <a href="http://marketblog.envato.com/" class="header-logo-account__sundry-sub-link">Envato Market Blog</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/collections" class="header-logo-account__sundry-sub-link">Public Collections</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/feature" class="header-logo-account__sundry-sub-link">Featured Files</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/page/top_sellers" class="header-logo-account__sundry-sub-link">Popular Files</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/authors/top" class="header-logo-account__sundry-sub-link">Top Authors</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/page/top_new_sellers" class="header-logo-account__sundry-sub-link">Top New Authors</a>
+                        </li>
+                    </ul>
+                  </div>
+              </li>
+              <li class="header-logo-account__sundry-item">
+                  <a href="https://codecanyon.net/affiliate_program" class="header-logo-account__sundry-main-link -rounded-corners" target="_self">Affiliates</a>
+              </li>
+              <li class="header-logo-account__sundry-item">
+                  <a href="https://help.market.envato.com/" class="header-logo-account__sundry-main-link" data-dropdown-target=".js-sundry-5-dropdown" data-view="touchOnlyDropdown">Help</a>
+
+                  <div class="header-logo-account__sundry-dropdown js-sundry-5-dropdown">
+                    <ul class="hub-header-dropdown">
+                        <li>
+                          <a href="https://codecanyon.net/help/getting_started" class="header-logo-account__sundry-sub-link">Getting Started</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/buy" class="header-logo-account__sundry-sub-link">Why Buy With Us?</a>
+                        </li>
+                        <li>
+                          <a href="https://help.market.envato.com/" class="header-logo-account__sundry-sub-link">Help Center</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/licenses" class="header-logo-account__sundry-sub-link">Licenses</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/legal/market" class="header-logo-account__sundry-sub-link">Legal Agreements</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/page/item_support_policy" class="header-logo-account__sundry-sub-link">Item Support Policy</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/page/customer_refund_policy" class="header-logo-account__sundry-sub-link">Customer Refund Policy</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/page/author_refund_policy" class="header-logo-account__sundry-sub-link">Author Refund Policy</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/help/api" class="header-logo-account__sundry-sub-link">API</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/get_hosting" class="header-logo-account__sundry-sub-link">Get Hosting</a>
+                        </li>
+                        <li>
+                          <a href="https://codecanyon.net/category" class="header-logo-account__sundry-sub-link">Sitemap</a>
+                        </li>
+                    </ul>
+                  </div>
+              </li>
+          </ul>
+
+        <div class="header-logo-account__user-nav">
+            <div class="header-logo-account__user-nav-item">
+  <strong>
+    <a href="https://codecanyon.net/sign_up" class="header-logo-account__user-nav-main-link--alpha" data-view="modalAjax"><span>Create an Envato Account</span></a>
+  </strong>
+</div>
+
+  <div class="header-logo-account__user-nav-item">
+    <a href="https://codecanyon.net/cart" class="header-logo-account__user-nav-main-link--cart" rel="nofollow">
+      <div class="shopping-cart-summary is-empty" data-view="cartCount">
+        <i class="e-icon -icon-cart"></i>
+        <span class="js-cart-summary-count shopping-cart-summary__count">0</span>
+      </div>
+</a>  </div>
+
+
+<div class="header-logo-account__user-nav-item">
+  <a href="https://codecanyon.net/sign_in" class="header-logo-account__user-nav-main-link--omega" data-view="modalAjax" rel="nofollow">Sign In</a>
+</div>
+
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
+              </div>
+
+              <div class="site-header__sites is-hidden-tablet-and-below">
+                <div class="header-sites">
+  <div class="grid-container">
+    <nav class="header-sites__container">
+          <a href="https://themeforest.net/?osr=tn" class="header-sites__site--themeforest" title="Website Templates">ThemeForest</a>
+          <a href="https://codecanyon.net/?osr=tn" class="header-sites__site--codecanyon is-active" title="Code, Plugins and Mobile">CodeCanyon</a>
+          <a href="https://videohive.net/?osr=tn" class="header-sites__site--videohive" title="Motion Graphics">VideoHive</a>
+          <a href="https://audiojungle.net/?osr=tn" class="header-sites__site--audiojungle" title="Stock Music and Audio">AudioJungle</a>
+          <a href="https://graphicriver.net/?osr=tn" class="header-sites__site--graphicriver" title="Graphics, Vectors and Print">GraphicRiver</a>
+          <a href="https://photodune.net/?osr=tn" class="header-sites__site--photodune" title="Stock Photography">PhotoDune</a>
+          <a href="https://3docean.net/?osr=tn" class="header-sites__site--3docean" title="3D Models and Materials">3DOcean</a>
+    </nav>
+  </div>
+</div>
+
+              </div>
+
+                  <div class="site-header__categories is-hidden-tablet-and-below">
+                    
+<div class="header-categories">
+  <div class="grid-container">
+    
+<ul class="header-categories__links">
+  <li class="header-categories__links-item">
+    <a href="https://codecanyon.net/category/all" class="header-categories__main-link" data-dropdown-target=".js-categories-all-files-dropdown" data-view="touchOnlyDropdown">All Items</a>
+
+    <div class="header-categories__links-dropdown js-categories-all-files-dropdown">
+      <ul class="hub-header-dropdown">
+          <li>
+            <a href="https://codecanyon.net/page/top_sellers">Popular Files</a>
+          </li>
+          <li>
+            <a href="https://codecanyon.net/feature">Featured Files</a>
+          </li>
+          <li>
+            <a href="https://codecanyon.net/search?date=this-month&amp;length_max=&amp;length_min=&amp;price_max=&amp;price_min=&amp;rating_min=&amp;sales=&amp;sort=sales&amp;term=&amp;utf8=%E2%9C%93&amp;view=list">Top New Files</a>
+          </li>
+          <li>
+            <a href="https://codecanyon.net/follow_feed">Follow Feed</a>
+          </li>
+          <li>
+            <a href="https://codecanyon.net/authors/top">Top Authors</a>
+          </li>
+          <li>
+            <a href="https://codecanyon.net/page/top_new_sellers">Top New Authors</a>
+          </li>
+          <li>
+            <a href="https://codecanyon.net/category">View All Categories</a>
+          </li>
+      </ul>
+    </div>
+  </li>
+
+    <li class="header-categories__links-item">
+      
+  <a href="https://codecanyon.net/category/php-scripts" class="header-categories__main-link" data-dropdown-target=".js-categories-0-dropdown" data-view="touchOnlyDropdown">
+    PHP Scripts
+</a>  <div class="header-categories__links-dropdown js-categories-0-dropdown">
+    <ul class="hub-header-dropdown">
+        <li>
+          <a href="https://codecanyon.net/popular_item/by_category?category=php-scripts" class="hub-header-dropdown__top">Popular Items</a>
+        </li>
+
+        <li class="hub-header-dropdown__all-items">
+          <a href="https://codecanyon.net/category/php-scripts">All Items</a>
+        </li>
+
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/add-ons">Add-ons</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/calendars">Calendars</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/countdowns">Countdowns</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/database-abstractions">Database Abstractions</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/forms">Forms</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/help-and-support-tools">Help and Support Tools</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/images-and-media">Images and Media</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/loaders-and-uploaders">Loaders and Uploaders</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/navigation">Navigation</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/news-tickers">News Tickers</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/polls">Polls</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/project-management-tools">Project Management Tools</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/ratings-and-charts">Ratings and Charts</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/search">Search</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/shopping-carts">Shopping Carts</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/social-networking">Social Networking</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/php-scripts/miscellaneous">Miscellaneous</a>
+        </li>
+
+    </ul>
+  </div>
+
+    </li>
+    <li class="header-categories__links-item">
+      
+  <a href="https://codecanyon.net/category/wordpress" class="header-categories__main-link" data-dropdown-target=".js-categories-1-dropdown" data-view="touchOnlyDropdown">
+    WordPress
+</a>  <div class="header-categories__links-dropdown js-categories-1-dropdown">
+    <ul class="hub-header-dropdown">
+        <li>
+          <a href="https://codecanyon.net/popular_item/by_category?category=wordpress" class="hub-header-dropdown__top">Popular Items</a>
+        </li>
+
+        <li class="hub-header-dropdown__all-items">
+          <a href="https://codecanyon.net/category/wordpress">All Items</a>
+        </li>
+
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/add-ons">Add-ons</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/advertising">Advertising</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/auctions">Auctions</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/calendars">Calendars</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/ecommerce">eCommerce</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/forms">Forms</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/forums">Forums</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/galleries">Galleries</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/interface-elements">Interface Elements</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/attributes/compatible-with/layers%20wp">Layers WP</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/media">Media</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/membership">Membership</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/newsletters">Newsletters</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/seo">SEO</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/social-networking">Social Networking</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/utilities">Utilities</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/widgets">Widgets</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/miscellaneous">Miscellaneous</a>
+        </li>
+
+        <li>
+          <a href="https://themeforest.net/category/wordpress" class="hub-header-dropdown__bottom">WordPress Themes <small class="is-visually-hidden">on ThemeForest</small></a>
+        </li>
+    </ul>
+  </div>
+
+    </li>
+    <li class="header-categories__links-item">
+      
+  <a href="https://codecanyon.net/tags/ecommerce" class="header-categories__main-link" data-dropdown-target=".js-categories-2-dropdown" data-view="touchOnlyDropdown">
+    eCommerce
+</a>  <div class="header-categories__links-dropdown js-categories-2-dropdown">
+    <ul class="hub-header-dropdown">
+
+        <li class="hub-header-dropdown__all-items">
+          <a href="https://codecanyon.net/tags/ecommerce">All Items</a>
+        </li>
+
+        <li>
+          <a href="https://codecanyon.net/search?compatible_with=Easy+Digital+Downloads">Easy Digital Downloads</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/ecommerce/jigoshop">Jigoshop</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/magento-extensions">Magento Extensions</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/opencart">OpenCart</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/oscommerce">osCommerce</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/prestashop">Prestashop</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/ubercart">UberCart</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/virtuemart">VirtueMart</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/ecommerce/woocommerce">WooCommerce</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/ecommerce/wp-e-commerce">WP e-Commerce</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/ecommerce/standalone">WP Standalone</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/zen-cart">Zen Cart</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/wordpress/ecommerce/miscellaneous">Miscellaneous</a>
+        </li>
+
+    </ul>
+  </div>
+
+    </li>
+    <li class="header-categories__links-item">
+      
+  <a href="https://codecanyon.net/category/javascript" class="header-categories__main-link" data-dropdown-target=".js-categories-3-dropdown" data-view="touchOnlyDropdown">
+    JavaScript
+</a>  <div class="header-categories__links-dropdown js-categories-3-dropdown">
+    <ul class="hub-header-dropdown">
+        <li>
+          <a href="https://codecanyon.net/popular_item/by_category?category=javascript" class="hub-header-dropdown__top">Popular Items</a>
+        </li>
+
+        <li class="hub-header-dropdown__all-items">
+          <a href="https://codecanyon.net/category/javascript">All Items</a>
+        </li>
+
+        <li>
+          <a href="https://codecanyon.net/category/javascript/animated-svgs">Animated SVGs</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/calendars">Calendars</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/countdowns">Countdowns</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/database-abstractions">Database Abstractions</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/forms">Forms</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/images-and-media">Images and Media</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/loaders-and-uploaders">Loaders and Uploaders</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/media">Media</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/navigation">Navigation</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/news-tickers">News Tickers</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/project-management-tools">Project Management Tools</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/ratings-and-charts">Ratings and Charts</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/shopping-carts">Shopping Carts</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/sliders">Sliders</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/social-networks">Social Networks</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/javascript/miscellaneous">Miscellaneous</a>
+        </li>
+
+    </ul>
+  </div>
+
+    </li>
+    <li class="header-categories__links-item">
+      
+  <a href="https://codecanyon.net/category/css" class="header-categories__main-link" data-dropdown-target=".js-categories-4-dropdown" data-view="touchOnlyDropdown">
+    CSS
+</a>  <div class="header-categories__links-dropdown js-categories-4-dropdown">
+    <ul class="hub-header-dropdown">
+        <li>
+          <a href="https://codecanyon.net/popular_item/by_category?category=css" class="hub-header-dropdown__top">Popular Items</a>
+        </li>
+
+        <li class="hub-header-dropdown__all-items">
+          <a href="https://codecanyon.net/category/css">All Items</a>
+        </li>
+
+        <li>
+          <a href="https://codecanyon.net/category/css/animations-and-effects">Animations and Effects</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/css/buttons">Buttons</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/css/charts-and-graphs">Charts and Graphs</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/css/forms">Forms</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/css/layouts">Layouts</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/css/navigation-and-menus">Navigation and Menus</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/css/pricing-tables">Pricing Tables</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/css/tabs-and-sliders">Tabs and Sliders</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/css/miscellaneous">Miscellaneous</a>
+        </li>
+
+    </ul>
+  </div>
+
+    </li>
+    <li class="header-categories__links-item">
+      
+  <a href="https://codecanyon.net/category/mobile" class="header-categories__main-link" data-dropdown-target=".js-categories-5-dropdown" data-view="touchOnlyDropdown">
+    Mobile
+</a>  <div class="header-categories__links-dropdown js-categories-5-dropdown">
+    <ul class="hub-header-dropdown">
+        <li>
+          <a href="https://codecanyon.net/popular_item/by_category?category=mobile" class="hub-header-dropdown__top">Popular Items</a>
+        </li>
+
+        <li class="hub-header-dropdown__all-items">
+          <a href="https://codecanyon.net/category/mobile">All Items</a>
+        </li>
+
+        <li>
+          <a href="https://codecanyon.net/category/mobile/android">Android</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/mobile/ios">iOS</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/mobile/native-web">Native Web</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/mobile/titanium">Titanium</a>
+        </li>
+
+    </ul>
+  </div>
+
+    </li>
+    <li class="header-categories__links-item">
+      
+  <a href="https://codecanyon.net/category/html5" class="header-categories__main-link" data-dropdown-target=".js-categories-6-dropdown" data-view="touchOnlyDropdown">
+    HTML5
+</a>  <div class="header-categories__links-dropdown js-categories-6-dropdown">
+    <ul class="hub-header-dropdown">
+        <li>
+          <a href="https://codecanyon.net/popular_item/by_category?category=html5" class="hub-header-dropdown__top">Popular Items</a>
+        </li>
+
+        <li class="hub-header-dropdown__all-items">
+          <a href="https://codecanyon.net/category/html5">All Items</a>
+        </li>
+
+        <li>
+          <a href="https://codecanyon.net/category/html5/3d">3D</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/html5/ad-templates">Ad Templates</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/html5/canvas">Canvas</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/html5/charts-and-graphs">Charts and Graphs</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/html5/forms">Forms</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/html5/games">Games</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/html5/libraries">Libraries</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/html5/media">Media</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/html5/presentations">Presentations</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/html5/sliders">Sliders</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/html5/storage">Storage</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/html5/templates">Templates</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/html5/miscellaneous">Miscellaneous</a>
+        </li>
+
+    </ul>
+  </div>
+
+    </li>
+    <li class="header-categories__links-item">
+      
+  <a href="https://codecanyon.net/category/skins" class="header-categories__main-link" data-dropdown-target=".js-categories-7-dropdown" data-view="touchOnlyDropdown">
+    Skins
+</a>  <div class="header-categories__links-dropdown js-categories-7-dropdown">
+    <ul class="hub-header-dropdown">
+        <li>
+          <a href="https://codecanyon.net/popular_item/by_category?category=skins" class="hub-header-dropdown__top">Popular Items</a>
+        </li>
+
+        <li class="hub-header-dropdown__all-items">
+          <a href="https://codecanyon.net/category/skins">All Items</a>
+        </li>
+
+        <li>
+          <a href="https://codecanyon.net/category/skins/bootstrap">Bootstrap</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/skins/layers-wp-style-kits">Layers WP Style Kits</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/skins/miscellaneous">Miscellaneous</a>
+        </li>
+
+    </ul>
+  </div>
+
+    </li>
+    <li class="header-categories__links-item">
+      
+  <a href="https://themeforest.net/category/wordpress" class="header-categories__main-link--empty">
+    WP Themes
+</a>
+    </li>
+    <li class="header-categories__links-item">
+      
+  <a href="https://codecanyon.net/category/plugins" class="header-categories__main-link" data-dropdown-target=".js-categories-9-dropdown" data-view="touchOnlyDropdown">
+    Plugins
+</a>  <div class="header-categories__links-dropdown js-categories-9-dropdown">
+    <ul class="hub-header-dropdown">
+        <li>
+          <a href="https://codecanyon.net/popular_item/by_category?category=plugins" class="hub-header-dropdown__top">Popular Items</a>
+        </li>
+
+        <li class="hub-header-dropdown__all-items">
+          <a href="https://codecanyon.net/category/plugins">All Items</a>
+        </li>
+
+        <li>
+          <a href="https://codecanyon.net/category/plugins/concrete5">Concrete5</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/drupal">Drupal</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/expressionengine">ExpressionEngine</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/joomla">Joomla</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/magento-extensions">Magento Extensions</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/muse-widgets">Muse Widgets</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/opencart">OpenCart</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/oscommerce">osCommerce</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/prestashop">Prestashop</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/ubercart">Ubercart</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/virtuemart">VirtueMart</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/zen-cart">Zen Cart</a>
+        </li>
+        <li>
+          <a href="https://codecanyon.net/category/plugins/miscellaneous">Miscellaneous</a>
+        </li>
+
+    </ul>
+  </div>
+
+    </li>
+
+    <li class="header-categories__links-item">
+      <a href="https://codecanyon.net/category" class="header-categories__main-link" data-dropdown-target=".js-categories-more-links-dropdown" data-view="touchOnlyDropdown">More</a>
+
+      <div class="header-categories__links-dropdown js-categories-more-links-dropdown">
+        <ul class="hub-header-dropdown">
+            <li><a href="https://codecanyon.net/category/net">.NET</a></li>
+            <li><a href="https://codecanyon.net/category/apps">Apps</a></li>
+            <li><a href="https://codecanyon.net/category/edge-animate-templates">Edge Animate Templates</a></li>
+            <li><a href="https://codecanyon.net/search?term=facebook&amp;type=files">Facebook</a></li>
+        </ul>
+      </div>
+    </li>
+
+</ul>
+
+
+      
+<div class="header-categories__search">
+  <form accept-charset="UTF-8" action="/search" data-view="searchField" id="search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+    <div class="search-field -border-light">
+      <div class="search-field__input">
+        <input class="js-term search-field__input-field" id="term" name="term" placeholder="Search" type="search">
+      </div>
+      <button class="search-field__button" type="submit">
+        <i class="e-icon -icon-search"><span class="e-icon__alt">Search</span></i>
+      </button>
+    </div>
+</form></div>
+
+  </div>
+</div>
+
+                  </div>
+            </header>
+          </div>
+
+          <div class="js-canvas__body canvas__body">
+              <div class="grid-container">
+</div>
+
+
+                  <div class="context-header ">
+  <div class="grid-container">
+
+    <nav class="breadcrumbs h-text-truncate ">
+  <a href="https://codecanyon.net/">Home</a>
+
+
+    <a href="https://codecanyon.net/category/all">Files</a>
+    
+<a href="https://codecanyon.net/category/javascript">JavaScript</a>
+
+<a href="https://codecanyon.net/category/javascript/images-and-media" itemprop="genre">Images and Media</a>
+
+</nav>
+
+
+      <div class="item-header" data-view="itemHeader">
+        <div class="item-header__title">
+          <h1 class="t-heading -color-inherit -size-l h-m0 is-hidden-phone" itemprop="name">
+            Responsive FlipBook jQuery
+          </h1>
+
+          <h1 class="t-heading -color-inherit -size-xs h-m0 is-hidden-tablet-and-above">
+            Responsive FlipBook jQuery
+          </h1>
+
+        </div>
+          <div class="item-header__price">
+            <a href="https://codecanyon.net/cart/configure_before_adding/1724917?license=regular&amp;size=source&amp;support=bundle_6month" class="js-item-header__cart-button e-btn--3d -color-primary -size-m" data-view="modalAjax" rel="nofollow" title="Add to Cart">
+              <span class="item-header__cart-button-icon">
+                <i class="e-icon -icon-cart -margin-right"></i>
+              </span>
+              <span class="t-heading -size-m -color-light -margin-none">
+                <b class="t-currency"><span class="js-item-header__price">$22</span></b>
+              </span>
+</a>          </div>
+      </div>
+
+    
+  <!-- Desktop Item Navigation -->
+  <div class="is-hidden-tablet-and-below page-tabs">
+      <ul>
+          <li class="selected"><a href="https://codecanyon.net/item/responsive-flipbook-jquery/1724917" class="t-link -decoration-none">Item Details</a></li>
+          <li><a href="https://codecanyon.net/item/responsive-flipbook-jquery/reviews/1724917" class="t-link -decoration-none">Reviews</a></li>
+          <li><a href="https://codecanyon.net/item/responsive-flipbook-jquery/1724917/comments" class="t-link -decoration-none">Comments</a></li>
+          <li><a href="https://codecanyon.net/item/responsive-flipbook-jquery/1724917/support" class="t-link -decoration-none">Support</a></li>
+      </ul>
+
+  </div>
+
+
+  <!-- Table or below Item Navigation -->
+    <div class="page-tabs--dropdown" data-view="replaceItemNavsWithRemote" data-target=".js-remote">
+      <div class="page-tabs--dropdown__slt-custom-wlabel">
+        <div class="slt-custom-wlabel--page-tabs--dropdown">
+          <label>
+            <span class="js-label">
+              Item Details
+            </span>
+            <span class="slt-custom-wlabel__arrow">
+              <i class="e-icon -icon-arrow-fill-down"></i>
+            </span>
+          </label>
+
+          <select class="js-remote">
+              <option data-url="/item/responsive-flipbook-jquery/1724917" selected="selected">Item Details</option>
+              <option data-url="/item/responsive-flipbook-jquery/reviews/1724917">Reviews</option>
+              <option data-url="/item/responsive-flipbook-jquery/1724917/comments">Comments</option>
+              <option data-url="/item/responsive-flipbook-jquery/1724917/support">Support</option>
+
+
+          </select>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+            
+
+            <div class="content-main" id="content">
+              
+              <div class="grid-container">
+                
+
+
+
+<link itemprop="thumbnailUrl" href="https://0.s3.envato.com/files/19876570/thumbnail.png">
+
+
+
+
+
+<div class="content-s">
+  <div class="box--no-padding">
+      <div class="item-preview -preview-live">
+        
+             
+
+    <a href="http://preview.codecanyon.net/item/responsive-flipbook-jquery/full_screen_preview/1724917" target="_blank"><img alt="Responsive FlipBook jQuery - CodeCanyon Item for Sale" itemprop="image" src="website-style_files/preview.png"></a>
+  <div class="js- item-preview-image__gallery" data-title="Responsive FlipBook jQuery - CodeCanyon Item for Sale Screenshots Gallery" data-url="responsive-flipbook-jquery/screenshots/modal/1724917">
+      <a href="https://0.s3.envato.com/files/19876588/screenshots/01_Table_of_content.jpg" class="is-hidden">screenshots/01_Table_of_content.jpg</a>      <a href="https://0.s3.envato.com/files/19876588/screenshots/02_Ios.jpg" class="is-hidden">screenshots/02_Ios.jpg</a>      <a href="https://0.s3.envato.com/files/19876588/screenshots/03_Brochure.jpg" class="is-hidden">screenshots/03_Brochure.jpg</a>      <a href="https://0.s3.envato.com/files/19876588/screenshots/04_Brochure_stacked.jpg" class="is-hidden">screenshots/04_Brochure_stacked.jpg</a>      <a href="https://0.s3.envato.com/files/19876588/screenshots/05_Brochure_move.jpg" class="is-hidden">screenshots/05_Brochure_move.jpg</a>      <a href="https://0.s3.envato.com/files/19876588/screenshots/06_Video_page.jpg" class="is-hidden">screenshots/06_Video_page.jpg</a>      <a href="https://0.s3.envato.com/files/19876588/screenshots/07_Page_turn.jpg" class="is-hidden">screenshots/07_Page_turn.jpg</a>  </div>
+
+<div class="item-preview__actions">
+          <div id="fullscreen" class="item-preview__preview-buttons">
+            <a href="http://preview.codecanyon.net/item/responsive-flipbook-jquery/full_screen_preview/1724917" role="button" class="btn-icon live-preview" target="_blank" rel="nofollow">Live Preview</a><a data-view="screenshotGallery" href="https://codecanyon.net/item/responsive-flipbook-jquery/screenshots/1724917" role="button" class="btn-icon screenshots" target="_blank">Screenshots</a>
+        </div>
+    <div class="item-preview__preview-buttons--social" data-view="socialButtons">
+    <div class="btn-group">
+      <div class="btn btn--label btn--group-item">Share</div>
+      <a class="btn btn--group-item" data-social-network-link="" href="https://www.facebook.com/sharer/sharer.php?display=popup&amp;u=https%3A%2F%2Fcodecanyon.net%2Fitem%2Fresponsive-flipbook-jquery%2F1724917%3Futm_source%3Dsharefb"><i class="e-icon -icon-facebook -size-medium -line-height-small"><span class="e-icon__alt">Facebook</span></i></a>
+      <a class="btn btn--group-item" data-social-network-link="" href="https://plus.google.com/share?url=https%3A%2F%2Fcodecanyon.net%2Fitem%2Fresponsive-flipbook-jquery%2F1724917%3Futm_source%3Dsharegp"><i class="e-icon -icon-google-plus -size-medium -line-height-small"><span class="e-icon__alt">Google Plus</span></i></a>
+      <a class="btn btn--group-item" data-social-network-link="" href="https://twitter.com/intent/tweet?text=Check+out+%27Responsive+FlipBook+jQuery%27+on+%23EnvatoMarket+by+%40mpcreation+%23codecanyon&amp;url=https%3A%2F%2Fcodecanyon.net%2Fitem%2Fresponsive-flipbook-jquery%2F1724917%3Futm_source%3Dsharetw"><i class="e-icon -icon-twitter -size-medium -line-height-small"><span class="e-icon__alt">Twitter</span></i></a>
+        <a class="btn btn--group-item" data-social-network-link="" href="http://pinterest.com/pin/create/button?description=Responsive+FlipBook+jQuery&amp;media=http%3A%2F%2F0.s3.envato.com%2Ffiles%2F19876572%2Fpreview.png&amp;url=https%3A%2F%2Fcodecanyon.net%2Fitem%2Fresponsive-flipbook-jquery%2F1724917%3Futm_source%3Dsharepi"><i class="e-icon -icon-pinterest -size-medium -line-height-small"><span class="e-icon__alt">Pinterest</span></i></a>
+    </div>
+  </div>
+
+</div>
+
+
+    </div>
+  </div>
+
+  <ul class="item-bookmarking" data-view="bookmarkStatesLoader">
+  <li class="item-bookmarking__control--favorite">
+      <span>
+    <a href="https://codecanyon.net/sign_in?action_name=favorite&amp;resource_id=1724917" data-view="modalAjax" rel="nofollow" title="Add to Favorites"><span>Add to Favorites</span></a>
+  </span>
+
+  </li>
+  <li class="item-bookmarking__control--collection">
+      <span>
+    <a href="https://codecanyon.net/sign_in?action_name=collect&amp;resource_id=1724917" data-view="modalAjax" rel="nofollow" title="Add to Collection"><span>Add to Collection</span></a>
+  </span>
+
+  </li>
+</ul>
+
+
+      <div data-view="toggleItemDescription">
+        <div class="js-item-description item-description has-toggle" itemprop="description">
+          <div class="user-html"><p>It is fully HTML &amp; jQuery 
+driven, no Flash Player needed. Works on desktop and mobile devices. 
+Comes with zoom, table of content, responsive, double page and much 
+more.</p>
+
+
+	<p><a href="http://codecanyon.net/item/responsive-flip-book-wordpress-plugin/2372863"><img src="website-style_files/687474703a2f2f6d706372656174696f6e2e6e65742f7468656d65732f70.jpg"></a></p>
+
+
+	<p><a href="http://www.facebook.com/massivePixelCreation" rel="nofollow"><img src="website-style_files/687474703a2f2f7777772e6d706372656174696f6e2e6e65742f666f_005.png"></a><a href="http://twitter.com/mpcreation" rel="nofollow"><img src="website-style_files/687474703a2f2f7777772e6d706372656174696f6e2e6e65742f666f_002.png"></a><a href="http://www.themeforest.net/user/mpc/follow"><img src="website-style_files/687474703a2f2f7777772e6d706372656174696f6e2e6e65742f666f6c6c.png"></a><a href="http://mpc.ticksy.com/" rel="nofollow"><img src="website-style_files/687474703a2f2f7777772e6d706372656174696f6e2e6e65742f666f_003.png"></a><a href="http://pixeels.net/" rel="nofollow"><img src="website-style_files/687474703a2f2f7777772e6d706372656174696f6e2e6e65742f666f_004.png"></a></p>
+
+
+<h2 id="item-description__testimonials">Testimonials</h2>
+<blockquote>
+Hi,thank you for this great product!
+<br><strong>- pageit</strong>
+</blockquote>
+<blockquote>
+Hi! Thank you very much for this great plugin. I’m using it already in 
+one of my projects – restaurants website for menu book. It works great! <a href="http://jzlrestaurant.kz/wp-content/themes/jzl/js/flipbook/preview/" rel="nofollow">http://jzlrestaurant.kz/wp-content/themes/jzl/js/flipbook/preview/</a>
+<br><strong>- ivanov</strong>
+</blockquote>
+
+	<p>From the creators of the <a href="http://activeden.net/item/xml-flip-book-as3/63869">best selling Flip Book ever</a>, we present <strong>Responsive Flip Book</strong>. It is fully HTML &amp; jQuery driven <strong>no Flash Player needed</strong>.
+ Works on desktop and mobile devices! You get the same experience on 
+every platform because responsive design makes it look good on all 
+resolutions.</p>
+
+
+<h2 id="item-description__change-log">Change Log</h2>
+<pre>04/11/2013 - Version 1.2.4.1
+- Chrome flip issue fix
+
+06/03/2013 - Version 1.2.4
+- zip fix
+
+05/03/2013 - Version 1.2.3
+- thumbs fixes.
+
+04/03/2013 - Version 1.2.2
+- IE Bug fixes,
+- Bug fixes.
+
+10/01/2013 - Version 1.2.1
+- last page bug fix,
+- shadow behavior fixed,
+- arrows behavior fixed,
+- mobile appearance improved,
+- book position fix.
+
+* files changed:
+- flipbook.js
+
+21/11/2012 - Version 1.1.1
+- IE bug fix
+
+* Files changed
+- style.css
+- flipbook.js
+
+13/11/2012 - Version 1.1
+- improved zoom,
+- slide show bug fix,
+- shadow bug fix,
+- minor bug fixes.
+
+* Files changed
+- style.css
+- flipbook.js
+
+01/03/2012 - Version 1.0
+- release
+</pre>
+
+<h2 id="item-description__why-buy-from-us">Why buy from us?</h2>
+<ul>
+<li>we <strong>update</strong> our items on daily bases,</li>
+<li>we have <strong>over 11000 happy customers,</strong>
+</li>
+<li>our previous flip book <strong>is second top selling items on ActiveDen</strong> ever,</li>
+<li>we give as much <strong>support</strong> as we can,</li>
+<li>we are <b>available for freelance work</b>,</li>
+</ul>
+
+<h2 id="item-description__features">Features:</h2>
+
+<ul>
+<li> HTML and jQuery driven,</li>
+<li> responsive design,</li>
+<li> easy setup through php settings file </li>
+<li> double pages,</li>
+<li> easy page styling with HTML &amp; CSS,</li>
+<li> works the same on desktop &amp; mobile devices,</li>
+<li> Flip Book Templates included with 8 color versions!</li>
+<li> video support,</li>
+<li> table of content,</li>
+<li> slide show,</li>
+<li> show all pages,</li>
+<li> single page zoom,</li>
+<li> unique URL for each page,</li>
+<li> no Flash Player needed,</li>
+<li> clean and simple design,</li>
+<li> resizable book – downscales to fit the device resolution,</li>
+<li> perfect tool for presenting content,</li>
+<li> unique URL for each page,</li>
+<li> keyboard support (use arrows to turn pages), </li>
+<li> 30+ background patterns, </li>
+<li> well documented, </li>
+<li> psd included (except the main book pages, they contain GraphicRiver assets which cannot be shared).</li>
+</ul>
+
+<h2 id="item-description__additions-used">Additions used</h2>
+<ul>
+    <li><a href="https://github.com/blasten/turn.js" rel="nofollow">Turn.js</a></li>        
+<li><a href="http://archive.plugins.jquery.com/project/color" rel="nofollow">jQuery Color</a></li>
+            <li><a href="https://github.com/technoweenie/jquery.doubletap" rel="nofollow">jQuery DoubleTap</a></li>
+
+        </ul>
+
+<h2 id="item-description__need-support">Need Support?</h2>
+
+	<p>Thank you for purchasing one of our products, We really appreciate it! To get the best support possible please <a href="http://mpc.ticksy.com/" rel="nofollow">visit our support system</a>. Emails, tweets and comments containing support question may be ignored, please use the support system.</p></div>
+        </div>
+        <div class="js-item-description-toggle item-description-toggle">
+          <a href="#" class="item-description-toggle__link">
+            <span>Show More <i class="e-icon -icon-chevron-down"></i></span>
+            <span class="item-description-toggle__less">Show Less <i class="e-icon -icon-chevron-down -rotate-180"></i></span>
+</a>        </div>
+      </div>
+
+    <section data-view="recommendedItems" data-url="/item/responsive-flipbook-jquery/1724917/recommended_items" id="recommended_items">    <div class="author-recommended-collection" data-view="productList">
+      <div class="author-recommended-collection__heading h-pb1">
+        <h1 class="t-heading -size-xs -weight-normal">
+          Here are some items I recommend
+        </h1>
+      </div>
+      <ul class="author-recommended-collection__list">
+        <li class="js-google-analytics__list-event-container author-recommended-item wordpress-source" data-item-id="14429839">
+
+  <div class="item-list__element-corner">
+  <div class="element-corner--triangle -position-left -color-trending -has-pointer-events" title="Ítem en tendencia">
+    <div><i class="e-icon -icon-bolt"></i><span class="is-visually-hidden">Tendencias</span></div>
+  </div>
+</div>
+
+
+
+  <div class="author-recommended-item__thumbnail">
+    <div class="item-thumbnail">
+      <div class="item-grid__element-corner">
+  <div class="element-corner--triangle -position-left -color-trending">
+    <div>
+      <i class="e-icon -icon-bolt"></i>
+      <span class="e-icon__alt">Tendencias</span>
+    </div>
+  </div>
+</div>
+
+
+      
+<div class="item-thumbnail__image">
+    <a href="https://codecanyon.net/item/massive-addons-for-visual-composer/14429839" class="js-google-analytics__list-event-trigger"><img alt="Massive Addons for Visual Composer - CodeCanyon Item for Sale" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:14429839,&quot;name&quot;:&quot;Massive Addons for Visual Composer&quot;,&quot;brand&quot;:&quot;mpc&quot;,&quot;category&quot;:&quot;codecanyon.net/category/wordpress/add-ons&quot;,&quot;position&quot;:1,&quot;list&quot;:&quot;Author Recommended Collection&quot;,&quot;timestamp&quot;:&quot;2016-07-27T18:17:53+10:00&quot;}" data-item-author="mpc" data-item-category="WordPress / Add-ons" data-item-cost="25" data-item-id="14429839" data-item-name="Massive Addons for Visual Composer" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/194967569/screenshot.jpg" data-preview-width="" src="website-style_files/thumbnail_006.png" title="Massive Addons for Visual Composer" border="0" height="80" width="80"></a>
+
+  
+</div>
+
+    </div>
+  </div>
+
+  <div class="author-recommended-item__info">
+    <h3 class="t-heading -size-xs h-m0">
+      <a href="https://codecanyon.net/item/massive-addons-for-visual-composer/14429839" class="js-google-analytics__list-event-trigger author-recommended-item__heading">Massive Addons for Visual Composer</a>
+    </h3>
+    <span class="t-body -size-m">
+      by <a href="https://codecanyon.net/user/mpc" class="author">mpc</a>
+      on CodeCanyon
+    </span>
+
+    <div class="item-thumbnail-actions">
+      <ul>
+        <li class="item-thumbnail-actions__control -icon-cart">
+          <a href="https://codecanyon.net/cart/configure_before_adding/14429839" class="js-google-analytics__list-add-to-cart e-btn--3d -color-primary" data-bind="item-cart-status:14429839" data-view="modalAjax" rel="nofollow" title="Add to Cart"><span>Add to Cart</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="author-recommended-item__sale-info">
+    <div class="price">
+      <h3 class="t-heading -size-xs h-m0">$25</h3>
+    </div>
+
+    <div class="rating">
+      <div class="rating-basic h-text-align-center">
+    <div class="rating-basic__stars">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+        <img alt="Star-half" class="rating-basic__star" src="website-style_files/star-half-9f8b96449cfde41580c89a1c85359741.png">
+    </div>
+
+</div>
+    </div>
+  </div>
+</li>
+<li class="js-google-analytics__list-event-container author-recommended-item wordpress-source" data-item-id="2372863">
+
+  <div class="item-list__element-corner">
+  <div class="element-corner--triangle -position-left -color-trending -has-pointer-events" title="Ítem en tendencia">
+    <div><i class="e-icon -icon-bolt"></i><span class="is-visually-hidden">Tendencias</span></div>
+  </div>
+</div>
+
+
+
+  <div class="author-recommended-item__thumbnail">
+    <div class="item-thumbnail">
+      <div class="item-grid__element-corner">
+  <div class="element-corner--triangle -position-left -color-trending">
+    <div>
+      <i class="e-icon -icon-bolt"></i>
+      <span class="e-icon__alt">Tendencias</span>
+    </div>
+  </div>
+</div>
+
+
+      
+<div class="item-thumbnail__image">
+    <a href="https://codecanyon.net/item/responsive-flipbook-plugin/2372863" class="js-google-analytics__list-event-trigger"><img alt="Responsive FlipBook Plugin - CodeCanyon Item for Sale" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:2372863,&quot;name&quot;:&quot;Responsive FlipBook Plugin&quot;,&quot;brand&quot;:&quot;mpc&quot;,&quot;category&quot;:&quot;codecanyon.net/category/wordpress/interface-elements/sliders&quot;,&quot;position&quot;:2,&quot;list&quot;:&quot;Author Recommended Collection&quot;,&quot;timestamp&quot;:&quot;2016-07-27T18:17:53+10:00&quot;}" data-item-author="mpc" data-item-category="WordPress / Interface Elements / Sliders" data-item-cost="34" data-item-id="2372863" data-item-name="Responsive FlipBook Plugin" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/176089850/00_screenshot.jpg" data-preview-width="" src="website-style_files/thumbnail.png" title="Responsive FlipBook Plugin" border="0" height="80" width="80"></a>
+
+  
+</div>
+
+    </div>
+  </div>
+
+  <div class="author-recommended-item__info">
+    <h3 class="t-heading -size-xs h-m0">
+      <a href="https://codecanyon.net/item/responsive-flipbook-plugin/2372863" class="js-google-analytics__list-event-trigger author-recommended-item__heading">Responsive FlipBook Plugin</a>
+    </h3>
+    <span class="t-body -size-m">
+      by <a href="https://codecanyon.net/user/mpc" class="author">mpc</a>
+      on CodeCanyon
+    </span>
+
+    <div class="item-thumbnail-actions">
+      <ul>
+        <li class="item-thumbnail-actions__control -icon-cart">
+          <a href="https://codecanyon.net/cart/configure_before_adding/2372863" class="js-google-analytics__list-add-to-cart e-btn--3d -color-primary" data-bind="item-cart-status:2372863" data-view="modalAjax" rel="nofollow" title="Add to Cart"><span>Add to Cart</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="author-recommended-item__sale-info">
+    <div class="price">
+      <h3 class="t-heading -size-xs h-m0">$34</h3>
+    </div>
+
+    <div class="rating">
+      <div class="rating-basic h-text-align-center">
+    <div class="rating-basic__stars">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+        <img alt="Star-empty" class="rating-basic__star" src="website-style_files/star-empty-df75d137e471fa935adc4de8906072f6.png">
+    </div>
+
+</div>
+    </div>
+  </div>
+</li>
+<li class="js-google-analytics__list-event-container author-recommended-item wordpress-template" data-item-id="7163563">
+
+  
+
+
+  <div class="author-recommended-item__thumbnail">
+    <div class="item-thumbnail">
+      
+
+      
+<div class="item-thumbnail__image">
+    <a href="https://codecanyon.net/item/blaszok-ecommerce-theme/7163563" class="js-google-analytics__list-event-trigger"><img alt="Blaszok eCommerce Theme - ThemeForest Item for Sale" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:7163563,&quot;name&quot;:&quot;Blaszok eCommerce Theme&quot;,&quot;brand&quot;:&quot;mpc&quot;,&quot;category&quot;:&quot;themeforest.net/category/wordpress/ecommerce/woocommerce&quot;,&quot;position&quot;:3,&quot;list&quot;:&quot;Author Recommended Collection&quot;,&quot;timestamp&quot;:&quot;2016-07-27T18:17:53+10:00&quot;}" data-item-author="mpc" data-item-category="WordPress / eCommerce / WooCommerce" data-item-cost="59" data-item-id="7163563" data-item-name="Blaszok eCommerce Theme" data-preview-height="" data-preview-url="https://preview-tf.s3.envato.com/files/182027426/00_screenshot.__large_preview.jpg" data-preview-width="" src="website-style_files/thumbnail_002.png" title="Blaszok eCommerce Theme" border="0" height="80" width="80"></a>
+
+  
+</div>
+
+    </div>
+  </div>
+
+  <div class="author-recommended-item__info">
+    <h3 class="t-heading -size-xs h-m0">
+      <a href="https://codecanyon.net/item/blaszok-ecommerce-theme/7163563" class="js-google-analytics__list-event-trigger author-recommended-item__heading">Blaszok eCommerce Theme</a>
+    </h3>
+    <span class="t-body -size-m">
+      by <a href="https://codecanyon.net/user/mpc" class="author">mpc</a>
+      on ThemeForest
+    </span>
+
+    <div class="item-thumbnail-actions">
+      <ul>
+        <li class="item-thumbnail-actions__control -icon-cart">
+          <a href="https://codecanyon.net/cart/configure_before_adding/7163563" class="js-google-analytics__list-add-to-cart e-btn--3d -color-primary" data-bind="item-cart-status:7163563" data-view="modalAjax" rel="nofollow" title="Add to Cart"><span>Add to Cart</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="author-recommended-item__sale-info">
+    <div class="price">
+      <h3 class="t-heading -size-xs h-m0">$59</h3>
+    </div>
+
+    <div class="rating">
+      <div class="rating-basic h-text-align-center">
+    <div class="rating-basic__stars">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+        <img alt="Star-full" class="rating-basic__star" src="website-style_files/star-full-8522c30d5f8ae26075388a048547e0aa.png">
+    </div>
+
+</div>
+    </div>
+  </div>
+</li>
+
+      </ul>
+    </div>
+    <div>
+      <p class="t-body -size-m">
+        <a href="https://codecanyon.net/collections/shared/9faade21930b8d005b6fa385f37371bef26790a6d4657feac38d028dcdcd5c2d" class="t-link-decoration-reversed">View collection</a>
+      </p>
+    </div>
+</section>
+
+
+        <section class="related-by-author h-my2 h-pb1">
+      <h1 class="t-heading -size-xs -weight-normal">More items by mpc</h1>
+      <div class="related-by-author__list h-py1" data-view="productList">
+        <ul class="item-thumbnail-carousel--item-page overthrow">
+              <li class="item-thumbnail-container">
+                
+<div class="item-thumbnail__image">
+    <a href="https://codecanyon.net/item/massive-addons-for-visual-composer-infographics-pack/17137654" class="js-google-analytics__list-event-trigger"><img alt="Massive Addons for Visual Composer - Infographics Pack - CodeCanyon Item for Sale" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:17137654,&quot;name&quot;:&quot;Massive Addons for Visual Composer - Infographics Pack&quot;,&quot;brand&quot;:&quot;mpc&quot;,&quot;category&quot;:&quot;codecanyon.net/category/wordpress/add-ons&quot;,&quot;position&quot;:1,&quot;list&quot;:&quot;Item page: More items by this author&quot;,&quot;timestamp&quot;:&quot;2016-07-27T18:17:42+10:00&quot;}" data-item-author="mpc" data-item-category="WordPress / Add-ons" data-item-cost="14" data-item-id="17137654" data-item-name="Massive Addons for Visual Composer - Infographics Pack" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/196531489/00_screenshot.jpg" data-preview-width="" src="website-style_files/thumbnail_003.png" title="Massive Addons for Visual Composer - Infographics Pack" border="0" height="80" width="80"></a>
+
+  
+</div>
+
+              </li>
+              <li class="item-thumbnail-container">
+                
+<div class="item-thumbnail__image">
+    <a href="https://codecanyon.net/item/massive-addons-for-visual-composer-collections-pack/16978507" class="js-google-analytics__list-event-trigger"><img alt="Massive Addons for Visual Composer - Collections Pack - CodeCanyon Item for Sale" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:16978507,&quot;name&quot;:&quot;Massive Addons for Visual Composer - Collections Pack&quot;,&quot;brand&quot;:&quot;mpc&quot;,&quot;category&quot;:&quot;codecanyon.net/category/wordpress/add-ons&quot;,&quot;position&quot;:2,&quot;list&quot;:&quot;Item page: More items by this author&quot;,&quot;timestamp&quot;:&quot;2016-07-27T18:17:42+10:00&quot;}" data-item-author="mpc" data-item-category="WordPress / Add-ons" data-item-cost="14" data-item-id="16978507" data-item-name="Massive Addons for Visual Composer - Collections Pack" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/194945870/00_screenshot.jpg" data-preview-width="" src="website-style_files/thumbnail_005.png" title="Massive Addons for Visual Composer - Collections Pack" border="0" height="80" width="80"></a>
+
+  
+</div>
+
+              </li>
+              <li class="item-thumbnail-container">
+                
+<div class="item-thumbnail__image">
+    <a href="https://codecanyon.net/item/massive-addons-for-visual-composer-woocommerce-pack/16797252" class="js-google-analytics__list-event-trigger"><img alt="Massive Addons for Visual Composer - WooCommerce Pack - CodeCanyon Item for Sale" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:16797252,&quot;name&quot;:&quot;Massive Addons for Visual Composer - WooCommerce Pack&quot;,&quot;brand&quot;:&quot;mpc&quot;,&quot;category&quot;:&quot;codecanyon.net/category/wordpress/add-ons&quot;,&quot;position&quot;:3,&quot;list&quot;:&quot;Item page: More items by this author&quot;,&quot;timestamp&quot;:&quot;2016-07-27T18:17:42+10:00&quot;}" data-item-author="mpc" data-item-category="WordPress / Add-ons" data-item-cost="14" data-item-id="16797252" data-item-name="Massive Addons for Visual Composer - WooCommerce Pack" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/193057730/00_screenshot.jpg" data-preview-width="" src="website-style_files/thumbnail_004.png" title="Massive Addons for Visual Composer - WooCommerce Pack" border="0" height="80" width="80"></a>
+
+  
+</div>
+
+              </li>
+              <li class="item-thumbnail-container">
+                
+<div class="item-thumbnail__image">
+    <a href="https://codecanyon.net/item/massive-addons-for-visual-composer/14429839" class="js-google-analytics__list-event-trigger"><img alt="Massive Addons for Visual Composer - CodeCanyon Item for Sale" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:14429839,&quot;name&quot;:&quot;Massive Addons for Visual Composer&quot;,&quot;brand&quot;:&quot;mpc&quot;,&quot;category&quot;:&quot;codecanyon.net/category/wordpress/add-ons&quot;,&quot;position&quot;:4,&quot;list&quot;:&quot;Item page: More items by this author&quot;,&quot;timestamp&quot;:&quot;2016-07-27T18:17:42+10:00&quot;}" data-item-author="mpc" data-item-category="WordPress / Add-ons" data-item-cost="25" data-item-id="14429839" data-item-name="Massive Addons for Visual Composer" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/194967569/screenshot.jpg" data-preview-width="" src="website-style_files/thumbnail_006.png" title="Massive Addons for Visual Composer" border="0" height="80" width="80"></a>
+
+  
+</div>
+
+              </li>
+              <li class="item-thumbnail-container">
+                
+<div class="item-thumbnail__image">
+    <a href="https://codecanyon.net/item/print-flipbook-extension/11541234" class="js-google-analytics__list-event-trigger"><img alt="Print FlipBook Extension - CodeCanyon Item for Sale" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:11541234,&quot;name&quot;:&quot;Print FlipBook Extension&quot;,&quot;brand&quot;:&quot;mpc&quot;,&quot;category&quot;:&quot;codecanyon.net/category/wordpress/add-ons&quot;,&quot;position&quot;:5,&quot;list&quot;:&quot;Item page: More items by this author&quot;,&quot;timestamp&quot;:&quot;2016-07-27T18:17:42+10:00&quot;}" data-item-author="mpc" data-item-category="WordPress / Add-ons" data-item-cost="11" data-item-id="11541234" data-item-name="Print FlipBook Extension" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/134930165/00_screenshot.jpg" data-preview-width="" src="website-style_files/thumbnail_007.png" title="Print FlipBook Extension" border="0" height="80" width="80"></a>
+
+  
+</div>
+
+              </li>
+              <li class="item-thumbnail-container">
+                
+<div class="item-thumbnail__image">
+    <a href="https://codecanyon.net/item/pdf-to-flipbook-extension/11219800" class="js-google-analytics__list-event-trigger"><img alt="PDF To FlipBook Extension - CodeCanyon Item for Sale" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:11219800,&quot;name&quot;:&quot;PDF To FlipBook Extension&quot;,&quot;brand&quot;:&quot;mpc&quot;,&quot;category&quot;:&quot;codecanyon.net/category/wordpress/add-ons&quot;,&quot;position&quot;:6,&quot;list&quot;:&quot;Item page: More items by this author&quot;,&quot;timestamp&quot;:&quot;2016-07-27T18:17:42+10:00&quot;}" data-item-author="mpc" data-item-category="WordPress / Add-ons" data-item-cost="11" data-item-id="11219800" data-item-name="PDF To FlipBook Extension" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/138951284/00_screenshot.jpg" data-preview-width="" src="website-style_files/thumbnail_009.png" title="PDF To FlipBook Extension" border="0" height="80" width="80"></a>
+
+  
+</div>
+
+              </li>
+              <li class="item-thumbnail-container">
+                
+<div class="item-thumbnail__image">
+    <a href="https://codecanyon.net/item/responsive-layer-slider-jquery-plugin/3176680" class="js-google-analytics__list-event-trigger"><img alt="Responsive Layer Slider jQuery Plugin - CodeCanyon Item for Sale" class="landscape-image-magnifier preload no_preview" data-google-analytics-payload="{&quot;id&quot;:3176680,&quot;name&quot;:&quot;Responsive Layer Slider jQuery Plugin&quot;,&quot;brand&quot;:&quot;mpc&quot;,&quot;category&quot;:&quot;codecanyon.net/category/javascript/sliders&quot;,&quot;position&quot;:7,&quot;list&quot;:&quot;Item page: More items by this author&quot;,&quot;timestamp&quot;:&quot;2016-07-27T18:17:42+10:00&quot;}" data-item-author="mpc" data-item-category="JavaScript / Sliders" data-item-cost="11" data-item-id="3176680" data-item-name="Responsive Layer Slider jQuery Plugin" data-preview-height="" data-preview-url="https://preview-cc.s3.envato.com/files/36635287/00_preview.jpg" data-preview-width="" src="website-style_files/thumbnail_008.png" title="Responsive Layer Slider jQuery Plugin" border="0" height="80" width="80"></a>
+
+  
+</div>
+
+              </li>
+        </ul>
+      </div>
+      <div>
+        <p class="t-body -size-m">
+          <a href="https://codecanyon.net/user/mpc/portfolio" class="t-link-decoration-reversed">View author portfolio</a>
+        </p>
+      </div>
+    </section>
+
+
+</div>
+
+<div class="sidebar-l sidebar-right">
+    
+    
+    
+    <div class="js-pricebox__regular pricebox-container" itemscope="true" itemtype="http://schema.org/Product">
+  <meta content="Responsive FlipBook jQuery" itemprop="name">
+        <div class="purchase-panel">
+      <div id="purchase-form" class="purchase-form">
+    <form accept-charset="UTF-8" action="/cart/add/1724917" data-google-analytics-page="itemPage" data-google-analytics-payload="{&quot;id&quot;:1724917,&quot;name&quot;:&quot;Responsive FlipBook jQuery&quot;,&quot;brand&quot;:&quot;mpc&quot;,&quot;category&quot;:&quot;codecanyon.net/category/javascript/images-and-media&quot;,&quot;quantity&quot;:&quot;1&quot;,&quot;timestamp&quot;:&quot;2016-07-27T18:22:08+10:00&quot;}" data-view="purchaseForm" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="3R3pFVPcmkJulPQyOra9ZWKYoiwNzBVjirIiYS4ks9o=" type="hidden"></div>
+        <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+          <meta content="22.00" itemprop="price">
+          <meta content="USD" itemprop="priceCurrency">
+          <meta content="instock" itemprop="availability">
+
+          <div data-view="itemVariantSelector">
+            <div class="purchase-form__selection">
+  <span class="purchase-form__license-type">
+      <span data-view="flyout" class="flyout">
+        <span class="js-license-selector__chosen-license purchase-form__license-dropdown">Regular License</span>
+        <div class="js-flyout__body flyout__body -padding-side-removed">
+          <span class="js-flyout__triangle flyout__triangle"></span>
+          <div class="license-selector" data-view="licenseSelector">
+              <div class="js-license-selector__item license-selector__item is-active" data-license="regular" data-name="Regular License">
+
+                <div class="license-selector__license-type">
+                  <span class="t-heading -size-xxs">Regular License</span>
+                  <span class="js-license-selector__selected-label e-text-label -color-green -size-s ">Selected</span>
+                </div>
+                <div class="license-selector__price">
+                  <span class="t-heading -size-m h-m0">
+                    <b class="t-currency"><span class="">$22</span></b>
+                  </span>
+                </div>
+                <div class="license-selector__description">
+                  <p class="t-body -size-m h-m0">Use, by you or one client, in a single end product which end users <strong>are not</strong> charged for. The total price includes the item price and a buyer fee.</p>
+                </div>
+</div>              <div class="js-license-selector__item license-selector__item" data-license="extended" data-name="Extended License">
+
+                <div class="license-selector__license-type">
+                  <span class="t-heading -size-xxs">Extended License</span>
+                  <span class="js-license-selector__selected-label e-text-label -color-green -size-s is-hidden">Selected</span>
+                </div>
+                <div class="license-selector__price">
+                  <span class="t-heading -size-m h-m0">
+                    <b class="t-currency"><span class="">$110</span></b>
+                  </span>
+                </div>
+                <div class="license-selector__description">
+                  <p class="t-body -size-m h-m0">Use, by you or one client, in a single end product which end users <strong>can be</strong> charged for. The total price includes the item price and a buyer fee.</p>
+                </div>
+</div>          </div>
+          <div class="flyout__link">
+            <p class="t-body -size-m h-m0">
+              <a href="https://codecanyon.net/licenses/standard" class="t-link -decoration-reversed" target="_blank">View license details</a>
+            </p>
+          </div>
+        </div>
+      </span>
+
+
+      <select class="f-select js-purchase-license-selector is-hidden--js" name="license">
+          <option class="is-active" data-license="regular" selected="selected" value="regular">Regular License</option>
+          <option data-license="extended" value="extended">Extended License</option>
+      </select>
+  </span>
+
+  <div class="js-purchase-heading purchase-form__price t-heading -size-xxl">
+    <b class="t-currency"><span class="js-purchase-price">$22</span></b>
+  </div>
+</div>
+
+
+              <div class="purchase-form__license js-purchase-license is-active" data-license="regular">
+                  <input class="js-purchase-hidden-license is-active" data-license="regular" data-price-prepaid-upgrade="$28.60" data-price-prepaid="$22" data-size="source" data-support-extension-price="$11" data-support-extension-saving="$4.40" data-support-upgrade-price="$6.60" data-support-upgrade-saving="$8" id="size_regular" name="size_regular" value="source" type="hidden">
+
+              </div>
+              <div class="purchase-form__license js-purchase-license" data-license="extended">
+                  <input class="js-purchase-hidden-license" data-license="extended" data-price-prepaid-upgrade="$143" data-price-prepaid="$110" data-size="source" data-support-extension-price="$55" data-support-extension-saving="$22" data-support-upgrade-price="$33" data-support-upgrade-saving="$44" id="size_extended" name="size_extended" value="source" type="hidden">
+
+              </div>
+
+            <div class="purchase-form__support">
+                <ul class="t-icon-list -font-size-s -icon-size-s -offset-flush">
+                  <li class="t-icon-list__item -icon-ok">
+                    <span class="is-visually-hidden">Included:</span>
+                    Quality checked by Envato
+                  </li>
+                  <li class="t-icon-list__item -icon-ok">
+                    <span class="is-visually-hidden">Included:</span>
+                    Future updates
+                  </li>
+                  <li class="t-icon-list__item -icon-ok">
+                    <span class="is-visually-hidden">Included:</span>
+                    6 months support from <span class="purchase-form__author-name">mpc</span>
+                    <br>
+                    <a href="https://codecanyon.net/item_support/what_is_item_support/1724917" class="t-link -decoration-reversed" data-view="modalAjax">What does support include?</a>
+                  </li>
+                </ul>
+
+                  <div class="purchase-form__upgrade">
+                    <div class="purchase-form__upgrade-checkbox">
+                      <input class="js-support__default" id="support_default" name="support" value="bundle_6month" type="hidden">
+                      <input class="js-support__option" id="support" name="support" value="bundle_12month" type="checkbox">
+                    </div>
+                    <div class="purchase-form__upgrade-info">
+                      <label class="purchase-form__label" for="support">
+                        Extend support to 12 months
+                        <span class="purchase-form__price t-heading -size-xs h-pull-right">
+                          <b class="t-currency">
+                            <span class="js-support__price">$6.60</span>
+                          </b>
+                        </span>
+                      </label>
+                        <p class="t-body -size-m">
+                          <a href="https://codecanyon.net/item_support/pricing_modal/1724917?license=regular" class="js-support__pricing-link t-link -decoration-reversed" data-view="modalAjax">
+                            <span class="e-icon -icon-tag -flip-horizontal"></span>
+                            Get it now and save up to <span class="js-support__saving">$8</span>
+</a>                        </p>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+
+          
+
+
+
+
+          <div class="purchase-form__button">
+  <button class="js-purchase__add-to-cart e-btn--3d -color-primary -size-m -width-full">
+    <i class="e-icon -icon-cart -margin-right"></i> <strong>Add to Cart</strong>
+</button></div>
+
+          <div class="purchase-form__button">
+  <button class="js-purchase__buy-now e-btn--3d -size-m -width-full" name="buy_now_button" value="Buy Now">
+    <strong>Buy Now</strong>
+</button></div>
+
+        </div>
+</form>  </div>
+
+  </div>
+
+</div>
+    
+    <div class="box -radius-all">
+  <div class="media">
+    <div class="media__item">
+      <img alt="Featured item" src="website-style_files/had_featured_item-32152c9769caaa35dffd27aa9af0ae6f.svg" title="Featured item" height="42" width="42">
+    </div>
+    <div class="media__body -align-center">
+      <p class="t-body -size-m h-m0">
+        This item was featured on CodeCanyon
+      </p>
+    </div>
+  </div>
+</div>
+
+    <div class="box -radius-all">
+  <div class="media">
+    <div class="media__item">
+      <img alt="Elite author" src="website-style_files/elite-77a95b1a412527366027178eaa470559.svg" title="Elite author" height="42" width="42">
+    </div>
+    <div class="media__body -align-center">
+      <p class="t-body -size-m h-m0">Elite Author</p>
+    </div>
+  </div>
+</div>
+
+    
+    <div class="box -radius-all">
+  <div class="media">
+    <div class="media__item">
+      <div class="avatar-wrapper tooltip-advanced">
+    <a href="https://codecanyon.net/user/mpc" class="avatar" title="mpc">
+        <img alt="mpc" src="website-style_files/logo_tf-80px.png" height="80" width="80">
+
+</a>
+  
+</div>
+
+    </div>
+    <div class="media__body">
+      <h2 class="t-heading -size-s">
+          <a href="https://codecanyon.net/user/mpc" class="t-link -color-dark -decoration-none" rel="author">mpc</a>
+      </h2>
+        <div class="">
+          <ul class="badges">
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Elite Author" class="community-badges__badge--s" src="website-style_files/elite-s-f11533f29f19074804ad169d827d3811.svg" title="Elite Author: Sold more than $75,000 on Envato Market">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Author Level 11" class="community-badges__badge--s" src="website-style_files/author_level_11-s-2eea7c437146a16cbb49df77624472ef.svg" title="Author Level 11: Has sold $750,000+ on Envato Market">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Exclusive Author" class="community-badges__badge--s" src="website-style_files/exclusive-s-f50a5d178abefeb1e43daa716f677dd3.svg" title="Exclusive Author: Sells items exclusively on Envato Market">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Winner" class="community-badges__badge--s" src="website-style_files/won_a_competition-s-37e3f6d31cf5194ade8d5ada650f6785.svg" title="Winner: Won a competition">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Collector Level 3" class="community-badges__badge--s" src="website-style_files/collector_level_3-s-48dc943b139e621ad02f44262dfa5742.svg" title="Collector Level 3: Has collected 50+ items on Envato Market">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Affiliate Level 5" class="community-badges__badge--s" src="website-style_files/affiliate_level_5-s-1f5dbd9a9bc83335fd2f5f3a44a7ef7e.svg" title="Affiliate Level 5: Has referred 200+ members">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Featured Author" class="community-badges__badge--s" src="website-style_files/was_featured-s-5a8ec0181d6e339e7b968635522c032d.svg" title="Featured Author: Made it to the Authors' Hall of Fame">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Top Monthly Author" class="community-badges__badge--s" src="website-style_files/was_top_monthly_author-s-15aaab5c1650c3e7a74b9b5492100721.svg" title="Top Monthly Author: Became a Top 20 Author of the Month">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Weekly Top Seller" class="community-badges__badge--s" src="website-style_files/was_weekly_top_seller-s-8366ad42feefed600246be64a3ddb7a2.svg" title="Weekly Top Seller: Had an item that became a weekly top seller">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="7 Years of Membership" class="community-badges__badge--s" src="website-style_files/veteran_level_7-s-8ad233beb91e04364d43db8e792fb80e.svg" title="7 Years of Membership: Has been part of the Envato Community for over 7 years">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Bundle Boss" class="community-badges__badge--s" src="website-style_files/had_bundled_file-s-c57cbf99a2cc064a58e0b08dcefb2056.svg" title="Bundle Boss: Had an item featured in an Envato Bundle">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Featured Item" class="community-badges__badge--s" src="website-style_files/had_featured_item-s-09140ddc57b5f0845d6ce28e39a4ed0f.svg" title="Featured Item: Had an item featured on Envato Market">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Most Wanted Winner" class="community-badges__badge--s" src="website-style_files/most_wanted_bounty_winner-s-3f28e779b35e3a064eb8337e638b008d.svg" title="Most Wanted Winner: Won a Most Wanted contest">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Blog Interview" class="community-badges__badge--s" src="website-style_files/interviewed-s-f3300dbc8927740024c36181fdc780cf.svg" title="Blog Interview: Interviewed on an Envato blog">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Wordsmith" class="community-badges__badge--s" src="website-style_files/contributed_blog_post-s-8bb2bb34855fc9bd67711e1481e2ba48.svg" title="Wordsmith: Contributed a blog post">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Podster" class="community-badges__badge--s" src="website-style_files/featured_in_podcast-s-fce87c797a18d63ab63b2ab2bb97a05b.svg" title="Podster: Featured in the Envato Market Community podcast">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Freebie" class="community-badges__badge--s" src="website-style_files/had_free_file-s-231ec3df09ca3d15b8e1f83ea0907a4f.svg" title="Freebie: Contributed a free file of the month">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Trendsetter" class="community-badges__badge--s" src="website-style_files/had_trending_item-s-e81eada8ece6723629f35766dc4d00eb.svg" title="Trendsetter: Had an item that was trending">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Beta Tester" class="community-badges__badge--s" src="website-style_files/beta_tester-s-f9c9397358230d4309ca4f2a5905f4cc.svg" title="Beta Tester: Has been a beta tester for an Envato feature">
+
+      </span>
+    </li>
+    <li>
+      <span class="community-badges__badge-wrapper--s ">
+        <img alt="Poland" class="community-badges__badge--s" src="website-style_files/country_pl-a5c99b604690d6aaa577ebe071d328d1.svg" title="Located in Poland">
+
+      </span>
+    </li>
+</ul>
+
+        </div>
+    </div>
+  </div>
+
+    <div class="h-mt1">
+      <a href="https://codecanyon.net/user/mpc/portfolio" class="e-btn--3d -color-light -width-full">View Portfolio</a>
+    </div>
+</div>
+
+    <div class="sidebar-stats">
+
+  <div class="sidebar-stats__item">
+    <div class="box -radius-all -spacing-small">
+      <strong class="sidebar-stats__number">
+        <span class="sidebar-stats__icon"><i class="e-icon -icon-cart"></i></span>
+        2,748
+      </strong>
+      <span class="sidebar-stats__label">
+        Sales
+      </span>
+      <meta itemprop="interactionCount" content="UserDownloads:2748">
+    </div>
+  </div>
+
+  <div class="sidebar-stats__item">
+    <div class="box -radius-all -spacing-small">
+      <a href="https://codecanyon.net/item/responsive-flipbook-jquery/1724917/comments" class="t-link -decoration-none" itemprop="discussionUrl">
+        <strong class="sidebar-stats__number">
+          <span class="sidebar-stats__icon"><i class="e-icon -icon-speech-bubble"></i></span>
+          313
+        </strong>
+        <span class="sidebar-stats__label">
+          Comments
+        </span>
+</a>    </div>
+  </div>
+</div>
+
+    <div class="box -radius-all">
+    <div class="rating-detailed" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+    <meta itemprop="ratingValue" content="4.18">
+    <meta itemprop="ratingCount" content="162">
+
+    <div class="rating-detailed__header">
+      <p class="t-body -size-m h-pull-left h-mr1 h-mb0">
+          <strong>
+            <a href="https://codecanyon.net/item/responsive-flipbook-jquery/reviews/1724917" class="t-link -decoration-reversed">
+              Item Rating:
+</a>          </strong>
+      </p>
+      <div class="rating-detailed__stars">
+        <div class="rating-basic__star-rating">
+            <i class="e-icon -icon-star">
+</i>            <i class="e-icon -icon-star">
+</i>            <i class="e-icon -icon-star">
+</i>            <i class="e-icon -icon-star">
+</i>            <i class="e-icon -icon-star-empty">
+</i>        </div>
+        <span class="is-visually-hidden">4.18 stars</span>
+      </div>
+      <span class="rating-detailed__average">
+        4.18 average based on 162 ratings.
+
+          (<a href="#" class="js-rating-exposer rating-detailed__exposer">more information</a>)
+      </span>
+    </div>
+
+      <ul data-view="ratingBreakdown" class="js-rating-breakdown rating-breakdown  hidden">
+          <li>
+            <span class="rating-breakdown__key">5 Star</span>
+            <div class="rating-breakdown__meter">
+              <div class="rating-breakdown__meter-bar">
+                <div class="rating-breakdown__meter-progress" style="width: 61%">
+                  61%
+                </div>
+              </div>
+            </div>
+            <span class="rating-breakdown__count">61%</span>
+          </li>
+          <li>
+            <span class="rating-breakdown__key">4 Star</span>
+            <div class="rating-breakdown__meter">
+              <div class="rating-breakdown__meter-bar">
+                <div class="rating-breakdown__meter-progress" style="width: 18%">
+                  18%
+                </div>
+              </div>
+            </div>
+            <span class="rating-breakdown__count">18%</span>
+          </li>
+          <li>
+            <span class="rating-breakdown__key">3 Star</span>
+            <div class="rating-breakdown__meter">
+              <div class="rating-breakdown__meter-bar">
+                <div class="rating-breakdown__meter-progress" style="width: 6%">
+                  6%
+                </div>
+              </div>
+            </div>
+            <span class="rating-breakdown__count">6%</span>
+          </li>
+          <li>
+            <span class="rating-breakdown__key">2 Star</span>
+            <div class="rating-breakdown__meter">
+              <div class="rating-breakdown__meter-bar">
+                <div class="rating-breakdown__meter-progress" style="width: 4%">
+                  4%
+                </div>
+              </div>
+            </div>
+            <span class="rating-breakdown__count">4%</span>
+          </li>
+          <li>
+            <span class="rating-breakdown__key">1 Star</span>
+            <div class="rating-breakdown__meter">
+              <div class="rating-breakdown__meter-bar">
+                <div class="rating-breakdown__meter-progress" style="width: 9%">
+                  9%
+                </div>
+              </div>
+            </div>
+            <span class="rating-breakdown__count">9%</span>
+          </li>
+      </ul>
+  </div>
+
+</div>
+
+    
+    <div class="box -radius-all">
+  <div class="meta-attributes">
+    <table class="meta-attributes__table" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr>
+          <td class="meta-attributes__attr-name">Created</td>
+          <td class="meta-attributes__attr-detail">
+            <time itemprop="dateCreated" datetime="2012-03-06T12:40:33+11:00">
+              6 March 12
+            </time>
+          </td>
+        </tr>
+        <tr>
+          <td class="meta-attributes__attr-name">Last Update</td>
+          <td class="meta-attributes__attr-detail">
+            <time itemprop="dateModified" datetime="2016-02-18T10:05:52+11:00">
+              18 February 16
+            </time>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="meta-attributes__attr-name">High Resolution</td>
+          <td class="meta-attributes__attr-detail">
+            <a href="https://codecanyon.net/attributes/high-resolution/Yes">Yes</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="meta-attributes__attr-name">Compatible Browsers</td>
+          <td class="meta-attributes__attr-detail">
+            <a href="https://codecanyon.net/attributes/compatible-browsers/IE9">IE9</a>, <a href="https://codecanyon.net/attributes/compatible-browsers/IE10">IE10</a>, <a href="https://codecanyon.net/attributes/compatible-browsers/IE11">IE11</a>, <a href="https://codecanyon.net/attributes/compatible-browsers/Firefox">Firefox</a>, <a href="https://codecanyon.net/attributes/compatible-browsers/Safari">Safari</a>, <a href="https://codecanyon.net/attributes/compatible-browsers/Opera">Opera</a>, <a href="https://codecanyon.net/attributes/compatible-browsers/Chrome">Chrome</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="meta-attributes__attr-name">Files Included</td>
+          <td class="meta-attributes__attr-detail">
+            <a href="https://codecanyon.net/attributes/source-files-included/JavaScript%20JS">JavaScript JS</a>, <a href="https://codecanyon.net/attributes/source-files-included/HTML">HTML</a>, <a href="https://codecanyon.net/attributes/source-files-included/CSS">CSS</a>, <a href="https://codecanyon.net/attributes/source-files-included/PHP">PHP</a>, <a href="https://codecanyon.net/attributes/source-files-included/SWF/FLV">SWF/FLV</a>, <a href="https://codecanyon.net/attributes/source-files-included/Layered%20PSD">Layered PSD</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="meta-attributes__attr-name">Software Version</td>
+          <td class="meta-attributes__attr-detail">
+            <a href="https://codecanyon.net/attributes/compatible-software/jQuery">jQuery</a>
+          </td>
+        </tr>
+
+
+          <tr>
+            <td class="meta-attributes__attr-name">Tags</td>
+            <td><span class="meta-attributes__attr-tags">
+              <a href="https://codecanyon.net/tags/book" title="book">book</a>, <a href="https://codecanyon.net/tags/flip" title="flip">flip</a>, <a href="https://codecanyon.net/tags/flip%20book" title="flip book">flip book</a>, <a href="https://codecanyon.net/tags/flipbook" title="flipbook">flipbook</a>, <a href="https://codecanyon.net/tags/flipbook%20jquery" title="flipbook jquery">flipbook jquery</a>, <a href="https://codecanyon.net/tags/jquery" title="jquery">jquery</a>, <a href="https://codecanyon.net/tags/magazine" title="magazine">magazine</a>, <a href="https://codecanyon.net/tags/mobile" title="mobile">mobile</a>, <a href="https://codecanyon.net/tags/page%20flip" title="page flip">page flip</a>, <a href="https://codecanyon.net/tags/pageflip" title="pageflip">pageflip</a>, <a href="https://codecanyon.net/tags/plugin" title="plugin">plugin</a>, <a href="https://codecanyon.net/tags/portfolio" title="portfolio">portfolio</a>, <a href="https://codecanyon.net/tags/responsive" title="responsive">responsive</a>, <a href="https://codecanyon.net/tags/turn" title="turn">turn</a>
+            </span></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+    <div class="t-body -size-s h-text-align-center h-mt2">
+  © All Rights Reserved mpc
+  <br>
+  <a href="https://help.market.envato.com/">Contact the Envato Market Help Team</a>
+</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+  // HACK: Google Chrome always scroll the previous page's position on hitting Back button
+  // This causes issue with responsive version in which unexpanded item description obscure
+  // the scroll position and Chrome will jump to the outer border of bottom
+  window.addEventListener('unload', function(e) { window.scrollTo(0, 0); });
+</script>
+
+              </div>
+            </div>
+
+            
+
+            <footer class="site-footer">
+  <div class="site-footer__primary">
+    <div class="footer-primary">
+  <div class="grid-container">
+
+    <div class="footer-top">
+
+  <div class="footer-top__left">
+    <a class="footer-top__market-logo" href="https://market.envato.com/">Envato Market</a>
+  </div>
+
+  <div class="footer-top__right is-hidden-tablet-and-below">
+      <div class="market-stats">
+    <div class="market-stats__stat">
+      <p class="t-body -color-light h-m0">
+        7,166,087
+        <span>community members</span>
+      </p>
+    </div>
+    <div class="market-stats__stat">
+      <p class="t-body -color-light h-m0">
+        10,680,916
+        <span>items for sale</span>
+      </p>
+    </div>
+  </div>
+
+  </div>
+
+</div>
+
+
+    <div class="footer-primary__columns">
+      <div class="footer-primary__group--first">
+        <div class="footer-box">
+          <div class="footer-box__header js-footer-expand-toggle" data-target="#footer-social">
+            <h4>Follow us</h4>
+          </div>
+          <div id="footer-social" class="footer-box__content">
+            <ul class="social-links" itemscope="" itemtype="http://schema.org/Organization">
+  <link itemprop="sameAs" href="https://instagram.com/envato">
+  <li><a href="https://www.facebook.com/envatomarket" itemprop="sameAs" rel="nofollow"><img alt="Facebook" src="website-style_files/facebook-874a79814979fb7a5d8a61f391e429b7.svg" height="28px" width="28px"></a></li>
+  <li><a href="https://twitter.com/envatomarket" itemprop="sameAs" rel="nofollow"><img alt="Twitter" src="website-style_files/twitter-aa07ff4bd2114f6eaaabecb8441d503c.svg" height="28px" width="28px"></a></li>
+  <li><a href="https://www.youtube.com/user/Envato" itemprop="sameAs" rel="nofollow"><img alt="Youtube" src="website-style_files/youtube-b002aa7846eb048fdb4777c738b6476b.svg" height="28px" width="28px"></a></li>
+  <li><a href="https://www.instagram.com/envato/" itemprop="sameAs" rel="nofollow"><img alt="Instagram" src="website-style_files/instagram-7f1e69a5c43249d96b6ca6606683d8c6.svg" height="28px" width="28px"></a></li>
+  <li><a href="https://www.pinterest.com/envato/" itemprop="sameAs" rel="nofollow"><img alt="Pinterest" src="website-style_files/pinterest-a93e0ce1e1f8292039489540d0a8bc86.svg" height="28px" width="28px"></a></li>
+</ul>
+
+          </div>
+        </div>
+
+        <div class="footer-box">
+          <div class="footer-box__header js-footer-expand-toggle" data-target="#footer-meet">
+            <h4>Meet Envato</h4>
+          </div>
+          <div id="footer-meet" class="footer-box__content">
+            <div class="footer-box__list">
+  <ul class="t-list -style-none">
+    <li class="t-body h-m0"><a href="https://envato.com/">About Envato</a></li>
+    <li class="t-body h-m0"><a href="https://codecanyon.net/buy">Why Buy With Us?</a></li>
+    <li class="t-body h-m0"><a href="http://careers.envato.com/">Envato Careers</a></li>
+  </ul>
+</div>
+
+          </div>
+        </div>
+
+        <div class="footer-box">
+          <div class="footer-box__header js-footer-expand-toggle" data-target="#footer-help">
+            <h4>Need Help?</h4>
+          </div>
+          <div id="footer-help" class="footer-box__content">
+            <div class="footer-box__list">
+  <ul class="t-list -style-none">
+    <li class="t-body h-m0"><a href="https://help.market.envato.com/" class="footer-box__link">Help Center</a></li>
+    <li class="t-body h-m0"><a href="https://codecanyon.net/legal/market" rel="nofollow">Envato Market Terms</a></li>
+    <li class="t-body h-m0"><a href="https://codecanyon.net/legal/author" rel="nofollow">Author Terms</a></li>
+    <li class="t-body h-m0"><a href="https://codecanyon.net/licenses" rel="nofollow">Envato Market Licenses</a></li>
+    <li class="t-body h-m0"><a href="https://envato.com/#contact" rel="nofollow">Contact Envato</a></li>
+  </ul>
+</div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-primary__group--second">
+        <div class="footer-box">
+          <div class="footer-box__header js-footer-expand-toggle" data-target="#footer-community">
+            <h4>
+              <span class="is-hidden-tablet-and-below">Join our</span> Community
+            </h4>
+          </div>
+          <div id="footer-community" class="footer-box__content">
+            <div class="footer-box__list">
+  <ul class="t-list -style-none">
+    <li class="t-body h-m0"><a href="http://community.envato.com/" rel="nofollow">Home</a></li>
+    <li class="t-body h-m0"><a href="https://forums.envato.com/" rel="nofollow">Forums</a></li>
+    <li class="t-body h-m0"><a href="https://codecanyon.net/become-an-author">Become an Author</a></li>
+    <li class="t-body h-m0"><a href="http://community.envato.com/#/events">Community Meetups</a></li>
+    <li class="t-body h-m0"><a href="https://codecanyon.net/affiliate_program" rel="nofollow">Become an Affiliate</a></li>
+  </ul>
+</div>
+
+          </div>
+        </div>
+
+        <div class="footer-box">
+          <div class="footer-box__header js-footer-expand-toggle" data-target="#footer-subscribe">
+            <h4>
+              <span class="is-hidden-tablet-and-below">Email</span> Newsletters
+            </h4>
+          </div>
+          <div id="footer-subscribe" class="footer-box__content">
+            <p class="t-body h-m0 is-hidden-desktop">Sign up for new Envato content</p>
+<p class="t-body is-hidden-tablet-and-below">
+  Sign up for new Envato content, updates, surveys &amp; offers.
+</p>
+<form action="https://envato3.createsend.com/t/i/s/tulkdt/" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate footer-subscribe" target="_blank">
+    <input name="cm-f-uktrm" value="Envato Market, Envato Offers &amp; Bundles, Envato News" type="hidden">
+    <input name="cm-f-uktrn" value="Footer" type="hidden">
+    <input name="cm-f-uktrp" value="CodeCanyon" type="hidden">
+  <input name="cm-tulkdt-tulkdt" required="" placeholder="Email Address" class="footer-subscribe__input" id="mce-EMAIL" type="email">
+  <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="footer-subscribe__submit e-btn--3d -color-primary -width-full">Subscribe</button>
+</form>
+
+            <a href="https://envato.com/privacy" class="footer-box__external-link is-hidden-tablet-and-below">Privacy Policy</a>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-primary__group--third">
+        <div class="footer-box">
+          <div class="footer-box__content is-hidden-tablet-and-below">
+            <div class="media h-mb4">
+  <div class="media__item">
+    <a href="http://studio.envato.com/explore/websites-programming?utm_campaign=internal+navigation&amp;utm_content=footernav&amp;utm_medium=codecanyon&amp;utm_source=marketplaces" target="_blank">
+      <img alt="Envato Studio" src="website-style_files/envato-studio-99aadd4d46513598234b361d45bdc523.jpg" height="112" width="140">
+</a>  </div>
+
+  <div class="media__body">
+    <p class="t-body">From logo design to video animation, web 
+development to website copy; expert designers, developers and digital 
+talent are ready to complete your projects.</p>
+    <p class="t-body h-m0">
+      <a href="http://studio.envato.com/explore/websites-programming?utm_campaign=internal+navigation&amp;utm_content=footernav&amp;utm_medium=codecanyon&amp;utm_source=marketplaces" class="t-link -color-light" target="_blank">Check out Envato Studio's services</a>
+    </p>
+  </div>
+</div>
+
+          </div>
+          <div class="footer-box__content is-hidden-tablet-and-below">
+              <div class="media">
+  <div class="media__item">
+    <a href="http://webdesign.tutsplus.com/courses/a-beginners-guide-to-using-wordpress?utm_source=EnvatoMarket&amp;utm_medium=CC_Footer&amp;utm_campaign=Envato_CC_Footer_FreeWPCourse" target="_blank">
+      <img alt="Envato Tuts+" src="website-style_files/tuts-wordpress-b47a9a8bb599898725ccc331a445cf15.jpg" height="112" width="140">
+</a>  </div>
+
+  <div class="media__body">
+    <p class="t-body">Here's a free video course on how to install 
+WordPress, add new content, use themes and plugins, customize your site,
+ and more. Perfect for anyone new to WP.</p>
+    <p class="t-body h-m0">
+      <a href="http://webdesign.tutsplus.com/courses/a-beginners-guide-to-using-wordpress?utm_source=EnvatoMarket&amp;utm_medium=CC_Footer&amp;utm_campaign=Envato_CC_Footer_FreeWPCourse" class="t-link -color-light" target="_blank">Free Course: Beginner's Guide to WordPress</a>
+    </p>
+  </div>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+    
+
+  <p class="t-body h-m0"><small>© 2016 Envato Pty Ltd. Trademarks and brands are the property of their respective owners.</small></p>
+</div>
+
+
+  </div>
+</div>
+
+  </div>
+</footer>
+
+          </div>
+
+          <div class="is-hidden-phone">
+            <div id="tooltip-magnifier" class="magnifier">
+  <strong></strong>
+  <div class="info">
+    <div class="author-category">
+      by <span class="author"></span>
+      <span class="category"></span>
+    </div>
+    <div class="price">
+      <span class="cost"></span>
+    </div>
+  </div>
+</div>
+
+            <div id="landscape-image-magnifier" class="magnifier">
+    <div class="size-limiter">
+    </div>
+  <strong></strong>
+  <div class="info">
+    <div class="author-category">
+      by <span class="author"></span>
+      <span class="category"></span>
+    </div>
+    <div class="price">
+      <span class="cost"></span>
+    </div>
+  </div>
+</div>
+
+            <div id="portrait-image-magnifier" class="magnifier">
+    <div class="size-limiter">
+    </div>
+  <strong></strong>
+  <div class="info">
+    <div class="author-category">
+      by <span class="author"></span>
+      <span class="category"></span>
+    </div>
+    <div class="price">
+      <span class="cost"></span>
+    </div>
+  </div>
+</div>
+
+            <div id="square-image-magnifier" class="magnifier">
+    <div class="size-limiter">
+    </div>
+  <strong></strong>
+  <div class="info">
+    <div class="author-category">
+      by <span class="author"></span>
+      <span class="category"></span>
+    </div>
+    <div class="price">
+      <span class="cost"></span>
+    </div>
+  </div>
+</div>
+
+            <div id="smart-image-magnifier" class="magnifier">
+    <div class="size-limiter">
+    </div>
+  <strong></strong>
+  <div class="info">
+    <div class="author-category">
+      by <span class="author"></span>
+      <span class="category"></span>
+    </div>
+    <div class="price">
+      <span class="cost"></span>
+    </div>
+  </div>
+</div>
+
+            <div id="video-magnifier" class="magnifier">
+    <div class="size-limiter">
+    <div class="faux-player is-hidden"><img></div><div><div id="hover-video-preview"></div></div></div>
+  <strong></strong>
+  <div class="info">
+    <div class="author-category">
+      by <span class="author"></span>
+      <span class="category"></span>
+    </div>
+    <div class="price">
+      <span class="cost"></span>
+    </div>
+  </div>
+</div>
+
+          </div>
+        </div>
+
+
+        <div class="page__overlay" data-view="offCanvasNavToggle" data-off-canvas="close"></div>
+      </div>
+    </div>
+
+    
+
+    <script src="website-style_files/index-033b5427b56df3a606e88cb177b6f4a5.js" type="text/javascript"></script>
+    <script src="website-style_files/index-8b2fc1da68544e3e865449836f01d97d.js" type="text/javascript"></script>
+
+
+
+
+
+    <script>$(function(){viewloader.execute(Views);});</script>
+
+      <script>
+  // Google Analytics Tracking Code
+  (function () {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })
+
+      (window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    var ACCOUNTS = ["m"];
+    window._envGaTrackerNames = ACCOUNTS;
+
+    ga("create", "UA-11834194-12", {"name":"m","allowLinker":true,"timestamp":"2016-07-27T18:22:09+10:00"});
+
+    for (var i = 0; i < ACCOUNTS.length; i++) {
+      t = ACCOUNTS[i];
+
+      ga(t+'.require', 'linker');
+      ga(t+'.linker:autoLink', ["activeden.net","audiojungle.net","themeforest.net","videohive.net","graphicriver.net","3docean.net","codecanyon.net","photodune.net","market.envato.com","market.styleguide.envato.com"]);
+
+      ga(t+'.require', 'ec');
+
+      ga(t+'.require', 'displayfeatures');
+
+      ga(t+'.require', 'linkid', 'linkid.js');
+
+
+
+      if ('') {
+        ga(t+'.send', {
+          hitType: 'pageview',
+          page: ''
+        });
+      } else if ('') {
+        // append the analytics_suffix to the page path so the flash alert/error type can be tracked
+        var analyticsSuffix = $.trim('').replace(/([A-Z])/g, '$1').replace(/[-_\s]+/g, '-').toLowerCase();
+        var uri = URI(window.location.pathname + window.location.search);
+        uri.path(uri.path() + '/' + analyticsSuffix);
+        var tracking_path = uri.path() + uri.search();
+        ga(t+'.send', {
+          hitType: 'pageview',
+          page: tracking_path,
+        });
+      } else {
+        ga(t+'.send', 'pageview');
+      }
+    }
+  }());
+
+  
+    ga("create", "UA-43366112-1", "auto", {
+      name: "author_analytics"
+    });
+
+      ga("author_analytics.send", "pageview");
+
+
+
+</script>
+
+
+  
+<script>
+// GA: universal analytics link wrapper
+(function(){
+    window._envTrkrs = [["m", "UA-11834194-12"]];
+
+    var debug = false;
+    var MAX_RETRIES = 10;
+
+    /*
+       The script needs to wait until the Analytics script
+       has been downloaded from Google before initializing
+    */
+    var waitForAnalytics = function(){
+        this.count = this.count || 0;
+
+        if (window.ga && ga.getByName) {
+            e.init();
+        } else {
+            if (count < MAX_RETRIES) { setTimeout(waitForAnalytics, 250); }
+            count++;
+        }
+    };
+
+    var e = {
+        _envArray: [],
+        _envTrkrs: (window._envTrkrsCust && window._envTrkrsCust.length) ? window._envTrkrs.concat(window._envTrkrsCust) : window._envTrkrs,
+        init: function() {
+            for (var i=0; i < _envTrkrs.length; i++) {
+              if(!ga.getByName(_envTrkrs[i][0])) {
+                ga("create", _envTrkrs[i][1], "auto", {name: _envTrkrs[i][0], allowLinker: true});
+              }
+            }
+
+            document.addEventListener('DOMContentLoaded', function(){
+                e.wrapperInit();
+            });
+
+            if (debug) {console.log('Initiated');}
+        },
+        wrapperInit: function() {
+            if (typeof window._envIsRunning != 'undefined' || window._envIsRunning == true) {
+                return
+            }
+            window._envIsRunning = true;
+
+            if (document.addEventListener) {
+                document.addEventListener('click', function(event){
+                    var target = event.target;
+                    if (target && target.tagName === 'A') {
+                        e._envLinksTracker(event);
+                    }
+                });
+            }
+        },
+        isInArray: function(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var r = new RegExp(t[n], 'i');
+                if (r.test(e)) {
+                    return n
+                }
+            }
+            return -1
+        },
+        _envTrackevent: function(e, t, n, r) {
+            for (var i = 0; i < this._envTrkrs.length; i++) {
+                var s = this._envTrkrs[i][0].length == 0 ? '' : this._envTrkrs[i][0] + '.';
+                r.length == 0 ? ga(s + 'send', 'event', e, t, n) : ga(s + 'send', 'event', e, t, n, r)
+            }
+        },
+        _envTrackpageview: function(e, t) {
+            t = t.charAt(0) == '/' ? t : '/' + t;
+            for (var n = 0; n < this._envTrkrs.length; n++) {
+                var r = this._envTrkrs[n][0].length == 0 ? '' : this._envTrkrs[n][0] + '.';
+                ga(r + 'send', 'pageview', e + t);
+            }
+        },
+        _envLinksTracker: function(t) {
+            var r = false;
+            var i = {
+                outbound: {
+                    run: true,
+                    useEvent: true
+                },
+                download: {
+                    run: true,
+                    useEvent: true,
+                    reg: ''
+                },
+                self: {
+                    run: false,
+                    useEvent: true
+                },
+                mail: {
+                    run: true,
+                    useEvent: true
+                },
+                ext: /\.(doc.?|xls.?|ppt.?|exe|zip|rar|gz|tar|tgz|dmg|csv|pdf|xpi|txt|mp3)$/i
+            };
+            var s = t.srcElement ? t.srcElement : this;
+            if (t.srcElement) {
+                r = true
+            }
+            while (s.tagName != 'A') {
+                s = s.parentNode
+            }
+            if (s.href == undefined || s.href == null) {
+                return true
+            }
+            var o = s.href;
+            if (o.length == 0) return;
+            var u = s.hostname.toLowerCase();
+            var a = s.pathname;
+            if (a.length == 0) {
+                a = '/'
+            } else if (a.substr(0, 1) != '/') {
+                a = '/' + a
+            }
+            var f = s.protocol;
+            var l = s.search;
+            var c = location.hostname;
+            c = c.replace(/^www\./i, '').toLowerCase();
+            u = u.replace(/^www\./i, '').toLowerCase();
+            if (o.match(/^#/)) {
+                if (i.self.run) {
+                    i.self.useEvent ? e._envTrackevent('self', 'click - ' + c, o, '') : e._envTrackpageview('/virtual/self', '/' + o);
+                    return true
+                }
+            } else if (f.match(/^mailto:/i)) {
+                if (i.mail.run) {
+                    o = o.replace(/^mailto:/i, '');
+                    i.mail.useEvent ? e._envTrackevent('mailto', 'click - ' + c, o, '') : e._envTrackpageview('/virtual/mailto', o);
+                    return true
+                }
+            } else if ((new RegExp(i.ext)).test(a)) {
+                if (i.download.run) {
+                    o = o.replace(/^https?:\/\//i, '');
+                    i.download.useEvent ? e._envTrackevent('download', 'click - ' + c, o, '') : e._envTrackpageview('/virtual/download', o);
+                    return true
+                }
+            } else if (u == undefined || u.length == 0 || f.match(/^javascript:/i)) {
+                return
+            } else if ((new RegExp(c + '$', 'i')).test(u) || (new RegExp(u + '$', 'i')).test(c)) {
+                if (i.download.run && i.download.reg.length != 0) {
+                    if ((new RegExp(i.download.reg, 'i')).test(a + l)) {
+                        o = o.replace(/^https?:\/\//i, '');
+                        i.download.useEvent ? e._envTrackevent('download', 'click - ' + c, o, '') : e._envTrackpageview('/virtual/download', o);
+                        return true
+                    }
+                }
+            } else if (u != c) {
+                if (e.isInArray(u, e._envArray) == -1) {
+                    if (i.outbound.run) {
+                        i.outbound.useEvent ? e._envTrackevent('outbound', 'click - ' + c, u + a + l, '') : e._envTrackpageview('/virtual/outbound', u + a);
+                        return true
+                    }
+                } else if (e.isInArray(u, e._envArray) != -1) {
+                    var h = s.target;
+                    if (h != null && h == '_blank') {
+                        if ((new RegExp(/_utma=/)).test(l)) {
+                            return true
+                        }
+                        var p = e._envTrkrs[0][0].length == 0 ? '' : _envTrkrs[0][0] + '.';
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+            }
+        }
+    };
+
+    waitForAnalytics();
+})()
+</script>
+
+
+  <script type="text/javascript">
+  // Google AdWords Remarketing
+  /* <![CDATA[ */
+  var google_conversion_id = 943617023;
+  var google_conversion_label = "bdtlCM3-uQMQp-WC_AM";
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+</script>
+<script src="website-style_files/conversion.js"></script><iframe name="google_conversion_frame" title="Google conversion frame" src="website-style_files/a.htm" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300"></iframe>
+<noscript>
+  <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/943617023/?value=0&amp;amp;label=bdtlCM3-uQMQp-WC_AM&amp;amp;guid=ON&amp;amp;script=0"/>
+  </div>
+</noscript>
+
+
+
+  <script src="website-style_files/mediasource-A249085-fc90-4e98-904f-95b25288c53b1-c-4415.js" type="text/javascript"></script>
+
+
+  
+
+<div data-show="false" class="js-flyout__body flyout__body -padding-side-removed">
+          <span class="js-flyout__triangle flyout__triangle"></span>
+          <div class="license-selector" data-view="licenseSelector">
+              <div class="js-license-selector__item license-selector__item is-active" data-license="regular" data-name="Regular License">
+
+                <div class="license-selector__license-type">
+                  <span class="t-heading -size-xxs">Regular License</span>
+                  <span class="js-license-selector__selected-label e-text-label -color-green -size-s ">Selected</span>
+                </div>
+                <div class="license-selector__price">
+                  <span class="t-heading -size-m h-m0">
+                    <b class="t-currency"><span class="">$22</span></b>
+                  </span>
+                </div>
+                <div class="license-selector__description">
+                  <p class="t-body -size-m h-m0">Use, by you or one client, in a single end product which end users <strong>are not</strong> charged for. The total price includes the item price and a buyer fee.</p>
+                </div>
+</div>              <div class="js-license-selector__item license-selector__item" data-license="extended" data-name="Extended License">
+
+                <div class="license-selector__license-type">
+                  <span class="t-heading -size-xxs">Extended License</span>
+                  <span class="js-license-selector__selected-label e-text-label -color-green -size-s is-hidden">Selected</span>
+                </div>
+                <div class="license-selector__price">
+                  <span class="t-heading -size-m h-m0">
+                    <b class="t-currency"><span class="">$110</span></b>
+                  </span>
+                </div>
+                <div class="license-selector__description">
+                  <p class="t-body -size-m h-m0">Use, by you or one client, in a single end product which end users <strong>can be</strong> charged for. The total price includes the item price and a buyer fee.</p>
+                </div>
+</div>          </div>
+          <div class="flyout__link">
+            <p class="t-body -size-m h-m0">
+              <a href="https://codecanyon.net/licenses/standard" class="t-link -decoration-reversed" target="_blank">View license details</a>
+            </p>
+          </div>
+        </div></body></html>
