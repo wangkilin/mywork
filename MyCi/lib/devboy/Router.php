@@ -55,7 +55,7 @@ class Router
 		$this->request = $request;
 		//$this->uri    = & loadClass('URI', BASE_PATH);
 
-        $this->dispatch();
+        $this->parse();
 
 
 		$this->enable_query_strings = ( ! is_cli() && $this->config->item('enable_query_strings') === TRUE);

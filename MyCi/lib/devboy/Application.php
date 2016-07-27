@@ -42,11 +42,14 @@ class Application
     public function run ()
     {
         $oRouter = loadClass('Router', BASE_PATH);
+        $dir        = $oRouter->getDir();
+        $controller = $oRouter->getController();
+        $action     = $oRouter->getAction();
     }
     public function init ()
     {
-    	$BM = & loadClass('Benchmark', BASE_PATH);
-    	$BM->mark('app_start');
+    	$oBenchMark = & loadClass('Benchmark', BASE_PATH);
+    	$oBenchMark->mark('app_start');
 
     	self::$config = & loadClass('Config', BASE_PATH);
 
