@@ -9,9 +9,13 @@
  *@Homepage    : http://www.kinful.com
  *@Version     : 0.1
  */
-$dir = 'D:\\runoob.old\\runoon\\www.runoob.com\\';
+$dir = 'D:\\www.runoob.com\\';
 $dirHandler = opendir($dir);
 //$dirHandler = new Dir($dir);
+function parseFile ($category, $filepath)
+{
+
+}
 
 while(($tmpDir=readdir($dirHandler))) {
 	if ('.'==$tmpDir || '..'==$tmpDir) {
@@ -22,6 +26,7 @@ while(($tmpDir=readdir($dirHandler))) {
 	if (! is_dir($newDir)) {
 		continue;
 	}
+	echo $tmpDir . "\n";
 
 	$newDirHandler = opendir($newDir);
 	while (($newTmpFile=readdir($newDirHandler))) {
@@ -29,8 +34,8 @@ while(($tmpDir=readdir($dirHandler))) {
 			continue;
 		}
 
-		echo $newDir . $newTmpFile;
-		echo '<br/>';
+		//echo $newDir . $newTmpFile;
+		//echo '<br/>';
 	}
 	closedir($newDirHandler);
 }
