@@ -17,7 +17,9 @@ if (! file_exists(dirname(__FILE__) . '/system/config/database.php') AND ! file_
 	header('Location: ./install/');
 	exit;
 }
-
+$startTime = microtime(true);
 include('system/system.php');
 
 AWS_APP::run();
+$endTime = microtime(true);
+echo $endTime - $startTime;
