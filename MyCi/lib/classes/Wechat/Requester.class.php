@@ -220,33 +220,12 @@ class WechatRequester extends WechatAbstract
         $curlMethod = $method == 'GET' ? CURLOPT_HTTPGET : CURLOPT_POST;
         curl_setopt($oCurl, $curlMethod, true);
 
-
-        $sContent = curl_exec($oCurl);
-        $aStatus = curl_getinfo($oCurl);
-        curl_close($oCurl);
-        if(intval($aStatus["http_code"])==200){
-            return $sContent;
-        }else{
-            return false;
-        }
-
-		if (is_string($param)) {
-	            	$strPOST = $param;
-	        }elseif($post_file) {
-	            	if($is_curlFile) {
-		                foreach ($param as $key => $val) {
-		                    	if (substr($val, 0, 1) == '@') {
-		                        	$param[$key] = new \CURLFile(realpath(substr($val,1)));
-		                    	}
-		                }
-	            	}
-			$strPOST = $param;
+		if (is_string($params)) {
+	        $rowData = & $params;
+	    } elseif ($files) {
+	        $rowData = & $this->buildPost ($params, $files);
 		} else {
-			$aPOST = array();
-			foreach($param as $key=>$val){
-				$aPOST[] = $key."=".urlencode($val);
-			}
-			$strPOST =  join("&", $aPOST);
+			$rowData = http_build_query($params);
 		}
 
 
@@ -272,10 +251,7 @@ class WechatRequester extends WechatAbstract
             }
 
 
-		curl_setopt($oCurl, CURLOPT_URL, $url);
-		curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1 );
-
-		curl_setopt($oCurl, CURLOPT_POSTFIELDS, $strPOST);
+		curl_setopt($oCurl, CURLOPT_POSTFIELDS, $rowData);
 
 		$sContent = curl_exec($oCurl);
 		$aStatus = curl_getinfo($oCurl);
@@ -287,6 +263,23 @@ class WechatRequester extends WechatAbstract
 		}else{
 			return false;
 		}
+    }
+
+    protected function & buildRawData ($post, $files)
+    {
+    	$rawData = '';
+    	$boundary = '----iCodeBang.com---' . md5(microtime());
+    	foreach ($params as $key=>$value) {
+    		$rawData .= $this->encodeFormData($boundary, $key, $value);
+    	}
+    	// Encode files
+    	foreach ($files as $nameInForm=>$file) {
+    		$fhead = array('Content-Type' => $file['ctype']);
+    		$rawData .= $this->encodeFormData($boundary, $file['formname'], $file['data'], $file['filename'], $fhead);
+    	}
+    	$rawData .= "--{$boundary}--\r\n";
+
+    	return $rawData;
     }
 
     /**
