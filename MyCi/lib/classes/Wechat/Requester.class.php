@@ -6,22 +6,9 @@ class WechatRequester extends WechatAbstract
 {
     const API_URL_PREFIX = 'https://api.weixin.qq.com/';
 
-
-
-    protected $httpClient = null;
-
-    /*
-     * HTTP 要上传的文件
-     * @var array
-     */
-    protected $httpUploadFiles = array();
-
     protected $appId = null;
     protected $appSecret = null;
     protected $token = null;// this token is used to generated signature. it's defined by User
-
-    protected $accessToken = null; // this token is got from remote server.
-
 
     protected $apiUriList = array(
         // 获取access_token
@@ -57,35 +44,25 @@ class WechatRequester extends WechatAbstract
         $this->appId     = $appId;
         $this->appSecret = $appSecret;
         $this->token     = $token;
-
     }
 
     /**
-     * 获取token
-     * @return
+     * 使用get方式发送数据
+     * @param unknown $url
+     * @return Ambigous <boolean, mixed>
      */
-    public function getAccessToken ()
-    {
-        static $accessTokenInfo = null;
-
-        $url = $this->getRequestUrl('GetAccessToken');
-        $response = $this->request($url);
-        trace($response);
-        $result = ConvertFormat::json_decode($response,true);
-        if(isset($result['errmsg'])) {
-            $this->errorDesc = "Error: code(".$result['errcode'].") message(".$result['errmsg'].")";
-        } else {
-            $accessToken = $result['access_token'];
-        }
-
-        return $accessToken;
-    }
-
     public function get ($url)
     {
         return $this->request($url, 'GET');
     }
 
+    /**
+     * 使用post方式发送数据
+     * @param unknown $url
+     * @param unknown $params
+     * @param unknown $files
+     * @return Ambigous <boolean, mixed>
+     */
     public function post ($url, $params=array(), $files=array())
     {
         return $this->request($url, 'POST', $params, $files);
@@ -95,42 +72,23 @@ class WechatRequester extends WechatAbstract
     /**
      * Attempt to detect the MIME type of a file using available extensions
      *
-     * This method will try to detect the MIME type of a file. If the fileinfo
-     * extension is available, it will be used. If not, the mime_magic
-     * extension which is deprecated but is still available in many PHP setups
-     * will be tried.
-     *
-     * If neither extension is available, the default application/octet-stream
-     * MIME type will be returned
-     *
      * @param string $file File path
      * @return string MIME type
      */
     protected function detectFileMimeType($file)
     {
-        $type = null;
+        // default application/octet-stream
+        $mime = 'application/octet-stream';
 
         // First try with fileinfo functions
         if (function_exists('finfo_open')) {
-            if (static::$fileInfoDb === null) {
-                ErrorHandler::start();
-                static::$fileInfoDb = finfo_open(FILEINFO_MIME);
-                ErrorHandler::stop();
-            }
-
-            if (static::$fileInfoDb) {
-                $type = finfo_file(static::$fileInfoDb, $file);
-            }
-        } elseif (function_exists('mime_content_type')) {
-            $type = mime_content_type($file);
+            $mimeDetector = finfo_open(FILEINFO_MIME);
+            $mime = finfo_file($mimeDetector, $file);
+        } else if (function_exists('mime_content_type')) {
+            $mime = mime_content_type($file);
         }
 
-        // Fallback to the default application/octet-stream
-        if (! $type) {
-            $type = 'application/octet-stream';
-        }
-
-        return $type;
+        return $mime;
     }
 
     /**
@@ -164,108 +122,88 @@ class WechatRequester extends WechatAbstract
 
 
     /**
-     * Set a file to upload (using a POST request)
+     * 载入待上传的文件信息
      *
-     * Can be used in two ways:
-     *
-     * 1. $data is null (default): $filename is treated as the name if a local file which
-     * will be read and sent. Will try to guess the content type using mime_content_type().
-     * 2. $data is set - $filename is sent as the file name, but $data is sent as the file
-     * contents and no file is read from the file system. In this case, you need to
-     * manually set the Content-Type ($ctype) or it will default to
-     * application/octet-stream.
-     *
-     * @param  string $filename Name of file to upload, or name to save as
+     * @param  string $filepath file to upload
      * @param  string $formname Name of form element to send as
-     * @param  string $data Data to send (if null, $filename is read and sent)
-     * @param  string $ctype Content type to use (if $data is set and $ctype is
+     * @param  string $data Data to send (if null, $filepath is read and sent)
+     * @param  string $mime Content type to use (if $data is set and $mime is
      *                null, will be application/octet-stream)
-     * @return Client
-     * @throws Exception\RuntimeException
      */
-    public function setFileUpload($filename, $formname, $data = null, $ctype = null)
+    protected function loadFileInfo($filepath, $nameInForm, $data = null, $mime = null)
     {
         if ($data === null) {
-            ErrorHandler::start();
-            $data  = file_get_contents($filename);
-            $error = ErrorHandler::stop();
+            $data  = file_get_contents($filepath);
             if ($data === false) {
-                throw new Exception\RuntimeException("Unable to read file '{$filename}' for upload", 0, $error);
+                throw new Exception("Unable to read file '{$filename}'");
             }
-            if (!$ctype) {
-                $ctype = $this->detectFileMimeType($filename);
+            if (! $mime) {
+                $mime = $this->detectFileMimeType($filepath);
             }
         }
 
-        $this->getRequest()->getFiles()->set($filename, array(
-                'formname' => $formname,
-                'filename' => basename($filename),
-                'ctype' => $ctype,
+        $fileInfo = array(
+                'formname' => $nameInForm,
+                'filename' => basename($filepath),
+                'mime' => $mime,
                 'data' => $data
-        ));
+        );
 
-        return $this;
+        return $fileInfo;
     }
 
+    /**
+     * 发送请求内容到微信服务器
+     * @param unknown $url
+     * @param string $method
+     * @param unknown $params
+     * @param unknown $files
+     * @return mixed|boolean
+     */
     protected function request ($url, $method='GET', $params=array(), $files=array())
     {
-        $oCurl = curl_init();
-        if(stripos($url,"https://")!==FALSE){
-            //curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, FALSE);
-            curl_setopt($oCurl, CURLOPT_SSL_VERIFYHOST, FALSE);
+        $curlHandler = curl_init();
+        if(stripos($url,"https://")!==false){
+            curl_setopt($curlHandler, CURLOPT_SSL_VERIFYPEER, FALSE);
+            curl_setopt($curlHandler, CURLOPT_SSL_VERIFYHOST, false);
             //curl_setopt($oCurl, CURLOPT_SSLVERSION, 1); //CURL_SSLVERSION_TLSv1
         }
-        curl_setopt($oCurl, CURLOPT_URL, $url);
-        curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1 );
+        curl_setopt($curlHandler, CURLOPT_URL, $url);
+        curl_setopt($curlHandler, CURLOPT_RETURNTRANSFER, 1 );
         $curlMethod = $method == 'GET' ? CURLOPT_HTTPGET : CURLOPT_POST;
-        curl_setopt($oCurl, $curlMethod, true);
+        curl_setopt($curlHandler, $curlMethod, true);
 
-		if (is_string($params)) {
-	        $rowData = & $params;
-	    } elseif ($files) {
-	        $rowData = & $this->buildPost ($params, $files);
-		} else {
-			$rowData = http_build_query($params);
-		}
+        if ('POST'==$method) {
+    		if (is_string($params)) {
+    	        $rawData = & $params;
+    	    } else if ($files) {
+    	        curl_setopt($curlHandler, CURLOPT_HTTPHEADER, array('Content-Type: multipart/form-data'));
+    	        $rawData = & $this->buildRawData ($params, $files);
+    		} else {
+    			$rawData = http_build_query($params);
+    		}
+    		curl_setopt($curlHandler, CURLOPT_POSTFIELDS, $rawData);
+        }
 
+		$response = curl_exec($curlHandler);
+		$curlInfo = curl_getinfo($curlHandler);
 
-        if (stripos($this->getEncType(), self::ENC_FORMDATA) === 0) {
-                $boundary = '----' . md5(microtime());
-                $this->setEncType(self::ENC_FORMDATA, $boundary);
+		curl_close($curlHandler);
 
-                // Get POST parameters and encode them
-                $params = self::flattenParametersArray($this->getRequest()->getPost()->toArray());
-                foreach ($params as $pp) {
-                    $body .= $this->encodeFormData($boundary, $pp[0], $pp[1]);
-                }
-
-                // Encode files
-                foreach ($this->getRequest()->getFiles()->toArray() as $file) {
-                    $fhead = array('Content-Type' => $file['ctype']);
-                    $body .= $this->encodeFormData($boundary, $file['formname'], $file['data'], $file['filename'], $fhead);
-                }
-                $body .= "--{$boundary}--\r\n";
-            } elseif (stripos($this->getEncType(), self::ENC_URLENCODED) === 0) {
-                // Encode body as application/x-www-form-urlencoded
-                $body = http_build_query($this->getRequest()->getPost()->toArray());
-            }
-
-
-		curl_setopt($oCurl, CURLOPT_POSTFIELDS, $rowData);
-
-		$sContent = curl_exec($oCurl);
-		$aStatus = curl_getinfo($oCurl);
-
-		curl_close($oCurl);
-
-		if(intval($aStatus["http_code"])==200){
-			return $sContent;
+		if(intval($curlInfo["http_code"])==200){
+			return $response;
 		}else{
 			return false;
 		}
     }
 
-    protected function & buildRawData ($post, $files)
+    /**
+     * 组装post主体内容
+     * @param unknown $post
+     * @param unknown $files
+     * @return string
+     */
+    protected function & buildRawData ($params, $files)
     {
     	$rawData = '';
     	$boundary = '----iCodeBang.com---' . md5(microtime());
@@ -274,7 +212,17 @@ class WechatRequester extends WechatAbstract
     	}
     	// Encode files
     	foreach ($files as $nameInForm=>$file) {
-    		$fhead = array('Content-Type' => $file['ctype']);
+    	    if (is_string($file)) {
+    	        try {
+    	            $file = $this->loadFileInfo($file, $nameInForm);
+    	        } catch (Exception $e) {}
+    	    }
+
+    	    if (! is_array($file) || !isset($file['mime'])) {
+    	        continue;
+    	    }
+
+    		$fhead = array('Content-Type' => $file['mime']);
     		$rawData .= $this->encodeFormData($boundary, $file['formname'], $file['data'], $file['filename'], $fhead);
     	}
     	$rawData .= "--{$boundary}--\r\n";
@@ -283,176 +231,88 @@ class WechatRequester extends WechatAbstract
     }
 
     /**
-     * 获取请求的URL
-     * @param string $key
-     * @param array $params
-     * @return string
+     * 获取token
+     * @return
      */
-    public function getRequestUrl ($key, $params = array())
+    public function getAccessToken ()
     {
-        $url = '';
+        static $accessTokenInfo = array('access_token'=>'', 'expires_in'=>0);
 
-        switch($requestType) {
-            case 'GetAccessToken':
-                $url = sprintf($this->urlList['GetAccessToken'], $this->appId, $this->appSecret);
-                break;
-
-            case 'AddShakeArroundMaterial':
-                $url = sprintf($this->urlList[$requestType], $this->accessToken, $params['type']);
-                break;
-
-            default :
-                if(isset($this->urlList[$requestType])) {
-                    $url = sprintf($this->urlList[$requestType], $this->accessToken);
-                }
-                break;
+        if (($accessTokenInfo['expires_in'] - time()) >60 ) {
+            return $accessTokenInfo['access_token'];
         }
 
-        return $url;
+        $url = sprintf(self::API_URL_PREFIX . $this->apiUriList['GetAccessToken'],
+                      $this->appId, $this->appSecret
+               );
+        $response = $this->get($url);
+        $result = ConvertFormat::json_decode($response,true);
+        if(isset($result['errmsg'])) {
+            $this->errorDesc = "Error: code(".$result['errcode'].") message(".$result['errmsg'].")";
+        } else {
+            $result['expires_in'] = time() + $result['expires_in'];
+            $accessTokenInfo = $result;
+        }
+
+        return $accessTokenInfo['access_token'];
     }
 
     /**
-     * 设置请求URL
-     * @param unknown $requestType
-     * @param unknown $url
-     * @return WechatRequester
+     * 设置公众号菜单
+     * @param unknown $menuList
+     * @return mixed
      */
-    public function setRequestUrl ($requestType, $url)
-    {
-        if(isset($this->urlList[$requestType])) {
-            $this->urlList[$requestType] = $url;
-        }
-
-        return $this;
-    }
-
-    /**
-     * 初始化http请求客户端
-     * @param string $url
-     * @param array  $config
-     *
-     * @return Zend_Http_Client
-     */
-    protected function getHttpClient ($url = null, $config = array())
-    {
-        // 优先使用 curl
-        if(function_exists('curl_init')) { // 系统存在curl模块
-            $httpRequestConfig = array('ssltransport' => 'tls',
-                'adapter'=>'\Zend\Http\Client\Adapter\Curl',
-                'curloptions'=>array(CURLOPT_SSL_VERIFYPEER=>false));
-        } else { //系统没有 curl模块，通过socket建立http连接
-            $httpRequestConfig = array('adapter'=>'\Zend\Http\Client\Adapter\Socket',);
-        }
-
-        // 合并配置参数
-        settype($config, 'array');
-        $httpRequestConfig = array_merge($config, $httpRequestConfig);
-
-        // 实例化http client
-        $this->httpClient = new \Zend\Http\Client($url, $httpRequestConfig);
-
-        return $this->httpClient;
-    }
-
-    /**
-     * 设置上传的文件
-     * @param string $filePath 要上传的文件路径
-     * @param string $nameInForm 文件在上传处理中对应的名字
-     *
-     * @return object Self instance
-     */
-    public function setUploadFile ($filePath, $nameInForm)
-    {
-        settype ($nameInForm, 'string');
-        $filePath = realpath($filePath);
-        if (is_file($filePath)) {
-            $this->httpUploadFiles[$nameInForm] = $filePath;
-        }
-
-        return $this;
-    }
-
-    public function request ($uri, $rawdata=null, $method='POST')
-    {
-
-    	$starttime = date('Y-m-d H:i:s');
-        trace('[HttpRequest] ['.$starttime.'] --Start--' , '', 'DEBUG');
-        trace($uri);
-        trace($rawdata);
-
-        // 取得http client 实例
-        $httpClient = $this->getHttpClient();
-        // 尝试发送请求并获取响应
-        try {
-            $i = 0;
-            while($i++<2) {
-                $httpClient->setUri ( $uri );
-                // 将请求参数传递到http client中
-                $_postMethods = array (
-                    \Zend\Http\Request::METHOD_POST,
-                    \Zend\Http\Request::METHOD_PUT
-                );
-                if (in_array ( $method, $_postMethods )) {
-                    // PUT and POST requires to set the content-type
-                    // $httpClient->setEncType(Zend_Http_Client::ENC_URLENCODED);
-                    $httpClient->setEncType ( \Zend\Http\Client::ENC_FORMDATA );
-                }
-                // 设置上传的文件
-                if ($this->httpUploadFiles) {
-                    foreach ( $this->httpUploadFiles as $_key => $_uploadFilePath ) {
-                        $httpClient->setFileUpload ( $_uploadFilePath, $_key );
-                    }
-                }
-                if ($rawdata) {
-                    $httpClient->setRawBody($rawdata);
-                }
-                // 传递请求方法
-                $this->httpResponse = $httpClient->setMethod( $method )->send();
-                // 获取响应
-                if (200 <= $this->httpResponse->getStatusCode () && $this->httpResponse->getStatusCode ()<300) { // 正常响应
-                    $result = $this->httpResponse->getBody ();
-                    $resultInfo = @json_decode ( $result, true );
-                } else { // 失败返回错误
-                    $result = new \ErrorCoder ( \ErrorCoder::ERR_HTTP_RESPONSE_CODE_ERROR );
-                }
-
-                break;// 成功执行请求， 跳出循环
-            }
-
-        } catch (\Zend\Http\Client\Exception $e) { // 截获异常， 返回错误
-            $result = new \ErrorCoder(\ErrorCoder::ERR_BAD_REQUEST);
-        }
-        $endtime = date('Y-m-d H:i:s');
-
-        return $result;
-    }
-
-    public function setAccessToken ($accessToken)
-    {
-        $this->accessToken = $accessToken;
-
-        return $this;
-    }
-
     public function setMenu ($menuList)
     {
-        $url = $this->getRequestUrl('SetMenu');
-        $response = $this->request($url, ConvertFormat::json_encode($menuList), 'POST');
-
-        $response = ConvertFormat::json_decode($response,true);
-        trace($response);
+        $accessToken = $this->getAccessToken();
+        $url = sprintf(self::API_URL_PREFIX.$this->apiUriList['SetMenu'], $accessToken);
+        $response = $this->post($url, ConvertFormat::json_encode($menuList));
+        $response = json_decode($response,true);
 
         return $response;
     }
 
+    /**
+     * 获取菜单
+     * @return array
+     */
+    public function getMenu ()
+    {
+        $url = sprintf(self::API_URL_PREFIX.$this->apiUriList['GetMenu'],
+                       $this->getAccessToken()
+               );
+        $response = $this->get($url);
+
+        return $response;
+    }
+
+    /**
+     * 检查摇一摇申请状态
+     * @return Ambigous <mixed, boolean>
+     */
     public function checkShakeArroundStatus ()
     {
         $result = false;
-        $url = $this->getRequestUrl('ShakeArroundStatus');
+        $accessToken = $this->getAccessToken();
+        $url = sprintf(self::API_URL_PREFIX.$this->apiUriList['ShakeArroundStatus'], $accessToken);
         $response = $this->request($url, null, 'GET');
-        trace($response);
 
-        //$response = ConvertFormat::json_decode($response,true);
+        return $response;
+    }
+
+    /**
+     * 添加摇一摇素材
+     * @param string $filepath 图片路径
+     * @param string $type 素材类型： icon 或者  license
+     * @return \ErrorCoder
+     */
+    public function addShakeArroundMaterial ($filepath, $type='icon')
+    {
+        $url = sprintf(self::API_URL_PREFIX.$this->apiUriList['AddShakeArroundMaterial'],
+                       $this->getAccessToken(),
+                       $type
+               );
+        $response = $this->post($url, array(), array('media'=>$filepath));
 
         return $response;
     }
@@ -467,28 +327,16 @@ class WechatRequester extends WechatAbstract
      */
     public function applyShakeArround ($info)
     {
-        $url = $this->getRequestUrl('ApplyShakeArround');
-        $response = $this->request($url, ConvertFormat::json_encode($info), 'POST');
-        trace($response);
+        $url = sprintf(self::API_URL_PREFIX.$this->apiUriList['ApplyShakeArround'],
+                       $this->getAccessToken()
+               );
+        $response = $this->post($url, ConvertFormat::json_encode($info));
 
         return $response;
     }
 
-    /**
-     * 添加摇一摇素材
-     * @param string $filepath 图片路径
-     * @param string $type 素材类型： icon 或者  license
-     * @return \ErrorCoder
-     */
-    public function addShakeArroundMaterial ($filepath, $type='icon')
-    {
-        $url = $this->getRequestUrl('AddShakeArroundMaterial', array('type'=>$type));
-        $this->setUploadFile($filepath, 'media');
-        $response = $this->request($url, null, 'POST');
-        trace($response);
 
-        return $response;
-    }
+
 
     /**
      * 申请摇一摇设备id
@@ -587,30 +435,6 @@ class WechatRequester extends WechatAbstract
         return $response;
     }
 
-    public function getMenu ($menuList)
-    {
-        $result = false;
-        $url = $this->getRequestUrl('GetMenu');
-        echo $url;
-        $response = $this->getHttpClient()
-                         ->setUri($url)
-                         ->request('GET');
-        if(200!=$response->getStatus()) {
-            return $result;
-        }
-        $response = ConvertFormat::json_decode($response->getBody(),true);
-        echo print_r($response,true);
-        if(isset($response['errcode'])) {
-            if(0==$response['errcode']) {
-                $result = $response;
-            } else {
-                $this->errorDesc = "Error: code(".$response['errcode'].") message(".$response['errmsg'].")";
-            }
-        }
-
-        return $result;
-    }
-
     public function getSubscriber ($openId)
     {
         $url = sprintf($this->getRequestUrl('GetSubscriber'), $this->accessToken, $openId);
@@ -643,3 +467,103 @@ class WechatRequester extends WechatAbstract
 
 
 }
+
+/* EOF */
+
+$config =  array(
+        // 配置文件
+        'REPORT_CLICK_URL' => 'http://dig-visitor.oradt.com/fvisitor',
+        'Neo4j'            => array (
+                'url'      => 'http://118.186.66.169:80/db/data/transaction',
+                'user'     => 'neo4j',
+                'pass'     => 'neo654321',
+        ),
+        // 微信配置
+        'Wechat'           => array (
+                'AppID'             => 'wxd74253d6ee55fe12',
+                'AppSecret'         => 'ecd90fa62cd26bb716ebad464fca2fda',
+                'Token'             => 'weixin',
+                'EncodingAESKey'    => 'S0vTZ2ZhED24Fo5kt4niVIaHWjdKOHumV4GBoN1sGH0',
+                'menu'              => array (
+                        'button' => array (
+                                array('name'=>'点击交互',
+                                        'sub_button'=> array(
+                                                array(  'type'=>'click',
+                                                        'key'=>'click1',
+                                                        'name'=>'Click1'),
+                                                array(  'type'=>'click',
+                                                        'key'=>'click2',
+                                                        'name'=>'Click2'),
+                                                array(
+                                                        'type'=>'view',
+                                                        'key'=>'view',
+                                                        'url'=>'http://dev.orayun.com/demo/wechat/view',
+                                                        'name'=>'View'),
+                                        )
+                                ),
+                                array('name'=>'拍照扫码',
+                                        'sub_button'=> array(
+                                                array(
+                                                        'type'=>'scancode_push',
+                                                        'key'=>'scancode_push',
+                                                        'url'=>'http://dev.orayun.com/demo/wechat/scanCodePush',
+                                                        'name'=>'scancode_push'),
+                                                array(
+                                                        'type'=>'scancode_waitmsg',
+                                                        'key'=>'scancode_waitmsg',
+                                                        'url'=>'http://dev.orayun.com/demo/wechat/scanCodeWaitMsg',
+                                                        'name'=>'scancode_waitmsg'),
+                                                array(
+                                                        'type'=>'pic_sysphoto',
+                                                        'key'=>'pic_sysphoto',
+                                                        'url'=>'http://dev.orayun.com/demo/wechat/picSysPhoto',
+                                                        'name'=>'pic_sysphoto'),
+                                                array(
+                                                        'type'=>'pic_photo_or_album',
+                                                        'key'=>'pic_photo_or_album',
+                                                        'url'=>'http://dev.orayun.com/demo/wechat/picPhotoOrAlbum',
+                                                        'name'=>'pic_photo_or_album'),
+                                                array(
+                                                        'type'=>'pic_weixin',
+                                                        'key'=>'pic_weixin',
+                                                        'url'=>'http://dev.orayun.com/demo/wechat/picWeixin',
+                                                        'name'=>'pic_weixin'),
+                                        )
+                                ),
+                                array('name'=>'媒体查询',
+                                        'sub_button'=> array(
+                                                array(
+                                                        'type'=>'location_select',
+                                                        'key'=>'location_select',
+                                                        'url'=>'http://dev.orayun.com/demo/wechat/locationSelect',
+                                                        'name'=>'location_select'),
+                                                        //                                                 array(
+                                                                //                                                         'type'=>'media_id',
+                                                                //                                                         'key'=>'media_id',
+                                                                //                                                         'url'=>'http://dev.orayun.com/demo/wechat/mediaId',
+                                                                //                                                         'name'=>'media_id'),
+                                        //                                                 array(
+                                                //                                                         'type'=>'view_limited',
+                                        //                                                         'key'=>'view_limited',
+                                        //                                                         'url'=>'http://dev.orayun.com/demo/wechat/viewLimited',
+                                        //                                                         'name'=>'view_limited'),
+                                        )
+                                        ),
+
+                                )
+                        )
+                ),
+        );
+
+$request = new WechatRequester($config['Wechat']['AppID'],
+                               $config['Wechat']['AppSecret'],
+                               $config['Wechat']['AppSecret']
+            );
+
+//echo $request->getAccessToken(), "\r\n";
+
+$request->setMenu($config['Wechat']['menu']);
+
+//var_dump($request->checkShakeArroundStatus());
+//var_dump($request->addShakeArroundMaterial('C:\\Users\\wangzx\\Pictures\\scannerInfo.png'));
+echo $request->getMenu();
