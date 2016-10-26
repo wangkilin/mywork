@@ -41,7 +41,7 @@ class Uri
 
     protected function getPathInfoFromQuery ()
     {
-        // @todo 需要从请求中解析出来。
+        // @todo 需要从请求中解析出来。 因为请求中可能包含其他参数 如  index.php?dir/controller/action/param&ss
         $this->queryString = $this->request->server('QUERY_STRING');
         $pathInfo = $this->queryString;
 

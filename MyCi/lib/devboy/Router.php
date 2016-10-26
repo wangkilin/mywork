@@ -80,6 +80,14 @@ class Router
 	}
 
 	/**
+	 * 开始路由
+	 */
+	public function route ()
+	{
+	    //@todo
+	}
+
+	/**
 	 * 匹配config中的路由信息
 	 */
 	public function matchRouteConfig ()
