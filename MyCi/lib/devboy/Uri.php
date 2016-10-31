@@ -18,14 +18,18 @@ class Uri
     private $pathInfo = '';
     private $queryString = '';
 
-    public function __construct()
+    public function __construct($pathinfo='')
     {
 		$this->config = & loadClass('Config', BASE_PATH);
 		$this->request = & loadClass('Request', BASE_PATH);
-		$this->parse();
+		if ($pathinfo) {
+		    $this->pathInfo = $pathinfo;
+		} else {
+		    $this->parse();
+		}
     }
 
-    public function parse ()
+    public function parse ($pathinfo)
     {
         // 在url路径里指定pathinfo. 格式 index.php/dir/controller/action/param.html
         $this->pathInfo = $this->request->server('PATH_INFO');
@@ -36,6 +40,10 @@ class Uri
         // 在url请求中指定pathinfo . 格式 index.php?dir/controller/action/param
         if (null==$this->pathInfo) {
             $this->pathInfo = $this->getPathInfoFromQuery ();
+        }
+        // 直接返回 REQUEST_URI
+        if (null==$this->pathInfo) {
+            $this->pathInfo = $this->request->server('REQUEST_URI');
         }
     }
 
