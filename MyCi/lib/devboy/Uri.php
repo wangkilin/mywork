@@ -29,10 +29,12 @@ class Uri
 		}
     }
 
-    public function parse ($pathinfo)
+    public function parse ()
     {
-        // 在url路径里指定pathinfo. 格式 index.php/dir/controller/action/param.html
-        $this->pathInfo = $this->request->server('PATH_INFO');
+        if (null==$this->pathInfo) {
+            // 在url路径里指定pathinfo. 格式 index.php/dir/controller/action/param.html
+            $this->pathInfo = $this->request->server('PATH_INFO');
+        }
         // 在url请求参数中指定pathinfo. 格式 index.php?q=dir/controller/action/param
         if (null==$this->pathInfo) {
             $this->pathInfo = $this->request->get($this->config->get('urlPathQueryName'));

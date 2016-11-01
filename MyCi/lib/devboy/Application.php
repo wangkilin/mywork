@@ -109,6 +109,9 @@ class Application
 
     	self::$config = & loadClass('Config', BASE_PATH);
 
+    	// 设置系统时区
+    	@ date_default_timezone_set(self::$config->get('defaultTimeZone'));
+
     	$oHook =& loadClass('Hooks', BASE_PATH);
     	$oHook->call('pre_system');
         // 设置系统错误处理，关闭处理

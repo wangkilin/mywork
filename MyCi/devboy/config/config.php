@@ -7,6 +7,10 @@ $config['debug'] = true; // 是否开启调试模式
 $config['charset'] = 'UTF-8'; // 默认编码
 $config['defaultTimeZone'] = ''; // 默认时区
 $config['baseUrl'] = '';   // 网站入口url
+// URL模式。    0：[index.php]?d=dir&c=controller&a=action&param;
+//         1: [index.php]?q=dir/controller/action/param
+//         2: [index.php]/dir/controller/action/param
+//         3: 以上模式均支持
 $config['urlMode'] = 3;
 $config['actionMethodSuffix'] = 'Action';
 $config['defaultAction'] ='index';

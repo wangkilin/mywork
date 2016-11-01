@@ -103,6 +103,8 @@ class Router
         $urlActionKey       = $this->config->get('actionKeyInUrl');
         $isUrlCaseSensitice = $this->config->get('urlCaseSensitive');
 
+        $
+
         $pathInfo = $this->request->getUri()->getPathInfo();
 
         $this->_dir = '';
