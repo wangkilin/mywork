@@ -19,7 +19,7 @@ $config['defaultController'] = 'Index';
 $config['url'] = array();
 $config['urlSuffix'] = '.html'; // 生成的url后缀
 $config['viewReplacement'] = array('__PUBLIC__'=>''); // @todo view里面需要替换的字符串
-$config['supportControllerDir'] = true; // 是否支持controller分目录
+$config['isSupportControllerDir'] = true; // 是否支持controller分目录
 $config['defaultControllerDir'] = 'home'; // 如果支持controller分目录， 路由到的默认目录
 $config['urlCaseSensitive'] = false; // 在URL中获取 Dir， Controller， Action是否区分大小写
 $config['urlPathQueryName'] = 'q'; // 兼容模式请求

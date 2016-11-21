@@ -54,6 +54,7 @@ class Router
 		}
 		$this->request = $request;
 		//$this->uri    = & loadClass('URI', BASE_PATH);
+        $this->loadDefaultRoute();
 
         $this->parse();
 
@@ -95,21 +96,156 @@ class Router
 
 	}
 
+	/**
+	 * 从配置文件总加载默认的路由信息
+	 */
+	protected function loadDefaultRoute ()
+	{
+	    if (true===$this->config->get('isSupportControllerDir')) {
+            $this->_dir = $this->config->get('defaultControllerDir');
+	    }
+        $this->_controller = $this->config->get('defaultController');
+        $this->_action = $this->config->get('defaultAction');
+	}
+
 	public function parse ()
 	{
         $urlQueryPathKey    = $this->config->get('urlPathQueryName');
-        $urlDirKey          = $this->config->get('dirKeyInUrl');
-        $urlControllerKey   = $this->config->get('controllerKeyInUrl');
-        $urlActionKey       = $this->config->get('actionKeyInUrl');
+        $dirKeyInUrl        = $this->config->get('dirKeyInUrl');
+        $controllerKeyInUrl = $this->config->get('controllerKeyInUrl');
+        $actionKeyInUrl     = $this->config->get('actionKeyInUrl');
         $isUrlCaseSensitice = $this->config->get('urlCaseSensitive');
 
-        $
+        // 从get从获取路由信息。 级别较低
+        if ( true===$this->config->get('isSupportControllerDir')
+          && $this->request->get($dirKeyInUrl) !==null ) {
+            $this->_dir = strval($this->request->get($dirKeyInUrl));
+        }
+        if ($this->request->get($controllerKeyInUrl) !== null) {
+            $this->_controller = strval($this->request->get($controllerKeyInUrl));
+        }
+        if ($this->request->get($actionKeyInUrl) !== null) {
+            $this->_controller = strval($this->request->get($actionKeyInUrl));
+        }
 
         $pathInfo = $this->request->getUri()->getPathInfo();
 
-        $this->_dir = '';
-        $this->_controller = '';
-        $this->_action = '';
+
+
+
+        // URL常量
+        define('__SELF__',strip_tags($_SERVER[C('URL_REQUEST_URI')]));
+
+        // 获取模块名称
+        define('MODULE_NAME', defined('BIND_MODULE')? BIND_MODULE : self::getModule($varModule));
+
+        // 检测模块是否存在
+        if( MODULE_NAME && (defined('BIND_MODULE') || !in_array_case(MODULE_NAME,C('MODULE_DENY_LIST')) ) && is_dir(APP_PATH.MODULE_NAME)){
+            // 定义当前模块路径
+            define('MODULE_PATH', APP_PATH.MODULE_NAME.'/');
+            // 定义当前模块的模版缓存路径
+            C('CACHE_PATH',CACHE_PATH.MODULE_NAME.'/');
+            // 定义当前模块的日志目录
+            C('LOG_PATH',  realpath(LOG_PATH).'/'.MODULE_NAME.'/');
+
+            // 模块检测
+            Hook::listen('module_check');
+
+            // 加载模块配置文件
+            if(is_file(MODULE_PATH.'Conf/config'.CONF_EXT))
+                C(load_config(MODULE_PATH.'Conf/config'.CONF_EXT));
+            // 加载应用模式对应的配置文件
+            if('common' != APP_MODE && is_file(MODULE_PATH.'Conf/config_'.APP_MODE.CONF_EXT))
+                C(load_config(MODULE_PATH.'Conf/config_'.APP_MODE.CONF_EXT));
+            // 当前应用状态对应的配置文件
+            if(APP_STATUS && is_file(MODULE_PATH.'Conf/'.APP_STATUS.CONF_EXT))
+                C(load_config(MODULE_PATH.'Conf/'.APP_STATUS.CONF_EXT));
+
+            // 加载模块别名定义
+            if(is_file(MODULE_PATH.'Conf/alias.php'))
+                Think::addMap(include MODULE_PATH.'Conf/alias.php');
+            // 加载模块tags文件定义
+            if(is_file(MODULE_PATH.'Conf/tags.php'))
+                Hook::import(include MODULE_PATH.'Conf/tags.php');
+            // 加载模块函数文件
+            if(is_file(MODULE_PATH.'Common/function.php'))
+                include MODULE_PATH.'Common/function.php';
+
+            $urlCase        =   C('URL_CASE_INSENSITIVE');
+            // 加载模块的扩展配置文件
+            load_ext_file(MODULE_PATH);
+        }else{
+            E(L('_MODULE_NOT_EXIST_').':'.MODULE_NAME);
+        }
+
+        if(!defined('__APP__')){
+            $urlMode        =   C('URL_MODEL');
+            if($urlMode == URL_COMPAT ){// 兼容模式判断
+                define('PHP_FILE',_PHP_FILE_.'?'.$varPath.'=');
+            }elseif($urlMode == URL_REWRITE ) {
+                $url    =   dirname(_PHP_FILE_);
+                if($url == '/' || $url == '\\')
+                    $url    =   '';
+                define('PHP_FILE',$url);
+            }else {
+                define('PHP_FILE',_PHP_FILE_);
+            }
+            // 当前应用地址
+            define('__APP__',strip_tags(PHP_FILE));
+        }
+        // 模块URL地址
+        $moduleName    =   defined('MODULE_ALIAS')? MODULE_ALIAS : MODULE_NAME;
+        define('__MODULE__',(defined('BIND_MODULE') || !C('MULTI_MODULE'))? __APP__ : __APP__.'/'.($urlCase ? strtolower($moduleName) : $moduleName));
+
+        if('' != $_SERVER['PATH_INFO'] && (!C('URL_ROUTER_ON') ||  !Route::check()) ){   // 检测路由规则 如果没有则按默认规则调度URL
+            Hook::listen('path_info');
+            // 检查禁止访问的URL后缀
+            if(C('URL_DENY_SUFFIX') && preg_match('/\.('.trim(C('URL_DENY_SUFFIX'),'.').')$/i', $_SERVER['PATH_INFO'])){
+                send_http_status(404);
+                exit;
+            }
+
+            // 去除URL后缀
+            $_SERVER['PATH_INFO'] = preg_replace(C('URL_HTML_SUFFIX')? '/\.('.trim(C('URL_HTML_SUFFIX'),'.').')$/i' : '/\.'.__EXT__.'$/i', '', $_SERVER['PATH_INFO']);
+
+            $depr   =   C('URL_PATHINFO_DEPR');
+            $paths  =   explode($depr,trim($_SERVER['PATH_INFO'],$depr));
+
+            if(!defined('BIND_CONTROLLER')) {// 获取控制器
+                if(C('CONTROLLER_LEVEL')>1){// 控制器层次
+                    $_GET[$varController]   =   implode('/',array_slice($paths,0,C('CONTROLLER_LEVEL')));
+                    $paths  =   array_slice($paths, C('CONTROLLER_LEVEL'));
+                }else{
+                    $_GET[$varController]   =   array_shift($paths);
+                }
+            }
+            // 获取操作
+            if(!defined('BIND_ACTION')){
+                $_GET[$varAction]  =   array_shift($paths);
+            }
+            // 解析剩余的URL参数
+            $var  =  array();
+            if(C('URL_PARAMS_BIND') && 1 == C('URL_PARAMS_BIND_TYPE')){
+                // URL参数按顺序绑定变量
+                $var    =   $paths;
+            }else{
+                preg_replace_callback('/(\w+)\/([^\/]+)/', function($match) use(&$var){$var[$match[1]]=strip_tags($match[2]);}, implode('/',$paths));
+            }
+            $_GET   =  array_merge($var,$_GET);
+        }
+        // 获取控制器的命名空间（路径）
+        define('CONTROLLER_PATH',   self::getSpace($varAddon,$urlCase));
+        // 获取控制器和操作名
+        define('CONTROLLER_NAME',   defined('BIND_CONTROLLER')? BIND_CONTROLLER : self::getController($varController,$urlCase));
+        define('ACTION_NAME',       defined('BIND_ACTION')? BIND_ACTION : self::getAction($varAction,$urlCase));
+
+        // 当前控制器的UR地址
+        $controllerName    =   defined('CONTROLLER_ALIAS')? CONTROLLER_ALIAS : CONTROLLER_NAME;
+        define('__CONTROLLER__',__MODULE__.$depr.(defined('BIND_CONTROLLER')? '': ( $urlCase ? parse_name($controllerName) : $controllerName )) );
+
+        // 当前操作的URL地址
+        define('__ACTION__',__CONTROLLER__.$depr.(defined('ACTION_ALIAS')?ACTION_ALIAS:ACTION_NAME));
+
 	}
 
 	public function getDir ()
