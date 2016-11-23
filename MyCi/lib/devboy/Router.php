@@ -108,13 +108,32 @@ class Router
         $this->_action = $this->config->get('defaultAction');
 	}
 
+	/**
+	 * 在路由配置中匹配请求的路径
+	 * @param string $pathinfo 请求的pathinfo
+	 * @return string 匹配到了路由配置, 返回路由对应的pathinfo
+	 */
+	protected function matchRouteConfig ($pathinfo)
+	{
+	    $routeSetting = $this->config->get('route');
+	    foreach ($routeSetting as $_key=>$_value) {
+	        if ($_value) {
+	            $pathinfo = $routeSetting[$key];
+	            break;
+	        }
+	    }
+
+	    return $pathinfo;
+	}
+
 	public function parse ()
 	{
+	    $hasBeenParsed = false; // 是否已经解析完成
         $urlQueryPathKey    = $this->config->get('urlPathQueryName');
         $dirKeyInUrl        = $this->config->get('dirKeyInUrl');
         $controllerKeyInUrl = $this->config->get('controllerKeyInUrl');
         $actionKeyInUrl     = $this->config->get('actionKeyInUrl');
-        $isUrlCaseSensitice = $this->config->get('urlCaseSensitive');
+        $isUrlCaseSensitive = $this->config->get('urlCaseSensitive');
 
         // 从get从获取路由信息。 级别较低
         if ( true===$this->config->get('isSupportControllerDir')
@@ -129,8 +148,8 @@ class Router
         }
 
         $pathInfo = $this->request->getUri()->getPathInfo();
-
-
+        // 查看请求的路径是否能够匹配路由配置， 如果匹配路由配置， 重新设定pathinfo
+        $pathInfo!='' && $pathInfo = $this->matchRouteConfig($pathInfo);
 
 
         // URL常量
@@ -138,45 +157,6 @@ class Router
 
         // 获取模块名称
         define('MODULE_NAME', defined('BIND_MODULE')? BIND_MODULE : self::getModule($varModule));
-
-        // 检测模块是否存在
-        if( MODULE_NAME && (defined('BIND_MODULE') || !in_array_case(MODULE_NAME,C('MODULE_DENY_LIST')) ) && is_dir(APP_PATH.MODULE_NAME)){
-            // 定义当前模块路径
-            define('MODULE_PATH', APP_PATH.MODULE_NAME.'/');
-            // 定义当前模块的模版缓存路径
-            C('CACHE_PATH',CACHE_PATH.MODULE_NAME.'/');
-            // 定义当前模块的日志目录
-            C('LOG_PATH',  realpath(LOG_PATH).'/'.MODULE_NAME.'/');
-
-            // 模块检测
-            Hook::listen('module_check');
-
-            // 加载模块配置文件
-            if(is_file(MODULE_PATH.'Conf/config'.CONF_EXT))
-                C(load_config(MODULE_PATH.'Conf/config'.CONF_EXT));
-            // 加载应用模式对应的配置文件
-            if('common' != APP_MODE && is_file(MODULE_PATH.'Conf/config_'.APP_MODE.CONF_EXT))
-                C(load_config(MODULE_PATH.'Conf/config_'.APP_MODE.CONF_EXT));
-            // 当前应用状态对应的配置文件
-            if(APP_STATUS && is_file(MODULE_PATH.'Conf/'.APP_STATUS.CONF_EXT))
-                C(load_config(MODULE_PATH.'Conf/'.APP_STATUS.CONF_EXT));
-
-            // 加载模块别名定义
-            if(is_file(MODULE_PATH.'Conf/alias.php'))
-                Think::addMap(include MODULE_PATH.'Conf/alias.php');
-            // 加载模块tags文件定义
-            if(is_file(MODULE_PATH.'Conf/tags.php'))
-                Hook::import(include MODULE_PATH.'Conf/tags.php');
-            // 加载模块函数文件
-            if(is_file(MODULE_PATH.'Common/function.php'))
-                include MODULE_PATH.'Common/function.php';
-
-            $urlCase        =   C('URL_CASE_INSENSITIVE');
-            // 加载模块的扩展配置文件
-            load_ext_file(MODULE_PATH);
-        }else{
-            E(L('_MODULE_NOT_EXIST_').':'.MODULE_NAME);
-        }
 
         if(!defined('__APP__')){
             $urlMode        =   C('URL_MODEL');
