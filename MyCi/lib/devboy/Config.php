@@ -39,6 +39,11 @@ class Config
 		return isset($this->config[$key]) ? $this->config[$key] : NULL;
 	}
 
+	public function __construct()
+	{
+
+	}
+
 	/**
 	 * List of all loaded config files
 	 *

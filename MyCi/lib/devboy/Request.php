@@ -137,17 +137,19 @@ class Request
 		return $isHttps;
 	}
 
-	public function setGet ($name, $value=NULL)
+	public function setGet ($name, $value=NULL, $overwrite=true)
 	{
-	    if (NULL==$value && isset($_GET[$name])) {
+	    if (NULL===$value && isset($_GET[$name])) {
 	        $value = $_GET[$name];
 	    }
-	    $this->_get[$name] = $value;
+	    if ($overwrite || !isset($this->_get[$name])) {
+	        $this->_get[$name] = $value;
+	    }
 
 	    return $this;
 	}
 
-	public function get ()
+	public function get ($name, $value=NULL)
 	{
         if (NULL !== $value || !isset($this->_get[$name])) {
             $this->setGet($name, $value);
@@ -156,17 +158,19 @@ class Request
         return $this->_get[$name];
 	}
 
-	public function setPost ($name, $value=NULL)
+	public function setPost ($name, $value=NULL, $overwrite=true)
 	{
-	    if (NULL==$value && isset($_POST[$name])) {
+	    if (NULL===$value && isset($_POST[$name])) {
 	        $value = $_POST[$name];
 	    }
-	    $this->_post[$name] = $value;
+	    if ($overwrite || !isset($this->_post[$name])) {
+	        $this->_post[$name] = $value;
+	    }
 
 	    return $this;
 	}
 
-	public function post ()
+	public function post ($name, $value=NULL)
 	{
         if (NULL !== $value || !isset($this->_post[$name])) {
             $this->setPost($name, $value);

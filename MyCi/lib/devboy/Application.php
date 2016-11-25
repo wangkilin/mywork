@@ -15,19 +15,31 @@ class Application
     static private $_config;
     static private $_instance = null;
 
-    private function __construct()
+    private function __construct($options)
     {
+        $this->setOptions($options);
+
         $this->init();
+    }
+
+    public function setOptions ($options)
+    {
+        foreach ($options as $_k=>$_v) {
+            if ('_'!=$_k[0]) {
+                $this->$_k = $_v;
+            }
+        }
+        return $this;
     }
 
     /**
      * 获取Application实例
      * @return Application
      */
-    static public function getInstance ()
+    static public function getInstance ($options=array())
     {
     	if (null==self::$_instance) {
-    		self::$_instance =  new self();
+    		self::$_instance =  new self($options);
     	}
 
     	return self::$_instance;
@@ -49,10 +61,12 @@ class Application
     public function run ()
     {
         $oRouter = loadClass('Router', BASE_PATH);
-        $oRouter->
+
         $dir        = $oRouter->getDir();
         $controller = $oRouter->getController();
         $action     = $oRouter->getAction();
+
+        return;
 
 		// 传入应用目录, 返回控制器对象
 		$handle_controller = self::create_controller(load_class('core_uri')->controller, load_class('core_uri')->app_dir);
@@ -106,6 +120,8 @@ class Application
     {
     	$oBenchMark = & loadClass('Benchmark', BASE_PATH);
     	$oBenchMark->mark('app_start');
+
+    	$configFile =
 
     	self::$config = & loadClass('Config', BASE_PATH);
 

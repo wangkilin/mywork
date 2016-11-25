@@ -126,6 +126,29 @@ class Router
 	    return $pathinfo;
 	}
 
+	/**
+	 * 从pathinfo中载入相应参数： dir， controller， action以及相关get参数
+	 * @param unknown $pathinfo
+	 */
+	protected function loadParamsFromPathInfo ($pathinfo)
+	{
+	    $params = explode($this->config->get('queryKeyValueSeparator'), $pathInfo);
+        if ( true===$this->config->get('isSupportControllerDir') ) {
+            $this->_dir = array_shift($params);
+        }
+        if ($params) {
+            $this->_controller = array_shift($params);
+        }
+        if ($params) {
+            $this->_action = array_shift($params);
+        }
+
+        $params = array_chunk($params, 2);
+        foreach ($params as $_get) {
+            $this->request->setGet($_get[0], $_get[1], false);
+        }
+	}
+
 	public function parse ()
 	{
 	    $hasBeenParsed = false; // 是否已经解析完成
@@ -150,6 +173,12 @@ class Router
         $pathInfo = $this->request->getUri()->getPathInfo();
         // 查看请求的路径是否能够匹配路由配置， 如果匹配路由配置， 重新设定pathinfo
         $pathInfo!='' && $pathInfo = $this->matchRouteConfig($pathInfo);
+
+        if ($pathInfo) {
+            $this->loadRouteFromPathInfo ($pathInfo);
+        }
+
+        return;
 
 
         // URL常量
