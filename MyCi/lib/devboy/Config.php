@@ -39,9 +39,10 @@ class Config
 		return isset($this->config[$key]) ? $this->config[$key] : NULL;
 	}
 
-	public function __construct()
+	public function __construct($configFile='')
 	{
-
+		var_dump($configFile);
+		$this->config = include($configFile);
 	}
 
 	/**
@@ -57,7 +58,7 @@ class Config
 	 * @used-by	CI_Loader
 	 * @var		array
 	 */
-	public $_config_paths =	array(APPPATH);
+	public $_config_paths =	array(APP_PATH);
 
 	// --------------------------------------------------------------------
 
@@ -68,7 +69,7 @@ class Config
 	 *
 	 * @return	void
 	 */
-	public function __construct()
+	public function ___construct()
 	{
 		$this->config =& get_config();
 

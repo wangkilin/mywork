@@ -4,7 +4,8 @@ defined('BASE_PATH') OR exit('Access not allowed');
 /**
  * Hooks Class
  */
-class Hooks {
+class Hooks
+{
 
 	/**
 	 * Determines whether hooks are enabled
@@ -44,11 +45,13 @@ class Hooks {
 	public function __construct()
 	{
 		$oConfig =& loadClass('Config', BASE_PATH);
+
+		return;
 		addLog('info', 'Hooks Class Initialized');
 
 		// If hooks are not enabled in the config file
 		// there is nothing else to do
-		if ($CFG->item('enable_hooks') === FALSE)
+		if ($oConfig->item('enable_hooks') === FALSE)
 		{
 			return;
 		}

@@ -25,10 +25,14 @@ class Application
     public function setOptions ($options)
     {
         foreach ($options as $_k=>$_v) {
+        	if (! is_string($_k)) {
+        		continue;
+        	}
             if ('_'!=$_k[0]) {
                 $this->$_k = $_v;
             }
         }
+
         return $this;
     }
 
@@ -48,11 +52,11 @@ class Application
     protected function setSystemHandler ()
     {
 		// @todo 设置错误处理
-        set_error_handler(array($this, 'errorHandler'));
+        set_error_handler('errorHandler');
         // @todo 设置错误处理
-        set_exception_handler(array($this, 'exceptionHandler'));
+        set_exception_handler('exceptionHandler');
         // @todo 设置程序关闭处理
-        register_shutdown_function(array($this, 'shutdownHandler'));
+        register_shutdown_function('shutdownHandler');
     }
 
     /**
@@ -65,6 +69,8 @@ class Application
         $dir        = $oRouter->getDir();
         $controller = $oRouter->getController();
         $action     = $oRouter->getAction();
+
+        var_dump($dir, $controller, $action);
 
         return;
 
@@ -115,25 +121,37 @@ class Application
         $handle_controller->$action_method();
     }
 
+    protected function getConfigFilePath ()
+    {
+    	if (! is_file($this->configFile)) {
+    		$configFile = APP_PATH . DS . 'config' .DS . 'config.php';
+    		if (! is_file($configFile)) {
+    			Response::statusCode(503, 'The configuration file does not exist.');
+    			exit;
+    		}
+    	} else {
+    		$configFile = $this->configFile;
+    	}
+
+    	return $configFile;
+    }
 
     public function init ()
     {
     	$oBenchMark = & loadClass('Benchmark', BASE_PATH);
     	$oBenchMark->mark('app_start');
 
-    	$configFile =
+    	$configFile = $this->getConfigFilePath();
 
-    	self::$config = & loadClass('Config', BASE_PATH);
+    	self::$_config = & loadClass('Config', BASE_PATH, $configFile);
 
     	// 设置系统时区
-    	@ date_default_timezone_set(self::$config->get('defaultTimeZone'));
+    	@ date_default_timezone_set(self::$_config->get('defaultTimeZone'));
 
     	$oHook =& loadClass('Hooks', BASE_PATH);
     	$oHook->call('pre_system');
         // 设置系统错误处理，关闭处理
 		$this->setSystemHandler ();
-
-		$this->run();
 
 		return;
 
@@ -203,7 +221,7 @@ class Application
 		}
     }
 
-    public function run ()
+    public function _run ()
     {
         $oRouter = loadClass('Router', BASE_PATH);
 
@@ -263,6 +281,8 @@ class Application
     }
 }
 
+
+return;
 /*
  * ------------------------------------------------------
  * Security procedures
@@ -312,7 +332,7 @@ if ( ! is_php('5.4'))
 	}
 }
 
-
+return;
 /*
  * ------------------------------------------------------
  *  Define a custom error handler so we can log PHP errors

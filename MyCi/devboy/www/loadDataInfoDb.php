@@ -14,12 +14,21 @@ $dirHandler = opendir($dir);
 //$dirHandler = new Dir($dir);
 function parseFile ($category, $filepath)
 {
-	echo $filepath;
+	//echo $filepath;
 	$content = file_get_contents($filepath);
-	echo $content;
+	//echo $content;
 	preg_match('/<\/div>\s<div class="article-body">(.*)<\/div>\s<div class="previous-next-links">/su', $content, $match);
-	var_dump($match);
-	exit;
+	//var_dump($match);
+	if (strpos($content, '</div> <div class="next">')) {
+		echo $content;
+		echo $filepath;
+		exit;
+	}
+	if ($match) {
+		var_dump($match);
+		exit;
+	}
+	//exit;
 }
 try {
 	while(($tmpDir=readdir($dirHandler)) || $tmpDir==='0') {

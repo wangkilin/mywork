@@ -58,6 +58,8 @@ class Router
 
         $this->parse();
 
+        return;
+
 
 		$this->enable_query_strings = ( ! is_cli() && $this->config->item('enable_query_strings') === TRUE);
 
@@ -86,14 +88,6 @@ class Router
 	public function route ()
 	{
 	    //@todo
-	}
-
-	/**
-	 * 匹配config中的路由信息
-	 */
-	public function matchRouteConfig ()
-	{
-
 	}
 
 	/**
@@ -175,7 +169,7 @@ class Router
         $pathInfo!='' && $pathInfo = $this->matchRouteConfig($pathInfo);
 
         if ($pathInfo) {
-            $this->loadRouteFromPathInfo ($pathInfo);
+            $this->loadParamsFromPathInfo ($pathInfo);
         }
 
         return;
@@ -328,7 +322,7 @@ class Router
 	 *
 	 * @return	void
 	 */
-	public function __construct($routing = NULL)
+	public function ___construct($routing = NULL)
 	{
 		$this->config =& load_class('Config', 'core');
 		$this->uri =& load_class('URI', 'core');

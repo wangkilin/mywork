@@ -13,9 +13,8 @@ defined('BASE_PATH') OR exit('Access not allowed');
  * @author		EllisLab Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/benchmark.html
  */
-class Benchmark 
+class Benchmark
 {
-	public function 
 
 	/**
 	 * List of all benchmark markers

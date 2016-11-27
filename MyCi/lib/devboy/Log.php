@@ -23,7 +23,7 @@ class Log
      * @param unknown $level
      * @param unknown $msg
      */
-	public function write ($level, $msg, $toCacheLog=FALSE)
+	public function _write ($level, $msg, $toCacheLog=FALSE)
 	{
 	    if ($toCacheLog) {
 	        $this->cacheLog($level, $msg);
@@ -121,7 +121,7 @@ class Log
 	 *
 	 * @return	void
 	 */
-	public function __construct()
+	public function ___construct()
 	{
 		$config =& get_config();
 

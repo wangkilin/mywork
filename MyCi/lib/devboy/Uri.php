@@ -109,7 +109,7 @@ class Uri
 	 *
 	 * @return	void
 	 */
-	public function __construct()
+	public function __construct_()
 	{
 		$this->config = & loadClass('Config', BASE_PATH);
 		$this->parse();

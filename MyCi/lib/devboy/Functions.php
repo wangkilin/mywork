@@ -32,19 +32,19 @@ if (! function_exists('loadClass')) {
 
         $classFile = $inDir . preg_replace('/_+/', DS, $class).'.php';
 
-        if (false === class_exists($name, false) && file_exists($classFile)) {
+        if (false === class_exists($class, false) && file_exists($classFile)) {
             require_once($classFile);
         }
 
-        if (! class_exists($name, false)) {
+        if (! class_exists($class, false)) {
             throw new Exception('Can not load the specified class: ' . $class, Constants::ERROR_LOAD_CLASS_FAIL);
             return null;
         }
 
         // Keep track of what we just loaded
-        isLoaded($class);
+        //isLoaded($class);
 
-        $_classes[$class] = isset($param) ? new $name($param) : new $name();
+        $_classes[$class] = isset($param) ? new $class($param) : new $class();
 
         return $_classes[$class];
     }

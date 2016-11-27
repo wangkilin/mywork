@@ -149,7 +149,7 @@ class Request
 	    return $this;
 	}
 
-	public function get ($name, $value=NULL)
+	public function get_ ($name, $value=NULL)
 	{
         if (NULL !== $value || !isset($this->_get[$name])) {
             $this->setGet($name, $value);
@@ -497,7 +497,7 @@ class Request
     /**
      * 初始化变量
      */
-    public function __construct()
+    public function ___construct()
     {
         if (false === self::$_httpParams) {
             self::$_httpParams = array_filter(array_merge($_POST, $_GET),
