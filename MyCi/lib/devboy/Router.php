@@ -126,7 +126,8 @@ class Router
 	 */
 	protected function loadParamsFromPathInfo ($pathinfo)
 	{
-	    $params = explode($this->config->get('queryKeyValueSeparator'), $pathInfo);
+	    $pathinfo = trim($pathinfo, $this->config->get('queryKeyValueSeparator'));
+	    $params = explode($this->config->get('queryKeyValueSeparator'), $pathinfo);
         if ( true===$this->config->get('isSupportControllerDir') ) {
             $this->_dir = array_shift($params);
         }
@@ -139,6 +140,9 @@ class Router
 
         $params = array_chunk($params, 2);
         foreach ($params as $_get) {
+            if (! isset($_get[1])) {
+                $_get[1] = '';
+            }
             $this->request->setGet($_get[0], $_get[1], false);
         }
 	}
@@ -161,7 +165,7 @@ class Router
             $this->_controller = strval($this->request->get($controllerKeyInUrl));
         }
         if ($this->request->get($actionKeyInUrl) !== null) {
-            $this->_controller = strval($this->request->get($actionKeyInUrl));
+            $this->_action = strval($this->request->get($actionKeyInUrl));
         }
 
         $pathInfo = $this->request->getUri()->getPathInfo();

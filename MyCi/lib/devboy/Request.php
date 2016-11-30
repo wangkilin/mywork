@@ -196,6 +196,7 @@ class Request
                 $value = $_ENV[$name];
             }
         }
+
         $this->_server[$name] = $value;
 
         return $this;

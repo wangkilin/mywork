@@ -41,8 +41,9 @@ class Config
 
 	public function __construct($configFile='')
 	{
-		var_dump($configFile);
-		$this->config = include($configFile);
+	    if ($configFile && is_file($configFile)) {
+		    $this->config = include($configFile);
+	    }
 	}
 
 	/**

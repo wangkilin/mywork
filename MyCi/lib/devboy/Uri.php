@@ -24,12 +24,26 @@ class Uri
 		$this->request = & loadClass('Request', BASE_PATH);
 		if ($pathinfo) {
 		    $this->pathInfo = $pathinfo;
-		} else {
-		    $this->parse();
 		}
     }
 
-    public function parse ()
+    // 请求的路径，只限于get第一个参数
+    protected function getPathInfoFromQuery ()
+    {
+        // @todo 需要从请求中解析出来。 因为请求中可能包含其他参数 如  index.php?dir/controller/action/param&ss
+        $this->queryString = $this->request->server('QUERY_STRING');
+        $querys = explode('&', $this->queryString);
+
+        if (strpos($querys[0], '=')!==false) {
+            $pathInfo = null;
+        } else {
+            $pathInfo = $querys[0];
+        }
+
+        return $pathInfo;
+    }
+
+    public function getPathInfo ()
     {
         if (null==$this->pathInfo) {
             // 在url路径里指定pathinfo. 格式 index.php/dir/controller/action/param.html
@@ -44,22 +58,10 @@ class Uri
             $this->pathInfo = $this->getPathInfoFromQuery ();
         }
         // 直接返回 REQUEST_URI
-        if (null==$this->pathInfo) {
-            $this->pathInfo = $this->request->server('REQUEST_URI');
-        }
-    }
+        //if (null==$this->pathInfo) {
+        //    $this->pathInfo = $this->request->server('REQUEST_URI');
+        //}
 
-    protected function getPathInfoFromQuery ()
-    {
-        // @todo 需要从请求中解析出来。 因为请求中可能包含其他参数 如  index.php?dir/controller/action/param&ss
-        $this->queryString = $this->request->server('QUERY_STRING');
-        $pathInfo = $this->queryString;
-
-        return $pathInfo;
-    }
-
-    public function getPathInfo ()
-    {
         return $this->pathInfo;
     }
 
