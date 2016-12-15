@@ -1,9 +1,9 @@
 <?php
 /**
- *
+ *Cola_View
  */
 
-class Cola_View
+class View
 {
     /**
      * Base path of views

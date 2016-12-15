@@ -16,15 +16,20 @@ if (! function_exists('loadClass')) {
      * @param	string	an optional argument to pass to the class constructor
      * @return	object
      */
-    function & loadClass($class, $inDir = '', $param = NULL)
+    function & loadClass($class = '', $inDir = '', $param = NULL, $alias=NULL)
     {
         static $_classes = array();
 
+        if (''==$class) {
+            return $_classes;
+        }
+
+        $alias = isset($alias) ? $alias : $class;
         $class = str_replace('.', '_', $class);
 
         // 类已被实例化过
-        if (isset($_classes[$class])) {
-            return $_classes[$class];
+        if (isset($_classes[$alias])) {
+            return $_classes[$alias];
         }
         if ('' != $inDir) {
         	$inDir = trim($inDir, DS) . DS;
@@ -44,9 +49,9 @@ if (! function_exists('loadClass')) {
         // Keep track of what we just loaded
         //isLoaded($class);
 
-        $_classes[$class] = isset($param) ? new $class($param) : new $class();
+        $_classes[$alias] = isset($param) ? new $class($param) : new $class();
 
-        return $_classes[$class];
+        return $_classes[$alias];
     }
 }
 
@@ -91,8 +96,7 @@ if (! function_exists('addLog')) {
 	}
 }
 
-if ( ! function_exists('isPhp'))
-{
+if ( ! function_exists('isPhp')) {
     /**
      * Determines if the current version of PHP is equal to or greater than the supplied value
      *
@@ -111,5 +115,6 @@ if ( ! function_exists('isPhp'))
         return $_is_php[$version];
     }
 }
+
 
 /* EOF */

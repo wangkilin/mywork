@@ -64,7 +64,7 @@ class Application
      */
     public function run ()
     {
-        $oRouter = loadClass('Router', BASE_PATH);
+        $oRouter = & loadClass('Router', BASE_PATH);
 
         $dir        = $oRouter->getDir();
         $controller = $oRouter->getController();

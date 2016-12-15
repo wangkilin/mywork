@@ -27,6 +27,7 @@ $config['queryKeyValueSeparator'] = '/'; // GET方式请求时的参数和值之
 $config['dirKeyInUrl'] = 'd';
 $config['controllerKeyInUrl'] = 'c';
 $config['actionKeyInUrl'] = 'a';
+$config['tplSuffix'] = '.php'; // 模板文件后缀名
 
 $config['cookie'] = array(); // cookie 设置
 $config['cookie_prefix']	= '';

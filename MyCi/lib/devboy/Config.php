@@ -39,6 +39,20 @@ class Config
 		return isset($this->config[$key]) ? $this->config[$key] : NULL;
 	}
 
+	/**
+	 * Set a config file item
+	 *
+	 * @param	string	$item	Config item key
+	 * @param	string	$value	Config item value
+	 * @return	void
+	 */
+	public function set($key, $value)
+	{
+		$this->config[$key] = $value;
+
+		return $this;
+	}
+
 	public function __construct($configFile='')
 	{
 	    if ($configFile && is_file($configFile)) {
@@ -314,18 +328,5 @@ class Config
 
 	// --------------------------------------------------------------------
 
-	/**
-	 * Set a config file item
-	 *
-	 * @param	string	$item	Config item key
-	 * @param	string	$value	Config item value
-	 * @return	void
-	 */
-	public function set($item, $value)
-	{
-		$this->config[$item] = $value;
-
-		return $this;
-	}
 
 }
