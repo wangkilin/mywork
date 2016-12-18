@@ -1,7 +1,7 @@
 <?php
 defined('BASE_PATH') OR exit('Access not allowed');
 
-class Controller
+abstract class Controller
 {
     protected $_config = null;
 
@@ -11,6 +11,7 @@ class Controller
      * @var string
      */
     protected $_modelDir = null;
+    protected $model = null;
 
     /**
      * The home directory of view
@@ -18,6 +19,7 @@ class Controller
      * @var string
      */
     protected $_viewDir = null;
+    protected $view = null;
 
     protected $_helperDir = null;
 
@@ -62,11 +64,22 @@ class Controller
      * @param array $config
      * @return Cola_View
      */
-    protected function view($params = array())
+    protected function view()
     {
-        $params = (array)$params + array('basePath' => $this->_viewsHome) + (array) Cola::config('_view');
-
-        return $this->view = new Cola_View($params);
+    	if (! is_object($this->view)) {
+    		$this->view = new View();
+    	}
+    	
+    	return $this->view;
+    }
+    
+    protected function setView ($viewInstance)
+    {
+    	if (is_object($viewInstance)) {
+    		$this->view = $viewInstance;
+    	}
+    	
+    	return $this;
     }
 
     /**
@@ -77,7 +90,9 @@ class Controller
     protected function display($tpl = null)
     {
         if (empty($tpl)) {
-            $tpl = $this->_viewDir . $this->Request->getAction() . $this->Config->get('tplSuffix');
+            $tpl = $this->_viewDir 
+                 . $this->Request->getAction() 
+                 . $this->Config->get('tplSuffix');
         }
 
         $this->view->display($tpl);
@@ -85,7 +100,7 @@ class Controller
 
     protected function show ($content)
     {
-
+    	$this->view->show($content);
     }
 
     /**
@@ -95,19 +110,24 @@ class Controller
      * @param string $dir
      * @return Cola_Model
      */
-    protected function model($name = null)
+    protected function model($class=null)
     {
-        if (null === $name) {
-            return $this->model;
-        }
-
-        null === $dir && $dir = $this->_modelsHome;
+    	if (is_null($class)) {
+    		return $this->model;
+    	}
         $class = ucfirst($name) . 'Model';
-        if (Cola::loadClass($class, $dir)) {
-            return new $class();
-        }
-
-        throw new exception("Can't load model '$class' from '$dir'");
+        $model = loadClass($class, $this->_modelDir);
+        
+        return $model;
+    }
+    
+    protected function setModel ($modelInstance)
+    {
+    	if (is_object($modelInstance)) {
+    		$this->model = $modelInstance;
+    	}
+    	
+    	return $this;
     }
 
     protected function setPath ($type, $dir)
@@ -117,8 +137,8 @@ class Controller
             case 'model':
             case 'view':
             case 'helper':
-                $pathKey = '_' . $type . 'Dir';
-                $this->$pathKey = $dir;
+                $method = 'set' . ucfirst($type) . 'Dir';
+                $this->$method($dir);
                 break;
 
             default:
@@ -175,7 +195,7 @@ class Controller
      */
     protected function redirect($url)
     {
-        Response::redirect($url, $code);
+        Response::redirect($url);
     }
 
     /**
