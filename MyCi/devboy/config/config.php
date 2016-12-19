@@ -19,7 +19,7 @@ $config['defaultController'] = 'Index';
 $config['url'] = array();
 $config['urlSuffix'] = '.html'; // 生成的url后缀
 $config['viewReplacement'] = array('__PUBLIC__'=>''); // @todo view里面需要替换的字符串
-$config['isSupportControllerDir'] = true; // 是否支持controller分目录
+$config['isSupportControllerDir'] = false; // 是否支持controller分目录
 $config['defaultControllerDir'] = 'home'; // 如果支持controller分目录， 路由到的默认目录
 $config['urlCaseSensitive'] = false; // 在URL中获取 Dir， Controller， Action是否区分大小写
 $config['urlPathQueryName'] = 'q'; // 兼容模式请求
@@ -28,6 +28,7 @@ $config['dirKeyInUrl'] = 'd';
 $config['controllerKeyInUrl'] = 'c';
 $config['actionKeyInUrl'] = 'a';
 $config['tplSuffix'] = '.php'; // 模板文件后缀名
+$config['tplPathSeparator'] = DS; // 用来标识模板文件的分隔符好。 按照路径分，用 / ; 也可以用 _定义模板文件名
 
 $config['cookie'] = array(); // cookie 设置
 $config['cookie_prefix']	= '';

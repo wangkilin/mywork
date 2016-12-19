@@ -64,6 +64,11 @@ class Response
         header($status);
     }
 
+    static public function status404 ()
+    {
+    	exit;
+    }
+
     /**
      * Set cookie
      *

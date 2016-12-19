@@ -11,7 +11,7 @@ abstract class Controller
      * @var string
      */
     protected $_modelDir = null;
-    protected $model = null;
+    //protected $model = null;
 
     /**
      * The home directory of view
@@ -19,7 +19,8 @@ abstract class Controller
      * @var string
      */
     protected $_viewDir = null;
-    protected $view = null;
+    protected $_viewPrefix = '';
+    //protected $view = null;
 
     protected $_helperDir = null;
 
@@ -50,12 +51,22 @@ abstract class Controller
             $this->$key = $instance;
         }
 
-        $this->_modelDir = APP_PATH . 'models' . DS;
-        $this->_viewDir  = APP_PATH . 'views' . DS;
+        $this->_modelDir = APP_PATH . DS . 'models' . DS;
+        $this->_viewDir  = APP_PATH . DS . 'views' . DS;
         if (''!==$this->Router->getDir()) {
-            $this->_viewDir  .= $this->Router->getDir() . DS;
+            $this->_viewPrefix  .= $this->Router->getDir() . $this->Config->get('tplPathSeparator');
         }
-        $this->_viewDir .= $this->Router->getController() . DS;
+        $this->_viewPrefix .= $this->Router->getController() . $this->Config->get('tplPathSeparator');
+
+        //var_dump($this->_modelDir, $this->_viewDir);
+    }
+
+    /**
+     * 空方法，在具体Action被执行前调用。 可在具体控制器中实现功能， 如权限控制
+     */
+    public function ready ()
+    {
+    	return;
     }
 
     /**
@@ -67,18 +78,18 @@ abstract class Controller
     protected function view()
     {
     	if (! is_object($this->view)) {
-    		$this->view = new View();
+    		$this->view = & loadClass('View', BASE_PATH);
     	}
-    	
+
     	return $this->view;
     }
-    
+
     protected function setView ($viewInstance)
     {
     	if (is_object($viewInstance)) {
     		$this->view = $viewInstance;
     	}
-    	
+
     	return $this;
     }
 
@@ -90,10 +101,14 @@ abstract class Controller
     protected function display($tpl = null)
     {
         if (empty($tpl)) {
-            $tpl = $this->_viewDir 
-                 . $this->Request->getAction() 
-                 . $this->Config->get('tplSuffix');
+            $tpl = $this->_viewDir
+                 . $this->_viewPrefix
+                 . $this->Router->getAction();
+        } else if (strpos($tpl, $this->Config->get('tplPathSeparator'))) {
+        	$tpl = $this->_viewPrefix . $tpl;
         }
+        $tpl .= $this->Config->get('tplSuffix');
+        //echo $tpl;
 
         $this->view->display($tpl);
     }
@@ -117,16 +132,16 @@ abstract class Controller
     	}
         $class = ucfirst($name) . 'Model';
         $model = loadClass($class, $this->_modelDir);
-        
+
         return $model;
     }
-    
+
     protected function setModel ($modelInstance)
     {
     	if (is_object($modelInstance)) {
     		$this->model = $modelInstance;
     	}
-    	
+
     	return $this;
     }
 

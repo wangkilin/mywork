@@ -72,53 +72,28 @@ class Application
 
         var_dump($dir, $controller, $action);
 
-        return;
+        $dir = $dir == '' ? '' : ($dir . DS);
+        defined('CONTROLLER_DIR') OR define('CONTROLLER_DIR', APP_PATH. DS . 'controllers'.DS);
+        include(BASE_PATH . 'Controller.php');
+        include(CONTROLLER_DIR . $dir . $controller . '.php');
+        include(BASE_PATH . 'Response.php');
+        //echo(CONTROLLER_DIR . $dir . $controller . '.php');
+        $class = ucfirst($controller);
+        $method = $action  . 'Action';
+        if (! class_exists($class)) {
+        	Response::status404();
+        }
+        $handler = new $class;
 
-		// 传入应用目录, 返回控制器对象
-		$handle_controller = self::create_controller(load_class('core_uri')->controller, load_class('core_uri')->app_dir);
-
-		$action_method = load_class('core_uri')->action . '_action';
-
-		// 判断
-		if (! is_object($handle_controller) OR ! method_exists($handle_controller, $action_method))
-		{
-			HTTP::error_404();
-		}
-
-		if (method_exists($handle_controller, 'get_access_rule'))
-		{
-			$access_rule = $handle_controller->get_access_rule();
-		}
-
-		// 判断访问规则使用白名单还是黑名单, 默认使用黑名单
-		if ($access_rule)
-		{
-			// 黑名单, 黑名单中的检查 'white' 白名单,白名单以外的检查 (默认是黑名单检查)
-			if (isset($access_rule['rule_type']) AND $access_rule['rule_type'] == 'white')
-			{
-				if ((! $access_rule['actions']) OR (! in_array(load_class('core_uri')->action, $access_rule['actions'])))
-				{
-					self::login();
-				}
-			}
-			else if (isset($access_rule['actions']) AND in_array(load_class('core_uri')->action, $access_rule['actions']))	// 非白就是黑名单
-			{
-				self::login();
-			}
-
-		}
-		else
-		{
-			self::login();
-		}
-
-		// 执行
-        if (!$_GET['id'] AND method_exists($handle_controller, load_class('core_uri')->action . '_square_action'))
-        {
-            $action_method = load_class('core_uri')->action . '_square_action';
+        if (! method_exists($handler, $method)) {
+        	Response::status404();
         }
 
-        $handle_controller->$action_method();
+        if (method_exists($handler, 'ready')) {
+        	$handler->ready();
+        }
+
+        $handler->$method();
     }
 
     protected function getConfigFilePath ()

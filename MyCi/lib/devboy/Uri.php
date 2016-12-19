@@ -61,6 +61,7 @@ class Uri
         //if (null==$this->pathInfo) {
         //    $this->pathInfo = $this->request->server('REQUEST_URI');
         //}
+        echo $this->pathInfo;
 
         return $this->pathInfo;
     }
