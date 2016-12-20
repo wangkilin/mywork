@@ -6,7 +6,7 @@
 
 <IfModule mod_rewrite.c>
 	RewriteEngine on
-	RewriteBase /mywork/MyCi/www/
+	#RewriteBase /mywork/MyCi/www/
 	RewriteCond %{REQUEST_FILENAME} -d [OR]
 	RewriteCond %{REQUEST_FILENAME} -f
 	RewriteRule ^.*$ - [NC,L]

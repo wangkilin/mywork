@@ -6,123 +6,65 @@
 class View
 {
     /**
-     * Base path of views
-     *
-     * @var string
-     */
-    protected $_basePath = '';
-
-    /**
-     * Widgets Home
-     *
-     * @var string
-     */
-    protected $_widgetsHome = '';
-
-    /**
      * Constructor
      *
      */
-    public function __construct($params = array())
+    public function __construct()
     {
-        if (isset($params['basePath'])) {
-            $this->_basePath = $params['basePath'];
-        }
+
     }
 
     /**
-     * Set base path of views
-     *
-     * @param string $path
-     */
-    public function setBasePath($path)
-    {
-        $this->_basePath = $path;
-    }
-
-    /**
-     * Get base path of views
-     *
-     * @return string
-     */
-    public function getBasePath()
-    {
-        return $this->_basePath;
-    }
-
-    /**
-     * Render view
+     * Render tpl
      *
      */
-    protected function _render($tpl, $dir = null)
+    protected function _render($tpl)
     {
-        if (null === $dir) $dir = $this->_basePath;
-        if ($dir) $dir = rtrim($dir, '/\\') . DIRECTORY_SEPARATOR;
+    	$config = & loadClass('Config', BASE_PATH);
         ob_start();
         ob_implicit_flush(0);
-        $file = $dir . $tpl;
-        include $file;
-        return ob_get_clean();
+        include $tpl;
+        $content = ob_get_clean();
+
+        $content = str_replace($search, $replace, $content);
+
+        return $content;
     }
 
     /**
      * Fetch
      *
      * @param string $tpl
-     * @param string $dir
      * @return string
      */
-    public function fetch($tpl, $dir = null)
+    public function fetch($tpl)
     {
-        return $this->_render($tpl, $dir);
+        return $this->_render($tpl);
     }
 
     /**
      * Display
      *
      * @param string $tpl
-     * @param string $dir
      */
-    public function display($tpl, $dir = null)
+    public function display($tpl)
     {
-        echo $this->_render($tpl, $dir);
+        echo $this->_render($tpl);
     }
 
     /**
-     * Slot
+     * show content
      *
-     * @param string $tpl
-     * @param mixed $data
+     * @param string $content
      * @return string
      */
-    public function slot($file, $data = null)
+    public function show($content)
     {
         ob_start();
         ob_implicit_flush(0);
-        include $file;
+        echo $content;
+
         return ob_get_clean();
-    }
-
-    /**
-     * Set widgets home dir
-     *
-     * @param strong $dir
-     * @return Cola_View
-     */
-    public function setWidgetsHome($dir)
-    {
-        $this->_widgetsHome = $dir;
-        return $this;
-    }
-
-    /**
-     * Get widgets Home
-     *
-     * @return string
-     */
-    public function getWidgetsHome()
-    {
-        return $this->_widgetsHome;
     }
 
     /**
