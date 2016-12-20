@@ -32,7 +32,7 @@ if (! function_exists('loadClass')) {
             return $_classes[$alias];
         }
         if ('' != $inDir) {
-        	$inDir = trim($inDir, DS) . DS;
+        	$inDir = rtrim($inDir, DS) . DS;
         }
 
         $classFile = $inDir . preg_replace('/_+/', DS, $class).'.php';
@@ -42,7 +42,7 @@ if (! function_exists('loadClass')) {
         }
 
         if (! class_exists($class, false)) {
-            throw new Exception('Can not load the specified class: ' . $class, Constants::ERROR_LOAD_CLASS_FAIL);
+            throw new Exception('Can not load the specified class: ' . $class . ' in dir:'.$inDir, Constants::ERROR_LOAD_CLASS_FAIL);
             return null;
         }
 
