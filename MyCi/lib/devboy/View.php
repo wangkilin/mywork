@@ -18,17 +18,36 @@ class View
      * Render tpl
      *
      */
-    protected function _render($tpl)
+    protected function _render($content, $isFile=true)
     {
-    	$config = & loadClass('Config', BASE_PATH);
         ob_start();
-        ob_implicit_flush(0);
-        include $tpl;
+        ob_implicit_flush(false);
+        if (true===$isFile) {
+            include $content;
+        } else {
+            echo eval('?>' . $content);
+        }
         $content = ob_get_clean();
 
-        $content = str_replace($search, $replace, $content);
+        return $this->replaceKeywords($content);
+    }
 
-        return $content;
+    /**
+     * 替换模板数据中的关键字
+     * @param string $data
+     * @return string
+     */
+    protected function replaceKeywords ($data)
+    {
+    	$config = & loadClass('Config', BASE_PATH);
+
+        // 将配置文件中设定的模板关键字替换
+        $replaceInfo = $config->get('viewReplacement');
+        if (is_array($replaceInfo)) {
+            $content = str_replace(array_keys($replaceInfo), array_values($replaceInfo), $data);
+        }
+
+        return $data;
     }
 
     /**
@@ -43,7 +62,18 @@ class View
     }
 
     /**
-     * Display
+     * load data from code
+     *
+     * @param string $content
+     * @return string
+     */
+    public function load($content)
+    {
+        return $this->_render($content, false);
+    }
+
+    /**
+     * Display template
      *
      * @param string $tpl
      */
@@ -60,11 +90,7 @@ class View
      */
     public function show($content)
     {
-        ob_start();
-        ob_implicit_flush(0);
-        echo $content;
-
-        return ob_get_clean();
+        echo $this->_render($content, false);
     }
 
     /**

@@ -8,6 +8,8 @@ class Welcome extends Controller
 
 	public function testAction ()
 	{
+	    $data = '<hr/> <a href=""><?php echo "hello world!"; ?></a>';
+	    $this->show($data);
 		echo 'Test action is called!';
 		$this->display();
 	}

@@ -52,10 +52,7 @@ class ConvertFormat
 
     public static function json_decode ($data, $assoc=false, $depth=512, $options=0)
     {
-        if(function_exists('json_decode')) {
-            return json_decode($data, $assoc, $depth);
-        }
-
+        return json_decode($data, $assoc, $depth);
     }
 
     /**
