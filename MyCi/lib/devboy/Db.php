@@ -1,4 +1,12 @@
 <?php
+class Db
+{
+	public function __construct($config)
+	{
+
+	}
+
+}
 /**
  * Typecho Blog Platform
  *
