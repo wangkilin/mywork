@@ -188,7 +188,7 @@ class AWS_MODEL
 
 		foreach ($data AS $key => $val)
 		{
-			$debug_data['`' . $key . '`'] = "'" . $this->quote($val) . "'";
+			$debug_data['`' . $this->quote($key) . '`'] = "'" . $this->quote($val) . "'";
 		}
 
 		$sql = 'INSERT INTO `' . $this->get_table($table) . '` (' . implode(', ', array_keys($debug_data)) . ') VALUES (' . implode(', ', $debug_data) . ')';
@@ -616,9 +616,10 @@ class AWS_MODEL
 	 * @param	string
 	 * @param	integer
 	 * @param	integer
+	 * @param	boolean
 	 * @return	array
 	 */
-	public function fetch_page($table, $where = null, $order = null, $page = null, $limit = 10)
+	public function fetch_page($table, $where = null, $order = null, $page = null, $limit = 10, $rows_cache = true)
 	{
 		$this->slave();
 
@@ -679,8 +680,25 @@ class AWS_MODEL
 			AWS_APP::debug_log('database', (microtime(TRUE) - $start_time), $sql);
 		}
 
+		if ($rows_cache)
+		{
+			$cache_key = 'db_rows_cache_' . md5($table . '_' . $where);
+
+			$db_found_rows = AWS_APP::cache()->get($cache_key);
+		}
+
+		if (!$db_found_rows)
+		{
+			$db_found_rows = $this->count($table, $where);
+		}
+
+		if ($rows_cache AND $db_found_rows)
+		{
+			AWS_APP::cache()->set($cache_key, $db_found_rows, get_setting('cache_level_high'));
+		}
+
 		// Found rows
-		$this->_found_rows = $this->count($table, $where);
+		$this->_found_rows = $db_found_rows;
 
 		return $result;
 	}

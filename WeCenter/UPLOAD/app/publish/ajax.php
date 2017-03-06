@@ -138,7 +138,7 @@ class ajax extends AWS_CONTROLLER
 
         $output = array(
             'success' => true,
-            'delete_url' => get_js_url('/publish/ajax/remove_attach/attach_id-' . base64_encode(H::encode_hash(array(
+            'delete_url' => get_js_url('/publish/ajax/remove_attach/attach_id-' . AWS_APP::crypt()->encode(json_encode(array(
                 'attach_id' => $attach_id,
                 'access_key' => $_GET['attach_access_key']
             )))),
@@ -179,7 +179,7 @@ class ajax extends AWS_CONTROLLER
             {
                 $article_attach[$attach_id]['class_name'] = $this->model('publish')->get_file_class($val['file_name']);
 
-                $article_attach[$attach_id]['delete_link'] = get_js_url('/publish/ajax/remove_attach/attach_id-' . base64_encode(H::encode_hash(array(
+                $article_attach[$attach_id]['delete_link'] = get_js_url('/publish/ajax/remove_attach/attach_id-' . AWS_APP::crypt()->encode(json_encode(array(
                     'attach_id' => $attach_id,
                     'access_key' => $val['access_key']
                 ))));
@@ -212,7 +212,7 @@ class ajax extends AWS_CONTROLLER
             {
                 $question_attach[$attach_id]['class_name'] = $this->model('publish')->get_file_class($val['file_name']);
 
-                $question_attach[$attach_id]['delete_link'] = get_js_url('/publish/ajax/remove_attach/attach_id-' . base64_encode(H::encode_hash(array(
+                $question_attach[$attach_id]['delete_link'] = get_js_url('/publish/ajax/remove_attach/attach_id-' . AWS_APP::crypt()->encode(json_encode(array(
                     'attach_id' => $attach_id,
                     'access_key' => $val['access_key']
                 ))));
@@ -244,7 +244,7 @@ class ajax extends AWS_CONTROLLER
             foreach ($answer_attach as $attach_id => $val)
             {
                 $answer_attach[$attach_id]['class_name'] = $this->model('publish')->get_file_class($val['file_name']);
-                $answer_attach[$attach_id]['delete_link'] = get_js_url('/publish/ajax/remove_attach/attach_id-' . base64_encode(H::encode_hash(array(
+                $answer_attach[$attach_id]['delete_link'] = get_js_url('/publish/ajax/remove_attach/attach_id-' . AWS_APP::crypt()->encode(json_encode(array(
                     'attach_id' => $attach_id,
                     'access_key' => $val['access_key']
                 ))));
@@ -261,7 +261,7 @@ class ajax extends AWS_CONTROLLER
 
     public function remove_attach_action()
     {
-        if ($attach_info = H::decode_hash(base64_decode($_GET['attach_id'])))
+        if ($attach_info = json_decode(AWS_APP::crypt()->decode($_GET['attach_id']), true))
         {
             $this->model('publish')->remove_attach($attach_info['attach_id'], $attach_info['access_key']);
         }
@@ -797,7 +797,7 @@ class ajax extends AWS_CONTROLLER
             ), 1, null));
         }
 
-        $this->model('article')->update_article($article_info['id'], $_POST['title'], $_POST['message'], $_POST['topics'], $_POST['category_id'], $this->user_info['permission']['create_topic']);
+        $this->model('article')->update_article($article_info['id'], $this->user_id, $_POST['title'], $_POST['message'], $_POST['topics'], $_POST['category_id'], $this->user_info['permission']['create_topic']);
 
         if ($_POST['attach_access_key'])
         {

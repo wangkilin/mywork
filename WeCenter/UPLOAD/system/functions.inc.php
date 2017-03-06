@@ -30,7 +30,7 @@
 function base_url()
 {
 	$clean_url = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : NULL;
-	$clean_url = dirname(rtrim($_SERVER['PHP_SELF'], $clean_url));
+	$clean_url = dirname(substr($_SERVER['PHP_SELF'], 0, strlen($_SERVER['PHP_SELF']) - strlen($clean_url)));
 	$clean_url = rtrim($_SERVER['HTTP_HOST'] . $clean_url, '/\\');
 
 	if ((isset($_SERVER['HTTPS']) AND !in_array(strtolower($_SERVER['HTTPS']), array('off', 'no', 'false', 'disabled'))) OR $_SERVER['SERVER_PORT'] == 443)
@@ -43,6 +43,11 @@ function base_url()
 	}
 
 	return $scheme . '://' . $clean_url;
+}
+
+function base64_current_path()
+{
+	return base64_encode('/' . str_replace('/' . G_INDEX_SCRIPT, '', substr($_SERVER['REQUEST_URI'], strlen(dirname($_SERVER['PHP_SELF'])))));
 }
 
 /**
@@ -553,7 +558,7 @@ function _show_error($exception_message)
 	{
 		$exception_message = htmlspecialchars($exception_message);
 
-		$errorBlock = "<div class='system-error'><textarea rows='15' cols='60' onfocus='this.select()'>{$exception_message}</textarea></div>";
+		$errorBlock = "<div style='display:none' id='exception_message'><textarea rows='15' onfocus='this.select()'>{$exception_message}</textarea></div>";
 	}
 
 	if (defined('IN_AJAX'))
@@ -562,7 +567,7 @@ function _show_error($exception_message)
 	}
 
 	return <<<EOF
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="content-type" content="text/html; charset=UTF-8" /><meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Cache-Control" content="no-cache" /><meta http-equiv="Expires" content="Fri, 01 January 1999 01:00:00 GMT" /><title>{$name} System Error</title><style type='text/css'>body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:400;}ol,ul{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:400;}q:before,q:after{content:'';}hr{display:none;}address{display:inline;}body{font-family:"Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;font-size:.8em;width:100%;}h1{font-family:"Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;font-size:1.9em;color:#fff;}h2{font-size:1.6em;font-weight:400;clear:both;margin:0 0 8px;}a{color:#3e70a8;}a:hover{color:#3d8ce4;}#branding{background:#484848;padding:8px;}#content{clear:both;overflow:hidden;padding:20px 15px 0;}* #content{height:1%;}.message{background-color:#f5f5f5;clear:both;border-color:#d7d7d7;border-style:solid;border-width:1px;margin:0 0 10px;padding:7px 7px 7px 30px;border-radius:5px;}.message.error{background-color:#f3dddd;color:#281b1b;font-size:1.3em;font-weight:700;border-color:#deb7b7;}.message.unspecific{background-color:#f3f3f3;color:#515151;border-color:#d4d4d4;font-size:10px;}.system-error{margin:10px 0;padding:5px 10px;}textarea{width:95%;height:300px;font-size:11px;font-family:"Helvetica Neue Ultra Light", Monaco,Lucida Console,Consolas,Courier,Courier New;line-height:16px;color:#474747;border:1px #bbb solid;border-radius:3px;padding:5px;}fieldset,img,abbr,acronym{border:0;}</style></head><body><div id='header'><div id='branding'><h1>{$name} System Error</h1></div></div><div id='content'><div class='message error'>There appears to be an error:{$errorBlock}</div><p class='message unspecific'>If you are seeing this page, it means there was a problem communicating with our database.  Sometimes this error is temporary and will go away when you refresh the page.<br />Sometimes the error will need to be fixed by an administrator before the site will become accessible again.<br /><br />You can try to refresh the page by clicking <a href="#" onclick="window.location=window.location; return false;">here</a></p></div></body></html>
+<!DOCTYPE html><html><head><title>Error</title><style type='text/css'>body{background:#f9f9f9;margin:0;padding:30px 20px;font-family:"Helvetica Neue",helvetica,arial,sans-serif}#error{max-width:800px;background:#fff;margin:0 auto}h1{background:#151515;color:#fff;font-size:22px;font-weight:500;padding:10px}h1 span{color:#7a7a7a;font-size:14px;font-weight:400}#content{padding:20px;line-height:1.6}#reload_button{background:#151515;color:#fff;border:0;line-height:34px;padding:0 15px;font-family:"Helvetica Neue",helvetica,arial,sans-serif;font-size:14px;border-radius:3px}textarea{width:95%;height:300px;font-size:11px;font-family:"Helvetica Neue Ultra Light", Monaco,Lucida Console,Consolas,Courier,Courier New;line-height:16px;color:#474747;border:1px #bbb solid;border-radius:3px;padding:5px;}</style></head><body onkeydown="if (event.keyCode == 68) { document.getElementById('exception_message').style.display = 'block' }"><div id='error'><h1>An error occurred <span>(500 Error)</span></h1><div id='content'>We're sorry, but a temporary technical error has occurred which means we cannot display this site right now.<br /><br />You can try again by clicking the button below, or try again later.<br /><br />{$errorBlock}<br /><button onclick="window.location.reload();" id='reload_button'>Try again</button></div></div></body></html>
 EOF;
 }
 
@@ -572,7 +577,16 @@ function show_error($exception_message, $error_message = '')
 
 	if (get_setting('report_diagnostics') == 'Y' AND class_exists('AWS_APP', false))
 	{
-		AWS_APP::mail()->send('wecenter_report@outlook.com', '[' . G_VERSION . '][' . G_VERSION_BUILD . '][' . base_url() . ']' . $error_message, nl2br($exception_message), get_setting('site_name'), 'WeCenter');
+		AWS_APP::mail()->send('wecenter_report@simpotech.net', '[' . G_VERSION . '][' . G_VERSION_BUILD . '][' . base_url() . ']' . $error_message, nl2br($exception_message), get_setting('site_name'), 'WeCenter');
+	}
+
+	if (isset($_SERVER['SERVER_PROTOCOL']) AND strstr($_SERVER['SERVER_PROTOCOL'], '/1.0') !== false)
+	{
+		header("HTTP/1.0 500 Internal Server Error");
+	}
+	else
+	{
+		header("HTTP/1.1 500 Internal Server Error");
 	}
 
 	echo _show_error($exception_message);
@@ -792,11 +806,11 @@ function get_login_cookie_hash($user_name, $password, $salt, $uid, $hash_passwor
 
 	$auth_hash_key = md5(G_COOKIE_HASH_KEY . $_SERVER['HTTP_USER_AGENT']);
 
-	return H::encode_hash(array(
+	return AWS_APP::crypt()->encode(json_encode(array(
 		'uid' => $uid,
 		'user_name' => $user_name,
 		'password' => $password
-	), $auth_hash_key);
+	)), $auth_hash_key);
 }
 
 /**
@@ -1015,6 +1029,12 @@ function fetch_file_lists($dir, $file_type = null)
 	}
 
 	$base_dir = realpath($dir);
+
+	if (!file_exists($base_dir))
+	{
+		return false;
+	}
+
 	$dir_handle = opendir($base_dir);
 
 	$files_list = array();
@@ -1093,43 +1113,9 @@ function in_weixin()
  * @param integerr
  * @return string
  */
-function curl_get_contents($url, $timeout = 10)
+function curl_get_contents($url, $timeout = 30)
 {
-	if (!function_exists('curl_init'))
-	{
-		throw new Zend_Exception('CURL not support');
-	}
-
-	$curl = curl_init();
-
-	curl_setopt($curl, CURLOPT_URL, $url);
-	curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
-	curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-	curl_setopt($curl, CURLOPT_HEADER, FALSE);
-	curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
-	
-	if (defined('WECENTER_CURL_USERAGENT'))
-	{
-		curl_setopt($curl, CURLOPT_USERAGENT, WECENTER_CURL_USERAGENT);
-	}
-	else
-	{
-		curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12');
-	}
-	
-	if (substr($url, 0, 8) == 'https://')
-	{
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-
-		curl_setopt($curl, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1);
-	}
-
-	$result = curl_exec($curl);
-
-	curl_close($curl);
-
-	return $result;
+	return HTTP::request($url, 'GET', null, $timeout);
 }
 
 /**
@@ -1339,4 +1325,10 @@ function get_paid_progress_bar($amount, $paid)
 	}
 
 	return intval(($paid / $amount) * 100);
+}
+
+
+function uniqid_generate($length = 16)
+{
+	return substr(strtolower(md5(uniqid(rand()))), 0, $length);
 }

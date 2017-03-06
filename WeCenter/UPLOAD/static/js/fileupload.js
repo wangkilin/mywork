@@ -54,12 +54,26 @@ FileUpload.prototype =
 	// 初始化上传器
 	init : function (element, container)
 	{
+		
 		var form = this.createForm(),
 			input = this.createInput();
 
-		$(element).prepend($(form).append(input));
+		if(navigator.userAgent.indexOf("MSIE 8.0") > 0)
+		{
+			$(element).prepend($(form).append(input));
+		}
+		else
+		{
+			$('#aw-ajax-box').prepend($(form).append(input));
+
+			$(element).click(function ()
+			{
+				$('#upload-form .file-input').click();
+			});
+		}
 
 		$(container).append('<ul class="upload-list"></ul>');
+		
 	},
 
 	// 创建表单
@@ -148,6 +162,27 @@ FileUpload.prototype =
 		
 	},
 
+	//上传文件类型判断
+	allowed_upload_types : function(name)
+	{
+		if(!name)
+		{
+			return false;
+		}
+		
+		var extStart = name.lastIndexOf(".");
+		
+	    var ext = (name.substring(extStart+1, name.length).toUpperCase()).toLowerCase();
+	    
+	    if(typeof (FILE_TYPES) !='undefined' && FILE_TYPES.indexOf(ext)<0)
+	    {
+	    	return false;
+	    }
+	    
+	    return true;
+	    
+	},
+	
 	// 上传功能
 	upload : function (file, li)
 	{
@@ -155,6 +190,22 @@ FileUpload.prototype =
 
 		if (file)
 		{
+
+			var is_allowed = this.allowed_upload_types(file.name);
+			
+			if(!is_allowed)
+			{
+				$('.upload-list').html('');
+				if( typeof(AWS.alert) == 'undefined' )
+				{
+					alert(_t('文件类型不允许上传'));
+				}else{
+					AWS.alert(_t('文件类型不允许上传'));
+				}
+				
+				return false;
+			}
+			
 			var xhr = new XMLHttpRequest(), status = false;
 
 	        xhr.upload.onprogress = function(event)
@@ -184,6 +235,22 @@ FileUpload.prototype =
         {
         	//低版本ie上传
 			var iframe = this.createIframe();
+			
+			var filename = $(this.form).find('.file-input').val();
+
+			var is_allowed = this.allowed_upload_types(filename);
+			
+			if(!is_allowed)
+			{
+				if( typeof(AWS.alert) == 'undefined' )
+				{
+					alert(_t('文件类型不允许上传'));
+				}else{
+					AWS.alert(_t('文件类型不允许上传'));
+				}
+				
+				return false;
+			}
 
 			if (this.options.loading_status)
 			{
