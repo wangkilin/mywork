@@ -74,4 +74,5 @@ WEB服务器集群环境搭建
    5.4 从库命令行设置
         mysql> show slave status;
         mysql> change master to master_log_file="mysql-bin.000002";  # 指定从哪个文件开始。 具体支持的参数， 从 show slave status 中获得
+   5.5 mysql/data/auto.cnf 中的 server_uuid 在服务器集群中， 不能重复
 6. 文件缓存
