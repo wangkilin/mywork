@@ -53,4 +53,25 @@ WEB服务器集群环境搭建
     
 4. 模块分布式部署
 5. 数据库主从部署
+   5.1 主库建立用来复制的用户账号
+   5.2 主库my.ini
+        server-id = 2
+        # Replication Slave (comment out master section to use this)
+        # skip-slave-start 主库注释掉
+        log-bin=mysql-bin   
+        log_error=mysql-bin.err
+        # binlog_do_db=duplication_db # 设置那个库操作生成日志
+        # binlog_ignore_db=db_anme    # 设置哪个库操作不记录日志
+   5.3 从库my.ini 
+        server-id = 1495005862
+
+        # Replication Slave (comment out master section to use this)
+        # New for MySQL 5.6 if no slave
+        skip-slave-start
+        log-bin=mysql-bin
+        replicate-do-db=duplication_db   # 设置要复制的数据库
+        replicate_ignore_db=dbname       # 设置复制时忽略的数据库
+   5.4 从库命令行设置
+        mysql> show slave status;
+        mysql> change master to master_log_file="mysql-bin.000002";  # 指定从哪个文件开始。 具体支持的参数， 从 show slave status 中获得
 6. 文件缓存
