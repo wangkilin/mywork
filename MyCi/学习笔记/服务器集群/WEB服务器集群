@@ -73,6 +73,11 @@ WEB服务器集群环境搭建
         replicate_ignore_db=dbname       # 设置复制时忽略的数据库
    5.4 从库命令行设置
         mysql> show slave status;
-        mysql> change master to master_log_file="mysql-bin.000002";  # 指定从哪个文件开始。 具体支持的参数， 从 show slave status 中获得
+        mysql> stop slave;               # 不同版本命令不同， 也许是 slave stop； 
+        # 指定从哪个日志文件, 哪个位置开始。 具体支持的参数， 从 show slave status 中获得
+        mysql> change master to master_log_file="mysql-bin.000002", master_log_pos=2379; 
+        mysql> start slave;
    5.5 mysql/data/auto.cnf 中的 server_uuid 在服务器集群中， 不能重复
+   5.6 windows 下添加mysql到系统服务; 然后在服务中设置更多启动参数 
+       >mysqld --install mysql_service_name --defaults-file=path/my.ini
 6. 文件缓存
