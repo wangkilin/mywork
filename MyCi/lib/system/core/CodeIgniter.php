@@ -306,7 +306,7 @@ if ( ! is_php('5.4'))
  * ------------------------------------------------------
  */
 	$RTR =& load_class('Router', 'core', isset($routing) ? $routing : NULL);
-
+var_dump($RTR);
 /*
  * ------------------------------------------------------
  *  Instantiate the output class

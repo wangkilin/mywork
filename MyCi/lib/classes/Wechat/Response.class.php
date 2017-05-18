@@ -3,7 +3,7 @@ require_once(dirname(__FILE__) . '/WechatAbstract.class.php');
 /**
  * 用于回复的基本消息类型
  */
-abstract class WechatResponse extends WechatAbstract
+class Response extends WechatAbstract
 {
     const MSG_TYPE_IMAGE = 'image';
     const MSG_TYPE_TEXT = 'text';
@@ -24,7 +24,12 @@ abstract class WechatResponse extends WechatAbstract
   <MsgType><![CDATA[%s]]></MsgType>
 ";
 
-
+    /**
+     * 构造函数
+     * @param unknown $toUserName
+     * @param unknown $fromUserName
+     * @param unknown $msgType
+     */
     public function __construct($toUserName, $fromUserName, $msgType)
     {
       $this->toUserName = $toUserName;
@@ -32,6 +37,10 @@ abstract class WechatResponse extends WechatAbstract
       $this->checkMsgType($msgType);
     }
 
+    /**
+     * 查验消息类型
+     * @param unknown $msgType
+     */
     protected function checkMsgType($msgType)
     {
         $msgType = strtolower($msgType);

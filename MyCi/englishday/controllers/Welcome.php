@@ -21,9 +21,9 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$cfgModel = load_class('Config');
-		$cfgModel->
-	    var_dump($this->load->get_vars());
-		$this->load->view('welcome_message');
+		//$cfgModel->
+	    //var_dump($this->load->get_vars());
+		//$this->load->view('welcome_message');
 	}
 	public function test($id, $uid)
 	{

@@ -1,0 +1,56 @@
+WEB服务器集群环境搭建
+1. 单机访问限制
+2. 同域名不同server间需要解决的问题
+    session， 公用目录
+3. Apache集群
+    LoadModule headers_module modules/mod_headers.so
+    LoadModule lbmethod_bybusyness_module modules/mod_lbmethod_bybusyness.so
+    LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so
+    LoadModule lbmethod_bytraffic_module modules/mod_lbmethod_bytraffic.so
+    LoadModule lbmethod_heartbeat_module modules/mod_lbmethod_heartbeat.so
+    LoadModule proxy_module modules/mod_proxy.so
+    LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
+    LoadModule proxy_http_module modules/mod_proxy_http.so
+    
+    <VirtualHost *:80>
+        ServerAdmin webmaster@web.oradt.com
+        DocumentRoot "G:/Git/teamStudy/Wangzaixin"
+        ServerName win.oradt.com
+        # 头信息和环境变量
+        Header add SERVER_ID win
+        SetEnv SERVER_ID win
+        
+        ErrorLog "logs/win.oradt.com-error.log"
+        CustomLog "logs/win.oradt.com-access.log" common
+    </VirtualHost>
+    
+    <VirtualHost *:80>
+        ServerAdmin webmaster@web.oradt.com
+        DocumentRoot "G:/Git/teamStudy"
+        ServerName cluster.oradt.com
+        ErrorLog "logs/cluster.oradt.com-error.log"
+        CustomLog "logs/cluster.oradt.com-access.log" common
+        
+        # 开启反向代理
+        ProxyRequests Off
+        #"!"指令设定某个子目录不需要进行反向代理
+        ProxyPass /no !
+        # 以 / 结尾
+        Proxypass / balancer://proxy/
+        <Proxy balancer://proxy>
+            ProxySet lbmethod=bytraffic
+            #lbmethod=byrequests 按照请求次数均衡(默认) 
+            #lbmethod=bytraffic 按照流量均衡 
+            #lbmethod=bybusyness 按照繁忙程度均衡(总是分配给活跃请求数最少的服务器)
+            Order Deny,Allow
+            Allow from all
+            BalancerMember http://server1.oradt.com loadfactor=3
+            BalancerMember http://server2.oradt.com loadfactor=2
+            BalancerMember http://server3.oradt.com loadfactor=1
+            BalancerMember http://win.oradt.com loadfactor=5
+        </Proxy>
+    </VirtualHost>
+    
+4. 模块分布式部署
+5. 数据库主从部署
+6. 文件缓存

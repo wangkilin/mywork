@@ -115,7 +115,7 @@ class CI_URI {
 			{
 				$protocol = $this->config->item('uri_protocol');
 				empty($protocol) && $protocol = 'REQUEST_URI';
-
+var_dump($protocol,$_SERVER);
 				switch ($protocol)
 				{
 					case 'AUTO': // For BC purposes only
@@ -196,6 +196,7 @@ class CI_URI {
 	 */
 	protected function _parse_request_uri()
 	{
+	    var_dump($_SERVER, SELF, $_SERVER['REQUEST_URI'], $_SERVER['SCRIPT_NAME']);exit;
 		if ( ! isset($_SERVER['REQUEST_URI'], $_SERVER['SCRIPT_NAME']))
 		{
 			return '';

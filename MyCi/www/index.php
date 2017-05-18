@@ -297,5 +297,5 @@ require_once SMARTY_DIR . 'Smarty.class.php';
  *
  * And away we go...
  */
-require_once '../Lib/classes/Application.php';
+require_once '../lib/classes/Application.php';
 //require_once BASEPATH.'core/CodeIgniter.php';
