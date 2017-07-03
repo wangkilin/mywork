@@ -125,7 +125,7 @@ abstract class Controller
      * @param string $dir
      * @return Cola_Model
      */
-    protected function model($class=null)
+    public function model($class=null, $dir='', $options=array(), $alias=null)
     {
     	if (is_null($class)) {
     		return $this->model;
@@ -136,7 +136,7 @@ abstract class Controller
         return $model;
     }
 
-    protected function setModel ($modelInstance)
+    public function setModel ($modelInstance)
     {
     	if (is_object($modelInstance)) {
     		$this->model = $modelInstance;
@@ -147,18 +147,10 @@ abstract class Controller
 
     protected function setPath ($type, $dir)
     {
-        $type = strtolower($type);
-        switch ($type) {
-            case 'model':
-            case 'view':
-            case 'helper':
-                $method = 'set' . ucfirst($type) . 'Dir';
-                $this->$method($dir);
-                break;
-
-            default:
-                break;
-        }
+    	if (is_dir($dir)) {
+            $type = '_' . strtolower($type);
+            $this->$type = $dir;
+    	}
 
         return $this;
     }
@@ -167,11 +159,11 @@ abstract class Controller
      * Set model home directory
      *
      * @param string $dir
-     * @return Cola_Controller
+     * @return Controller
      */
-    protected function setModelDir($dir)
+    public function setModelDir($dir)
     {
-        $this->_modelDir = $dir;
+        $this->setPath('model', $dir);
 
         return $this;
     }
@@ -180,25 +172,25 @@ abstract class Controller
      * Set view home directory
      *
      * @param string $dir
-     * @return Cola_Controller
+     * @return Controller
      */
-    protected function setViewDir($dir)
+    public function setViewDir($dir)
     {
-        $this->_viewDir = $dir;
+        $this->setPath('view', $dir);
 
         return $this;
     }
 
-    protected function setHelperDir ($dir)
+    public function setHelperDir ($dir)
     {
-        $this->_helperDir = $dir;
+        $this->setPath('helper', $dir);
 
         return $this;
     }
 
-    protected function setWidgetDir ($dir)
+    public function setWidgetDir ($dir)
     {
-        $this->_widgetDir = $dir;
+        $this->setPath('widget', $dir);
 
         return $this;
     }

@@ -17,12 +17,17 @@ class Application
 
     private function __construct($options)
     {
+    	is_array($options) OR $options=array();
         $this->setOptions($options);
 
         $this->init();
     }
 
-    public function setOptions ($options)
+    /**
+     * 设置共有属性
+     * @param array $options
+     */
+    public function setOptions (array $options)
     {
         foreach ($options as $_k=>$_v) {
         	if (! is_string($_k)) {
@@ -73,11 +78,12 @@ class Application
         var_dump($dir, $controller, $action);
 
         $dir = $dir == '' ? '' : ($dir . DS);
-        defined('CONTROLLER_DIR') OR define('CONTROLLER_DIR', APP_PATH. DS . 'controllers'.DS);
+        defined('MODULE_DIR') OR define('MODULE_DIR', APP_PATH . DS . $dir);
+        defined('CONTROLLER_DIR') OR define('CONTROLLER_DIR', MODULE_DIR . 'controllers'.DS);
         include(BASE_PATH . 'Controller.php');
-        include(CONTROLLER_DIR . $dir . $controller . '.php');
+        include(CONTROLLER_DIR . $controller . '.php');
         include(BASE_PATH . 'Response.php');
-        //echo(CONTROLLER_DIR . $dir . $controller . '.php');
+
         $class = ucfirst($controller);
         $method = $action  . 'Action';
         if (! class_exists($class)) {
@@ -89,8 +95,8 @@ class Application
         	Response::status404();
         }
 
-        if (method_exists($handler, 'ready')) {
-        	$handler->ready();
+        if (method_exists($handler, 'init')) {
+        	$handler->init();
         }
 
         $handler->$method();

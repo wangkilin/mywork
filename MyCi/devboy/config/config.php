@@ -31,25 +31,35 @@ $config['tplSuffix'] = '.php'; // 模板文件后缀名
 $config['tplPathSeparator'] = DS; // 用来标识模板文件的分隔符好。 按照路径分，用 / ; 也可以用 _定义模板文件名
 
 $config['cookie'] = array(); // cookie 设置
-$config['cookie_prefix']	= '';
-$config['cookie_domain']	= '';
-$config['cookie_path']		= '/';
-$config['cookie_secure']	= FALSE;
-$config['cookie_httponly'] 	= FALSE;
+$config['cookie']['prefix']	= '';
+$config['cookie']['domain']	= '';
+$config['cookie']['path']		= '/';
+$config['cookie']['secure']	= FALSE;
+$config['cookie']['httponly'] 	= FALSE;
 
 $config['session'] = array(); // session 设置
-$config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'ci_session';
-$config['sess_expiration'] = 7200;
-$config['sess_save_path'] = NULL;
-$config['sess_match_ip'] = FALSE;
-$config['sess_time_to_update'] = 300;
-$config['sess_regenerate_destroy'] = FALSE;
+$config['session']['driver'] = 'files';
+$config['session']['cookie_name'] = 'ci_session';
+$config['session']['expiration'] = 7200;
+$config['session']['save_path'] = NULL;
+$config['session']['match_ip'] = FALSE;
+$config['session']['time_to_update'] = 300;
+$config['session']['regenerate_destroy'] = FALSE;
 
 $config['log'] = array(); // 日志设定
 $config['log']['levels'] = array('warning', 'notice', 'sql');
 $config['log']['doLogInRealTime'] = FALSE; // 是否实时写入日志记录。 为false时在脚本结束后写入日志
+
 $config['route'] = array(); // 路由设置
+
+$config['db'] = array(); // 系统数据库配置
+$config['db']['type'] = 'mysql';
+$config['db']['host'] = 'localhost';
+$config['db']['user'] = 'root';
+$config['db']['pass'] = '';
+$config['db']['database'] = 'devboy';
+$config['db']['charset'] = 'utf-8';
+$config['db']['port'] = '3306';
 
 return $config;
 /*

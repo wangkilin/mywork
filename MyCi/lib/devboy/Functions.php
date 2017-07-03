@@ -31,15 +31,7 @@ if (! function_exists('loadClass')) {
         if (isset($_classes[$alias])) {
             return $_classes[$alias];
         }
-        if ('' != $inDir) {
-        	$inDir = rtrim($inDir, DS) . DS;
-        }
-
-        $classFile = $inDir . preg_replace('/_+/', DS, $class).'.php';
-
-        if (false === class_exists($class, false) && file_exists($classFile)) {
-            require_once($classFile);
-        }
+        importClass($class, $inDir);
 
         if (! class_exists($class, false)) {
             throw new Exception('Can not load the specified class: ' . $class . ' in dir:'.$inDir, Constants::ERROR_LOAD_CLASS_FAIL);
@@ -52,6 +44,21 @@ if (! function_exists('loadClass')) {
         $_classes[$alias] = isset($param) ? new $class($param) : new $class();
 
         return $_classes[$alias];
+    }
+}
+
+if (! function_exists('importClass')) {
+    function importClass ($class, $inDir = '')
+    {
+        if ('' != $inDir) {
+        	$inDir = rtrim($inDir, DS) . DS;
+        }
+
+        $classFile = $inDir . preg_replace('/_+/', DS, $class).'.php';
+
+        if (false === class_exists($class, false) && file_exists($classFile)) {
+            require_once($classFile);
+        }
     }
 }
 

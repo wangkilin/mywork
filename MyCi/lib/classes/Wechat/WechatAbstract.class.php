@@ -19,6 +19,11 @@ abstract class WechatAbstract
      */
     public $logger = null;
 
+    /**
+     * 信息加入log
+     * @param string $message 记录的日志信息
+     * @param string $level 日志级别
+     */
     public function log ($message, $level='debug')
     {
         if ($this->logger && is_callable($this->logger)) {

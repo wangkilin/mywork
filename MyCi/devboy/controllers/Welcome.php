@@ -1,7 +1,7 @@
 <?php
 class Welcome extends Controller
 {
-	public function ready ()
+	public function init ()
 	{
 		echo 'Class is ready!';
 	}
@@ -14,7 +14,7 @@ class Welcome extends Controller
 		$this->display();
 	}
 
-	public function index()
+	public function indexAction()
 	{
 		$this->load->view('welcome_message');
 	}

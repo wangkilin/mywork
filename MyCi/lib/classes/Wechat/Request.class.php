@@ -48,6 +48,7 @@ class Request extends WechatAbstract
      * @var string
      */
     protected $accessToken = null; // this token is got from remote server.
+    protected $cacheAccessTokenCall = null; // 存放和获取token的方法
 
 
     protected $apiUriList = array(
@@ -87,14 +88,12 @@ class Request extends WechatAbstract
      * 构造函数
      * @param string $appId
      * @param string $appSecret
-     * @param string $token
      * @param array $options
      */
-    public function __construct ($appId, $appSecret, $token, $options=array() )
+    public function __construct ($appId, $appSecret, $options=array() )
     {
         $this->appId     = $appId;
         $this->appSecret = $appSecret;
-        $this->token     = $token;
 
         // set options
         $this->setOptions($options);
@@ -313,7 +312,9 @@ class Request extends WechatAbstract
     public function getAccessToken ()
     {
         static $accessTokenInfo = array('access_token'=>'', 'expires_in'=>0);
-
+        if ($this->cacheAccessTokenCall && is_callable($this->cacheAccessTokenCall)) {
+        	$accessTokenInfo = call_user_func($this->cacheAccessTokenCall);
+        }
         if (($accessTokenInfo['expires_in'] - time()) >60 ) {
             return $accessTokenInfo['access_token'];
         }
@@ -340,6 +341,10 @@ class Request extends WechatAbstract
         } else {
             $result['expires_in'] = time() + $result['expires_in'];
             $accessTokenInfo = $result;
+            // 调用缓存accesstoken函数以防止多次调用获取accesstotken
+            if ($this->cacheAccessTokenCall && is_callable($this->cacheAccessTokenCall)) {
+            	call_user_func($this->cacheAccessTokenCall, $accessTokenInfo);
+            }
         }
 
         return $accessTokenInfo['access_token'];

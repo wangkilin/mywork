@@ -1,9 +1,7 @@
 <?php
-/**
- *
- */
+importClass('Db_Abstract');
 
-class Cola_Com_Db_Mysqli extends Cola_Com_Db_Abstract
+class Db_Mysqli extends Db_Abstract
 {
     /**
      * Connect to database
@@ -11,14 +9,6 @@ class Cola_Com_Db_Mysqli extends Cola_Com_Db_Abstract
      */
     protected function _connect($params)
     {
-        if (!extension_loaded('mysqli')) {
-            throw new Cola_Com_Db_Exception('NO_MYSQLI_EXTENSION_FOUND');
-        }
-
-        if ($params['persistent']) {
-            throw new Cola_Com_Db_Exception('MYSQLI_EXTENSTION_DOES_NOT_SUPPORT_PERSISTENT_CONNECTION');
-        }
-
         $this->_connection = mysqli_init();
 
         $connected = @mysqli_real_connect(

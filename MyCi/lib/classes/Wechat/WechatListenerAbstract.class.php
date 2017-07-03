@@ -4,44 +4,44 @@ require_once(dirname(__FILE__) . '/WechatAbstract.class.php');
 /**
  * WeChat public platform abstract class
  */
-abstract class WechatListenerAbstract extends WechatAbstract {
-
-    /**
-     * @var boolean
-     */
-    public $debug = false;
-
+abstract class WechatListenerAbstract extends WechatAbstract
+{
     /**
      * @var array
      */
     private $request;
+    private $postData = '';
+
+    private $token;
 
     /**
      * @param string $token
      */
     public function __construct($token)
     {
-        $this->checkSignature($token);
-        //set_error_handler(array(&$this, 'errorHandler'));
-        if(!isset($GLOBALS['HTTP_RAW_POST_DATA'])) {
-            trigger_error('Access denied!', E_USER_ERROR);
-            if($this->debug) {
-                trigger_error('', E_USER_WARNING);
-            }
-            exit;
-        }
-        //echo $GLOBALS['HTTP_RAW_POST_DATA'];
-        $this->parseRequestData($GLOBALS['HTTP_RAW_POST_DATA']);
+    	$this->token = $token;
+    	if (isset($GLOBALS['HTTP_RAW_POST_DATA'])) {
+	        //echo $GLOBALS['HTTP_RAW_POST_DATA'];
+	        $this->postData = & $GLOBALS['HTTP_RAW_POST_DATA'];
+    	}
     }
 
-    protected function parseRequestData ($requestString)
+    /**
+     *
+     * @param unknown $requestString
+     */
+    protected function parseRequestData ()
     {
-        error_log($requestString, 3, 'testLog.php');
         // parse XML string
-        $xml = (array) simplexml_load_string($GLOBALS['HTTP_RAW_POST_DATA'], 'SimpleXMLElement', LIBXML_NOCDATA);
+        $xml = (array) simplexml_load_string($this->postData, 'SimpleXMLElement', LIBXML_NOCDATA);
 
         // change key into lowercase
         $this->request = array_change_key_case($xml, CASE_LOWER);
+    }
+
+    public function getPostData ()
+    {
+    	return $this->postData;
     }
 
 
@@ -64,8 +64,10 @@ abstract class WechatListenerAbstract extends WechatAbstract {
         if ($this->getSignature($token, $timestamp, $nonce) == $signature) {
             exit($_GET['echostr']);
         } else {
-            trigger_error('Failed to check signature. GET parameters:' . str_replace("\n",'',print_r($_GET, true)), E_USER_NOTICE);
-            exit;
+            $message = 'Failed to check signature. GET parameters:'
+        			  . str_replace("\n",'',print_r($_GET, true));
+        	$this->log($message, 'ERROR');
+        	exit;
         }
     }
 
@@ -146,6 +148,15 @@ abstract class WechatListenerAbstract extends WechatAbstract {
     }
 
     /**
+     * 小视频
+     *
+     * @return void
+     */
+    protected function processShortvideo()
+    {
+    }
+
+    /**
      *
      *
      * @return void
@@ -179,7 +190,9 @@ abstract class WechatListenerAbstract extends WechatAbstract {
      */
     protected function processUndefine()
     {
-        trigger_error('Failed to precess response. POST parameters:' . str_replace("\n",'',$GLOBALS['HTTP_RAW_POST_DATA']), E_USER_WARNING);
+        $message = 'Failed to precess response. POST parameters:'
+        		. str_replace("\n",'',$this->postData);
+        $this->log($message, 'ERROR');
     }
 
     /**
@@ -224,6 +237,15 @@ abstract class WechatListenerAbstract extends WechatAbstract {
      */
     public function listen()
     {
+        $this->checkSignature($this->token);
+        //set_error_handler(array(&$this, 'errorHandler'));
+        if(!isset($GLOBALS['HTTP_RAW_POST_DATA'])) {
+        	$message = 'POST数据为空';
+        	$this->log($message, 'ERROR');
+            exit;
+        }
+        $this->parseRequestData();
+
         $msgType = $this->getRequest('msgtype');
         $this->checkAndCallMethod($msgType);
     }

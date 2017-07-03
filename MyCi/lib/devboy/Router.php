@@ -128,14 +128,35 @@ class Router
 	{
 	    $pathinfo = trim($pathinfo, $this->config->get('queryKeyValueSeparator'));
 	    $params = explode($this->config->get('queryKeyValueSeparator'), $pathinfo);
+        $matched = true;
+        echo 'aaa';
         if ( true===$this->config->get('isSupportControllerDir') ) {
-            $this->_dir = array_shift($params);
+        	echo 'aaa';
+        	$_param = array_shift($params);
+            if (preg_match('/^[a-z0-9]+(\.[a-z]+)?$/i', $_param)) {
+            	$_param = explode('.', $_param);
+            	$this->_dir = $_param[0];
+            	$matched = count($_param) === 1;
+            } else {
+            	$matched = false;
+            }
         }
-        if ($params) {
-            $this->_controller = array_shift($params);
+        if ($matched && $params) {
+        	$_param = array_shift($params);
+            if (preg_match('/^[a-z0-9]+(\.[a-z]+)?$/i', $_param)) {
+            	$_param = explode('.', $_param);
+            	$this->_controller = $_param[0];
+            	$matched = count($_param) === 1;
+            } else {
+            	$matched = false;
+            }
         }
-        if ($params) {
-            $this->_action = array_shift($params);
+        if ($matched && $params) {
+        	$_param = array_shift($params);
+            if (preg_match('/^[a-z0-9]+(\.[a-z]+)?$/i', $_param)) {
+            	$_param = explode('.', $_param);
+            	$this->_action = $_param[0];
+            }
         }
 
         $params = array_chunk($params, 2);
@@ -156,7 +177,7 @@ class Router
         $actionKeyInUrl     = $this->config->get('actionKeyInUrl');
         $isUrlCaseSensitive = $this->config->get('urlCaseSensitive');
 
-        // 从get从获取路由信息。 级别较低
+        // 从get中获取路由信息。 级别较低
         if ( true===$this->config->get('isSupportControllerDir')
           && $this->request->get($dirKeyInUrl) !==null ) {
             $this->_dir = strval($this->request->get($dirKeyInUrl));

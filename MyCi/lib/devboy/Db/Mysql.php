@@ -1,27 +1,21 @@
 <?php
-/**
- *
- */
+importClass('Db_Abstract');
 
-class Cola_Com_Db_Mysql extends Cola_Com_Db_Abstract
+class Db_Mysql extends Db_Abstract
 {
     /**
      * Connect to MySQL
      *
      * @return resource connection
      */
-    protected function _connect($params)
+    protected function _connect($dbConfig)
     {
-        if (!extension_loaded('mysql')) {
-            throw new Cola_Com_Db_Exception('Can not find mysql extension.');
-        }
-
         $func = ($params['persistent']) ? 'mysql_pconnect' : 'mysql_connect';
 
         $connection = @$func(
-            $params['host'] . ':' . $params['port'],
-            $params['user'],
-            $params['password']
+            $dbConfig['host'] . ':' . $dbConfig['port'],
+            $dbConfig['user'],
+            $dbConfig['password']
         );
 
         if (is_resource($connection) && mysql_select_db($params['database'], $connection)) {
@@ -29,8 +23,6 @@ class Cola_Com_Db_Mysql extends Cola_Com_Db_Abstract
             $this->query("SET NAMES '" . $this->_config['charset'] . "';");
             return $this->_connection;
         }
-
-        throw new Cola_Com_Db_Exception($this->error());
     }
 
     /**
@@ -39,7 +31,7 @@ class Cola_Com_Db_Mysql extends Cola_Com_Db_Abstract
      * @param string $database
      * @return boolean
      */
-    public function selectDb($database)
+    public function useDatabase($database)
     {
         return mysql_select_db($database, $this->_connection);
     }
